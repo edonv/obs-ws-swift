@@ -18,6 +18,11 @@ let package = Package(
         .target(
             name: "OBSWebSocket"
         ),
+        // Generator CLI
+        .executableTarget(
+            name: "obs-ws-swift-generator",
+            dependencies: []
+        ),
         .testTarget(
             name: "OBSWebSocketTests",
             dependencies: ["OBSWebSocket"]
