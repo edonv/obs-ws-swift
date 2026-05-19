@@ -35,12 +35,3 @@ func splitByCapitals(_ string: String) -> [String] {
     .map { String($0) }
 }
 
-func processDescription(_ description: String) -> String {
-    #warning("TODO: Refactor first line to work like original code `findReplaceLinkedSymbolsInDescs`")
-    description
-        .replacingOccurrences(
-            of: "Note:",
-            with: "- Note:",
-            options: .regularExpression
-        )
-}
