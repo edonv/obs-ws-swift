@@ -49,7 +49,7 @@ extension OBSWSProtocol.Enum: Generatable {
                             try VariableDeclSyntax(declString)
                                 .with(
                                     \.leadingTrivia,
-                                     enumCase.docComments(enumName: enumName)
+                                     enumCase.generateDocsTrivia()
                                 )
                                 // add 1 newline after the last constant (to push closing curly brace)
                                 // otherwise, add 2 lines before following constant
@@ -67,7 +67,7 @@ extension OBSWSProtocol.Enum: Generatable {
                                 try EnumCaseDeclSyntax(declString)
                                     .with(
                                         \.leadingTrivia,
-                                         enumCase.docComments(enumName: enumName)
+                                         enumCase.generateDocsTrivia()
                                     )
                                     // add 1 newline after the last case (to push closing curly brace)
                                     // otherwise, add 2 lines before following case
@@ -141,41 +141,6 @@ extension OBSWSProtocol.Enum.EnumIdentifier {
         } else {
             return nil
         }
-    }
-    
-    fileprivate func docComments(
-        enumName: String
-    ) -> Trivia {
-        #warning("TODO: Refactor first line to work like original code `findReplaceLinkedSymbolsInDescs`")
-//        findReplaceLinkedSymbolsInDescs(
-//            enumCase.description
-//                .replacingOccurrences(of: "Note:", with: "- Note:"),
-//            category: .enums,
-//            symbolPath: [
-//                enumName,
-//                camelized(c.enumIdentifier)
-//            ]
-//        )
-        
-        // /// An input has been created.
-        let descPieces: [TriviaPiece] = processDescription(self.description)
-            .split(separator: "\n", omittingEmptySubsequences: false)
-            .flatMap { str in
-                return [
-                    .docLineComment("/// " + str),
-                    .newlines(1),
-                ]
-            }
-        
-        return Trivia(pieces: descPieces) + [
-            // descPieces includes a trailing newline
-            // /// - Latest Supported RPC Version: `1`
-            .docLineComment("/// - Version: Latest Supported RPC Version - `\(self.rpcVersion)`"),
-            .newlines(1),
-            // /// - Added in v5.0.0
-            .docLineComment("/// - Since: Added in v\(self.initialVersion)"),
-            .newlines(1),
-        ]
     }
     
 }
