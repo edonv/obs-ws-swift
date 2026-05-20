@@ -72,6 +72,10 @@ struct Documentation {
                 with: "- Note:",
                 options: .regularExpression
             )
+            .replacingOccurrences(
+                of: "null",
+                with: "nil"
+            )
             .split(separator: "\n", omittingEmptySubsequences: false)
             .map { .docLineComment("/// " + $0) }
         
