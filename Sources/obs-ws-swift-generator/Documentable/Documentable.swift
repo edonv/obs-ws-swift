@@ -97,7 +97,7 @@ struct Documentation {
                 // /// > Added in v5.0.0
                 self.initialVersion
                     .map { .docLineComment("/// > Since: Added in v\($0)") },
-//                // Only print "Deprecated"
+//                // Only print "Deprecated" if deprecated? should also add `@available(deprecated)`???
 //                self.deprecated
 //                    .flatMap { $0 ? .docLineComment("/// - Deprecated") : nil },
                 self.valueRestrictions
