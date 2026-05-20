@@ -87,7 +87,7 @@ struct Documentation {
                     .map { .docLineComment("/// > Event Subscription: ``OBSWS/Enums/EventSusbcription/\(camelize($0))``") },
                 // /// > Category: ``General``
                 self.category
-                    .map { .docLineComment("/// > Category: ``\($0 == "ui" ? "UI" : $0.capitalized)``") },
+                    .map { .docLineComment("/// > Category: `\($0 == "ui" ? "UI" : $0.capitalized)`") },
                 // /// > Complexity: `1/5`
                 self.complexity
                     .map { .docLineComment("/// > Complexity: `\($0)/5`") },
