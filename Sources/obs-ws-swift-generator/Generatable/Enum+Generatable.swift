@@ -35,23 +35,23 @@ extension OBSWSProtocol.Enum: Generatable {
                 StructDeclSyntax("public struct \(raw: enumName)") {
                     try VariableDeclSyntax("public let rawValue: Int")
                         .with(\.leadingTrivia, .newline)
-                        .with(\.trailingTrivia, .newlines(2))
+                        .with(\.trailingTrivia, .newline)
                     
                     try InitializerDeclSyntax("public init(rawValue: Int)") {
                         CodeBlockItemSyntax("self.rawValue = rawValue")
                     }
-                    .with(\.trailingTrivia, .newlines(2))
+                    .with(\.leadingTrivia, .newline)
+                    .with(\.trailingTrivia, .newline)
                     
                     for (i, enumCase) in self.enumIdentifiers.enumerated() {
                         if let declString = enumCase.syntaxString(forOptionSet: enumName) {
                             try VariableDeclSyntax(declString)
                                 .with(
                                     \.leadingTrivia,
-                                     enumCase.generateDocsTrivia()
+                                     .newline
+                                        .appending(enumCase.generateDocsTrivia())
                                 )
-                                // add 1 newline after the last constant (to push closing curly brace)
-                                // otherwise, add 2 lines before following constant
-                                .with(\.trailingTrivia, .newlines(i >= enumIdentifiers.count - 1 ? 1 : 2))
+                                .with(\.trailingTrivia, .newline)
                         }
                     }
                 }
@@ -65,11 +65,10 @@ extension OBSWSProtocol.Enum: Generatable {
                                 try EnumCaseDeclSyntax(declString)
                                     .with(
                                         \.leadingTrivia,
-                                         enumCase.generateDocsTrivia()
+                                         .newline
+                                            .appending(enumCase.generateDocsTrivia())
                                     )
-                                    // add 1 newline after the last case (to push closing curly brace)
-                                    // otherwise, add 2 lines before following case
-                                    .with(\.trailingTrivia, .newlines(i >= enumIdentifiers.count - 1 ? 1 : 2))
+                                    .with(\.trailingTrivia, .newline)
                             }
                         }
                     }
