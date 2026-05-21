@@ -71,6 +71,14 @@ struct Documentation {
                 of: "Note:",
                 with: "> Note:",
             )
+            .replacingOccurrences(
+                of: "TODO:",
+                with: "> TODO:"
+            )
+            .replacingOccurrences(
+                of: "**Very important note**:",
+                with: "> Important:"
+            )
             // TODO: update this eventually to correctly account for `null` being explicitly `null` and `nil` being omitted
             .split(separator: "\n", omittingEmptySubsequences: false)
             .map { .docLineComment("/// " + $0) }
