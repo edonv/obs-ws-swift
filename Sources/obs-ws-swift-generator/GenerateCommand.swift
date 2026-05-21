@@ -26,11 +26,7 @@ struct GenerateCommand: AsyncParsableCommand {
         let protocolJSONData = try Data(contentsOf: GenerateCommand.protocolJSON)
         let obsProtocol = try! JSONDecoder().decode(OBSWSProtocol.self, from: protocolJSONData)
         
-        let protocolNamespaceEnum = try obsProtocol.generate()
-        let sourceFile = SourceFileSyntax {
-            protocolNamespaceEnum
-        }
-        
+        let sourceFile = try obsProtocol.generate()
         print(sourceFile)
     }
 }
