@@ -12,6 +12,8 @@ import JSONValue
 
 struct OBSWSProtocol: Codable, Sendable {
     let enums: [Enum]
+    let requests: [Request]
+    let events: [Event]
 }
 
 // MARK: - OBSWSProtocol.Enum
@@ -28,6 +30,59 @@ extension OBSWSProtocol {
             let deprecated: Bool
             let initialVersion: String
             let enumValue: JSONValue
+        }
+    }
+}
+
+// MARK: - OBSWSProtocol.Request
+
+extension OBSWSProtocol {
+    struct Request: Codable, Hashable, Sendable {
+        let description: String
+        let requestType: String
+        let complexity: Int
+        let rpcVersion: String
+        let deprecated: Bool
+        let initialVersion: String
+        let category: String
+        let requestFields: [RequestField]
+        let responseFields: [ResponseField]
+        
+        struct RequestField: Codable, Hashable, Sendable {
+            let valueName: String
+            let valueType: String
+            let valueDescription: String
+            let valueRestrictions: String?
+            let valueOptional: Bool
+            let valueOptionalBehavior: String?
+            
+            func updatingName(_ handler: (_ oldName: String) -> String) -> RequestField {
+                .init(
+                    valueName: handler(valueName),
+                    valueType: valueType,
+                    valueDescription: valueDescription,
+                    valueRestrictions: valueRestrictions,
+                    valueOptional: valueOptional,
+                    valueOptionalBehavior: valueOptionalBehavior
+                )
+            }
+            
+            func updatingType(_ handler: (_ oldType: String) -> String) -> RequestField {
+                .init(
+                    valueName: valueName,
+                    valueType: handler(valueType),
+                    valueDescription: valueDescription,
+                    valueRestrictions: valueRestrictions,
+                    valueOptional: valueOptional,
+                    valueOptionalBehavior: valueOptionalBehavior
+                )
+            }
+        }
+        
+        struct ResponseField: Codable, Hashable, Sendable {
+            let valueName: String
+            let valueType: String
+            let valueDescription: String
         }
     }
 }
