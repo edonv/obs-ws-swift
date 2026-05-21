@@ -69,7 +69,7 @@ struct Documentation {
         let descPieces: [TriviaPiece] = description
             .replacingOccurrences(
                 of: "Note:",
-                with: "- Note:",
+                with: "> Note:",
             )
             .replacingOccurrences(
                 of: "null",
