@@ -41,4 +41,3 @@ func splitByCapitals(_ string: String) -> [String] {
     .map { $0.map(\.element) }
     .map { String($0) }
 }
-
