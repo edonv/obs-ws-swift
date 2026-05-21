@@ -57,6 +57,7 @@ extension FieldType {
     ) -> String {
         let newType = self.clean(type: self.sharedPart1())
         
+        // TODO: implement `getExplicitType()` and `explicitTypes`
         
         if newType == "Number" {
             let shouldBeFloat = valueRestrictions?.contains(".") == true
