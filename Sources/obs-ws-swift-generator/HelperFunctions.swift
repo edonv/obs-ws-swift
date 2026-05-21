@@ -27,6 +27,13 @@ func camelize(_ string: String) -> String {
     return tempStr.prefix(1).lowercased() + tempStr.dropFirst()
 }
 
+func pascalize(_ string: String) -> String {
+    camelize(string).replacingCharacters(
+        in: string.startIndex..<string.index(after: string.startIndex),
+        with: string.first!.uppercased()
+    )
+}
+
 func splitByCapitals(_ string: String) -> [String] {
     string.enumerated().split { (i, char) in
         char.isUppercase || i == 0
