@@ -11,7 +11,7 @@ import SwiftSyntaxBuilder
 
 extension OBSWSProtocol.Request: Generatable {
     func generate() throws -> StructDeclSyntax {
-        return try .init("public struct \(raw: self.requestType): OBSRequest") {
+        return try StructDeclSyntax("public struct \(raw: self.requestType): OBSRequest") {
             if responseFields.isEmpty {
                 try TypeAliasDeclSyntax("public typealias Response = EmptyResponse")
                     .with(\.trailingTrivia, .newlines(2))
