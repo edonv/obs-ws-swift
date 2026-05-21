@@ -83,7 +83,6 @@ struct Documentation {
             .split(separator: "\n", omittingEmptySubsequences: false)
             .map { .docLineComment("/// " + $0) }
         
-        
         return Trivia(pieces: (
             descPieces + [
                 // /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/general``
