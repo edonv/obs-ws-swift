@@ -76,3 +76,9 @@ extension OBSWSProtocol.Request.ResponseField: FieldType {
     
     func clean(type: String) -> String { type }
 }
+
+extension OBSWSProtocol.Event.Field: FieldType {
+    var valueRestrictions: String? { nil }
+    
+    func clean(type: String) -> String { type }
+}
