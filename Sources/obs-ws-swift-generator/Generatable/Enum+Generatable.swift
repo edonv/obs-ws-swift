@@ -39,8 +39,6 @@ extension OBSWSProtocol.Enum: Generatable {
                     
                     try InitializerDeclSyntax("public init(rawValue: Int)") {
                         CodeBlockItemSyntax("self.rawValue = rawValue")
-                            .with(\.leadingTrivia, .newline)
-                            .with(\.trailingTrivia, .newline)
                     }
                     .with(\.trailingTrivia, .newlines(2))
                     
