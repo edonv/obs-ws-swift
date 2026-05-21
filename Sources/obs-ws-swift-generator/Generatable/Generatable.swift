@@ -10,6 +10,6 @@ import SwiftSyntax
 import SwiftBasicFormat
 
 protocol Generatable {
-    associatedtype DeclType: DeclSyntaxProtocol
-    func generate() throws -> DeclType
+    associatedtype GeneratedSyntax: SyntaxProtocol
+    func generate() throws -> GeneratedSyntax
 }
