@@ -64,7 +64,8 @@ extension OBSWSProtocol.Request: Generatable {
                 }
                 .with(\.leadingTrivia, .newlines(2))
             }
-        }.with(\.leadingTrivia, self.generateDocsTrivia())
+        }
+        .with(\.leadingTrivia, self.generateDocsTrivia())
     }
     
     private func splitFields() -> (normalFields: [RequestField], subtypes: [String: [RequestField]]) {
