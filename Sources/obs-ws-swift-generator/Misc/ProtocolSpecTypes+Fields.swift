@@ -69,6 +69,20 @@ extension FieldType {
                 of: "Number",
                 with: shouldBeFloat ? "Float" : "Int"
             )
+        } else if newType == "String" {
+            // If it's a String-based enum type
+            if let range = valueDescription.range(of: #"(`\w+`) enum"#, options: .regularExpression) {
+                let substring = String(valueDescription[range])
+                    .replacingOccurrences(of: "`", with: "")
+                    .replacingOccurrences(of: " enum", with: "")
+                    .replacingOccurrences(of: "Obs", with: "")
+                return "OBSWS.Enums." + substring
+            }
+            
+            // If it's a UUID
+            if valueName.lowercased().contains("uuid") {
+                return "UUID"
+            }
         }
         
         return newType
