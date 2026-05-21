@@ -24,7 +24,6 @@ extension OBSWSProtocol: Generatable {
                         .with(\.trailingTrivia, .newline)
                 }
             }
-            .with(\.leadingTrivia, .newline)
             .with(\.trailingTrivia, .newline)
         }
         .formatted(using: format).as(DeclSyntax.self)!
