@@ -71,6 +71,7 @@ struct Documentation {
                 of: "Note:",
                 with: "> Note:",
             )
+            // TODO: update this eventually to correctly account for `null` being explicitly `null` and `nil` being omitted
             .split(separator: "\n", omittingEmptySubsequences: false)
             .map { .docLineComment("/// " + $0) }
         
