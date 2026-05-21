@@ -86,3 +86,25 @@ extension OBSWSProtocol {
         }
     }
 }
+
+// MARK: - OBSWSProtocol.Event
+
+extension OBSWSProtocol {
+    struct Event: Codable, Sendable {
+        let description: String
+        let eventType: String
+        let eventSubscription: String
+        let complexity: Int
+        let rpcVersion: String
+        let deprecated: Bool
+        let initialVersion: String
+        let category: String
+        let dataFields: [Field]
+        
+        struct Field: Codable, Sendable {
+            let valueName: String
+            let valueType: String
+            let valueDescription: String
+        }
+    }
+}
