@@ -41,6 +41,16 @@ extension OBSWSProtocol: Generatable {
                 }
                 .with(\.leadingTrivia, .newline)
                 .with(\.trailingTrivia, .newline)
+                
+                try EnumDeclSyntax("public enum Events") {
+                    for eventDef in self.events {
+                        try eventDef.generate()
+                            .prepending(.newline, to: \.leadingTrivia)
+                            .appending(.newline, to: \.trailingTrivia)
+                    }
+                }
+                .with(\.leadingTrivia, .newline)
+                .with(\.trailingTrivia, .newline)
             }
         }
         .formatted(using: format)
