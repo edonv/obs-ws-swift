@@ -14,16 +14,18 @@ extension OBSWSProtocol.Request: Generatable {
         return try StructDeclSyntax("public struct \(raw: self.requestType): OBSRequest") {
             if responseFields.isEmpty {
                 try TypeAliasDeclSyntax("public typealias Response = EmptyResponse")
-                    .with(\.trailingTrivia, .newlines(2))
+                    .prepending(.newline, to: \.leadingTrivia)
+                    .with(\.trailingTrivia, .newline)
             }
             
             // Get fields to write out
             let (normalFields, subtypes) = self.splitFields()
             
             // Write requestFields (ones that aren't sub-properties)
-            for (i, reqField) in normalFields.enumerated() {
+            for reqField in normalFields {
                 try reqField.generate()
-                    .with(\.trailingTrivia, .newlines(i < normalFields.count - 1 ? 2 : 0))
+                    .prepending(.newline, to: \.leadingTrivia)
+                    .with(\.trailingTrivia, .newline)
             }
             
             // Explicit public initializer
@@ -40,18 +42,20 @@ extension OBSWSProtocol.Request: Generatable {
                         .with(\.trailingTrivia, .newline)
                 }
             }
-            .with(\.leadingTrivia, .newlines(normalFields.isEmpty /*&& responseFields.isEmpty*/ ? 1 : 2))
+            .prepending(.newline, to: \.leadingTrivia)
+            .with(\.trailingTrivia, .newline)
             
             // Write subtypes and their properties
-            for (i, (parentFieldName, subtypeFields)) in subtypes.enumerated() {
+            for (parentFieldName, subtypeFields) in subtypes {
                 try StructDeclSyntax("public struct \(raw: parentFieldName): Hashable, Codable") {
-                    for (j, subtypeField) in subtypeFields.enumerated() {
+                    for subtypeField in subtypeFields {
                         try subtypeField.generate()
-                            .with(\.trailingTrivia, .newlines(j < subtypeFields.count - 1 ? 2 : 0))
+                            .prepending(.newline, to: \.leadingTrivia)
+                            .with(\.trailingTrivia, .newline)
                     }
                 }
-                .with(\.leadingTrivia, .newlines(i < subtypes.count - 1 ? 2 : 1))
-                .with(\.trailingTrivia, .newlines(responseFields.isEmpty ? 1 : 0))
+                .prepending(.newline, to: \.leadingTrivia)
+                .with(\.trailingTrivia, .newline)
             }
             
             // Write `Response` type (if there is one)
@@ -62,7 +66,8 @@ extension OBSWSProtocol.Request: Generatable {
                             .with(\.trailingTrivia, .newlines(i < responseFields.count - 1 ? 2 : 1))
                     }
                 }
-                .with(\.leadingTrivia, .newlines(2))
+                .prepending(.newline, to: \.leadingTrivia)
+                .with(\.trailingTrivia, .newline)
             }
         }
         .with(\.leadingTrivia, self.generateDocsTrivia())
