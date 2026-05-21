@@ -30,7 +30,7 @@ extension OBSWSProtocol.Request: Generatable {
             let initParamList = FunctionParameterListSyntax {
                 for (i, reqField) in normalFields.enumerated() {
                     let addComma = i < normalFields.count - 1
-                    FunctionParameterSyntax("\(raw: reqField.valueName): \(raw: reqField.fieldType)\(raw: addComma ? ", ": "")")
+                    FunctionParameterSyntax("\(raw: reqField.valueName): \(raw: reqField.fieldType())\(raw: addComma ? ", ": "")")
                 }
             }
             
