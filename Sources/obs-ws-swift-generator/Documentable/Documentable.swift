@@ -70,7 +70,6 @@ struct Documentation {
             .replacingOccurrences(
                 of: "Note:",
                 with: "- Note:",
-                options: .regularExpression
             )
             .replacingOccurrences(
                 of: "null",
