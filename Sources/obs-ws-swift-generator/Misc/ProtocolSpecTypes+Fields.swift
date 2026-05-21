@@ -57,17 +57,20 @@ extension FieldType {
     ) -> String {
         let newType = self.clean(type: self.sharedPart1())
         
-        guard newType == "Number" else { return newType }
         
-        let shouldBeFloat = valueRestrictions?.contains(".") == true
+        if newType == "Number" {
+            let shouldBeFloat = valueRestrictions?.contains(".") == true
             || floatProperties.contains(
                 fullPropertyPath(withParent: parentTypeName)
             )
+            
+            return newType.replacingOccurrences(
+                of: "Number",
+                with: shouldBeFloat ? "Float" : "Int"
+            )
+        }
         
-        return newType.replacingOccurrences(
-            of: "Number",
-            with: shouldBeFloat ? "Float" : "Int"
-        )
+        return newType
     }
     
     func fullPropertyPath(
