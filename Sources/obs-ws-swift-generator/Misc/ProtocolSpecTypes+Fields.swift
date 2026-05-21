@@ -9,12 +9,14 @@ import Foundation
 
 protocol FieldType {
     // Properties both normally have
+    var valueName: String { get }
     var valueType: String { get }
     var valueDescription: String { get }
     
     // Properties only 1 has
     var valueRestrictions: String? { get }
     
+    func propertyPathPrefix(withParent parentTypeName: String) -> String
     func clean(type: String) -> String
 }
 
@@ -50,21 +52,48 @@ extension FieldType {
         // TODO: difference between "omit" (optional) and "nil" (null)?
     }
     
-    func fieldType() -> String {
+    func fieldType(
+        withParent parentTypeName: String
+    ) -> String {
         let newType = self.clean(type: self.sharedPart1())
         
-        if let restrictions = valueRestrictions,
-           restrictions.contains(".") {
-            return newType
-                .replacingOccurrences(of: "Number", with: "Float")
-        } else {
-            return newType
-                .replacingOccurrences(of: "Number", with: "Int")
-        }
+        guard newType == "Number" else { return newType }
+        
+        let shouldBeFloat = valueRestrictions?.contains(".") == true
+            || floatProperties.contains(
+                fullPropertyPath(withParent: parentTypeName)
+            )
+        
+        return newType.replacingOccurrences(
+            of: "Number",
+            with: shouldBeFloat ? "Float" : "Int"
+        )
+    }
+    
+    func fullPropertyPath(
+        withParent parentTypeName: String
+    ) -> String {
+        [
+            propertyPathPrefix(withParent: parentTypeName),
+            valueName,
+        ].joined(separator: ".")
     }
 }
 
+/// Properties that should be Floats instead of Ints, but don't have example in docs.
+private let floatProperties: [String] = [
+    "GetStats.Response.availableDiskSpace",
+    "GetStats.Response.cpuUsage",
+    "GetStats.Response.averageFrameRenderTime",
+    "GetStats.Response.memoryUsage",
+    "GetStats.Response.activeFps",
+]
+
 extension OBSWSProtocol.Request.RequestField: FieldType {
+    func propertyPathPrefix(withParent parentTypeName: String) -> String {
+        "\(parentTypeName).Request"
+    }
+    
     func clean(type: String) -> String {
         guard self.valueOptional else { return type }
         return type + "?"
@@ -74,11 +103,19 @@ extension OBSWSProtocol.Request.RequestField: FieldType {
 extension OBSWSProtocol.Request.ResponseField: FieldType {
     var valueRestrictions: String? { nil }
     
+    func propertyPathPrefix(withParent parentTypeName: String) -> String {
+        "\(parentTypeName).Response"
+    }
+    
     func clean(type: String) -> String { type }
 }
 
 extension OBSWSProtocol.Event.Field: FieldType {
     var valueRestrictions: String? { nil }
+    
+    func propertyPathPrefix(withParent parentTypeName: String) -> String {
+        "\(parentTypeName)"
+    }
     
     func clean(type: String) -> String { type }
 }
