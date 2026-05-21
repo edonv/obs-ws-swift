@@ -80,7 +80,6 @@ extension OBSWSProtocol.Enum: Generatable {
         }
         
         return typeDef
-            .with(\.trailingTrivia, .newline)
     }
 }
 

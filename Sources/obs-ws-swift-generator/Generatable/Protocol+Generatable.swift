@@ -21,6 +21,7 @@ extension OBSWSProtocol: Generatable {
                 for enumDef in self.enums {
                     try enumDef.generate()
                         .with(\.leadingTrivia, .newline)
+                        .with(\.trailingTrivia, .newline)
                 }
             }
             .with(\.leadingTrivia, .newline)
