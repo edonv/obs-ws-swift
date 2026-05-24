@@ -43,6 +43,9 @@ func pascalize(_ string: String) -> String {
     )
 }
 
+/// Will work on any string that is already in PascalCase or camelCase.
+///
+/// > Important: Will NOT work on string that are in all caps OR have no implied separator.
 func splitByCapitals(_ string: String) -> [String] {
     string.reduce(into: [String]()) { prev, char in
         if prev.isEmpty {
