@@ -8,9 +8,9 @@
 import Foundation
 
 extension OBSOpData {
-    /// Response to ``OpDataTypes/Hello`` message.
+    /// Response to ``Hello`` message.
     ///
-    /// If authentication is required by `obs-websocket`, ``OpDataTypes/Identify`` must contain an
+    /// If authentication is required by `obs-websocket`, `Identify` must contain an
     /// authentication string, along with PubSub subscriptions and other session parameters.
     ///
     /// - term Sent From: Freshly connected websocket client
@@ -22,7 +22,7 @@ extension OBSOpData {
         public let rpcVersion: Int
         public let authentication: String?
         
-        /// A bitmask of ``OBSEnums/EventSubscription`` items to subscribe to events and event
+        /// A bitmask of ``OBSWS/Enums/EventSubscription`` items to subscribe to events and event
         /// categories at will.
         ///
         /// By default, all event categories are subscribed, except for events marked as high volume.
