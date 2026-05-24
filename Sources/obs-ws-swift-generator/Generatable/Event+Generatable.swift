@@ -14,6 +14,11 @@ extension OBSWSProtocol.Event: Generatable {
         return try StructDeclSyntax("public struct \(raw: self.eventType): OBSEvent") {
             // - Docs (added at the end outside the builder)
             
+            // - Static Properties
+            try VariableDeclSyntax("public static let eventType: OBSWS.Events.AllTypes = .\(raw: self.eventType)")
+                .with(\.leadingTrivia, .newline)
+                .with(\.trailingTrivia, .newline)
+            
             // - Properties/Fields
             for reqField in self.dataFields {
                 try reqField.generate()

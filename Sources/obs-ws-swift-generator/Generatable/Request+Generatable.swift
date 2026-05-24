@@ -18,6 +18,10 @@ extension OBSWSProtocol.Request: Generatable {
                     .with(\.trailingTrivia, .newline)
             }
             
+            try VariableDeclSyntax("public static let requestType: OBSWS.Requests.AllTypes = .\(raw: self.requestType)")
+                .with(\.leadingTrivia, .newline)
+                .with(\.trailingTrivia, .newline)
+            
             // Get fields to write out
             let (normalFields, subtypes) = self.splitFields()
             
