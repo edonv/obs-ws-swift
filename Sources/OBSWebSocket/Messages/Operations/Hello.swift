@@ -9,8 +9,10 @@ import Foundation
 import CryptoKit
 
 extension OBSOpData {
-    /// First message sent from the server immediately on client connection. Contains authentication
-    /// information if auth is required. Also contains RPC version for version negotiation.
+    /// First message sent from the server immediately on client connection.
+    ///
+    /// Contains authentication information if auth is required. Also contains RPC version
+    /// for version negotiation.
     ///
     /// - term Sent From: `obs-websocket`
     /// - term Sent To: Freshly connected websocket client
