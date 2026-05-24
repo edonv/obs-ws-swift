@@ -85,9 +85,9 @@ struct Documentation {
         
         return Trivia(pieces: (
             descPieces + [
-                // /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/general``
+                // /// > Event Subscription: ``OBSWS/Enums/EventSubscription/general``
                 self.category
-                    .map { .docLineComment("/// > Event Subscription: ``OBSWS/Enums/EventSusbcription/\(camelize($0))``") },
+                    .map { .docLineComment("/// > Event Subscription: ``OBSWS/Enums/EventSubscription/\(camelize($0))``") },
                 // /// > Category: ``General``
                 self.category
                     .map { .docLineComment("/// > Category: `\($0 == "ui" ? "UI" : $0.capitalized)`") },
