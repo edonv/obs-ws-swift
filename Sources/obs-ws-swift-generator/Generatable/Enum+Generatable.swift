@@ -138,5 +138,4 @@ extension OBSWSProtocol.Enum.EnumIdentifier {
             return nil
         }
     }
-    
 }
