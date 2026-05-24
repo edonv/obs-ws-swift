@@ -31,7 +31,7 @@ extension OBSRequest {
 }
 
 /// All types of Events conform to this.
-public protocol OBSEvent: Codable {}
+public protocol OBSEvent: Sendable, Hashable, Codable {}
 
 public extension OBSEvent {
     /// Self's metatype as a string.
