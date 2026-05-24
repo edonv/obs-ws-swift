@@ -22,13 +22,6 @@ extension OBSWS.Requests {
     public struct EmptyResponse: OBSRequestResponse {}
 }
 
-extension OBSRequest {
-    /// Self's metatype as a string.
-    static var typeName: String {
-        String(describing: self)
-            .replacingOccurrences(of: #"\(.*\)"#, with: "", options: .regularExpression)
-    }
-}
 
 /// All types of Events conform to this.
 public protocol OBSEvent: Sendable, Hashable, Codable {}
