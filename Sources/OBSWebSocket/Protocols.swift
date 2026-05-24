@@ -8,12 +8,12 @@
 import Foundation
 
 /// All types of Requests conform to this.
-public protocol OBSRequest: Codable {
+public protocol OBSRequest: Sendable, Hashable, Codable {
     /// The expected type of Response.
     associatedtype Response: OBSRequestResponse
 }
 /// All types of ``OBSRequest/ResponseType``s conform to this.
-public protocol OBSRequestResponse: Codable {}
+public protocol OBSRequestResponse: Sendable, Hashable, Codable {}
 
 extension OBSWS.Requests {
     public struct EmptyResponse: OBSRequestResponse {}
