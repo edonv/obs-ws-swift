@@ -626,6 +626,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.7.0
     public struct GetCanvasList: OBSRequest {
+      public static let requestType: OBSWS.Requests.AllTypes = .GetCanvasList
+
       public init() {
       }
 
@@ -644,6 +646,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetPersistentData: OBSRequest {
+      public static let requestType: OBSWS.Requests.AllTypes = .GetPersistentData
+
       /// The data realm to select. `OBS_WEBSOCKET_DATA_REALM_GLOBAL` or `OBS_WEBSOCKET_DATA_REALM_PROFILE`
       public let realm: String
 
@@ -672,6 +676,8 @@ public enum OBSWS {
     public struct SetPersistentData: OBSRequest {
       public typealias Response = EmptyResponse
 
+      public static let requestType: OBSWS.Requests.AllTypes = .SetPersistentData
+
       /// The data realm to select. `OBS_WEBSOCKET_DATA_REALM_GLOBAL` or `OBS_WEBSOCKET_DATA_REALM_PROFILE`
       public let realm: String
 
@@ -697,6 +703,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetSceneCollectionList: OBSRequest {
+      public static let requestType: OBSWS.Requests.AllTypes = .GetSceneCollectionList
+
       public init() {
       }
 
@@ -722,6 +730,8 @@ public enum OBSWS {
     public struct SetCurrentSceneCollection: OBSRequest {
       public typealias Response = EmptyResponse
 
+      public static let requestType: OBSWS.Requests.AllTypes = .SetCurrentSceneCollection
+
       /// Name of the scene collection to switch to
       public let sceneCollectionName: String
 
@@ -743,6 +753,8 @@ public enum OBSWS {
     public struct CreateSceneCollection: OBSRequest {
       public typealias Response = EmptyResponse
 
+      public static let requestType: OBSWS.Requests.AllTypes = .CreateSceneCollection
+
       /// Name for the new scene collection
       public let sceneCollectionName: String
 
@@ -760,6 +772,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetProfileList: OBSRequest {
+      public static let requestType: OBSWS.Requests.AllTypes = .GetProfileList
+
       public init() {
       }
 
@@ -783,6 +797,8 @@ public enum OBSWS {
     public struct SetCurrentProfile: OBSRequest {
       public typealias Response = EmptyResponse
 
+      public static let requestType: OBSWS.Requests.AllTypes = .SetCurrentProfile
+
       /// Name of the profile to switch to
       public let profileName: String
 
@@ -801,6 +817,8 @@ public enum OBSWS {
     /// > Since: Added in v5.0.0
     public struct CreateProfile: OBSRequest {
       public typealias Response = EmptyResponse
+
+      public static let requestType: OBSWS.Requests.AllTypes = .CreateProfile
 
       /// Name for the new profile
       public let profileName: String
@@ -821,6 +839,8 @@ public enum OBSWS {
     public struct RemoveProfile: OBSRequest {
       public typealias Response = EmptyResponse
 
+      public static let requestType: OBSWS.Requests.AllTypes = .RemoveProfile
+
       /// Name of the profile to remove
       public let profileName: String
 
@@ -838,6 +858,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetProfileParameter: OBSRequest {
+      public static let requestType: OBSWS.Requests.AllTypes = .GetProfileParameter
+
       /// Category of the parameter to get
       public let parameterCategory: String
 
@@ -869,6 +891,8 @@ public enum OBSWS {
     public struct SetProfileParameter: OBSRequest {
       public typealias Response = EmptyResponse
 
+      public static let requestType: OBSWS.Requests.AllTypes = .SetProfileParameter
+
       /// Category of the parameter to set
       public let parameterCategory: String
 
@@ -896,6 +920,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetVideoSettings: OBSRequest {
+      public static let requestType: OBSWS.Requests.AllTypes = .GetVideoSettings
+
       public init() {
       }
 
@@ -932,6 +958,8 @@ public enum OBSWS {
     /// > Since: Added in v5.0.0
     public struct SetVideoSettings: OBSRequest {
       public typealias Response = EmptyResponse
+
+      public static let requestType: OBSWS.Requests.AllTypes = .SetVideoSettings
 
       /// Numerator of the fractional FPS value
       /// > Value Restrictions: `>= 1`
@@ -988,6 +1016,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetStreamServiceSettings: OBSRequest {
+      public static let requestType: OBSWS.Requests.AllTypes = .GetStreamServiceSettings
+
       public init() {
       }
 
@@ -1013,6 +1043,8 @@ public enum OBSWS {
     public struct SetStreamServiceSettings: OBSRequest {
       public typealias Response = EmptyResponse
 
+      public static let requestType: OBSWS.Requests.AllTypes = .SetStreamServiceSettings
+
       /// Type of stream service to apply. Example: `rtmp_common` or `rtmp_custom`
       public let streamServiceType: String
 
@@ -1034,6 +1066,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetRecordDirectory: OBSRequest {
+      public static let requestType: OBSWS.Requests.AllTypes = .GetRecordDirectory
+
       public init() {
       }
 
@@ -1054,6 +1088,8 @@ public enum OBSWS {
     public struct SetRecordDirectory: OBSRequest {
       public typealias Response = EmptyResponse
 
+      public static let requestType: OBSWS.Requests.AllTypes = .SetRecordDirectory
+
       /// Output directory
       public let recordDirectory: String
 
@@ -1073,6 +1109,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.4.0
     public struct GetSourceFilterKindList: OBSRequest {
+      public static let requestType: OBSWS.Requests.AllTypes = .GetSourceFilterKindList
+
       public init() {
       }
 
@@ -1091,6 +1129,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetSourceFilterList: OBSRequest {
+      public static let requestType: OBSWS.Requests.AllTypes = .GetSourceFilterList
+
       /// UUID of the canvas the source is in, if using the sourceName field
       /// > Optional Behavior: Unknown
       public let canvasUuid: UUID
@@ -1124,6 +1164,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetSourceFilterDefaultSettings: OBSRequest {
+      public static let requestType: OBSWS.Requests.AllTypes = .GetSourceFilterDefaultSettings
+
       /// Filter kind to get the default settings for
       public let filterKind: String
 
@@ -1147,6 +1189,8 @@ public enum OBSWS {
     /// > Since: Added in v5.0.0
     public struct CreateSourceFilter: OBSRequest {
       public typealias Response = EmptyResponse
+
+      public static let requestType: OBSWS.Requests.AllTypes = .CreateSourceFilter
 
       /// UUID of the canvas the source is in, if using the sourceName field
       /// > Optional Behavior: Unknown
@@ -1191,6 +1235,8 @@ public enum OBSWS {
     public struct RemoveSourceFilter: OBSRequest {
       public typealias Response = EmptyResponse
 
+      public static let requestType: OBSWS.Requests.AllTypes = .RemoveSourceFilter
+
       /// UUID of the canvas the source is in, if using the sourceName field
       /// > Optional Behavior: Unknown
       public let canvasUuid: UUID
@@ -1224,6 +1270,8 @@ public enum OBSWS {
     /// > Since: Added in v5.0.0
     public struct SetSourceFilterName: OBSRequest {
       public typealias Response = EmptyResponse
+
+      public static let requestType: OBSWS.Requests.AllTypes = .SetSourceFilterName
 
       /// UUID of the canvas the source is in, if using the sourceName field
       /// > Optional Behavior: Unknown
@@ -1261,6 +1309,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetSourceFilter: OBSRequest {
+      public static let requestType: OBSWS.Requests.AllTypes = .GetSourceFilter
+
       /// UUID of the canvas the source is in, if using the sourceName field
       /// > Optional Behavior: Unknown
       public let canvasUuid: UUID
@@ -1309,6 +1359,8 @@ public enum OBSWS {
     public struct SetSourceFilterIndex: OBSRequest {
       public typealias Response = EmptyResponse
 
+      public static let requestType: OBSWS.Requests.AllTypes = .SetSourceFilterIndex
+
       /// UUID of the canvas the source is in, if using the sourceName field
       /// > Optional Behavior: Unknown
       public let canvasUuid: UUID
@@ -1347,6 +1399,8 @@ public enum OBSWS {
     /// > Since: Added in v5.0.0
     public struct SetSourceFilterSettings: OBSRequest {
       public typealias Response = EmptyResponse
+
+      public static let requestType: OBSWS.Requests.AllTypes = .SetSourceFilterSettings
 
       /// UUID of the canvas the source is in, if using the sourceName field
       /// > Optional Behavior: Unknown
@@ -1391,6 +1445,8 @@ public enum OBSWS {
     public struct SetSourceFilterEnabled: OBSRequest {
       public typealias Response = EmptyResponse
 
+      public static let requestType: OBSWS.Requests.AllTypes = .SetSourceFilterEnabled
+
       /// UUID of the canvas the source is in, if using the sourceName field
       /// > Optional Behavior: Unknown
       public let canvasUuid: UUID
@@ -1427,6 +1483,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetVersion: OBSRequest {
+      public static let requestType: OBSWS.Requests.AllTypes = .GetVersion
+
       public init() {
       }
 
@@ -1463,6 +1521,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetStats: OBSRequest {
+      public static let requestType: OBSWS.Requests.AllTypes = .GetStats
+
       public init() {
       }
 
@@ -1513,6 +1573,8 @@ public enum OBSWS {
     public struct BroadcastCustomEvent: OBSRequest {
       public typealias Response = EmptyResponse
 
+      public static let requestType: OBSWS.Requests.AllTypes = .BroadcastCustomEvent
+
       /// Data payload to emit to all receivers
       public let eventData: JSONValue
 
@@ -1533,6 +1595,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct CallVendorRequest: OBSRequest {
+      public static let requestType: OBSWS.Requests.AllTypes = .CallVendorRequest
+
       /// Name of the vendor to use
       public let vendorName: String
 
@@ -1572,6 +1636,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetHotkeyList: OBSRequest {
+      public static let requestType: OBSWS.Requests.AllTypes = .GetHotkeyList
+
       public init() {
       }
 
@@ -1593,6 +1659,8 @@ public enum OBSWS {
     /// > Since: Added in v5.0.0
     public struct TriggerHotkeyByName: OBSRequest {
       public typealias Response = EmptyResponse
+
+      public static let requestType: OBSWS.Requests.AllTypes = .TriggerHotkeyByName
 
       /// Name of the hotkey to trigger
       public let hotkeyName: String
@@ -1619,6 +1687,8 @@ public enum OBSWS {
     /// > Since: Added in v5.0.0
     public struct TriggerHotkeyByKeySequence: OBSRequest {
       public typealias Response = EmptyResponse
+
+      public static let requestType: OBSWS.Requests.AllTypes = .TriggerHotkeyByKeySequence
 
       /// The OBS key ID to use. See https://github.com/obsproject/obs-studio/blob/master/libobs/obs-hotkeys.h
       /// > Optional Behavior: Not pressed
@@ -1663,6 +1733,8 @@ public enum OBSWS {
     public struct Sleep: OBSRequest {
       public typealias Response = EmptyResponse
 
+      public static let requestType: OBSWS.Requests.AllTypes = .Sleep
+
       /// Number of milliseconds to sleep for (if `SERIAL_REALTIME` mode)
       /// > Value Restrictions: `>= 0, <= 50000`
       ///
@@ -1690,6 +1762,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetInputList: OBSRequest {
+      public static let requestType: OBSWS.Requests.AllTypes = .GetInputList
+
       /// Restrict the array to only inputs of the specified kind
       /// > Optional Behavior: All kinds included
       public let inputKind: String?
@@ -1713,6 +1787,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetInputKindList: OBSRequest {
+      public static let requestType: OBSWS.Requests.AllTypes = .GetInputKindList
+
       /// True == Return all kinds as unversioned, False == Return with version suffixes (if available)
       /// > Optional Behavior: false
       public let unversioned: Bool?
@@ -1736,6 +1812,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetSpecialInputs: OBSRequest {
+      public static let requestType: OBSWS.Requests.AllTypes = .GetSpecialInputs
+
       public init() {
       }
 
@@ -1769,6 +1847,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct CreateInput: OBSRequest {
+      public static let requestType: OBSWS.Requests.AllTypes = .CreateInput
+
       /// UUID of the canvas the scene is in, if using the sceneName field
       /// > Optional Behavior: Unknown
       public let canvasUuid: UUID
@@ -1827,6 +1907,8 @@ public enum OBSWS {
     public struct RemoveInput: OBSRequest {
       public typealias Response = EmptyResponse
 
+      public static let requestType: OBSWS.Requests.AllTypes = .RemoveInput
+
       /// Name of the input to remove
       /// > Optional Behavior: Unknown
       public let inputName: String?
@@ -1851,6 +1933,8 @@ public enum OBSWS {
     /// > Since: Added in v5.0.0
     public struct SetInputName: OBSRequest {
       public typealias Response = EmptyResponse
+
+      public static let requestType: OBSWS.Requests.AllTypes = .SetInputName
 
       /// Current input name
       /// > Optional Behavior: Unknown
@@ -1879,6 +1963,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetInputDefaultSettings: OBSRequest {
+      public static let requestType: OBSWS.Requests.AllTypes = .GetInputDefaultSettings
+
       /// Input kind to get the default settings for
       public let inputKind: String
 
@@ -1903,6 +1989,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetInputSettings: OBSRequest {
+      public static let requestType: OBSWS.Requests.AllTypes = .GetInputSettings
+
       /// Name of the input to get the settings of
       /// > Optional Behavior: Unknown
       public let inputName: String?
@@ -1936,6 +2024,8 @@ public enum OBSWS {
     public struct SetInputSettings: OBSRequest {
       public typealias Response = EmptyResponse
 
+      public static let requestType: OBSWS.Requests.AllTypes = .SetInputSettings
+
       /// Name of the input to set the settings of
       /// > Optional Behavior: Unknown
       public let inputName: String?
@@ -1968,6 +2058,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetInputMute: OBSRequest {
+      public static let requestType: OBSWS.Requests.AllTypes = .GetInputMute
+
       /// Name of input to get the mute state of
       /// > Optional Behavior: Unknown
       public let inputName: String?
@@ -1998,6 +2090,8 @@ public enum OBSWS {
     public struct SetInputMute: OBSRequest {
       public typealias Response = EmptyResponse
 
+      public static let requestType: OBSWS.Requests.AllTypes = .SetInputMute
+
       /// Name of the input to set the mute state of
       /// > Optional Behavior: Unknown
       public let inputName: String?
@@ -2025,6 +2119,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct ToggleInputMute: OBSRequest {
+      public static let requestType: OBSWS.Requests.AllTypes = .ToggleInputMute
+
       /// Name of the input to toggle the mute state of
       /// > Optional Behavior: Unknown
       public let inputName: String?
@@ -2053,6 +2149,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetInputVolume: OBSRequest {
+      public static let requestType: OBSWS.Requests.AllTypes = .GetInputVolume
+
       /// Name of the input to get the volume of
       /// > Optional Behavior: Unknown
       public let inputName: String?
@@ -2085,6 +2183,8 @@ public enum OBSWS {
     /// > Since: Added in v5.0.0
     public struct SetInputVolume: OBSRequest {
       public typealias Response = EmptyResponse
+
+      public static let requestType: OBSWS.Requests.AllTypes = .SetInputVolume
 
       /// Name of the input to set the volume of
       /// > Optional Behavior: Unknown
@@ -2123,6 +2223,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetInputAudioBalance: OBSRequest {
+      public static let requestType: OBSWS.Requests.AllTypes = .GetInputAudioBalance
+
       /// Name of the input to get the audio balance of
       /// > Optional Behavior: Unknown
       public let inputName: String?
@@ -2152,6 +2254,8 @@ public enum OBSWS {
     /// > Since: Added in v5.0.0
     public struct SetInputAudioBalance: OBSRequest {
       public typealias Response = EmptyResponse
+
+      public static let requestType: OBSWS.Requests.AllTypes = .SetInputAudioBalance
 
       /// Name of the input to set the audio balance of
       /// > Optional Behavior: Unknown
@@ -2183,6 +2287,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetInputAudioSyncOffset: OBSRequest {
+      public static let requestType: OBSWS.Requests.AllTypes = .GetInputAudioSyncOffset
+
       /// Name of the input to get the audio sync offset of
       /// > Optional Behavior: Unknown
       public let inputName: String?
@@ -2212,6 +2318,8 @@ public enum OBSWS {
     /// > Since: Added in v5.0.0
     public struct SetInputAudioSyncOffset: OBSRequest {
       public typealias Response = EmptyResponse
+
+      public static let requestType: OBSWS.Requests.AllTypes = .SetInputAudioSyncOffset
 
       /// Name of the input to set the audio sync offset of
       /// > Optional Behavior: Unknown
@@ -2247,6 +2355,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetInputAudioMonitorType: OBSRequest {
+      public static let requestType: OBSWS.Requests.AllTypes = .GetInputAudioMonitorType
+
       /// Name of the input to get the audio monitor type of
       /// > Optional Behavior: Unknown
       public let inputName: String?
@@ -2277,6 +2387,8 @@ public enum OBSWS {
     public struct SetInputAudioMonitorType: OBSRequest {
       public typealias Response = EmptyResponse
 
+      public static let requestType: OBSWS.Requests.AllTypes = .SetInputAudioMonitorType
+
       /// Name of the input to set the audio monitor type of
       /// > Optional Behavior: Unknown
       public let inputName: String?
@@ -2304,6 +2416,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetInputAudioTracks: OBSRequest {
+      public static let requestType: OBSWS.Requests.AllTypes = .GetInputAudioTracks
+
       /// Name of the input
       /// > Optional Behavior: Unknown
       public let inputName: String?
@@ -2333,6 +2447,8 @@ public enum OBSWS {
     /// > Since: Added in v5.0.0
     public struct SetInputAudioTracks: OBSRequest {
       public typealias Response = EmptyResponse
+
+      public static let requestType: OBSWS.Requests.AllTypes = .SetInputAudioTracks
 
       /// Name of the input
       /// > Optional Behavior: Unknown
@@ -2375,6 +2491,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.6.0
     public struct GetInputDeinterlaceMode: OBSRequest {
+      public static let requestType: OBSWS.Requests.AllTypes = .GetInputDeinterlaceMode
+
       /// Name of the input
       /// > Optional Behavior: Unknown
       public let inputName: String?
@@ -2406,6 +2524,8 @@ public enum OBSWS {
     /// > Since: Added in v5.6.0
     public struct SetInputDeinterlaceMode: OBSRequest {
       public typealias Response = EmptyResponse
+
+      public static let requestType: OBSWS.Requests.AllTypes = .SetInputDeinterlaceMode
 
       /// Name of the input
       /// > Optional Behavior: Unknown
@@ -2441,6 +2561,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.6.0
     public struct GetInputDeinterlaceFieldOrder: OBSRequest {
+      public static let requestType: OBSWS.Requests.AllTypes = .GetInputDeinterlaceFieldOrder
+
       /// Name of the input
       /// > Optional Behavior: Unknown
       public let inputName: String?
@@ -2473,6 +2595,8 @@ public enum OBSWS {
     public struct SetInputDeinterlaceFieldOrder: OBSRequest {
       public typealias Response = EmptyResponse
 
+      public static let requestType: OBSWS.Requests.AllTypes = .SetInputDeinterlaceFieldOrder
+
       /// Name of the input
       /// > Optional Behavior: Unknown
       public let inputName: String?
@@ -2502,6 +2626,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetInputPropertiesListPropertyItems: OBSRequest {
+      public static let requestType: OBSWS.Requests.AllTypes = .GetInputPropertiesListPropertyItems
+
       /// Name of the input
       /// > Optional Behavior: Unknown
       public let inputName: String?
@@ -2542,6 +2668,8 @@ public enum OBSWS {
     public struct PressInputPropertiesButton: OBSRequest {
       public typealias Response = EmptyResponse
 
+      public static let requestType: OBSWS.Requests.AllTypes = .PressInputPropertiesButton
+
       /// Name of the input
       /// > Optional Behavior: Unknown
       public let inputName: String?
@@ -2580,6 +2708,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetMediaInputStatus: OBSRequest {
+      public static let requestType: OBSWS.Requests.AllTypes = .GetMediaInputStatus
+
       /// Name of the media input
       /// > Optional Behavior: Unknown
       public let inputName: String?
@@ -2618,6 +2748,8 @@ public enum OBSWS {
     public struct SetMediaInputCursor: OBSRequest {
       public typealias Response = EmptyResponse
 
+      public static let requestType: OBSWS.Requests.AllTypes = .SetMediaInputCursor
+
       /// Name of the media input
       /// > Optional Behavior: Unknown
       public let inputName: String?
@@ -2650,6 +2782,8 @@ public enum OBSWS {
     public struct OffsetMediaInputCursor: OBSRequest {
       public typealias Response = EmptyResponse
 
+      public static let requestType: OBSWS.Requests.AllTypes = .OffsetMediaInputCursor
+
       /// Name of the media input
       /// > Optional Behavior: Unknown
       public let inputName: String?
@@ -2679,6 +2813,8 @@ public enum OBSWS {
     public struct TriggerMediaInputAction: OBSRequest {
       public typealias Response = EmptyResponse
 
+      public static let requestType: OBSWS.Requests.AllTypes = .TriggerMediaInputAction
+
       /// Name of the media input
       /// > Optional Behavior: Unknown
       public let inputName: String?
@@ -2706,6 +2842,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetVirtualCamStatus: OBSRequest {
+      public static let requestType: OBSWS.Requests.AllTypes = .GetVirtualCamStatus
+
       public init() {
       }
 
@@ -2724,6 +2862,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct ToggleVirtualCam: OBSRequest {
+      public static let requestType: OBSWS.Requests.AllTypes = .ToggleVirtualCam
+
       public init() {
       }
 
@@ -2744,6 +2884,8 @@ public enum OBSWS {
     public struct StartVirtualCam: OBSRequest {
       public typealias Response = EmptyResponse
 
+      public static let requestType: OBSWS.Requests.AllTypes = .StartVirtualCam
+
       public init() {
       }
     }
@@ -2759,6 +2901,8 @@ public enum OBSWS {
     public struct StopVirtualCam: OBSRequest {
       public typealias Response = EmptyResponse
 
+      public static let requestType: OBSWS.Requests.AllTypes = .StopVirtualCam
+
       public init() {
       }
     }
@@ -2772,6 +2916,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetReplayBufferStatus: OBSRequest {
+      public static let requestType: OBSWS.Requests.AllTypes = .GetReplayBufferStatus
+
       public init() {
       }
 
@@ -2790,6 +2936,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct ToggleReplayBuffer: OBSRequest {
+      public static let requestType: OBSWS.Requests.AllTypes = .ToggleReplayBuffer
+
       public init() {
       }
 
@@ -2810,6 +2958,8 @@ public enum OBSWS {
     public struct StartReplayBuffer: OBSRequest {
       public typealias Response = EmptyResponse
 
+      public static let requestType: OBSWS.Requests.AllTypes = .StartReplayBuffer
+
       public init() {
       }
     }
@@ -2824,6 +2974,8 @@ public enum OBSWS {
     /// > Since: Added in v5.0.0
     public struct StopReplayBuffer: OBSRequest {
       public typealias Response = EmptyResponse
+
+      public static let requestType: OBSWS.Requests.AllTypes = .StopReplayBuffer
 
       public init() {
       }
@@ -2840,6 +2992,8 @@ public enum OBSWS {
     public struct SaveReplayBuffer: OBSRequest {
       public typealias Response = EmptyResponse
 
+      public static let requestType: OBSWS.Requests.AllTypes = .SaveReplayBuffer
+
       public init() {
       }
     }
@@ -2853,6 +3007,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetLastReplayBufferReplay: OBSRequest {
+      public static let requestType: OBSWS.Requests.AllTypes = .GetLastReplayBufferReplay
+
       public init() {
       }
 
@@ -2871,6 +3027,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetOutputList: OBSRequest {
+      public static let requestType: OBSWS.Requests.AllTypes = .GetOutputList
+
       public init() {
       }
 
@@ -2889,6 +3047,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetOutputStatus: OBSRequest {
+      public static let requestType: OBSWS.Requests.AllTypes = .GetOutputStatus
+
       /// Output name
       public let outputName: String
 
@@ -2932,6 +3092,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct ToggleOutput: OBSRequest {
+      public static let requestType: OBSWS.Requests.AllTypes = .ToggleOutput
+
       /// Output name
       public let outputName: String
 
@@ -2956,6 +3118,8 @@ public enum OBSWS {
     public struct StartOutput: OBSRequest {
       public typealias Response = EmptyResponse
 
+      public static let requestType: OBSWS.Requests.AllTypes = .StartOutput
+
       /// Output name
       public let outputName: String
 
@@ -2975,6 +3139,8 @@ public enum OBSWS {
     public struct StopOutput: OBSRequest {
       public typealias Response = EmptyResponse
 
+      public static let requestType: OBSWS.Requests.AllTypes = .StopOutput
+
       /// Output name
       public let outputName: String
 
@@ -2992,6 +3158,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetOutputSettings: OBSRequest {
+      public static let requestType: OBSWS.Requests.AllTypes = .GetOutputSettings
+
       /// Output name
       public let outputName: String
 
@@ -3016,6 +3184,8 @@ public enum OBSWS {
     public struct SetOutputSettings: OBSRequest {
       public typealias Response = EmptyResponse
 
+      public static let requestType: OBSWS.Requests.AllTypes = .SetOutputSettings
+
       /// Output name
       public let outputName: String
 
@@ -3037,6 +3207,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetRecordStatus: OBSRequest {
+      public static let requestType: OBSWS.Requests.AllTypes = .GetRecordStatus
+
       public init() {
       }
 
@@ -3067,6 +3239,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct ToggleRecord: OBSRequest {
+      public static let requestType: OBSWS.Requests.AllTypes = .ToggleRecord
+
       public init() {
       }
 
@@ -3087,6 +3261,8 @@ public enum OBSWS {
     public struct StartRecord: OBSRequest {
       public typealias Response = EmptyResponse
 
+      public static let requestType: OBSWS.Requests.AllTypes = .StartRecord
+
       public init() {
       }
     }
@@ -3100,6 +3276,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct StopRecord: OBSRequest {
+      public static let requestType: OBSWS.Requests.AllTypes = .StopRecord
+
       public init() {
       }
 
@@ -3120,6 +3298,8 @@ public enum OBSWS {
     public struct ToggleRecordPause: OBSRequest {
       public typealias Response = EmptyResponse
 
+      public static let requestType: OBSWS.Requests.AllTypes = .ToggleRecordPause
+
       public init() {
       }
     }
@@ -3134,6 +3314,8 @@ public enum OBSWS {
     /// > Since: Added in v5.0.0
     public struct PauseRecord: OBSRequest {
       public typealias Response = EmptyResponse
+
+      public static let requestType: OBSWS.Requests.AllTypes = .PauseRecord
 
       public init() {
       }
@@ -3150,6 +3332,8 @@ public enum OBSWS {
     public struct ResumeRecord: OBSRequest {
       public typealias Response = EmptyResponse
 
+      public static let requestType: OBSWS.Requests.AllTypes = .ResumeRecord
+
       public init() {
       }
     }
@@ -3164,6 +3348,8 @@ public enum OBSWS {
     /// > Since: Added in v5.5.0
     public struct SplitRecordFile: OBSRequest {
       public typealias Response = EmptyResponse
+
+      public static let requestType: OBSWS.Requests.AllTypes = .SplitRecordFile
 
       public init() {
       }
@@ -3181,6 +3367,8 @@ public enum OBSWS {
     /// > Since: Added in v5.5.0
     public struct CreateRecordChapter: OBSRequest {
       public typealias Response = EmptyResponse
+
+      public static let requestType: OBSWS.Requests.AllTypes = .CreateRecordChapter
 
       /// Name of the new chapter
       /// > Optional Behavior: Unknown
@@ -3202,6 +3390,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetSceneItemList: OBSRequest {
+      public static let requestType: OBSWS.Requests.AllTypes = .GetSceneItemList
+
       /// UUID of the canvas the scene is in, if using the sceneName field
       /// > Optional Behavior: Unknown
       public let canvasUuid: UUID
@@ -3239,6 +3429,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetGroupSceneItemList: OBSRequest {
+      public static let requestType: OBSWS.Requests.AllTypes = .GetGroupSceneItemList
+
       /// UUID of the canvas the group is in, if using the sceneName field
       /// > Optional Behavior: Unknown
       public let canvasUuid: UUID
@@ -3274,6 +3466,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetSceneItemId: OBSRequest {
+      public static let requestType: OBSWS.Requests.AllTypes = .GetSceneItemId
+
       /// UUID of the canvas the scene or group is in, if using the sceneName field
       /// > Optional Behavior: Unknown
       public let canvasUuid: UUID
@@ -3318,6 +3512,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.4.0
     public struct GetSceneItemSource: OBSRequest {
+      public static let requestType: OBSWS.Requests.AllTypes = .GetSceneItemSource
+
       /// UUID of the canvas the scene is in, if using the sceneName field
       /// > Optional Behavior: Unknown
       public let canvasUuid: UUID
@@ -3361,6 +3557,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct CreateSceneItem: OBSRequest {
+      public static let requestType: OBSWS.Requests.AllTypes = .CreateSceneItem
+
       /// UUID of the canvas the scene is in, if using the sceneName field
       /// > Optional Behavior: Unknown
       public let canvasUuid: UUID
@@ -3413,6 +3611,8 @@ public enum OBSWS {
     public struct RemoveSceneItem: OBSRequest {
       public typealias Response = EmptyResponse
 
+      public static let requestType: OBSWS.Requests.AllTypes = .RemoveSceneItem
+
       /// UUID of the canvas the scene is in, if using the sceneName field
       /// > Optional Behavior: Unknown
       public let canvasUuid: UUID
@@ -3448,6 +3648,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct DuplicateSceneItem: OBSRequest {
+      public static let requestType: OBSWS.Requests.AllTypes = .DuplicateSceneItem
+
       /// UUID of the canvas the scene is in, if using the sceneName field
       /// > Optional Behavior: Unknown
       public let canvasUuid: UUID
@@ -3498,6 +3700,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetSceneItemTransform: OBSRequest {
+      public static let requestType: OBSWS.Requests.AllTypes = .GetSceneItemTransform
+
       /// UUID of the canvas the scene is in, if using the sceneName field
       /// > Optional Behavior: Unknown
       public let canvasUuid: UUID
@@ -3538,6 +3742,8 @@ public enum OBSWS {
     public struct SetSceneItemTransform: OBSRequest {
       public typealias Response = EmptyResponse
 
+      public static let requestType: OBSWS.Requests.AllTypes = .SetSceneItemTransform
+
       /// UUID of the canvas the scene is in, if using the sceneName field
       /// > Optional Behavior: Unknown
       public let canvasUuid: UUID
@@ -3577,6 +3783,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetSceneItemEnabled: OBSRequest {
+      public static let requestType: OBSWS.Requests.AllTypes = .GetSceneItemEnabled
+
       /// UUID of the canvas the scene is in, if using the sceneName field
       /// > Optional Behavior: Unknown
       public let canvasUuid: UUID
@@ -3619,6 +3827,8 @@ public enum OBSWS {
     public struct SetSceneItemEnabled: OBSRequest {
       public typealias Response = EmptyResponse
 
+      public static let requestType: OBSWS.Requests.AllTypes = .SetSceneItemEnabled
+
       /// UUID of the canvas the scene is in, if using the sceneName field
       /// > Optional Behavior: Unknown
       public let canvasUuid: UUID
@@ -3658,6 +3868,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetSceneItemLocked: OBSRequest {
+      public static let requestType: OBSWS.Requests.AllTypes = .GetSceneItemLocked
+
       /// UUID of the canvas the scene is in, if using the sceneName field
       /// > Optional Behavior: Unknown
       public let canvasUuid: UUID
@@ -3700,6 +3912,8 @@ public enum OBSWS {
     public struct SetSceneItemLocked: OBSRequest {
       public typealias Response = EmptyResponse
 
+      public static let requestType: OBSWS.Requests.AllTypes = .SetSceneItemLocked
+
       /// UUID of the canvas the scene is in, if using the sceneName field
       /// > Optional Behavior: Unknown
       public let canvasUuid: UUID
@@ -3741,6 +3955,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetSceneItemIndex: OBSRequest {
+      public static let requestType: OBSWS.Requests.AllTypes = .GetSceneItemIndex
+
       /// UUID of the canvas the scene is in, if using the sceneName field
       /// > Optional Behavior: Unknown
       public let canvasUuid: UUID
@@ -3782,6 +3998,8 @@ public enum OBSWS {
     /// > Since: Added in v5.0.0
     public struct SetSceneItemIndex: OBSRequest {
       public typealias Response = EmptyResponse
+
+      public static let requestType: OBSWS.Requests.AllTypes = .SetSceneItemIndex
 
       /// UUID of the canvas the scene is in, if using the sceneName field
       /// > Optional Behavior: Unknown
@@ -3833,6 +4051,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetSceneItemBlendMode: OBSRequest {
+      public static let requestType: OBSWS.Requests.AllTypes = .GetSceneItemBlendMode
+
       /// UUID of the canvas the scene is in, if using the sceneName field
       /// > Optional Behavior: Unknown
       public let canvasUuid: UUID
@@ -3875,6 +4095,8 @@ public enum OBSWS {
     public struct SetSceneItemBlendMode: OBSRequest {
       public typealias Response = EmptyResponse
 
+      public static let requestType: OBSWS.Requests.AllTypes = .SetSceneItemBlendMode
+
       /// UUID of the canvas the scene is in, if using the sceneName field
       /// > Optional Behavior: Unknown
       public let canvasUuid: UUID
@@ -3912,6 +4134,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetSceneList: OBSRequest {
+      public static let requestType: OBSWS.Requests.AllTypes = .GetSceneList
+
       /// UUID of the canvas the scenes are in
       /// > Optional Behavior: Unknown
       public let canvasUuid: UUID
@@ -3949,6 +4173,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetGroupList: OBSRequest {
+      public static let requestType: OBSWS.Requests.AllTypes = .GetGroupList
+
       public init() {
       }
 
@@ -3971,6 +4197,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetCurrentProgramScene: OBSRequest {
+      public static let requestType: OBSWS.Requests.AllTypes = .GetCurrentProgramScene
+
       public init() {
       }
 
@@ -4000,6 +4228,8 @@ public enum OBSWS {
     public struct SetCurrentProgramScene: OBSRequest {
       public typealias Response = EmptyResponse
 
+      public static let requestType: OBSWS.Requests.AllTypes = .SetCurrentProgramScene
+
       /// Scene name to set as the current program scene
       /// > Optional Behavior: Unknown
       public let sceneName: String?
@@ -4027,6 +4257,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetCurrentPreviewScene: OBSRequest {
+      public static let requestType: OBSWS.Requests.AllTypes = .GetCurrentPreviewScene
+
       public init() {
       }
 
@@ -4058,6 +4290,8 @@ public enum OBSWS {
     public struct SetCurrentPreviewScene: OBSRequest {
       public typealias Response = EmptyResponse
 
+      public static let requestType: OBSWS.Requests.AllTypes = .SetCurrentPreviewScene
+
       /// Scene name to set as the current preview scene
       /// > Optional Behavior: Unknown
       public let sceneName: String?
@@ -4081,6 +4315,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct CreateScene: OBSRequest {
+      public static let requestType: OBSWS.Requests.AllTypes = .CreateScene
+
       /// UUID of the canvas to create the new scene in. Leave default to assume main canvas
       /// > Optional Behavior: Unknown
       public let canvasUuid: UUID
@@ -4109,6 +4345,8 @@ public enum OBSWS {
     /// > Since: Added in v5.0.0
     public struct RemoveScene: OBSRequest {
       public typealias Response = EmptyResponse
+
+      public static let requestType: OBSWS.Requests.AllTypes = .RemoveScene
 
       /// UUID of the canvas the scene is in, if using the sceneName field
       /// > Optional Behavior: Unknown
@@ -4139,6 +4377,8 @@ public enum OBSWS {
     /// > Since: Added in v5.0.0
     public struct SetSceneName: OBSRequest {
       public typealias Response = EmptyResponse
+
+      public static let requestType: OBSWS.Requests.AllTypes = .SetSceneName
 
       /// UUID of the canvas the scene is in, if using the sceneName field
       /// > Optional Behavior: Unknown
@@ -4174,6 +4414,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetSceneSceneTransitionOverride: OBSRequest {
+      public static let requestType: OBSWS.Requests.AllTypes = .GetSceneSceneTransitionOverride
+
       /// UUID of the canvas the scene is in, if using the sceneName field
       /// > Optional Behavior: Unknown
       public let canvasUuid: UUID
@@ -4211,6 +4453,8 @@ public enum OBSWS {
     /// > Since: Added in v5.0.0
     public struct SetSceneSceneTransitionOverride: OBSRequest {
       public typealias Response = EmptyResponse
+
+      public static let requestType: OBSWS.Requests.AllTypes = .SetSceneSceneTransitionOverride
 
       /// UUID of the canvas the scene is in, if using the sceneName field
       /// > Optional Behavior: Unknown
@@ -4254,6 +4498,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetSourceActive: OBSRequest {
+      public static let requestType: OBSWS.Requests.AllTypes = .GetSourceActive
+
       /// UUID of the canvas the source is in, if using sourceName field
       /// > Optional Behavior: Unknown
       public let canvasUuid: UUID
@@ -4295,6 +4541,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetSourceScreenshot: OBSRequest {
+      public static let requestType: OBSWS.Requests.AllTypes = .GetSourceScreenshot
+
       /// UUID of the canvas the source is in, if using sourceName field
       /// > Optional Behavior: Unknown
       public let canvasUuid: UUID
@@ -4360,6 +4608,8 @@ public enum OBSWS {
     public struct SaveSourceScreenshot: OBSRequest {
       public typealias Response = EmptyResponse
 
+      public static let requestType: OBSWS.Requests.AllTypes = .SaveSourceScreenshot
+
       /// UUID of the canvas the source is in, if using sourceName field
       /// > Optional Behavior: Unknown
       public let canvasUuid: UUID
@@ -4417,6 +4667,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetStreamStatus: OBSRequest {
+      public static let requestType: OBSWS.Requests.AllTypes = .GetStreamStatus
+
       public init() {
       }
 
@@ -4456,6 +4708,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct ToggleStream: OBSRequest {
+      public static let requestType: OBSWS.Requests.AllTypes = .ToggleStream
+
       public init() {
       }
 
@@ -4476,6 +4730,8 @@ public enum OBSWS {
     public struct StartStream: OBSRequest {
       public typealias Response = EmptyResponse
 
+      public static let requestType: OBSWS.Requests.AllTypes = .StartStream
+
       public init() {
       }
     }
@@ -4491,6 +4747,8 @@ public enum OBSWS {
     public struct StopStream: OBSRequest {
       public typealias Response = EmptyResponse
 
+      public static let requestType: OBSWS.Requests.AllTypes = .StopStream
+
       public init() {
       }
     }
@@ -4505,6 +4763,8 @@ public enum OBSWS {
     /// > Since: Added in v5.0.0
     public struct SendStreamCaption: OBSRequest {
       public typealias Response = EmptyResponse
+
+      public static let requestType: OBSWS.Requests.AllTypes = .SendStreamCaption
 
       /// Caption text
       public let captionText: String
@@ -4525,6 +4785,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetTransitionKindList: OBSRequest {
+      public static let requestType: OBSWS.Requests.AllTypes = .GetTransitionKindList
+
       public init() {
       }
 
@@ -4543,6 +4805,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetSceneTransitionList: OBSRequest {
+      public static let requestType: OBSWS.Requests.AllTypes = .GetSceneTransitionList
+
       public init() {
       }
 
@@ -4570,6 +4834,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetCurrentSceneTransition: OBSRequest {
+      public static let requestType: OBSWS.Requests.AllTypes = .GetCurrentSceneTransition
+
       public init() {
       }
 
@@ -4610,6 +4876,8 @@ public enum OBSWS {
     public struct SetCurrentSceneTransition: OBSRequest {
       public typealias Response = EmptyResponse
 
+      public static let requestType: OBSWS.Requests.AllTypes = .SetCurrentSceneTransition
+
       /// Name of the transition to make active
       public let transitionName: String
 
@@ -4628,6 +4896,8 @@ public enum OBSWS {
     /// > Since: Added in v5.0.0
     public struct SetCurrentSceneTransitionDuration: OBSRequest {
       public typealias Response = EmptyResponse
+
+      public static let requestType: OBSWS.Requests.AllTypes = .SetCurrentSceneTransitionDuration
 
       /// Duration in milliseconds
       /// > Value Restrictions: `>= 50, <= 20000`
@@ -4648,6 +4918,8 @@ public enum OBSWS {
     /// > Since: Added in v5.0.0
     public struct SetCurrentSceneTransitionSettings: OBSRequest {
       public typealias Response = EmptyResponse
+
+      public static let requestType: OBSWS.Requests.AllTypes = .SetCurrentSceneTransitionSettings
 
       /// Settings object to apply to the transition. Can be `{}`
       public let transitionSettings: JSONValue
@@ -4673,6 +4945,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetCurrentSceneTransitionCursor: OBSRequest {
+      public static let requestType: OBSWS.Requests.AllTypes = .GetCurrentSceneTransitionCursor
+
       public init() {
       }
 
@@ -4693,6 +4967,8 @@ public enum OBSWS {
     public struct TriggerStudioModeTransition: OBSRequest {
       public typealias Response = EmptyResponse
 
+      public static let requestType: OBSWS.Requests.AllTypes = .TriggerStudioModeTransition
+
       public init() {
       }
     }
@@ -4709,6 +4985,8 @@ public enum OBSWS {
     /// > Since: Added in v5.0.0
     public struct SetTBarPosition: OBSRequest {
       public typealias Response = EmptyResponse
+
+      public static let requestType: OBSWS.Requests.AllTypes = .SetTBarPosition
 
       /// New position
       /// > Value Restrictions: `>= 0.0, <= 1.0`
@@ -4733,6 +5011,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetStudioModeEnabled: OBSRequest {
+      public static let requestType: OBSWS.Requests.AllTypes = .GetStudioModeEnabled
+
       public init() {
       }
 
@@ -4753,6 +5033,8 @@ public enum OBSWS {
     public struct SetStudioModeEnabled: OBSRequest {
       public typealias Response = EmptyResponse
 
+      public static let requestType: OBSWS.Requests.AllTypes = .SetStudioModeEnabled
+
       /// True == Enabled, False == Disabled
       public let studioModeEnabled: Bool
 
@@ -4771,6 +5053,8 @@ public enum OBSWS {
     /// > Since: Added in v5.0.0
     public struct OpenInputPropertiesDialog: OBSRequest {
       public typealias Response = EmptyResponse
+
+      public static let requestType: OBSWS.Requests.AllTypes = .OpenInputPropertiesDialog
 
       /// Name of the input to open the dialog of
       /// > Optional Behavior: Unknown
@@ -4797,6 +5081,8 @@ public enum OBSWS {
     public struct OpenInputFiltersDialog: OBSRequest {
       public typealias Response = EmptyResponse
 
+      public static let requestType: OBSWS.Requests.AllTypes = .OpenInputFiltersDialog
+
       /// Name of the input to open the dialog of
       /// > Optional Behavior: Unknown
       public let inputName: String?
@@ -4822,6 +5108,8 @@ public enum OBSWS {
     public struct OpenInputInteractDialog: OBSRequest {
       public typealias Response = EmptyResponse
 
+      public static let requestType: OBSWS.Requests.AllTypes = .OpenInputInteractDialog
+
       /// Name of the input to open the dialog of
       /// > Optional Behavior: Unknown
       public let inputName: String?
@@ -4845,6 +5133,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetMonitorList: OBSRequest {
+      public static let requestType: OBSWS.Requests.AllTypes = .GetMonitorList
+
       public init() {
       }
 
@@ -4872,6 +5162,8 @@ public enum OBSWS {
     /// > Since: Added in v5.0.0
     public struct OpenVideoMixProjector: OBSRequest {
       public typealias Response = EmptyResponse
+
+      public static let requestType: OBSWS.Requests.AllTypes = .OpenVideoMixProjector
 
       /// Type of mix to open
       public let videoMixType: String
@@ -4904,6 +5196,8 @@ public enum OBSWS {
     public struct OpenSourceProjector: OBSRequest {
       public typealias Response = EmptyResponse
 
+      public static let requestType: OBSWS.Requests.AllTypes = .OpenSourceProjector
+
       /// UUID of the canvas the source is in, if using the sourceName field
       /// > Optional Behavior: Unknown
       public let canvasUuid: UUID
@@ -4932,6 +5226,156 @@ public enum OBSWS {
         self.projectorGeometry = projectorGeometry
       }
     }
+
+    public enum AllTypes: String, CaseIterable, Sendable, Hashable, Codable {
+      case GetCanvasList
+      case GetPersistentData
+      case SetPersistentData
+      case GetSceneCollectionList
+      case SetCurrentSceneCollection
+      case CreateSceneCollection
+      case GetProfileList
+      case SetCurrentProfile
+      case CreateProfile
+      case RemoveProfile
+      case GetProfileParameter
+      case SetProfileParameter
+      case GetVideoSettings
+      case SetVideoSettings
+      case GetStreamServiceSettings
+      case SetStreamServiceSettings
+      case GetRecordDirectory
+      case SetRecordDirectory
+      case GetSourceFilterKindList
+      case GetSourceFilterList
+      case GetSourceFilterDefaultSettings
+      case CreateSourceFilter
+      case RemoveSourceFilter
+      case SetSourceFilterName
+      case GetSourceFilter
+      case SetSourceFilterIndex
+      case SetSourceFilterSettings
+      case SetSourceFilterEnabled
+      case GetVersion
+      case GetStats
+      case BroadcastCustomEvent
+      case CallVendorRequest
+      case GetHotkeyList
+      case TriggerHotkeyByName
+      case TriggerHotkeyByKeySequence
+      case Sleep
+      case GetInputList
+      case GetInputKindList
+      case GetSpecialInputs
+      case CreateInput
+      case RemoveInput
+      case SetInputName
+      case GetInputDefaultSettings
+      case GetInputSettings
+      case SetInputSettings
+      case GetInputMute
+      case SetInputMute
+      case ToggleInputMute
+      case GetInputVolume
+      case SetInputVolume
+      case GetInputAudioBalance
+      case SetInputAudioBalance
+      case GetInputAudioSyncOffset
+      case SetInputAudioSyncOffset
+      case GetInputAudioMonitorType
+      case SetInputAudioMonitorType
+      case GetInputAudioTracks
+      case SetInputAudioTracks
+      case GetInputDeinterlaceMode
+      case SetInputDeinterlaceMode
+      case GetInputDeinterlaceFieldOrder
+      case SetInputDeinterlaceFieldOrder
+      case GetInputPropertiesListPropertyItems
+      case PressInputPropertiesButton
+      case GetMediaInputStatus
+      case SetMediaInputCursor
+      case OffsetMediaInputCursor
+      case TriggerMediaInputAction
+      case GetVirtualCamStatus
+      case ToggleVirtualCam
+      case StartVirtualCam
+      case StopVirtualCam
+      case GetReplayBufferStatus
+      case ToggleReplayBuffer
+      case StartReplayBuffer
+      case StopReplayBuffer
+      case SaveReplayBuffer
+      case GetLastReplayBufferReplay
+      case GetOutputList
+      case GetOutputStatus
+      case ToggleOutput
+      case StartOutput
+      case StopOutput
+      case GetOutputSettings
+      case SetOutputSettings
+      case GetRecordStatus
+      case ToggleRecord
+      case StartRecord
+      case StopRecord
+      case ToggleRecordPause
+      case PauseRecord
+      case ResumeRecord
+      case SplitRecordFile
+      case CreateRecordChapter
+      case GetSceneItemList
+      case GetGroupSceneItemList
+      case GetSceneItemId
+      case GetSceneItemSource
+      case CreateSceneItem
+      case RemoveSceneItem
+      case DuplicateSceneItem
+      case GetSceneItemTransform
+      case SetSceneItemTransform
+      case GetSceneItemEnabled
+      case SetSceneItemEnabled
+      case GetSceneItemLocked
+      case SetSceneItemLocked
+      case GetSceneItemIndex
+      case SetSceneItemIndex
+      case GetSceneItemBlendMode
+      case SetSceneItemBlendMode
+      case GetSceneList
+      case GetGroupList
+      case GetCurrentProgramScene
+      case SetCurrentProgramScene
+      case GetCurrentPreviewScene
+      case SetCurrentPreviewScene
+      case CreateScene
+      case RemoveScene
+      case SetSceneName
+      case GetSceneSceneTransitionOverride
+      case SetSceneSceneTransitionOverride
+      case GetSourceActive
+      case GetSourceScreenshot
+      case SaveSourceScreenshot
+      case GetStreamStatus
+      case ToggleStream
+      case StartStream
+      case StopStream
+      case SendStreamCaption
+      case GetTransitionKindList
+      case GetSceneTransitionList
+      case GetCurrentSceneTransition
+      case SetCurrentSceneTransition
+      case SetCurrentSceneTransitionDuration
+      case SetCurrentSceneTransitionSettings
+      case GetCurrentSceneTransitionCursor
+      case TriggerStudioModeTransition
+      case SetTBarPosition
+      case GetStudioModeEnabled
+      case SetStudioModeEnabled
+      case OpenInputPropertiesDialog
+      case OpenInputFiltersDialog
+      case OpenInputInteractDialog
+      case GetMonitorList
+      case OpenVideoMixProjector
+      case OpenSourceProjector
+    }
   }
 
   public enum Events {
@@ -4946,6 +5390,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.7.0
     public struct CanvasCreated: OBSEvent {
+      public static let eventType: OBSWS.Events.AllTypes = .CanvasCreated
+
       /// Name of the new canvas
       public let canvasName: String
 
@@ -4969,6 +5415,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.7.0
     public struct CanvasRemoved: OBSEvent {
+      public static let eventType: OBSWS.Events.AllTypes = .CanvasRemoved
+
       /// Name of the removed canvas
       public let canvasName: String
 
@@ -4992,6 +5440,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.7.0
     public struct CanvasNameChanged: OBSEvent {
+      public static let eventType: OBSWS.Events.AllTypes = .CanvasNameChanged
+
       /// UUID of the canvas
       public let canvasUuid: UUID
 
@@ -5022,6 +5472,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct CurrentSceneCollectionChanging: OBSEvent {
+      public static let eventType: OBSWS.Events.AllTypes = .CurrentSceneCollectionChanging
+
       /// Name of the current scene collection
       public let sceneCollectionName: String
 
@@ -5043,6 +5495,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct CurrentSceneCollectionChanged: OBSEvent {
+      public static let eventType: OBSWS.Events.AllTypes = .CurrentSceneCollectionChanged
+
       /// Name of the new scene collection
       public let sceneCollectionName: String
 
@@ -5062,6 +5516,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct SceneCollectionListChanged: OBSEvent {
+      public static let eventType: OBSWS.Events.AllTypes = .SceneCollectionListChanged
+
       /// Updated list of scene collections
       public let sceneCollections: [String]
 
@@ -5081,6 +5537,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct CurrentProfileChanging: OBSEvent {
+      public static let eventType: OBSWS.Events.AllTypes = .CurrentProfileChanging
+
       /// Name of the current profile
       public let profileName: String
 
@@ -5100,6 +5558,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct CurrentProfileChanged: OBSEvent {
+      public static let eventType: OBSWS.Events.AllTypes = .CurrentProfileChanged
+
       /// Name of the new profile
       public let profileName: String
 
@@ -5119,6 +5579,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct ProfileListChanged: OBSEvent {
+      public static let eventType: OBSWS.Events.AllTypes = .ProfileListChanged
+
       /// Updated list of profiles
       public let profiles: [String]
 
@@ -5138,6 +5600,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct SourceFilterListReindexed: OBSEvent {
+      public static let eventType: OBSWS.Events.AllTypes = .SourceFilterListReindexed
+
       /// Name of the source
       public let sourceName: String
 
@@ -5161,6 +5625,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct SourceFilterCreated: OBSEvent {
+      public static let eventType: OBSWS.Events.AllTypes = .SourceFilterCreated
+
       /// Name of the source the filter was added to
       public let sourceName: String
 
@@ -5200,6 +5666,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct SourceFilterRemoved: OBSEvent {
+      public static let eventType: OBSWS.Events.AllTypes = .SourceFilterRemoved
+
       /// Name of the source the filter was on
       public let sourceName: String
 
@@ -5223,6 +5691,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct SourceFilterNameChanged: OBSEvent {
+      public static let eventType: OBSWS.Events.AllTypes = .SourceFilterNameChanged
+
       /// The source the filter is on
       public let sourceName: String
 
@@ -5250,6 +5720,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.4.0
     public struct SourceFilterSettingsChanged: OBSEvent {
+      public static let eventType: OBSWS.Events.AllTypes = .SourceFilterSettingsChanged
+
       /// Name of the source the filter is on
       public let sourceName: String
 
@@ -5277,6 +5749,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct SourceFilterEnableStateChanged: OBSEvent {
+      public static let eventType: OBSWS.Events.AllTypes = .SourceFilterEnableStateChanged
+
       /// Name of the source the filter is on
       public let sourceName: String
 
@@ -5304,6 +5778,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct ExitStarted: OBSEvent {
+      public static let eventType: OBSWS.Events.AllTypes = .ExitStarted
+
       public init() {
       }
     }
@@ -5319,6 +5795,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct InputCreated: OBSEvent {
+      public static let eventType: OBSWS.Events.AllTypes = .InputCreated
+
       /// Name of the input
       public let inputName: String
 
@@ -5362,6 +5840,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct InputRemoved: OBSEvent {
+      public static let eventType: OBSWS.Events.AllTypes = .InputRemoved
+
       /// Name of the input
       public let inputName: String
 
@@ -5385,6 +5865,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct InputNameChanged: OBSEvent {
+      public static let eventType: OBSWS.Events.AllTypes = .InputNameChanged
+
       /// UUID of the input
       public let inputUuid: UUID
 
@@ -5414,6 +5896,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.4.0
     public struct InputSettingsChanged: OBSEvent {
+      public static let eventType: OBSWS.Events.AllTypes = .InputSettingsChanged
+
       /// Name of the input
       public let inputName: String
 
@@ -5443,6 +5927,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct InputActiveStateChanged: OBSEvent {
+      public static let eventType: OBSWS.Events.AllTypes = .InputActiveStateChanged
+
       /// Name of the input
       public let inputName: String
 
@@ -5472,6 +5958,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct InputShowStateChanged: OBSEvent {
+      public static let eventType: OBSWS.Events.AllTypes = .InputShowStateChanged
+
       /// Name of the input
       public let inputName: String
 
@@ -5499,6 +5987,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct InputMuteStateChanged: OBSEvent {
+      public static let eventType: OBSWS.Events.AllTypes = .InputMuteStateChanged
+
       /// Name of the input
       public let inputName: String
 
@@ -5526,6 +6016,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct InputVolumeChanged: OBSEvent {
+      public static let eventType: OBSWS.Events.AllTypes = .InputVolumeChanged
+
       /// Name of the input
       public let inputName: String
 
@@ -5557,6 +6049,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct InputAudioBalanceChanged: OBSEvent {
+      public static let eventType: OBSWS.Events.AllTypes = .InputAudioBalanceChanged
+
       /// Name of the input
       public let inputName: String
 
@@ -5584,6 +6078,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct InputAudioSyncOffsetChanged: OBSEvent {
+      public static let eventType: OBSWS.Events.AllTypes = .InputAudioSyncOffsetChanged
+
       /// Name of the input
       public let inputName: String
 
@@ -5611,6 +6107,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct InputAudioTracksChanged: OBSEvent {
+      public static let eventType: OBSWS.Events.AllTypes = .InputAudioTracksChanged
+
       /// Name of the input
       public let inputName: String
 
@@ -5644,6 +6142,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct InputAudioMonitorTypeChanged: OBSEvent {
+      public static let eventType: OBSWS.Events.AllTypes = .InputAudioMonitorTypeChanged
+
       /// Name of the input
       public let inputName: String
 
@@ -5671,6 +6171,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct InputVolumeMeters: OBSEvent {
+      public static let eventType: OBSWS.Events.AllTypes = .InputVolumeMeters
+
       /// Array of active inputs with their associated volume levels
       public let inputs: [JSONValue]
 
@@ -5690,6 +6192,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct MediaInputPlaybackStarted: OBSEvent {
+      public static let eventType: OBSWS.Events.AllTypes = .MediaInputPlaybackStarted
+
       /// Name of the input
       public let inputName: String
 
@@ -5713,6 +6217,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct MediaInputPlaybackEnded: OBSEvent {
+      public static let eventType: OBSWS.Events.AllTypes = .MediaInputPlaybackEnded
+
       /// Name of the input
       public let inputName: String
 
@@ -5736,6 +6242,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct MediaInputActionTriggered: OBSEvent {
+      public static let eventType: OBSWS.Events.AllTypes = .MediaInputActionTriggered
+
       /// Name of the input
       public let inputName: String
 
@@ -5763,6 +6271,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct StreamStateChanged: OBSEvent {
+      public static let eventType: OBSWS.Events.AllTypes = .StreamStateChanged
+
       /// Whether the output is active
       public let outputActive: Bool
 
@@ -5786,6 +6296,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct RecordStateChanged: OBSEvent {
+      public static let eventType: OBSWS.Events.AllTypes = .RecordStateChanged
+
       /// Whether the output is active
       public let outputActive: Bool
 
@@ -5813,6 +6325,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.5.0
     public struct RecordFileChanged: OBSEvent {
+      public static let eventType: OBSWS.Events.AllTypes = .RecordFileChanged
+
       /// File name that the output has begun writing to
       public let newOutputPath: String
 
@@ -5832,6 +6346,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct ReplayBufferStateChanged: OBSEvent {
+      public static let eventType: OBSWS.Events.AllTypes = .ReplayBufferStateChanged
+
       /// Whether the output is active
       public let outputActive: Bool
 
@@ -5855,6 +6371,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct VirtualcamStateChanged: OBSEvent {
+      public static let eventType: OBSWS.Events.AllTypes = .VirtualcamStateChanged
+
       /// Whether the output is active
       public let outputActive: Bool
 
@@ -5878,6 +6396,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct ReplayBufferSaved: OBSEvent {
+      public static let eventType: OBSWS.Events.AllTypes = .ReplayBufferSaved
+
       /// Path of the saved replay file
       public let savedReplayPath: String
 
@@ -5897,6 +6417,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct SceneItemCreated: OBSEvent {
+      public static let eventType: OBSWS.Events.AllTypes = .SceneItemCreated
+
       /// Name of the scene the item was added to
       public let sceneName: String
 
@@ -5938,6 +6460,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct SceneItemRemoved: OBSEvent {
+      public static let eventType: OBSWS.Events.AllTypes = .SceneItemRemoved
+
       /// Name of the scene the item was removed from
       public let sceneName: String
 
@@ -5973,6 +6497,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct SceneItemListReindexed: OBSEvent {
+      public static let eventType: OBSWS.Events.AllTypes = .SceneItemListReindexed
+
       /// Name of the scene
       public let sceneName: String
 
@@ -6000,6 +6526,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct SceneItemEnableStateChanged: OBSEvent {
+      public static let eventType: OBSWS.Events.AllTypes = .SceneItemEnableStateChanged
+
       /// Name of the scene the item is in
       public let sceneName: String
 
@@ -6031,6 +6559,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct SceneItemLockStateChanged: OBSEvent {
+      public static let eventType: OBSWS.Events.AllTypes = .SceneItemLockStateChanged
+
       /// Name of the scene the item is in
       public let sceneName: String
 
@@ -6062,6 +6592,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct SceneItemSelected: OBSEvent {
+      public static let eventType: OBSWS.Events.AllTypes = .SceneItemSelected
+
       /// Name of the scene the item is in
       public let sceneName: String
 
@@ -6089,6 +6621,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct SceneItemTransformChanged: OBSEvent {
+      public static let eventType: OBSWS.Events.AllTypes = .SceneItemTransformChanged
+
       /// The name of the scene the item is in
       public let sceneName: String
 
@@ -6120,6 +6654,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct SceneCreated: OBSEvent {
+      public static let eventType: OBSWS.Events.AllTypes = .SceneCreated
+
       /// Name of the new scene
       public let sceneName: String
 
@@ -6147,6 +6683,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct SceneRemoved: OBSEvent {
+      public static let eventType: OBSWS.Events.AllTypes = .SceneRemoved
+
       /// Name of the removed scene
       public let sceneName: String
 
@@ -6174,6 +6712,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct SceneNameChanged: OBSEvent {
+      public static let eventType: OBSWS.Events.AllTypes = .SceneNameChanged
+
       /// UUID of the scene
       public let sceneUuid: UUID
 
@@ -6201,6 +6741,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct CurrentProgramSceneChanged: OBSEvent {
+      public static let eventType: OBSWS.Events.AllTypes = .CurrentProgramSceneChanged
+
       /// Name of the scene that was switched to
       public let sceneName: String
 
@@ -6224,6 +6766,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct CurrentPreviewSceneChanged: OBSEvent {
+      public static let eventType: OBSWS.Events.AllTypes = .CurrentPreviewSceneChanged
+
       /// Name of the scene that was switched to
       public let sceneName: String
 
@@ -6249,6 +6793,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct SceneListChanged: OBSEvent {
+      public static let eventType: OBSWS.Events.AllTypes = .SceneListChanged
+
       /// Updated array of scenes
       public let scenes: [JSONValue]
 
@@ -6268,6 +6814,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct CurrentSceneTransitionChanged: OBSEvent {
+      public static let eventType: OBSWS.Events.AllTypes = .CurrentSceneTransitionChanged
+
       /// Name of the new transition
       public let transitionName: String
 
@@ -6291,6 +6839,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct CurrentSceneTransitionDurationChanged: OBSEvent {
+      public static let eventType: OBSWS.Events.AllTypes = .CurrentSceneTransitionDurationChanged
+
       /// Transition duration in milliseconds
       public let transitionDuration: Int
 
@@ -6310,6 +6860,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct SceneTransitionStarted: OBSEvent {
+      public static let eventType: OBSWS.Events.AllTypes = .SceneTransitionStarted
+
       /// Scene transition name
       public let transitionName: String
 
@@ -6335,6 +6887,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct SceneTransitionEnded: OBSEvent {
+      public static let eventType: OBSWS.Events.AllTypes = .SceneTransitionEnded
+
       /// Scene transition name
       public let transitionName: String
 
@@ -6363,6 +6917,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct SceneTransitionVideoEnded: OBSEvent {
+      public static let eventType: OBSWS.Events.AllTypes = .SceneTransitionVideoEnded
+
       /// Scene transition name
       public let transitionName: String
 
@@ -6386,6 +6942,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct StudioModeStateChanged: OBSEvent {
+      public static let eventType: OBSWS.Events.AllTypes = .StudioModeStateChanged
+
       /// True == Enabled, False == Disabled
       public let studioModeEnabled: Bool
 
@@ -6409,6 +6967,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.1.0
     public struct ScreenshotSaved: OBSEvent {
+      public static let eventType: OBSWS.Events.AllTypes = .ScreenshotSaved
+
       /// Path of the saved image file
       public let savedScreenshotPath: String
 
@@ -6431,6 +6991,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct VendorEvent: OBSEvent {
+      public static let eventType: OBSWS.Events.AllTypes = .VendorEvent
+
       /// Name of the vendor emitting the event
       public let vendorName: String
 
@@ -6458,12 +7020,77 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct CustomEvent: OBSEvent {
+      public static let eventType: OBSWS.Events.AllTypes = .CustomEvent
+
       /// Custom event data
       public let eventData: JSONValue
 
       public init(eventData: JSONValue) {
         self.eventData = eventData
       }
+    }
+
+    public enum AllTypes: String, CaseIterable, Sendable, Hashable, Codable {
+      case CanvasCreated
+      case CanvasRemoved
+      case CanvasNameChanged
+      case CurrentSceneCollectionChanging
+      case CurrentSceneCollectionChanged
+      case SceneCollectionListChanged
+      case CurrentProfileChanging
+      case CurrentProfileChanged
+      case ProfileListChanged
+      case SourceFilterListReindexed
+      case SourceFilterCreated
+      case SourceFilterRemoved
+      case SourceFilterNameChanged
+      case SourceFilterSettingsChanged
+      case SourceFilterEnableStateChanged
+      case ExitStarted
+      case InputCreated
+      case InputRemoved
+      case InputNameChanged
+      case InputSettingsChanged
+      case InputActiveStateChanged
+      case InputShowStateChanged
+      case InputMuteStateChanged
+      case InputVolumeChanged
+      case InputAudioBalanceChanged
+      case InputAudioSyncOffsetChanged
+      case InputAudioTracksChanged
+      case InputAudioMonitorTypeChanged
+      case InputVolumeMeters
+      case MediaInputPlaybackStarted
+      case MediaInputPlaybackEnded
+      case MediaInputActionTriggered
+      case StreamStateChanged
+      case RecordStateChanged
+      case RecordFileChanged
+      case ReplayBufferStateChanged
+      case VirtualcamStateChanged
+      case ReplayBufferSaved
+      case SceneItemCreated
+      case SceneItemRemoved
+      case SceneItemListReindexed
+      case SceneItemEnableStateChanged
+      case SceneItemLockStateChanged
+      case SceneItemSelected
+      case SceneItemTransformChanged
+      case SceneCreated
+      case SceneRemoved
+      case SceneNameChanged
+      case CurrentProgramSceneChanged
+      case CurrentPreviewSceneChanged
+      case SceneListChanged
+      case CurrentSceneTransitionChanged
+      case CurrentSceneTransitionDurationChanged
+      case SceneTransitionStarted
+      case SceneTransitionEnded
+      case SceneTransitionVideoEnded
+      case StudioModeStateChanged
+      case ScreenshotSaved
+      case VendorEvent
+      case CustomEvent
     }
   }
 }
