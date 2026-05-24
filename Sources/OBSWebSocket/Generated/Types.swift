@@ -17,91 +17,109 @@ public enum OBSWS {
 
       /// Subcription value used to disable all events.
       /// > Version: Latest Supported RPC Version - `1`
+      ///
       /// > Since: Added in v5.0.0
       public static let none = 0
 
       /// Subscription value to receive events in the `General` category.
       /// > Version: Latest Supported RPC Version - `1`
+      ///
       /// > Since: Added in v5.0.0
       public static let general = EventSubscription(rawValue: 1 << 0)
 
       /// Subscription value to receive events in the `Config` category.
       /// > Version: Latest Supported RPC Version - `1`
+      ///
       /// > Since: Added in v5.0.0
       public static let config = EventSubscription(rawValue: 1 << 1)
 
       /// Subscription value to receive events in the `Scenes` category.
       /// > Version: Latest Supported RPC Version - `1`
+      ///
       /// > Since: Added in v5.0.0
       public static let scenes = EventSubscription(rawValue: 1 << 2)
 
       /// Subscription value to receive events in the `Inputs` category.
       /// > Version: Latest Supported RPC Version - `1`
+      ///
       /// > Since: Added in v5.0.0
       public static let inputs = EventSubscription(rawValue: 1 << 3)
 
       /// Subscription value to receive events in the `Transitions` category.
       /// > Version: Latest Supported RPC Version - `1`
+      ///
       /// > Since: Added in v5.0.0
       public static let transitions = EventSubscription(rawValue: 1 << 4)
 
       /// Subscription value to receive events in the `Filters` category.
       /// > Version: Latest Supported RPC Version - `1`
+      ///
       /// > Since: Added in v5.0.0
       public static let filters = EventSubscription(rawValue: 1 << 5)
 
       /// Subscription value to receive events in the `Outputs` category.
       /// > Version: Latest Supported RPC Version - `1`
+      ///
       /// > Since: Added in v5.0.0
       public static let outputs = EventSubscription(rawValue: 1 << 6)
 
       /// Subscription value to receive events in the `SceneItems` category.
       /// > Version: Latest Supported RPC Version - `1`
+      ///
       /// > Since: Added in v5.0.0
       public static let sceneItems = EventSubscription(rawValue: 1 << 7)
 
       /// Subscription value to receive events in the `MediaInputs` category.
       /// > Version: Latest Supported RPC Version - `1`
+      ///
       /// > Since: Added in v5.0.0
       public static let mediaInputs = EventSubscription(rawValue: 1 << 8)
 
       /// Subscription value to receive the `VendorEvent` event.
       /// > Version: Latest Supported RPC Version - `1`
+      ///
       /// > Since: Added in v5.0.0
       public static let vendors = EventSubscription(rawValue: 1 << 9)
 
       /// Subscription value to receive events in the `Ui` category.
       /// > Version: Latest Supported RPC Version - `1`
+      ///
       /// > Since: Added in v5.0.0
       public static let ui = EventSubscription(rawValue: 1 << 10)
 
       /// Subscription value to receive events in the `Canvases` category.
       /// > Version: Latest Supported RPC Version - `1`
+      ///
       /// > Since: Added in v5.7.0
       public static let canvases = EventSubscription(rawValue: 1 << 11)
 
       /// Helper to receive all non-high-volume events.
       /// > Version: Latest Supported RPC Version - `1`
+      ///
       /// > Since: Added in v5.0.0
       public static let all: EventSubscription = [.general, .config, .scenes, .inputs, .transitions, .filters, .outputs, .sceneItems, .mediaInputs, .vendors, .ui, .canvases]
 
       /// Subscription value to receive the `InputVolumeMeters` high-volume event.
       /// > Version: Latest Supported RPC Version - `1`
+      ///
       /// > Since: Added in v5.0.0
       public static let inputVolumeMeters = EventSubscription(rawValue: 1 << 16)
 
       /// Subscription value to receive the `InputActiveStateChanged` high-volume event.
       /// > Version: Latest Supported RPC Version - `1`
+      ///
       /// > Since: Added in v5.0.0
       public static let inputActiveStateChanged = EventSubscription(rawValue: 1 << 17)
 
       /// Subscription value to receive the `InputShowStateChanged` high-volume event.
       /// > Version: Latest Supported RPC Version - `1`
+      ///
       /// > Since: Added in v5.0.0
       public static let inputShowStateChanged = EventSubscription(rawValue: 1 << 18)
 
       /// Subscription value to receive the `SceneItemTransformChanged` high-volume event.
       /// > Version: Latest Supported RPC Version - `1`
+      ///
       /// > Since: Added in v5.0.0
       public static let sceneItemTransformChanged = EventSubscription(rawValue: 1 << 19)
     }
@@ -109,6 +127,7 @@ public enum OBSWS {
     public enum RequestBatchExecutionType: Int, OBSEnum {
       /// Not a request batch.
       /// > Version: Latest Supported RPC Version - `1`
+      ///
       /// > Since: Added in v5.0.0
       case none = -1
 
@@ -116,6 +135,7 @@ public enum OBSWS {
       /// 
       /// > Note: To introduce artificial delay, use the `Sleep` request and the `sleepMillis` request field.
       /// > Version: Latest Supported RPC Version - `1`
+      ///
       /// > Since: Added in v5.0.0
       case serialRealtime = 0
 
@@ -123,6 +143,7 @@ public enum OBSWS {
       /// 
       /// > Note: To introduce artificial delay, use the `Sleep` request and the `sleepFrames` request field.
       /// > Version: Latest Supported RPC Version - `1`
+      ///
       /// > Since: Added in v5.0.0
       case serialFrame = 1
 
@@ -131,6 +152,7 @@ public enum OBSWS {
       /// > Note: This is mainly experimental, and only really shows its colors during requests which require lots of
       /// active processing, like `GetSourceScreenshot`.
       /// > Version: Latest Supported RPC Version - `1`
+      ///
       /// > Since: Added in v5.0.0
       case parallel = 2
     }
@@ -138,26 +160,31 @@ public enum OBSWS {
     public enum RequestStatus: Int, OBSEnum {
       /// Unknown status, should never be used.
       /// > Version: Latest Supported RPC Version - `1`
+      ///
       /// > Since: Added in v5.0.0
       case unknown = 0
 
       /// For internal use to signify a successful field check.
       /// > Version: Latest Supported RPC Version - `1`
+      ///
       /// > Since: Added in v5.0.0
       case noError = 10
 
       /// The request has succeeded.
       /// > Version: Latest Supported RPC Version - `1`
+      ///
       /// > Since: Added in v5.0.0
       case success = 100
 
       /// The `requestType` field is missing from the request data.
       /// > Version: Latest Supported RPC Version - `1`
+      ///
       /// > Since: Added in v5.0.0
       case missingType = 203
 
       /// The request type is invalid or does not exist.
       /// > Version: Latest Supported RPC Version - `1`
+      ///
       /// > Since: Added in v5.0.0
       case unknownType = 204
 
@@ -165,11 +192,13 @@ public enum OBSWS {
       /// 
       /// > Note: A comment is required to be provided by obs-websocket.
       /// > Version: Latest Supported RPC Version - `1`
+      ///
       /// > Since: Added in v5.0.0
       case genericError = 205
 
       /// The request batch execution type is not supported.
       /// > Version: Latest Supported RPC Version - `1`
+      ///
       /// > Since: Added in v5.0.0
       case unsupportedBatchExecutionType = 206
 
@@ -177,16 +206,19 @@ public enum OBSWS {
       /// 
       /// > Note: This usually occurs during OBS scene collection change or exit. Requests may be tried again after a delay if this code is given.
       /// > Version: Latest Supported RPC Version - `1`
+      ///
       /// > Since: Added in v5.3.0
       case notReady = 207
 
       /// A required request field is missing.
       /// > Version: Latest Supported RPC Version - `1`
+      ///
       /// > Since: Added in v5.0.0
       case missingField = 300
 
       /// The request does not have a valid requestData object.
       /// > Version: Latest Supported RPC Version - `1`
+      ///
       /// > Since: Added in v5.0.0
       case missingData = 301
 
@@ -194,61 +226,73 @@ public enum OBSWS {
       /// 
       /// > Note: A comment is required to be provided by obs-websocket.
       /// > Version: Latest Supported RPC Version - `1`
+      ///
       /// > Since: Added in v5.0.0
       case invalidField = 400
 
       /// A request field has the wrong data type.
       /// > Version: Latest Supported RPC Version - `1`
+      ///
       /// > Since: Added in v5.0.0
       case invalidFieldType = 401
 
       /// A request field (number) is outside of the allowed range.
       /// > Version: Latest Supported RPC Version - `1`
+      ///
       /// > Since: Added in v5.0.0
       case fieldOutOfRange = 402
 
       /// A request field (string or array) is empty and cannot be.
       /// > Version: Latest Supported RPC Version - `1`
+      ///
       /// > Since: Added in v5.0.0
       case fieldEmpty = 403
 
       /// There are too many request fields (eg. a request takes two optionals, where only one is allowed at a time).
       /// > Version: Latest Supported RPC Version - `1`
+      ///
       /// > Since: Added in v5.0.0
       case tooManyFields = 404
 
       /// An output is running and cannot be in order to perform the request.
       /// > Version: Latest Supported RPC Version - `1`
+      ///
       /// > Since: Added in v5.0.0
       case outputRunning = 500
 
       /// An output is not running and should be.
       /// > Version: Latest Supported RPC Version - `1`
+      ///
       /// > Since: Added in v5.0.0
       case outputNotRunning = 501
 
       /// An output is paused and should not be.
       /// > Version: Latest Supported RPC Version - `1`
+      ///
       /// > Since: Added in v5.0.0
       case outputPaused = 502
 
       /// An output is not paused and should be.
       /// > Version: Latest Supported RPC Version - `1`
+      ///
       /// > Since: Added in v5.0.0
       case outputNotPaused = 503
 
       /// An output is disabled and should not be.
       /// > Version: Latest Supported RPC Version - `1`
+      ///
       /// > Since: Added in v5.0.0
       case outputDisabled = 504
 
       /// Studio mode is active and cannot be.
       /// > Version: Latest Supported RPC Version - `1`
+      ///
       /// > Since: Added in v5.0.0
       case studioModeActive = 505
 
       /// Studio mode is not active and should be.
       /// > Version: Latest Supported RPC Version - `1`
+      ///
       /// > Since: Added in v5.0.0
       case studioModeNotActive = 506
 
@@ -256,31 +300,37 @@ public enum OBSWS {
       /// 
       /// > Note: Resources are any kind of object in obs-websocket, like inputs, profiles, outputs, etc.
       /// > Version: Latest Supported RPC Version - `1`
+      ///
       /// > Since: Added in v5.0.0
       case resourceNotFound = 600
 
       /// The resource already exists.
       /// > Version: Latest Supported RPC Version - `1`
+      ///
       /// > Since: Added in v5.0.0
       case resourceAlreadyExists = 601
 
       /// The type of resource found is invalid.
       /// > Version: Latest Supported RPC Version - `1`
+      ///
       /// > Since: Added in v5.0.0
       case invalidResourceType = 602
 
       /// There are not enough instances of the resource in order to perform the request.
       /// > Version: Latest Supported RPC Version - `1`
+      ///
       /// > Since: Added in v5.0.0
       case notEnoughResources = 603
 
       /// The state of the resource is invalid. For example, if the resource is blocked from being accessed.
       /// > Version: Latest Supported RPC Version - `1`
+      ///
       /// > Since: Added in v5.0.0
       case invalidResourceState = 604
 
       /// The specified input (obs_source_t-OBS_SOURCE_TYPE_INPUT) had the wrong kind.
       /// > Version: Latest Supported RPC Version - `1`
+      ///
       /// > Since: Added in v5.0.0
       case invalidInputKind = 605
 
@@ -288,21 +338,25 @@ public enum OBSWS {
       /// 
       /// This is particularly relevant to transitions, where they do not always have changeable settings.
       /// > Version: Latest Supported RPC Version - `1`
+      ///
       /// > Since: Added in v5.0.0
       case resourceNotConfigurable = 606
 
       /// The specified filter (obs_source_t-OBS_SOURCE_TYPE_FILTER) had the wrong kind.
       /// > Version: Latest Supported RPC Version - `1`
+      ///
       /// > Since: Added in v5.0.0
       case invalidFilterKind = 607
 
       /// Creating the resource failed.
       /// > Version: Latest Supported RPC Version - `1`
+      ///
       /// > Since: Added in v5.0.0
       case resourceCreationFailed = 700
 
       /// Performing an action on the resource failed.
       /// > Version: Latest Supported RPC Version - `1`
+      ///
       /// > Since: Added in v5.0.0
       case resourceActionFailed = 701
 
@@ -310,11 +364,13 @@ public enum OBSWS {
       /// 
       /// > Note: A comment is required to be provided by obs-websocket.
       /// > Version: Latest Supported RPC Version - `1`
+      ///
       /// > Since: Added in v5.0.0
       case processingFailed = 702
 
       /// The combination of request fields cannot be used to perform an action.
       /// > Version: Latest Supported RPC Version - `1`
+      ///
       /// > Since: Added in v5.0.0
       case cannotAct = 703
     }
@@ -322,46 +378,55 @@ public enum OBSWS {
     public enum OutputState: String, OBSEnum {
       /// Unknown state.
       /// > Version: Latest Supported RPC Version - `1`
+      ///
       /// > Since: Added in v5.0.0
       case unknown = "OBS_WEBSOCKET_OUTPUT_UNKNOWN"
 
       /// The output is starting.
       /// > Version: Latest Supported RPC Version - `1`
+      ///
       /// > Since: Added in v5.0.0
       case starting = "OBS_WEBSOCKET_OUTPUT_STARTING"
 
       /// The input has started.
       /// > Version: Latest Supported RPC Version - `1`
+      ///
       /// > Since: Added in v5.0.0
       case started = "OBS_WEBSOCKET_OUTPUT_STARTED"
 
       /// The output is stopping.
       /// > Version: Latest Supported RPC Version - `1`
+      ///
       /// > Since: Added in v5.0.0
       case stopping = "OBS_WEBSOCKET_OUTPUT_STOPPING"
 
       /// The output has stopped.
       /// > Version: Latest Supported RPC Version - `1`
+      ///
       /// > Since: Added in v5.0.0
       case stopped = "OBS_WEBSOCKET_OUTPUT_STOPPED"
 
       /// The output has disconnected and is reconnecting.
       /// > Version: Latest Supported RPC Version - `1`
+      ///
       /// > Since: Added in v5.0.0
       case reconnecting = "OBS_WEBSOCKET_OUTPUT_RECONNECTING"
 
       /// The output has reconnected successfully.
       /// > Version: Latest Supported RPC Version - `1`
+      ///
       /// > Since: Added in v5.1.0
       case reconnected = "OBS_WEBSOCKET_OUTPUT_RECONNECTED"
 
       /// The output is now paused.
       /// > Version: Latest Supported RPC Version - `1`
+      ///
       /// > Since: Added in v5.1.0
       case paused = "OBS_WEBSOCKET_OUTPUT_PAUSED"
 
       /// The output has been resumed (unpaused).
       /// > Version: Latest Supported RPC Version - `1`
+      ///
       /// > Since: Added in v5.0.0
       case resumed = "OBS_WEBSOCKET_OUTPUT_RESUMED"
     }
@@ -369,36 +434,43 @@ public enum OBSWS {
     public enum MediaInputAction: String, OBSEnum {
       /// No action.
       /// > Version: Latest Supported RPC Version - `1`
+      ///
       /// > Since: Added in v5.0.0
       case none = "OBS_WEBSOCKET_MEDIA_INPUT_ACTION_NONE"
 
       /// Play the media input.
       /// > Version: Latest Supported RPC Version - `1`
+      ///
       /// > Since: Added in v5.0.0
       case play = "OBS_WEBSOCKET_MEDIA_INPUT_ACTION_PLAY"
 
       /// Pause the media input.
       /// > Version: Latest Supported RPC Version - `1`
+      ///
       /// > Since: Added in v5.0.0
       case pause = "OBS_WEBSOCKET_MEDIA_INPUT_ACTION_PAUSE"
 
       /// Stop the media input.
       /// > Version: Latest Supported RPC Version - `1`
+      ///
       /// > Since: Added in v5.0.0
       case stop = "OBS_WEBSOCKET_MEDIA_INPUT_ACTION_STOP"
 
       /// Restart the media input.
       /// > Version: Latest Supported RPC Version - `1`
+      ///
       /// > Since: Added in v5.0.0
       case restart = "OBS_WEBSOCKET_MEDIA_INPUT_ACTION_RESTART"
 
       /// Go to the next playlist item.
       /// > Version: Latest Supported RPC Version - `1`
+      ///
       /// > Since: Added in v5.0.0
       case next = "OBS_WEBSOCKET_MEDIA_INPUT_ACTION_NEXT"
 
       /// Go to the previous playlist item.
       /// > Version: Latest Supported RPC Version - `1`
+      ///
       /// > Since: Added in v5.0.0
       case previous = "OBS_WEBSOCKET_MEDIA_INPUT_ACTION_PREVIOUS"
     }
@@ -406,41 +478,49 @@ public enum OBSWS {
     public enum CloseCode: Int, OBSEnum {
       /// For internal use only to tell the request handler not to perform any close action.
       /// > Version: Latest Supported RPC Version - `1`
+      ///
       /// > Since: Added in v5.0.0
       case dontClose = 0
 
       /// Unknown reason, should never be used.
       /// > Version: Latest Supported RPC Version - `1`
+      ///
       /// > Since: Added in v5.0.0
       case unknownReason = 4000
 
       /// The server was unable to decode the incoming websocket message.
       /// > Version: Latest Supported RPC Version - `1`
+      ///
       /// > Since: Added in v5.0.0
       case messageDeError = 4002
 
       /// A data field is required but missing from the payload.
       /// > Version: Latest Supported RPC Version - `1`
+      ///
       /// > Since: Added in v5.0.0
       case missingDataField = 4003
 
       /// A data field's value type is invalid.
       /// > Version: Latest Supported RPC Version - `1`
+      ///
       /// > Since: Added in v5.0.0
       case invalidDataFieldType = 4004
 
       /// A data field's value is invalid.
       /// > Version: Latest Supported RPC Version - `1`
+      ///
       /// > Since: Added in v5.0.0
       case invalidDataFieldValue = 4005
 
       /// The specified `op` was invalid or missing.
       /// > Version: Latest Supported RPC Version - `1`
+      ///
       /// > Since: Added in v5.0.0
       case unknownOpCode = 4006
 
       /// The client sent a websocket message without first sending `Identify` message.
       /// > Version: Latest Supported RPC Version - `1`
+      ///
       /// > Since: Added in v5.0.0
       case notIdentified = 4007
 
@@ -448,16 +528,19 @@ public enum OBSWS {
       /// 
       /// > Note: Once a client has identified, only `Reidentify` may be used to change session parameters.
       /// > Version: Latest Supported RPC Version - `1`
+      ///
       /// > Since: Added in v5.0.0
       case alreadyIdentified = 4008
 
       /// The authentication attempt (via `Identify`) failed.
       /// > Version: Latest Supported RPC Version - `1`
+      ///
       /// > Since: Added in v5.0.0
       case authenticationFailed = 4009
 
       /// The server detected the usage of an old version of the obs-websocket RPC protocol.
       /// > Version: Latest Supported RPC Version - `1`
+      ///
       /// > Since: Added in v5.0.0
       case unsupportedRpcVersion = 4010
 
@@ -465,11 +548,13 @@ public enum OBSWS {
       /// 
       /// > Note: This is the code used by the `Kick` button in the UI Session List. If you receive this code, you must not automatically reconnect.
       /// > Version: Latest Supported RPC Version - `1`
+      ///
       /// > Since: Added in v5.0.0
       case sessionInvalidated = 4011
 
       /// A requested feature is not supported due to hardware/software limitations.
       /// > Version: Latest Supported RPC Version - `1`
+      ///
       /// > Since: Added in v5.0.0
       case unsupportedFeature = 4012
     }
@@ -477,46 +562,55 @@ public enum OBSWS {
     public enum OpCode: Int, OBSEnum {
       /// The initial message sent by obs-websocket to newly connected clients.
       /// > Version: Latest Supported RPC Version - `1`
+      ///
       /// > Since: Added in v5.0.0
       case hello = 0
 
       /// The message sent by a newly connected client to obs-websocket in response to a `Hello`.
       /// > Version: Latest Supported RPC Version - `1`
+      ///
       /// > Since: Added in v5.0.0
       case identify = 1
 
       /// The response sent by obs-websocket to a client after it has successfully identified with obs-websocket.
       /// > Version: Latest Supported RPC Version - `1`
+      ///
       /// > Since: Added in v5.0.0
       case identified = 2
 
       /// The message sent by an already-identified client to update identification parameters.
       /// > Version: Latest Supported RPC Version - `1`
+      ///
       /// > Since: Added in v5.0.0
       case reidentify = 3
 
       /// The message sent by obs-websocket containing an event payload.
       /// > Version: Latest Supported RPC Version - `1`
+      ///
       /// > Since: Added in v5.0.0
       case event = 5
 
       /// The message sent by a client to obs-websocket to perform a request.
       /// > Version: Latest Supported RPC Version - `1`
+      ///
       /// > Since: Added in v5.0.0
       case request = 6
 
       /// The message sent by obs-websocket in response to a particular request from a client.
       /// > Version: Latest Supported RPC Version - `1`
+      ///
       /// > Since: Added in v5.0.0
       case requestResponse = 7
 
       /// The message sent by a client to obs-websocket to perform a batch of requests.
       /// > Version: Latest Supported RPC Version - `1`
+      ///
       /// > Since: Added in v5.0.0
       case requestBatch = 8
 
       /// The message sent by obs-websocket in response to a particular batch of requests from a client.
       /// > Version: Latest Supported RPC Version - `1`
+      ///
       /// > Since: Added in v5.0.0
       case requestBatchResponse = 9
     }
@@ -525,8 +619,11 @@ public enum OBSWS {
   public enum Requests {
     /// Gets an array of canvases in OBS.
     /// > Category: `Canvases`
+    ///
     /// > Complexity: `3/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.7.0
     public struct GetCanvasList: OBSRequest {
       public init() {
@@ -540,8 +637,11 @@ public enum OBSWS {
 
     /// Gets the value of a "slot" from the selected persistent data realm.
     /// > Category: `Config`
+    ///
     /// > Complexity: `2/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct GetPersistentData: OBSRequest {
       /// The data realm to select. `OBS_WEBSOCKET_DATA_REALM_GLOBAL` or `OBS_WEBSOCKET_DATA_REALM_PROFILE`
@@ -563,8 +663,11 @@ public enum OBSWS {
 
     /// Sets the value of a "slot" from the selected persistent data realm.
     /// > Category: `Config`
+    ///
     /// > Complexity: `2/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct SetPersistentData: OBSRequest {
       public typealias Response = EmptyResponse
@@ -587,8 +690,11 @@ public enum OBSWS {
 
     /// Gets an array of all scene collections
     /// > Category: `Config`
+    ///
     /// > Complexity: `1/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct GetSceneCollectionList: OBSRequest {
       public init() {
@@ -607,8 +713,11 @@ public enum OBSWS {
     /// 
     /// > Note: This will block until the collection has finished changing.
     /// > Category: `Config`
+    ///
     /// > Complexity: `1/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct SetCurrentSceneCollection: OBSRequest {
       public typealias Response = EmptyResponse
@@ -625,8 +734,11 @@ public enum OBSWS {
     /// 
     /// > Note: This will block until the collection has finished changing.
     /// > Category: `Config`
+    ///
     /// > Complexity: `1/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct CreateSceneCollection: OBSRequest {
       public typealias Response = EmptyResponse
@@ -641,8 +753,11 @@ public enum OBSWS {
 
     /// Gets an array of all profiles
     /// > Category: `Config`
+    ///
     /// > Complexity: `1/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct GetProfileList: OBSRequest {
       public init() {
@@ -659,8 +774,11 @@ public enum OBSWS {
 
     /// Switches to a profile.
     /// > Category: `Config`
+    ///
     /// > Complexity: `1/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct SetCurrentProfile: OBSRequest {
       public typealias Response = EmptyResponse
@@ -675,8 +793,11 @@ public enum OBSWS {
 
     /// Creates a new profile, switching to it in the process
     /// > Category: `Config`
+    ///
     /// > Complexity: `1/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct CreateProfile: OBSRequest {
       public typealias Response = EmptyResponse
@@ -691,8 +812,11 @@ public enum OBSWS {
 
     /// Removes a profile. If the current profile is chosen, it will change to a different profile first.
     /// > Category: `Config`
+    ///
     /// > Complexity: `1/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct RemoveProfile: OBSRequest {
       public typealias Response = EmptyResponse
@@ -707,8 +831,11 @@ public enum OBSWS {
 
     /// Gets a parameter from the current profile's configuration.
     /// > Category: `Config`
+    ///
     /// > Complexity: `4/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct GetProfileParameter: OBSRequest {
       /// Category of the parameter to get
@@ -733,8 +860,11 @@ public enum OBSWS {
 
     /// Sets the value of a parameter in the current profile's configuration.
     /// > Category: `Config`
+    ///
     /// > Complexity: `4/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct SetProfileParameter: OBSRequest {
       public typealias Response = EmptyResponse
@@ -759,8 +889,11 @@ public enum OBSWS {
     /// 
     /// > Note: To get the true FPS value, divide the FPS numerator by the FPS denominator. Example: `60000/1001`
     /// > Category: `Config`
+    ///
     /// > Complexity: `2/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct GetVideoSettings: OBSRequest {
       public init() {
@@ -791,39 +924,48 @@ public enum OBSWS {
     /// 
     /// > Note: Fields must be specified in pairs. For example, you cannot set only `baseWidth` without needing to specify `baseHeight`.
     /// > Category: `Config`
+    ///
     /// > Complexity: `2/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct SetVideoSettings: OBSRequest {
       public typealias Response = EmptyResponse
 
       /// Numerator of the fractional FPS value
       /// > Value Restrictions: `>= 1`
+      ///
       /// > Optional Behavior: Not changed
       public let fpsNumerator: Int?
 
       /// Denominator of the fractional FPS value
       /// > Value Restrictions: `>= 1`
+      ///
       /// > Optional Behavior: Not changed
       public let fpsDenominator: Int?
 
       /// Width of the base (canvas) resolution in pixels
       /// > Value Restrictions: `>= 1, <= 4096`
+      ///
       /// > Optional Behavior: Not changed
       public let baseWidth: Int?
 
       /// Height of the base (canvas) resolution in pixels
       /// > Value Restrictions: `>= 1, <= 4096`
+      ///
       /// > Optional Behavior: Not changed
       public let baseHeight: Int?
 
       /// Width of the output resolution in pixels
       /// > Value Restrictions: `>= 1, <= 4096`
+      ///
       /// > Optional Behavior: Not changed
       public let outputWidth: Int?
 
       /// Height of the output resolution in pixels
       /// > Value Restrictions: `>= 1, <= 4096`
+      ///
       /// > Optional Behavior: Not changed
       public let outputHeight: Int?
 
@@ -839,8 +981,11 @@ public enum OBSWS {
 
     /// Gets the current stream service settings (stream destination).
     /// > Category: `Config`
+    ///
     /// > Complexity: `4/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct GetStreamServiceSettings: OBSRequest {
       public init() {
@@ -859,8 +1004,11 @@ public enum OBSWS {
     /// 
     /// > Note: Simple RTMP settings can be set with type `rtmp_custom` and the settings fields `server` and `key`.
     /// > Category: `Config`
+    ///
     /// > Complexity: `4/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct SetStreamServiceSettings: OBSRequest {
       public typealias Response = EmptyResponse
@@ -879,8 +1027,11 @@ public enum OBSWS {
 
     /// Gets the current directory that the record output is set to.
     /// > Category: `Config`
+    ///
     /// > Complexity: `2/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct GetRecordDirectory: OBSRequest {
       public init() {
@@ -894,8 +1045,11 @@ public enum OBSWS {
 
     /// Sets the current directory that the record output writes files to.
     /// > Category: `Config`
+    ///
     /// > Complexity: `2/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.3.0
     public struct SetRecordDirectory: OBSRequest {
       public typealias Response = EmptyResponse
@@ -912,8 +1066,11 @@ public enum OBSWS {
     /// 
     /// Similar to `GetInputKindList`
     /// > Category: `Filters`
+    ///
     /// > Complexity: `2/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.4.0
     public struct GetSourceFilterKindList: OBSRequest {
       public init() {
@@ -927,8 +1084,11 @@ public enum OBSWS {
 
     /// Gets an array of all of a source's filters.
     /// > Category: `Filters`
+    ///
     /// > Complexity: `2/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct GetSourceFilterList: OBSRequest {
       /// UUID of the canvas the source is in, if using the sourceName field
@@ -957,8 +1117,11 @@ public enum OBSWS {
 
     /// Gets the default settings for a filter kind.
     /// > Category: `Filters`
+    ///
     /// > Complexity: `3/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct GetSourceFilterDefaultSettings: OBSRequest {
       /// Filter kind to get the default settings for
@@ -976,8 +1139,11 @@ public enum OBSWS {
 
     /// Creates a new filter, adding it to the specified source.
     /// > Category: `Filters`
+    ///
     /// > Complexity: `3/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct CreateSourceFilter: OBSRequest {
       public typealias Response = EmptyResponse
@@ -1016,8 +1182,11 @@ public enum OBSWS {
 
     /// Removes a filter from a source.
     /// > Category: `Filters`
+    ///
     /// > Complexity: `2/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct RemoveSourceFilter: OBSRequest {
       public typealias Response = EmptyResponse
@@ -1047,8 +1216,11 @@ public enum OBSWS {
 
     /// Sets the name of a source filter (rename).
     /// > Category: `Filters`
+    ///
     /// > Complexity: `2/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct SetSourceFilterName: OBSRequest {
       public typealias Response = EmptyResponse
@@ -1082,8 +1254,11 @@ public enum OBSWS {
 
     /// Gets the info for a specific source filter.
     /// > Category: `Filters`
+    ///
     /// > Complexity: `2/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct GetSourceFilter: OBSRequest {
       /// UUID of the canvas the source is in, if using the sourceName field
@@ -1125,8 +1300,11 @@ public enum OBSWS {
 
     /// Sets the index position of a filter on a source.
     /// > Category: `Filters`
+    ///
     /// > Complexity: `3/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct SetSourceFilterIndex: OBSRequest {
       public typealias Response = EmptyResponse
@@ -1161,8 +1339,11 @@ public enum OBSWS {
 
     /// Sets the settings of a source filter.
     /// > Category: `Filters`
+    ///
     /// > Complexity: `3/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct SetSourceFilterSettings: OBSRequest {
       public typealias Response = EmptyResponse
@@ -1201,8 +1382,11 @@ public enum OBSWS {
 
     /// Sets the enable state of a source filter.
     /// > Category: `Filters`
+    ///
     /// > Complexity: `3/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct SetSourceFilterEnabled: OBSRequest {
       public typealias Response = EmptyResponse
@@ -1236,8 +1420,11 @@ public enum OBSWS {
 
     /// Gets data about the current plugin and RPC version.
     /// > Category: `General`
+    ///
     /// > Complexity: `1/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct GetVersion: OBSRequest {
       public init() {
@@ -1269,8 +1456,11 @@ public enum OBSWS {
 
     /// Gets statistics about OBS, obs-websocket, and the current session.
     /// > Category: `General`
+    ///
     /// > Complexity: `2/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct GetStats: OBSRequest {
       public init() {
@@ -1314,8 +1504,11 @@ public enum OBSWS {
 
     /// Broadcasts a `CustomEvent` to all WebSocket clients. Receivers are clients which are identified and subscribed.
     /// > Category: `General`
+    ///
     /// > Complexity: `1/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct BroadcastCustomEvent: OBSRequest {
       public typealias Response = EmptyResponse
@@ -1333,8 +1526,11 @@ public enum OBSWS {
     /// A vendor is a unique name registered by a third-party plugin or script, which allows for custom requests and events to be added to obs-websocket.
     /// If a plugin or script implements vendor requests or events, documentation is expected to be provided with them.
     /// > Category: `General`
+    ///
     /// > Complexity: `3/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct CallVendorRequest: OBSRequest {
       /// Name of the vendor to use
@@ -1369,8 +1565,11 @@ public enum OBSWS {
     /// 
     /// > Note: Hotkey functionality in obs-websocket comes as-is, and we do not guarantee support if things are broken. In 9/10 usages of hotkey requests, there exists a better, more reliable method via other requests.
     /// > Category: `General`
+    ///
     /// > Complexity: `4/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct GetHotkeyList: OBSRequest {
       public init() {
@@ -1386,8 +1585,11 @@ public enum OBSWS {
     /// 
     /// > Note: Hotkey functionality in obs-websocket comes as-is, and we do not guarantee support if things are broken. In 9/10 usages of hotkey requests, there exists a better, more reliable method via other requests.
     /// > Category: `General`
+    ///
     /// > Complexity: `4/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct TriggerHotkeyByName: OBSRequest {
       public typealias Response = EmptyResponse
@@ -1409,8 +1611,11 @@ public enum OBSWS {
     /// 
     /// > Note: Hotkey functionality in obs-websocket comes as-is, and we do not guarantee support if things are broken. In 9/10 usages of hotkey requests, there exists a better, more reliable method via other requests.
     /// > Category: `General`
+    ///
     /// > Complexity: `4/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct TriggerHotkeyByKeySequence: OBSRequest {
       public typealias Response = EmptyResponse
@@ -1449,19 +1654,24 @@ public enum OBSWS {
 
     /// Sleeps for a time duration or number of frames. Only available in request batches with types `SERIAL_REALTIME` or `SERIAL_FRAME`.
     /// > Category: `General`
+    ///
     /// > Complexity: `2/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct Sleep: OBSRequest {
       public typealias Response = EmptyResponse
 
       /// Number of milliseconds to sleep for (if `SERIAL_REALTIME` mode)
       /// > Value Restrictions: `>= 0, <= 50000`
+      ///
       /// > Optional Behavior: Unknown
       public let sleepMillis: Int?
 
       /// Number of frames to sleep for (if `SERIAL_FRAME` mode)
       /// > Value Restrictions: `>= 0, <= 10000`
+      ///
       /// > Optional Behavior: Unknown
       public let sleepFrames: Int?
 
@@ -1473,8 +1683,11 @@ public enum OBSWS {
 
     /// Gets an array of all inputs in OBS.
     /// > Category: `Inputs`
+    ///
     /// > Complexity: `2/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct GetInputList: OBSRequest {
       /// Restrict the array to only inputs of the specified kind
@@ -1493,8 +1706,11 @@ public enum OBSWS {
 
     /// Gets an array of all available input kinds in OBS.
     /// > Category: `Inputs`
+    ///
     /// > Complexity: `2/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct GetInputKindList: OBSRequest {
       /// True == Return all kinds as unversioned, False == Return with version suffixes (if available)
@@ -1513,8 +1729,11 @@ public enum OBSWS {
 
     /// Gets the names of all special inputs.
     /// > Category: `Inputs`
+    ///
     /// > Complexity: `2/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct GetSpecialInputs: OBSRequest {
       public init() {
@@ -1543,8 +1762,11 @@ public enum OBSWS {
 
     /// Creates a new input, adding it as a scene item to the specified scene.
     /// > Category: `Inputs`
+    ///
     /// > Complexity: `3/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct CreateInput: OBSRequest {
       /// UUID of the canvas the scene is in, if using the sceneName field
@@ -1596,8 +1818,11 @@ public enum OBSWS {
     /// 
     /// > Note: Will immediately remove all associated scene items.
     /// > Category: `Inputs`
+    ///
     /// > Complexity: `2/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct RemoveInput: OBSRequest {
       public typealias Response = EmptyResponse
@@ -1618,8 +1843,11 @@ public enum OBSWS {
 
     /// Sets the name of an input (rename).
     /// > Category: `Inputs`
+    ///
     /// > Complexity: `2/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct SetInputName: OBSRequest {
       public typealias Response = EmptyResponse
@@ -1644,8 +1872,11 @@ public enum OBSWS {
 
     /// Gets the default settings for an input kind.
     /// > Category: `Inputs`
+    ///
     /// > Complexity: `3/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct GetInputDefaultSettings: OBSRequest {
       /// Input kind to get the default settings for
@@ -1665,8 +1896,11 @@ public enum OBSWS {
     /// 
     /// > Note: Does not include defaults. To create the entire settings object, overlay `inputSettings` over the `defaultInputSettings` provided by `GetInputDefaultSettings`.
     /// > Category: `Inputs`
+    ///
     /// > Complexity: `3/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct GetInputSettings: OBSRequest {
       /// Name of the input to get the settings of
@@ -1693,8 +1927,11 @@ public enum OBSWS {
 
     /// Sets the settings of an input.
     /// > Category: `Inputs`
+    ///
     /// > Complexity: `3/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct SetInputSettings: OBSRequest {
       public typealias Response = EmptyResponse
@@ -1724,8 +1961,11 @@ public enum OBSWS {
 
     /// Gets the audio mute state of an input.
     /// > Category: `Inputs`
+    ///
     /// > Complexity: `2/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct GetInputMute: OBSRequest {
       /// Name of input to get the mute state of
@@ -1749,8 +1989,11 @@ public enum OBSWS {
 
     /// Sets the audio mute state of an input.
     /// > Category: `Inputs`
+    ///
     /// > Complexity: `2/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct SetInputMute: OBSRequest {
       public typealias Response = EmptyResponse
@@ -1775,8 +2018,11 @@ public enum OBSWS {
 
     /// Toggles the audio mute state of an input.
     /// > Category: `Inputs`
+    ///
     /// > Complexity: `2/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct ToggleInputMute: OBSRequest {
       /// Name of the input to toggle the mute state of
@@ -1800,8 +2046,11 @@ public enum OBSWS {
 
     /// Gets the current volume setting of an input.
     /// > Category: `Inputs`
+    ///
     /// > Complexity: `3/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct GetInputVolume: OBSRequest {
       /// Name of the input to get the volume of
@@ -1828,8 +2077,11 @@ public enum OBSWS {
 
     /// Sets the volume setting of an input.
     /// > Category: `Inputs`
+    ///
     /// > Complexity: `3/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct SetInputVolume: OBSRequest {
       public typealias Response = EmptyResponse
@@ -1844,11 +2096,13 @@ public enum OBSWS {
 
       /// Volume setting in mul
       /// > Value Restrictions: `>= 0, <= 20`
+      ///
       /// > Optional Behavior: `inputVolumeDb` should be specified
       public let inputVolumeMul: Int?
 
       /// Volume setting in dB
       /// > Value Restrictions: `>= -100, <= 26`
+      ///
       /// > Optional Behavior: `inputVolumeMul` should be specified
       public let inputVolumeDb: Int?
 
@@ -1862,8 +2116,11 @@ public enum OBSWS {
 
     /// Gets the audio balance of an input.
     /// > Category: `Inputs`
+    ///
     /// > Complexity: `2/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct GetInputAudioBalance: OBSRequest {
       /// Name of the input to get the audio balance of
@@ -1887,8 +2144,11 @@ public enum OBSWS {
 
     /// Sets the audio balance of an input.
     /// > Category: `Inputs`
+    ///
     /// > Complexity: `2/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct SetInputAudioBalance: OBSRequest {
       public typealias Response = EmptyResponse
@@ -1916,8 +2176,11 @@ public enum OBSWS {
     /// 
     /// > Note: The audio sync offset can be negative too!
     /// > Category: `Inputs`
+    ///
     /// > Complexity: `3/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct GetInputAudioSyncOffset: OBSRequest {
       /// Name of the input to get the audio sync offset of
@@ -1941,8 +2204,11 @@ public enum OBSWS {
 
     /// Sets the audio sync offset of an input.
     /// > Category: `Inputs`
+    ///
     /// > Complexity: `3/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct SetInputAudioSyncOffset: OBSRequest {
       public typealias Response = EmptyResponse
@@ -1974,8 +2240,11 @@ public enum OBSWS {
     /// - `OBS_MONITORING_TYPE_MONITOR_ONLY`
     /// - `OBS_MONITORING_TYPE_MONITOR_AND_OUTPUT`
     /// > Category: `Inputs`
+    ///
     /// > Complexity: `2/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct GetInputAudioMonitorType: OBSRequest {
       /// Name of the input to get the audio monitor type of
@@ -1999,8 +2268,11 @@ public enum OBSWS {
 
     /// Sets the audio monitor type of an input.
     /// > Category: `Inputs`
+    ///
     /// > Complexity: `2/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct SetInputAudioMonitorType: OBSRequest {
       public typealias Response = EmptyResponse
@@ -2025,8 +2297,11 @@ public enum OBSWS {
 
     /// Gets the enable state of all audio tracks of an input.
     /// > Category: `Inputs`
+    ///
     /// > Complexity: `2/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct GetInputAudioTracks: OBSRequest {
       /// Name of the input
@@ -2050,8 +2325,11 @@ public enum OBSWS {
 
     /// Sets the enable state of audio tracks of an input.
     /// > Category: `Inputs`
+    ///
     /// > Complexity: `2/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct SetInputAudioTracks: OBSRequest {
       public typealias Response = EmptyResponse
@@ -2090,8 +2368,11 @@ public enum OBSWS {
     /// 
     /// > Note: Deinterlacing functionality is restricted to async inputs only.
     /// > Category: `Inputs`
+    ///
     /// > Complexity: `2/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.6.0
     public struct GetInputDeinterlaceMode: OBSRequest {
       /// Name of the input
@@ -2117,8 +2398,11 @@ public enum OBSWS {
     /// 
     /// > Note: Deinterlacing functionality is restricted to async inputs only.
     /// > Category: `Inputs`
+    ///
     /// > Complexity: `2/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.6.0
     public struct SetInputDeinterlaceMode: OBSRequest {
       public typealias Response = EmptyResponse
@@ -2150,8 +2434,11 @@ public enum OBSWS {
     /// 
     /// > Note: Deinterlacing functionality is restricted to async inputs only.
     /// > Category: `Inputs`
+    ///
     /// > Complexity: `2/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.6.0
     public struct GetInputDeinterlaceFieldOrder: OBSRequest {
       /// Name of the input
@@ -2177,8 +2464,11 @@ public enum OBSWS {
     /// 
     /// > Note: Deinterlacing functionality is restricted to async inputs only.
     /// > Category: `Inputs`
+    ///
     /// > Complexity: `2/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.6.0
     public struct SetInputDeinterlaceFieldOrder: OBSRequest {
       public typealias Response = EmptyResponse
@@ -2205,8 +2495,11 @@ public enum OBSWS {
     /// 
     /// > Note: Use this in cases where an input provides a dynamic, selectable list of items. For example, display capture, where it provides a list of available displays.
     /// > Category: `Inputs`
+    ///
     /// > Complexity: `4/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct GetInputPropertiesListPropertyItems: OBSRequest {
       /// Name of the input
@@ -2240,8 +2533,11 @@ public enum OBSWS {
     /// 
     /// > Note: Use this in cases where there is a button in the properties of an input that cannot be accessed in any other way. For example, browser sources, where there is a refresh button.
     /// > Category: `Inputs`
+    ///
     /// > Complexity: `4/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct PressInputPropertiesButton: OBSRequest {
       public typealias Response = EmptyResponse
@@ -2277,8 +2573,11 @@ public enum OBSWS {
     /// - `OBS_MEDIA_STATE_ENDED`
     /// - `OBS_MEDIA_STATE_ERROR`
     /// > Category: `Media Inputs`
+    ///
     /// > Complexity: `2/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct GetMediaInputStatus: OBSRequest {
       /// Name of the media input
@@ -2310,8 +2609,11 @@ public enum OBSWS {
     /// 
     /// This request does not perform bounds checking of the cursor position.
     /// > Category: `Media Inputs`
+    ///
     /// > Complexity: `2/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct SetMediaInputCursor: OBSRequest {
       public typealias Response = EmptyResponse
@@ -2339,8 +2641,11 @@ public enum OBSWS {
     /// 
     /// This request does not perform bounds checking of the cursor position.
     /// > Category: `Media Inputs`
+    ///
     /// > Complexity: `2/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct OffsetMediaInputCursor: OBSRequest {
       public typealias Response = EmptyResponse
@@ -2365,8 +2670,11 @@ public enum OBSWS {
 
     /// Triggers an action on a media input.
     /// > Category: `Media Inputs`
+    ///
     /// > Complexity: `2/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct TriggerMediaInputAction: OBSRequest {
       public typealias Response = EmptyResponse
@@ -2391,8 +2699,11 @@ public enum OBSWS {
 
     /// Gets the status of the virtualcam output.
     /// > Category: `Outputs`
+    ///
     /// > Complexity: `1/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct GetVirtualCamStatus: OBSRequest {
       public init() {
@@ -2406,8 +2717,11 @@ public enum OBSWS {
 
     /// Toggles the state of the virtualcam output.
     /// > Category: `Outputs`
+    ///
     /// > Complexity: `1/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct ToggleVirtualCam: OBSRequest {
       public init() {
@@ -2421,8 +2735,11 @@ public enum OBSWS {
 
     /// Starts the virtualcam output.
     /// > Category: `Outputs`
+    ///
     /// > Complexity: `1/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct StartVirtualCam: OBSRequest {
       public typealias Response = EmptyResponse
@@ -2433,8 +2750,11 @@ public enum OBSWS {
 
     /// Stops the virtualcam output.
     /// > Category: `Outputs`
+    ///
     /// > Complexity: `1/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct StopVirtualCam: OBSRequest {
       public typealias Response = EmptyResponse
@@ -2445,8 +2765,11 @@ public enum OBSWS {
 
     /// Gets the status of the replay buffer output.
     /// > Category: `Outputs`
+    ///
     /// > Complexity: `1/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct GetReplayBufferStatus: OBSRequest {
       public init() {
@@ -2460,8 +2783,11 @@ public enum OBSWS {
 
     /// Toggles the state of the replay buffer output.
     /// > Category: `Outputs`
+    ///
     /// > Complexity: `1/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct ToggleReplayBuffer: OBSRequest {
       public init() {
@@ -2475,8 +2801,11 @@ public enum OBSWS {
 
     /// Starts the replay buffer output.
     /// > Category: `Outputs`
+    ///
     /// > Complexity: `1/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct StartReplayBuffer: OBSRequest {
       public typealias Response = EmptyResponse
@@ -2487,8 +2816,11 @@ public enum OBSWS {
 
     /// Stops the replay buffer output.
     /// > Category: `Outputs`
+    ///
     /// > Complexity: `1/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct StopReplayBuffer: OBSRequest {
       public typealias Response = EmptyResponse
@@ -2499,8 +2831,11 @@ public enum OBSWS {
 
     /// Saves the contents of the replay buffer output.
     /// > Category: `Outputs`
+    ///
     /// > Complexity: `1/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct SaveReplayBuffer: OBSRequest {
       public typealias Response = EmptyResponse
@@ -2511,8 +2846,11 @@ public enum OBSWS {
 
     /// Gets the filename of the last replay buffer save file.
     /// > Category: `Outputs`
+    ///
     /// > Complexity: `2/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct GetLastReplayBufferReplay: OBSRequest {
       public init() {
@@ -2526,8 +2864,11 @@ public enum OBSWS {
 
     /// Gets the list of available outputs.
     /// > Category: `Outputs`
+    ///
     /// > Complexity: `4/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct GetOutputList: OBSRequest {
       public init() {
@@ -2541,8 +2882,11 @@ public enum OBSWS {
 
     /// Gets the status of an output.
     /// > Category: `Outputs`
+    ///
     /// > Complexity: `4/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct GetOutputStatus: OBSRequest {
       /// Output name
@@ -2581,8 +2925,11 @@ public enum OBSWS {
 
     /// Toggles the status of an output.
     /// > Category: `Outputs`
+    ///
     /// > Complexity: `4/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct ToggleOutput: OBSRequest {
       /// Output name
@@ -2600,8 +2947,11 @@ public enum OBSWS {
 
     /// Starts an output.
     /// > Category: `Outputs`
+    ///
     /// > Complexity: `4/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct StartOutput: OBSRequest {
       public typealias Response = EmptyResponse
@@ -2616,8 +2966,11 @@ public enum OBSWS {
 
     /// Stops an output.
     /// > Category: `Outputs`
+    ///
     /// > Complexity: `4/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct StopOutput: OBSRequest {
       public typealias Response = EmptyResponse
@@ -2632,8 +2985,11 @@ public enum OBSWS {
 
     /// Gets the settings of an output.
     /// > Category: `Outputs`
+    ///
     /// > Complexity: `4/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct GetOutputSettings: OBSRequest {
       /// Output name
@@ -2651,8 +3007,11 @@ public enum OBSWS {
 
     /// Sets the settings of an output.
     /// > Category: `Outputs`
+    ///
     /// > Complexity: `4/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct SetOutputSettings: OBSRequest {
       public typealias Response = EmptyResponse
@@ -2671,8 +3030,11 @@ public enum OBSWS {
 
     /// Gets the status of the record output.
     /// > Category: `Record`
+    ///
     /// > Complexity: `2/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct GetRecordStatus: OBSRequest {
       public init() {
@@ -2698,8 +3060,11 @@ public enum OBSWS {
 
     /// Toggles the status of the record output.
     /// > Category: `Record`
+    ///
     /// > Complexity: `1/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct ToggleRecord: OBSRequest {
       public init() {
@@ -2713,8 +3078,11 @@ public enum OBSWS {
 
     /// Starts the record output.
     /// > Category: `Record`
+    ///
     /// > Complexity: `1/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct StartRecord: OBSRequest {
       public typealias Response = EmptyResponse
@@ -2725,8 +3093,11 @@ public enum OBSWS {
 
     /// Stops the record output.
     /// > Category: `Record`
+    ///
     /// > Complexity: `1/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct StopRecord: OBSRequest {
       public init() {
@@ -2740,8 +3111,11 @@ public enum OBSWS {
 
     /// Toggles pause on the record output.
     /// > Category: `Record`
+    ///
     /// > Complexity: `1/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct ToggleRecordPause: OBSRequest {
       public typealias Response = EmptyResponse
@@ -2752,8 +3126,11 @@ public enum OBSWS {
 
     /// Pauses the record output.
     /// > Category: `Record`
+    ///
     /// > Complexity: `1/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct PauseRecord: OBSRequest {
       public typealias Response = EmptyResponse
@@ -2764,8 +3141,11 @@ public enum OBSWS {
 
     /// Resumes the record output.
     /// > Category: `Record`
+    ///
     /// > Complexity: `1/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct ResumeRecord: OBSRequest {
       public typealias Response = EmptyResponse
@@ -2776,8 +3156,11 @@ public enum OBSWS {
 
     /// Splits the current file being recorded into a new file.
     /// > Category: `Record`
+    ///
     /// > Complexity: `2/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.5.0
     public struct SplitRecordFile: OBSRequest {
       public typealias Response = EmptyResponse
@@ -2790,8 +3173,11 @@ public enum OBSWS {
     /// 
     /// > Note: As of OBS 30.2.0, the only file format supporting this feature is Hybrid MP4.
     /// > Category: `Record`
+    ///
     /// > Complexity: `2/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.5.0
     public struct CreateRecordChapter: OBSRequest {
       public typealias Response = EmptyResponse
@@ -2809,8 +3195,11 @@ public enum OBSWS {
     /// 
     /// Scenes only
     /// > Category: `Scene Items`
+    ///
     /// > Complexity: `3/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct GetSceneItemList: OBSRequest {
       /// UUID of the canvas the scene is in, if using the sceneName field
@@ -2843,8 +3232,11 @@ public enum OBSWS {
     /// 
     /// Groups only
     /// > Category: `Scene Items`
+    ///
     /// > Complexity: `3/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct GetGroupSceneItemList: OBSRequest {
       /// UUID of the canvas the group is in, if using the sceneName field
@@ -2875,8 +3267,11 @@ public enum OBSWS {
     /// 
     /// Scenes and Groups
     /// > Category: `Scene Items`
+    ///
     /// > Complexity: `3/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct GetSceneItemId: OBSRequest {
       /// UUID of the canvas the scene or group is in, if using the sceneName field
@@ -2896,6 +3291,7 @@ public enum OBSWS {
 
       /// Number of matches to skip during search. >= 0 means first forward. -1 means last (top) item
       /// > Value Restrictions: `>= -1`
+      ///
       /// > Optional Behavior: 0
       public let searchOffset: Int?
 
@@ -2915,8 +3311,11 @@ public enum OBSWS {
 
     /// Gets the source associated with a scene item.
     /// > Category: `Scene Items`
+    ///
     /// > Complexity: `3/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.4.0
     public struct GetSceneItemSource: OBSRequest {
       /// UUID of the canvas the scene is in, if using the sceneName field
@@ -2955,8 +3354,11 @@ public enum OBSWS {
     /// 
     /// Scenes only
     /// > Category: `Scene Items`
+    ///
     /// > Complexity: `3/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct CreateSceneItem: OBSRequest {
       /// UUID of the canvas the scene is in, if using the sceneName field
@@ -3002,8 +3404,11 @@ public enum OBSWS {
     /// 
     /// Scenes only
     /// > Category: `Scene Items`
+    ///
     /// > Complexity: `3/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct RemoveSceneItem: OBSRequest {
       public typealias Response = EmptyResponse
@@ -3036,8 +3441,11 @@ public enum OBSWS {
     /// 
     /// Scenes only
     /// > Category: `Scene Items`
+    ///
     /// > Complexity: `3/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct DuplicateSceneItem: OBSRequest {
       /// UUID of the canvas the scene is in, if using the sceneName field
@@ -3083,8 +3491,11 @@ public enum OBSWS {
     /// 
     /// Scenes and Groups
     /// > Category: `Scene Items`
+    ///
     /// > Complexity: `3/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct GetSceneItemTransform: OBSRequest {
       /// UUID of the canvas the scene is in, if using the sceneName field
@@ -3118,8 +3529,11 @@ public enum OBSWS {
 
     /// Sets the transform and crop info of a scene item.
     /// > Category: `Scene Items`
+    ///
     /// > Complexity: `3/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct SetSceneItemTransform: OBSRequest {
       public typealias Response = EmptyResponse
@@ -3156,8 +3570,11 @@ public enum OBSWS {
     /// 
     /// Scenes and Groups
     /// > Category: `Scene Items`
+    ///
     /// > Complexity: `3/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct GetSceneItemEnabled: OBSRequest {
       /// UUID of the canvas the scene is in, if using the sceneName field
@@ -3193,8 +3610,11 @@ public enum OBSWS {
     /// 
     /// Scenes and Groups
     /// > Category: `Scene Items`
+    ///
     /// > Complexity: `3/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct SetSceneItemEnabled: OBSRequest {
       public typealias Response = EmptyResponse
@@ -3231,8 +3651,11 @@ public enum OBSWS {
     /// 
     /// Scenes and Groups
     /// > Category: `Scene Items`
+    ///
     /// > Complexity: `3/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct GetSceneItemLocked: OBSRequest {
       /// UUID of the canvas the scene is in, if using the sceneName field
@@ -3268,8 +3691,11 @@ public enum OBSWS {
     /// 
     /// Scenes and Group
     /// > Category: `Scene Items`
+    ///
     /// > Complexity: `3/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct SetSceneItemLocked: OBSRequest {
       public typealias Response = EmptyResponse
@@ -3308,8 +3734,11 @@ public enum OBSWS {
     /// 
     /// Scenes and Groups
     /// > Category: `Scene Items`
+    ///
     /// > Complexity: `3/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct GetSceneItemIndex: OBSRequest {
       /// UUID of the canvas the scene is in, if using the sceneName field
@@ -3345,8 +3774,11 @@ public enum OBSWS {
     /// 
     /// Scenes and Groups
     /// > Category: `Scene Items`
+    ///
     /// > Complexity: `3/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct SetSceneItemIndex: OBSRequest {
       public typealias Response = EmptyResponse
@@ -3394,8 +3826,11 @@ public enum OBSWS {
     /// 
     /// Scenes and Groups
     /// > Category: `Scene Items`
+    ///
     /// > Complexity: `2/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct GetSceneItemBlendMode: OBSRequest {
       /// UUID of the canvas the scene is in, if using the sceneName field
@@ -3431,8 +3866,11 @@ public enum OBSWS {
     /// 
     /// Scenes and Groups
     /// > Category: `Scene Items`
+    ///
     /// > Complexity: `2/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct SetSceneItemBlendMode: OBSRequest {
       public typealias Response = EmptyResponse
@@ -3467,8 +3905,11 @@ public enum OBSWS {
 
     /// Gets an array of scenes in OBS.
     /// > Category: `Scenes`
+    ///
     /// > Complexity: `2/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct GetSceneList: OBSRequest {
       /// UUID of the canvas the scenes are in
@@ -3501,8 +3942,11 @@ public enum OBSWS {
     /// 
     /// Groups in OBS are actually scenes, but renamed and modified. In obs-websocket, we treat them as scenes where we can.
     /// > Category: `Scenes`
+    ///
     /// > Complexity: `2/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct GetGroupList: OBSRequest {
       public init() {
@@ -3520,8 +3964,11 @@ public enum OBSWS {
     /// 
     /// Note 2: Canvases do not have any concept of a program or preview scene, so this request does not support canvases.
     /// > Category: `Scenes`
+    ///
     /// > Complexity: `1/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct GetCurrentProgramScene: OBSRequest {
       public init() {
@@ -3544,8 +3991,11 @@ public enum OBSWS {
 
     /// Sets the current program scene.
     /// > Category: `Scenes`
+    ///
     /// > Complexity: `1/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct SetCurrentProgramScene: OBSRequest {
       public typealias Response = EmptyResponse
@@ -3570,8 +4020,11 @@ public enum OBSWS {
     /// 
     /// > Note: This request is slated to have the `currentPreview`-prefixed fields removed from in an upcoming RPC version.
     /// > Category: `Scenes`
+    ///
     /// > Complexity: `1/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct GetCurrentPreviewScene: OBSRequest {
       public init() {
@@ -3596,8 +4049,11 @@ public enum OBSWS {
     /// 
     /// Only available when studio mode is enabled.
     /// > Category: `Scenes`
+    ///
     /// > Complexity: `1/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct SetCurrentPreviewScene: OBSRequest {
       public typealias Response = EmptyResponse
@@ -3618,8 +4074,11 @@ public enum OBSWS {
 
     /// Creates a new scene in OBS.
     /// > Category: `Scenes`
+    ///
     /// > Complexity: `2/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct CreateScene: OBSRequest {
       /// UUID of the canvas to create the new scene in. Leave default to assume main canvas
@@ -3642,8 +4101,11 @@ public enum OBSWS {
 
     /// Removes a scene from OBS.
     /// > Category: `Scenes`
+    ///
     /// > Complexity: `2/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct RemoveScene: OBSRequest {
       public typealias Response = EmptyResponse
@@ -3669,8 +4131,11 @@ public enum OBSWS {
 
     /// Sets the name of a scene (rename).
     /// > Category: `Scenes`
+    ///
     /// > Complexity: `2/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct SetSceneName: OBSRequest {
       public typealias Response = EmptyResponse
@@ -3702,8 +4167,11 @@ public enum OBSWS {
     /// 
     /// > Note: A transition UUID response field is not currently able to be implemented as of 2024-1-18.
     /// > Category: `Scenes`
+    ///
     /// > Complexity: `2/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct GetSceneSceneTransitionOverride: OBSRequest {
       /// UUID of the canvas the scene is in, if using the sceneName field
@@ -3735,8 +4203,11 @@ public enum OBSWS {
 
     /// Sets the scene transition overridden for a scene.
     /// > Category: `Scenes`
+    ///
     /// > Complexity: `2/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct SetSceneSceneTransitionOverride: OBSRequest {
       public typealias Response = EmptyResponse
@@ -3759,6 +4230,7 @@ public enum OBSWS {
 
       /// Duration to use for any overridden transition. Specify `null` to remove
       /// > Value Restrictions: `>= 50, <= 20000`
+      ///
       /// > Optional Behavior: Unchanged
       public let transitionDuration: Int?
 
@@ -3775,8 +4247,11 @@ public enum OBSWS {
     /// 
     /// **Compatible with inputs and scenes.**
     /// > Category: `Sources`
+    ///
     /// > Complexity: `2/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct GetSourceActive: OBSRequest {
       /// UUID of the canvas the source is in, if using sourceName field
@@ -3813,8 +4288,11 @@ public enum OBSWS {
     /// 
     /// **Compatible with inputs and scenes.**
     /// > Category: `Sources`
+    ///
     /// > Complexity: `4/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct GetSourceScreenshot: OBSRequest {
       /// UUID of the canvas the source is in, if using sourceName field
@@ -3834,16 +4312,19 @@ public enum OBSWS {
 
       /// Width to scale the screenshot to
       /// > Value Restrictions: `>= 8, <= 4096`
+      ///
       /// > Optional Behavior: Source value is used
       public let imageWidth: Int?
 
       /// Height to scale the screenshot to
       /// > Value Restrictions: `>= 8, <= 4096`
+      ///
       /// > Optional Behavior: Source value is used
       public let imageHeight: Int?
 
       /// Compression quality to use. 0 for high compression, 100 for uncompressed. -1 to use "default" (whatever that means, idk)
       /// > Value Restrictions: `>= -1, <= 100`
+      ///
       /// > Optional Behavior: -1
       public let imageCompressionQuality: Int?
 
@@ -3870,8 +4351,11 @@ public enum OBSWS {
     /// 
     /// **Compatible with inputs and scenes.**
     /// > Category: `Sources`
+    ///
     /// > Complexity: `3/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct SaveSourceScreenshot: OBSRequest {
       public typealias Response = EmptyResponse
@@ -3896,16 +4380,19 @@ public enum OBSWS {
 
       /// Width to scale the screenshot to
       /// > Value Restrictions: `>= 8, <= 4096`
+      ///
       /// > Optional Behavior: Source value is used
       public let imageWidth: Int?
 
       /// Height to scale the screenshot to
       /// > Value Restrictions: `>= 8, <= 4096`
+      ///
       /// > Optional Behavior: Source value is used
       public let imageHeight: Int?
 
       /// Compression quality to use. 0 for high compression, 100 for uncompressed. -1 to use "default" (whatever that means, idk)
       /// > Value Restrictions: `>= -1, <= 100`
+      ///
       /// > Optional Behavior: -1
       public let imageCompressionQuality: Int?
 
@@ -3923,8 +4410,11 @@ public enum OBSWS {
 
     /// Gets the status of the stream output.
     /// > Category: `Stream`
+    ///
     /// > Complexity: `2/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct GetStreamStatus: OBSRequest {
       public init() {
@@ -3959,8 +4449,11 @@ public enum OBSWS {
 
     /// Toggles the status of the stream output.
     /// > Category: `Stream`
+    ///
     /// > Complexity: `1/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct ToggleStream: OBSRequest {
       public init() {
@@ -3974,8 +4467,11 @@ public enum OBSWS {
 
     /// Starts the stream output.
     /// > Category: `Stream`
+    ///
     /// > Complexity: `1/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct StartStream: OBSRequest {
       public typealias Response = EmptyResponse
@@ -3986,8 +4482,11 @@ public enum OBSWS {
 
     /// Stops the stream output.
     /// > Category: `Stream`
+    ///
     /// > Complexity: `1/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct StopStream: OBSRequest {
       public typealias Response = EmptyResponse
@@ -3998,8 +4497,11 @@ public enum OBSWS {
 
     /// Sends CEA-608 caption text over the stream output.
     /// > Category: `Stream`
+    ///
     /// > Complexity: `2/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct SendStreamCaption: OBSRequest {
       public typealias Response = EmptyResponse
@@ -4016,8 +4518,11 @@ public enum OBSWS {
     /// 
     /// Similar to `GetInputKindList`
     /// > Category: `Transitions`
+    ///
     /// > Complexity: `2/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct GetTransitionKindList: OBSRequest {
       public init() {
@@ -4031,8 +4536,11 @@ public enum OBSWS {
 
     /// Gets an array of all scene transitions in OBS.
     /// > Category: `Transitions`
+    ///
     /// > Complexity: `3/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct GetSceneTransitionList: OBSRequest {
       public init() {
@@ -4055,8 +4563,11 @@ public enum OBSWS {
 
     /// Gets information about the current scene transition.
     /// > Category: `Transitions`
+    ///
     /// > Complexity: `2/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct GetCurrentSceneTransition: OBSRequest {
       public init() {
@@ -4090,8 +4601,11 @@ public enum OBSWS {
     /// 
     /// Small note: While the namespace of scene transitions is generally unique, that uniqueness is not a guarantee as it is with other resources like inputs.
     /// > Category: `Transitions`
+    ///
     /// > Complexity: `2/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct SetCurrentSceneTransition: OBSRequest {
       public typealias Response = EmptyResponse
@@ -4106,8 +4620,11 @@ public enum OBSWS {
 
     /// Sets the duration of the current scene transition, if it is not fixed.
     /// > Category: `Transitions`
+    ///
     /// > Complexity: `2/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct SetCurrentSceneTransitionDuration: OBSRequest {
       public typealias Response = EmptyResponse
@@ -4123,8 +4640,11 @@ public enum OBSWS {
 
     /// Sets the settings of the current scene transition.
     /// > Category: `Transitions`
+    ///
     /// > Complexity: `3/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct SetCurrentSceneTransitionSettings: OBSRequest {
       public typealias Response = EmptyResponse
@@ -4146,8 +4666,11 @@ public enum OBSWS {
     /// 
     /// > Note: `transitionCursor` will return 1.0 when the transition is inactive.
     /// > Category: `Transitions`
+    ///
     /// > Complexity: `2/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct GetCurrentSceneTransitionCursor: OBSRequest {
       public init() {
@@ -4161,8 +4684,11 @@ public enum OBSWS {
 
     /// Triggers the current scene transition. Same functionality as the `Transition` button in studio mode.
     /// > Category: `Transitions`
+    ///
     /// > Complexity: `1/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct TriggerStudioModeTransition: OBSRequest {
       public typealias Response = EmptyResponse
@@ -4175,8 +4701,11 @@ public enum OBSWS {
     /// 
     /// > Important: This will be deprecated and replaced in a future version of obs-websocket.
     /// > Category: `Transitions`
+    ///
     /// > Complexity: `3/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct SetTBarPosition: OBSRequest {
       public typealias Response = EmptyResponse
@@ -4197,8 +4726,11 @@ public enum OBSWS {
 
     /// Gets whether studio is enabled.
     /// > Category: `UI`
+    ///
     /// > Complexity: `1/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct GetStudioModeEnabled: OBSRequest {
       public init() {
@@ -4212,8 +4744,11 @@ public enum OBSWS {
 
     /// Enables or disables studio mode
     /// > Category: `UI`
+    ///
     /// > Complexity: `1/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct SetStudioModeEnabled: OBSRequest {
       public typealias Response = EmptyResponse
@@ -4228,8 +4763,11 @@ public enum OBSWS {
 
     /// Opens the properties dialog of an input.
     /// > Category: `UI`
+    ///
     /// > Complexity: `1/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct OpenInputPropertiesDialog: OBSRequest {
       public typealias Response = EmptyResponse
@@ -4250,8 +4788,11 @@ public enum OBSWS {
 
     /// Opens the filters dialog of an input.
     /// > Category: `UI`
+    ///
     /// > Complexity: `1/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct OpenInputFiltersDialog: OBSRequest {
       public typealias Response = EmptyResponse
@@ -4272,8 +4813,11 @@ public enum OBSWS {
 
     /// Opens the interact dialog of an input.
     /// > Category: `UI`
+    ///
     /// > Complexity: `1/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct OpenInputInteractDialog: OBSRequest {
       public typealias Response = EmptyResponse
@@ -4294,8 +4838,11 @@ public enum OBSWS {
 
     /// Gets a list of connected monitors and information about them.
     /// > Category: `UI`
+    ///
     /// > Complexity: `2/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct GetMonitorList: OBSRequest {
       public init() {
@@ -4317,8 +4864,11 @@ public enum OBSWS {
     /// 
     /// > Note: This request serves to provide feature parity with 4.x. It is very likely to be changed/deprecated in a future release.
     /// > Category: `UI`
+    ///
     /// > Complexity: `3/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct OpenVideoMixProjector: OBSRequest {
       public typealias Response = EmptyResponse
@@ -4345,8 +4895,11 @@ public enum OBSWS {
     /// 
     /// > Note: This request serves to provide feature parity with 4.x. It is very likely to be changed/deprecated in a future release.
     /// > Category: `UI`
+    ///
     /// > Complexity: `3/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct OpenSourceProjector: OBSRequest {
       public typealias Response = EmptyResponse
@@ -4384,9 +4937,13 @@ public enum OBSWS {
   public enum Events {
     /// A new canvas has been created.
     /// > Event Subscription: ``OBSWS/Enums/EventSubscription/canvases``
+    ///
     /// > Category: `Canvases`
+    ///
     /// > Complexity: `2/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.7.0
     public struct CanvasCreated: OBSEvent {
       /// Name of the new canvas
@@ -4403,9 +4960,13 @@ public enum OBSWS {
 
     /// A canvas has been removed.
     /// > Event Subscription: ``OBSWS/Enums/EventSubscription/canvases``
+    ///
     /// > Category: `Canvases`
+    ///
     /// > Complexity: `2/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.7.0
     public struct CanvasRemoved: OBSEvent {
       /// Name of the removed canvas
@@ -4422,9 +4983,13 @@ public enum OBSWS {
 
     /// The name of a canvas has changed.
     /// > Event Subscription: ``OBSWS/Enums/EventSubscription/canvases``
+    ///
     /// > Category: `Canvases`
+    ///
     /// > Complexity: `2/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.7.0
     public struct CanvasNameChanged: OBSEvent {
       /// UUID of the canvas
@@ -4448,9 +5013,13 @@ public enum OBSWS {
     /// > Note: We recommend using this event to trigger a pause of all polling requests, as performing any requests during a
     /// scene collection change is considered undefined behavior and can cause crashes!
     /// > Event Subscription: ``OBSWS/Enums/EventSubscription/config``
+    ///
     /// > Category: `Config`
+    ///
     /// > Complexity: `1/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct CurrentSceneCollectionChanging: OBSEvent {
       /// Name of the current scene collection
@@ -4465,9 +5034,13 @@ public enum OBSWS {
     /// 
     /// > Note: If polling has been paused during `CurrentSceneCollectionChanging`, this is the que to restart polling.
     /// > Event Subscription: ``OBSWS/Enums/EventSubscription/config``
+    ///
     /// > Category: `Config`
+    ///
     /// > Complexity: `1/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct CurrentSceneCollectionChanged: OBSEvent {
       /// Name of the new scene collection
@@ -4480,9 +5053,13 @@ public enum OBSWS {
 
     /// The scene collection list has changed.
     /// > Event Subscription: ``OBSWS/Enums/EventSubscription/config``
+    ///
     /// > Category: `Config`
+    ///
     /// > Complexity: `1/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct SceneCollectionListChanged: OBSEvent {
       /// Updated list of scene collections
@@ -4495,9 +5072,13 @@ public enum OBSWS {
 
     /// The current profile has begun changing.
     /// > Event Subscription: ``OBSWS/Enums/EventSubscription/config``
+    ///
     /// > Category: `Config`
+    ///
     /// > Complexity: `1/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct CurrentProfileChanging: OBSEvent {
       /// Name of the current profile
@@ -4510,9 +5091,13 @@ public enum OBSWS {
 
     /// The current profile has changed.
     /// > Event Subscription: ``OBSWS/Enums/EventSubscription/config``
+    ///
     /// > Category: `Config`
+    ///
     /// > Complexity: `1/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct CurrentProfileChanged: OBSEvent {
       /// Name of the new profile
@@ -4525,9 +5110,13 @@ public enum OBSWS {
 
     /// The profile list has changed.
     /// > Event Subscription: ``OBSWS/Enums/EventSubscription/config``
+    ///
     /// > Category: `Config`
+    ///
     /// > Complexity: `1/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct ProfileListChanged: OBSEvent {
       /// Updated list of profiles
@@ -4540,9 +5129,13 @@ public enum OBSWS {
 
     /// A source's filter list has been reindexed.
     /// > Event Subscription: ``OBSWS/Enums/EventSubscription/filters``
+    ///
     /// > Category: `Filters`
+    ///
     /// > Complexity: `3/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct SourceFilterListReindexed: OBSEvent {
       /// Name of the source
@@ -4559,9 +5152,13 @@ public enum OBSWS {
 
     /// A filter has been added to a source.
     /// > Event Subscription: ``OBSWS/Enums/EventSubscription/filters``
+    ///
     /// > Category: `Filters`
+    ///
     /// > Complexity: `2/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct SourceFilterCreated: OBSEvent {
       /// Name of the source the filter was added to
@@ -4594,9 +5191,13 @@ public enum OBSWS {
 
     /// A filter has been removed from a source.
     /// > Event Subscription: ``OBSWS/Enums/EventSubscription/filters``
+    ///
     /// > Category: `Filters`
+    ///
     /// > Complexity: `2/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct SourceFilterRemoved: OBSEvent {
       /// Name of the source the filter was on
@@ -4613,9 +5214,13 @@ public enum OBSWS {
 
     /// The name of a source filter has changed.
     /// > Event Subscription: ``OBSWS/Enums/EventSubscription/filters``
+    ///
     /// > Category: `Filters`
+    ///
     /// > Complexity: `2/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct SourceFilterNameChanged: OBSEvent {
       /// The source the filter is on
@@ -4636,9 +5241,13 @@ public enum OBSWS {
 
     /// An source filter's settings have changed (been updated).
     /// > Event Subscription: ``OBSWS/Enums/EventSubscription/filters``
+    ///
     /// > Category: `Filters`
+    ///
     /// > Complexity: `3/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.4.0
     public struct SourceFilterSettingsChanged: OBSEvent {
       /// Name of the source the filter is on
@@ -4659,9 +5268,13 @@ public enum OBSWS {
 
     /// A source filter's enable state has changed.
     /// > Event Subscription: ``OBSWS/Enums/EventSubscription/filters``
+    ///
     /// > Category: `Filters`
+    ///
     /// > Complexity: `3/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct SourceFilterEnableStateChanged: OBSEvent {
       /// Name of the source the filter is on
@@ -4682,9 +5295,13 @@ public enum OBSWS {
 
     /// OBS has begun the shutdown process.
     /// > Event Subscription: ``OBSWS/Enums/EventSubscription/general``
+    ///
     /// > Category: `General`
+    ///
     /// > Complexity: `1/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct ExitStarted: OBSEvent {
       public init() {
@@ -4693,9 +5310,13 @@ public enum OBSWS {
 
     /// An input has been created.
     /// > Event Subscription: ``OBSWS/Enums/EventSubscription/inputs``
+    ///
     /// > Category: `Inputs`
+    ///
     /// > Complexity: `2/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct InputCreated: OBSEvent {
       /// Name of the input
@@ -4732,9 +5353,13 @@ public enum OBSWS {
 
     /// An input has been removed.
     /// > Event Subscription: ``OBSWS/Enums/EventSubscription/inputs``
+    ///
     /// > Category: `Inputs`
+    ///
     /// > Complexity: `2/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct InputRemoved: OBSEvent {
       /// Name of the input
@@ -4751,9 +5376,13 @@ public enum OBSWS {
 
     /// The name of an input has changed.
     /// > Event Subscription: ``OBSWS/Enums/EventSubscription/inputs``
+    ///
     /// > Category: `Inputs`
+    ///
     /// > Complexity: `2/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct InputNameChanged: OBSEvent {
       /// UUID of the input
@@ -4776,9 +5405,13 @@ public enum OBSWS {
     /// 
     /// > Note: On some inputs, changing values in the properties dialog will cause an immediate update. Pressing the "Cancel" button will revert the settings, resulting in another event being fired.
     /// > Event Subscription: ``OBSWS/Enums/EventSubscription/inputs``
+    ///
     /// > Category: `Inputs`
+    ///
     /// > Complexity: `3/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.4.0
     public struct InputSettingsChanged: OBSEvent {
       /// Name of the input
@@ -4801,9 +5434,13 @@ public enum OBSWS {
     /// 
     /// When an input is active, it means it's being shown by the program feed.
     /// > Event Subscription: ``OBSWS/Enums/EventSubscription/inputActiveStateChanged``
+    ///
     /// > Category: `Inputs`
+    ///
     /// > Complexity: `3/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct InputActiveStateChanged: OBSEvent {
       /// Name of the input
@@ -4826,9 +5463,13 @@ public enum OBSWS {
     /// 
     /// When an input is showing, it means it's being shown by the preview or a dialog.
     /// > Event Subscription: ``OBSWS/Enums/EventSubscription/inputShowStateChanged``
+    ///
     /// > Category: `Inputs`
+    ///
     /// > Complexity: `3/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct InputShowStateChanged: OBSEvent {
       /// Name of the input
@@ -4849,9 +5490,13 @@ public enum OBSWS {
 
     /// An input's mute state has changed.
     /// > Event Subscription: ``OBSWS/Enums/EventSubscription/inputs``
+    ///
     /// > Category: `Inputs`
+    ///
     /// > Complexity: `2/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct InputMuteStateChanged: OBSEvent {
       /// Name of the input
@@ -4872,9 +5517,13 @@ public enum OBSWS {
 
     /// An input's volume level has changed.
     /// > Event Subscription: ``OBSWS/Enums/EventSubscription/inputs``
+    ///
     /// > Category: `Inputs`
+    ///
     /// > Complexity: `3/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct InputVolumeChanged: OBSEvent {
       /// Name of the input
@@ -4899,9 +5548,13 @@ public enum OBSWS {
 
     /// The audio balance value of an input has changed.
     /// > Event Subscription: ``OBSWS/Enums/EventSubscription/inputs``
+    ///
     /// > Category: `Inputs`
+    ///
     /// > Complexity: `2/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct InputAudioBalanceChanged: OBSEvent {
       /// Name of the input
@@ -4922,9 +5575,13 @@ public enum OBSWS {
 
     /// The sync offset of an input has changed.
     /// > Event Subscription: ``OBSWS/Enums/EventSubscription/inputs``
+    ///
     /// > Category: `Inputs`
+    ///
     /// > Complexity: `3/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct InputAudioSyncOffsetChanged: OBSEvent {
       /// Name of the input
@@ -4945,9 +5602,13 @@ public enum OBSWS {
 
     /// The audio tracks of an input have changed.
     /// > Event Subscription: ``OBSWS/Enums/EventSubscription/inputs``
+    ///
     /// > Category: `Inputs`
+    ///
     /// > Complexity: `3/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct InputAudioTracksChanged: OBSEvent {
       /// Name of the input
@@ -4974,9 +5635,13 @@ public enum OBSWS {
     /// - `OBS_MONITORING_TYPE_MONITOR_ONLY`
     /// - `OBS_MONITORING_TYPE_MONITOR_AND_OUTPUT`
     /// > Event Subscription: ``OBSWS/Enums/EventSubscription/inputs``
+    ///
     /// > Category: `Inputs`
+    ///
     /// > Complexity: `2/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct InputAudioMonitorTypeChanged: OBSEvent {
       /// Name of the input
@@ -4997,9 +5662,13 @@ public enum OBSWS {
 
     /// A high-volume event providing volume levels of all active inputs every 50 milliseconds.
     /// > Event Subscription: ``OBSWS/Enums/EventSubscription/inputVolumeMeters``
+    ///
     /// > Category: `Inputs`
+    ///
     /// > Complexity: `4/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct InputVolumeMeters: OBSEvent {
       /// Array of active inputs with their associated volume levels
@@ -5012,9 +5681,13 @@ public enum OBSWS {
 
     /// A media input has started playing.
     /// > Event Subscription: ``OBSWS/Enums/EventSubscription/mediaInputs``
+    ///
     /// > Category: `Media Inputs`
+    ///
     /// > Complexity: `2/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct MediaInputPlaybackStarted: OBSEvent {
       /// Name of the input
@@ -5031,9 +5704,13 @@ public enum OBSWS {
 
     /// A media input has finished playing.
     /// > Event Subscription: ``OBSWS/Enums/EventSubscription/mediaInputs``
+    ///
     /// > Category: `Media Inputs`
+    ///
     /// > Complexity: `2/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct MediaInputPlaybackEnded: OBSEvent {
       /// Name of the input
@@ -5050,9 +5727,13 @@ public enum OBSWS {
 
     /// An action has been performed on an input.
     /// > Event Subscription: ``OBSWS/Enums/EventSubscription/mediaInputs``
+    ///
     /// > Category: `Media Inputs`
+    ///
     /// > Complexity: `2/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct MediaInputActionTriggered: OBSEvent {
       /// Name of the input
@@ -5073,9 +5754,13 @@ public enum OBSWS {
 
     /// The state of the stream output has changed.
     /// > Event Subscription: ``OBSWS/Enums/EventSubscription/outputs``
+    ///
     /// > Category: `Outputs`
+    ///
     /// > Complexity: `2/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct StreamStateChanged: OBSEvent {
       /// Whether the output is active
@@ -5092,9 +5777,13 @@ public enum OBSWS {
 
     /// The state of the record output has changed.
     /// > Event Subscription: ``OBSWS/Enums/EventSubscription/outputs``
+    ///
     /// > Category: `Outputs`
+    ///
     /// > Complexity: `2/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct RecordStateChanged: OBSEvent {
       /// Whether the output is active
@@ -5115,9 +5804,13 @@ public enum OBSWS {
 
     /// The record output has started writing to a new file. For example, when a file split happens.
     /// > Event Subscription: ``OBSWS/Enums/EventSubscription/outputs``
+    ///
     /// > Category: `Outputs`
+    ///
     /// > Complexity: `2/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.5.0
     public struct RecordFileChanged: OBSEvent {
       /// File name that the output has begun writing to
@@ -5130,9 +5823,13 @@ public enum OBSWS {
 
     /// The state of the replay buffer output has changed.
     /// > Event Subscription: ``OBSWS/Enums/EventSubscription/outputs``
+    ///
     /// > Category: `Outputs`
+    ///
     /// > Complexity: `2/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct ReplayBufferStateChanged: OBSEvent {
       /// Whether the output is active
@@ -5149,9 +5846,13 @@ public enum OBSWS {
 
     /// The state of the virtualcam output has changed.
     /// > Event Subscription: ``OBSWS/Enums/EventSubscription/outputs``
+    ///
     /// > Category: `Outputs`
+    ///
     /// > Complexity: `2/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct VirtualcamStateChanged: OBSEvent {
       /// Whether the output is active
@@ -5168,9 +5869,13 @@ public enum OBSWS {
 
     /// The replay buffer has been saved.
     /// > Event Subscription: ``OBSWS/Enums/EventSubscription/outputs``
+    ///
     /// > Category: `Outputs`
+    ///
     /// > Complexity: `2/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct ReplayBufferSaved: OBSEvent {
       /// Path of the saved replay file
@@ -5183,9 +5888,13 @@ public enum OBSWS {
 
     /// A scene item has been created.
     /// > Event Subscription: ``OBSWS/Enums/EventSubscription/sceneItems``
+    ///
     /// > Category: `Scene Items`
+    ///
     /// > Complexity: `3/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct SceneItemCreated: OBSEvent {
       /// Name of the scene the item was added to
@@ -5220,9 +5929,13 @@ public enum OBSWS {
     /// 
     /// This event is not emitted when the scene the item is in is removed.
     /// > Event Subscription: ``OBSWS/Enums/EventSubscription/sceneItems``
+    ///
     /// > Category: `Scene Items`
+    ///
     /// > Complexity: `3/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct SceneItemRemoved: OBSEvent {
       /// Name of the scene the item was removed from
@@ -5251,9 +5964,13 @@ public enum OBSWS {
 
     /// A scene's item list has been reindexed.
     /// > Event Subscription: ``OBSWS/Enums/EventSubscription/sceneItems``
+    ///
     /// > Category: `Scene Items`
+    ///
     /// > Complexity: `3/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct SceneItemListReindexed: OBSEvent {
       /// Name of the scene
@@ -5274,9 +5991,13 @@ public enum OBSWS {
 
     /// A scene item's enable state has changed.
     /// > Event Subscription: ``OBSWS/Enums/EventSubscription/sceneItems``
+    ///
     /// > Category: `Scene Items`
+    ///
     /// > Complexity: `3/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct SceneItemEnableStateChanged: OBSEvent {
       /// Name of the scene the item is in
@@ -5301,9 +6022,13 @@ public enum OBSWS {
 
     /// A scene item's lock state has changed.
     /// > Event Subscription: ``OBSWS/Enums/EventSubscription/sceneItems``
+    ///
     /// > Category: `Scene Items`
+    ///
     /// > Complexity: `3/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct SceneItemLockStateChanged: OBSEvent {
       /// Name of the scene the item is in
@@ -5328,9 +6053,13 @@ public enum OBSWS {
 
     /// A scene item has been selected in the Ui.
     /// > Event Subscription: ``OBSWS/Enums/EventSubscription/sceneItems``
+    ///
     /// > Category: `Scene Items`
+    ///
     /// > Complexity: `2/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct SceneItemSelected: OBSEvent {
       /// Name of the scene the item is in
@@ -5351,9 +6080,13 @@ public enum OBSWS {
 
     /// The transform/crop of a scene item has changed.
     /// > Event Subscription: ``OBSWS/Enums/EventSubscription/sceneItemTransformChanged``
+    ///
     /// > Category: `Scene Items`
+    ///
     /// > Complexity: `4/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct SceneItemTransformChanged: OBSEvent {
       /// The name of the scene the item is in
@@ -5378,9 +6111,13 @@ public enum OBSWS {
 
     /// A new scene has been created.
     /// > Event Subscription: ``OBSWS/Enums/EventSubscription/scenes``
+    ///
     /// > Category: `Scenes`
+    ///
     /// > Complexity: `2/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct SceneCreated: OBSEvent {
       /// Name of the new scene
@@ -5401,9 +6138,13 @@ public enum OBSWS {
 
     /// A scene has been removed.
     /// > Event Subscription: ``OBSWS/Enums/EventSubscription/scenes``
+    ///
     /// > Category: `Scenes`
+    ///
     /// > Complexity: `2/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct SceneRemoved: OBSEvent {
       /// Name of the removed scene
@@ -5424,9 +6165,13 @@ public enum OBSWS {
 
     /// The name of a scene has changed.
     /// > Event Subscription: ``OBSWS/Enums/EventSubscription/scenes``
+    ///
     /// > Category: `Scenes`
+    ///
     /// > Complexity: `2/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct SceneNameChanged: OBSEvent {
       /// UUID of the scene
@@ -5447,9 +6192,13 @@ public enum OBSWS {
 
     /// The current program scene has changed.
     /// > Event Subscription: ``OBSWS/Enums/EventSubscription/scenes``
+    ///
     /// > Category: `Scenes`
+    ///
     /// > Complexity: `1/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct CurrentProgramSceneChanged: OBSEvent {
       /// Name of the scene that was switched to
@@ -5466,9 +6215,13 @@ public enum OBSWS {
 
     /// The current preview scene has changed.
     /// > Event Subscription: ``OBSWS/Enums/EventSubscription/scenes``
+    ///
     /// > Category: `Scenes`
+    ///
     /// > Complexity: `1/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct CurrentPreviewSceneChanged: OBSEvent {
       /// Name of the scene that was switched to
@@ -5487,9 +6240,13 @@ public enum OBSWS {
     /// 
     /// > TODO: Make OBS fire this event when scenes are reordered.
     /// > Event Subscription: ``OBSWS/Enums/EventSubscription/scenes``
+    ///
     /// > Category: `Scenes`
+    ///
     /// > Complexity: `2/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct SceneListChanged: OBSEvent {
       /// Updated array of scenes
@@ -5502,9 +6259,13 @@ public enum OBSWS {
 
     /// The current scene transition has changed.
     /// > Event Subscription: ``OBSWS/Enums/EventSubscription/transitions``
+    ///
     /// > Category: `Transitions`
+    ///
     /// > Complexity: `2/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct CurrentSceneTransitionChanged: OBSEvent {
       /// Name of the new transition
@@ -5521,9 +6282,13 @@ public enum OBSWS {
 
     /// The current scene transition duration has changed.
     /// > Event Subscription: ``OBSWS/Enums/EventSubscription/transitions``
+    ///
     /// > Category: `Transitions`
+    ///
     /// > Complexity: `2/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct CurrentSceneTransitionDurationChanged: OBSEvent {
       /// Transition duration in milliseconds
@@ -5536,9 +6301,13 @@ public enum OBSWS {
 
     /// A scene transition has started.
     /// > Event Subscription: ``OBSWS/Enums/EventSubscription/transitions``
+    ///
     /// > Category: `Transitions`
+    ///
     /// > Complexity: `2/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct SceneTransitionStarted: OBSEvent {
       /// Scene transition name
@@ -5557,9 +6326,13 @@ public enum OBSWS {
     /// 
     /// > Note: Does not appear to trigger when the transition is interrupted by the user.
     /// > Event Subscription: ``OBSWS/Enums/EventSubscription/transitions``
+    ///
     /// > Category: `Transitions`
+    ///
     /// > Complexity: `2/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct SceneTransitionEnded: OBSEvent {
       /// Scene transition name
@@ -5581,9 +6354,13 @@ public enum OBSWS {
     /// 
     /// > Note: Appears to be called by every transition, regardless of relevance.
     /// > Event Subscription: ``OBSWS/Enums/EventSubscription/transitions``
+    ///
     /// > Category: `Transitions`
+    ///
     /// > Complexity: `2/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct SceneTransitionVideoEnded: OBSEvent {
       /// Scene transition name
@@ -5600,9 +6377,13 @@ public enum OBSWS {
 
     /// Studio mode has been enabled or disabled.
     /// > Event Subscription: ``OBSWS/Enums/EventSubscription/ui``
+    ///
     /// > Category: `UI`
+    ///
     /// > Complexity: `1/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct StudioModeStateChanged: OBSEvent {
       /// True == Enabled, False == Disabled
@@ -5619,9 +6400,13 @@ public enum OBSWS {
     /// Applications using `Get/SaveSourceScreenshot` should implement a `CustomEvent` if this kind of inter-client
     /// communication is desired.
     /// > Event Subscription: ``OBSWS/Enums/EventSubscription/ui``
+    ///
     /// > Category: `UI`
+    ///
     /// > Complexity: `2/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.1.0
     public struct ScreenshotSaved: OBSEvent {
       /// Path of the saved image file
@@ -5637,9 +6422,13 @@ public enum OBSWS {
     /// A vendor is a unique name registered by a third-party plugin or script, which allows for custom requests and events to be added to obs-websocket.
     /// If a plugin or script implements vendor requests or events, documentation is expected to be provided with them.
     /// > Event Subscription: ``OBSWS/Enums/EventSubscription/vendors``
+    ///
     /// > Category: `General`
+    ///
     /// > Complexity: `3/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct VendorEvent: OBSEvent {
       /// Name of the vendor emitting the event
@@ -5660,9 +6449,13 @@ public enum OBSWS {
 
     /// Custom event emitted by `BroadcastCustomEvent`.
     /// > Event Subscription: ``OBSWS/Enums/EventSubscription/general``
+    ///
     /// > Category: `General`
+    ///
     /// > Complexity: `1/5`
+    ///
     /// > Version: Latest Supported RPC Version - `1`
+    ///
     /// > Since: Added in v5.0.0
     public struct CustomEvent: OBSEvent {
       /// Custom event data
