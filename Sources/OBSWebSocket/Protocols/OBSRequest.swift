@@ -11,6 +11,9 @@ import Foundation
 public protocol OBSRequest: Sendable, Hashable, Codable {
     /// The expected type of Response.
     associatedtype Response: OBSRequestResponse
+    
+    /// Enum representation of its own ``OBSRequest`` type.
+    static var requestType: OBSWS.Requests.AllTypes { get }
 }
 /// All types of ``OBSRequest/Response``s conform to this.
 public protocol OBSRequestResponse: Sendable, Hashable, Codable {}
