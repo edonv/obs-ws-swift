@@ -95,6 +95,27 @@ extension OBSWSProtocol: Generatable {
                 try EnumCaseDeclSyntax("case \(raw: reqDef.requestType)")
                     .appending(.newline, to: \.trailingTrivia)
             }
+            
+            let functionParamList = FunctionParameterListSyntax {
+                FunctionParameterSyntax("ofType type: AllTypes, ")
+                FunctionParameterSyntax("from requestData: JSONValue")
+            }
+            
+            try FunctionDeclSyntax("static func request(\(functionParamList)) throws -> (any OBSRequest)?") {
+                try SwitchExprSyntax("switch type") {
+                    for reqDef in self.requests {
+                        SwitchCaseSyntax("case .\(raw: reqDef.requestType):") {
+                            CodeBlockItemSyntax("return try requestData.toCodable(OBSWS.Requests.\(raw: reqDef.requestType).self)")
+                                .with(\.leadingTrivia, .newline)
+                        }
+                        .with(\.leadingTrivia, .newline)
+                    }
+                }
+                .with(\.leadingTrivia, .newline)
+                .with(\.trailingTrivia, .newline)
+            }
+            .with(\.leadingTrivia, .newline)
+            .with(\.trailingTrivia, .newline)
         }
         .with(\.leadingTrivia, .newline)
         .with(\.trailingTrivia, .newline)
@@ -106,6 +127,27 @@ extension OBSWSProtocol: Generatable {
                 try EnumCaseDeclSyntax("case \(raw: eventDef.eventType)")
                     .appending(.newline, to: \.trailingTrivia)
             }
+            
+            let functionParamList = FunctionParameterListSyntax {
+                FunctionParameterSyntax("ofType type: AllTypes, ")
+                FunctionParameterSyntax("from eventData: JSONValue")
+            }
+            
+            try FunctionDeclSyntax("static func event(\(functionParamList)) throws -> (any OBSEvent)?") {
+                try SwitchExprSyntax("switch type") {
+                    for eventDef in self.events {
+                        SwitchCaseSyntax("case .\(raw: eventDef.eventType):") {
+                            CodeBlockItemSyntax("return try eventData.toCodable(OBSWS.Events.\(raw: eventDef.eventType).self)")
+                                .with(\.leadingTrivia, .newline)
+                        }
+                        .with(\.leadingTrivia, .newline)
+                    }
+                }
+                .with(\.leadingTrivia, .newline)
+                .with(\.trailingTrivia, .newline)
+            }
+            .with(\.leadingTrivia, .newline)
+            .with(\.trailingTrivia, .newline)
         }
         .with(\.leadingTrivia, .newline)
         .with(\.trailingTrivia, .newline)
