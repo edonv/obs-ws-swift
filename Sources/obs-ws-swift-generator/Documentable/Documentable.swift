@@ -86,7 +86,7 @@ struct Documentation {
         return Trivia(pieces: (
             descPieces + [
                 // /// > Event Subscription: ``OBSWS/Enums/EventSubscription/general``
-                self.category
+                self.eventSubscription
                     .map { .docLineComment("/// > Event Subscription: ``OBSWS/Enums/EventSubscription/\(camelize($0))``") },
                 // /// > Category: ``General``
                 self.category
