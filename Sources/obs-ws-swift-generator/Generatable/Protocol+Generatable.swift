@@ -37,8 +37,10 @@ extension OBSWSProtocol: Generatable {
     
     func generate() throws -> SourceFileSyntax {
         try SourceFileSyntax(leadingTrivia: sourceFileHeaderComment) {
-            try ImportDeclSyntax("import JSONValue")
+            try ImportDeclSyntax("import Foundation")
                 .with(\.leadingTrivia, .newline)
+                .with(\.trailingTrivia, .newline)
+            try ImportDeclSyntax("import JSONValue")
                 .with(\.trailingTrivia, .newline)
             
             try EnumDeclSyntax("public enum OBSWS") {
