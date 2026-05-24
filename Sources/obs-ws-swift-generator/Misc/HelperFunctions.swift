@@ -7,6 +7,10 @@
 
 import Foundation
 
+/// Will work on any string that either: (a) is separated by an underscore (`"_"`) or a space (`" "`),
+/// or (b) is already in PascalCase or camelCase.
+///
+/// > Important: Will NOT work on string that are in all caps AND have no implied separator.
 func camelize(_ string: String) -> String {
     guard !string.isEmpty else { return "" }
     var tempStr = string
