@@ -47,7 +47,7 @@ extension OBSWSProtocol.Request: Generatable {
             
             // Write subtypes and their properties
             for (parentFieldName, subtypeFields) in subtypes {
-                try StructDeclSyntax("public struct \(raw: parentFieldName): Hashable, Codable") {
+                try StructDeclSyntax("public struct \(raw: parentFieldName): Sendable, Hashable, Codable") {
                     for subtypeField in subtypeFields {
                         try subtypeField.generate()
                             .prepending(.newline, to: \.leadingTrivia)
