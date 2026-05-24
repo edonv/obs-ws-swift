@@ -11,20 +11,37 @@ func camelize(_ string: String) -> String {
     guard !string.isEmpty else { return "" }
     var tempStr = string
     
-    if tempStr.contains("_")
-        && tempStr.allSatisfy({ $0.isUppercase }) {
-        tempStr = tempStr
-            .split(separator: "_")
-            .map { $0.prefix(1) + $0.dropFirst().lowercased() }
-            .joined()
+    let possibleSeparators: [Character] = ["_", " "]
+    
+    // If string does not contain an allowed separator...
+    if !string.contains(where: { possibleSeparators.contains($0) }) {
+        // Add a space before each uppercase character
+        // Move backwards through indices
+        var i = tempStr.index(before: tempStr.endIndex)
+        func moveIndexBack() {
+            guard i > tempStr.startIndex else { return }
+            i = tempStr.index(before: i)
+        }
+        
+        while i > tempStr.startIndex {
+            if tempStr[i].isUppercase {
+                tempStr.insert(" ", at: i)
+                moveIndexBack()
+            }
+            
+            moveIndexBack()
+        }
     }
     
-    // Catch single words that are all caps
-    if tempStr.allSatisfy({ $0.isUppercase }) {
-        return tempStr.lowercased()
-    }
+    tempStr = tempStr
+        .split { possibleSeparators.contains($0) }
+        .enumerated().map { i, str in
+            guard i > 0 else { return str.lowercased() }
+            return str.prefix(1).uppercased() + str.dropFirst().lowercased()
+        }
+        .joined()
     
-    return tempStr.prefix(1).lowercased() + tempStr.dropFirst()
+    return tempStr
 }
 
 func pascalize(_ string: String) -> String {
