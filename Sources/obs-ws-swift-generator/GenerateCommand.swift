@@ -20,7 +20,16 @@ struct GenerateCommand: AsyncParsableCommand {
         forResource: "Resources/protocol",
         withExtension: "json"
     )!
-    private static let outputDirectory: URL = URL(fileURLWithPath: FileManager.default.currentDirectoryPath)
+    
+    @Option(
+        name: [.short, .customLong("output")],
+        completion: .file(extensions: ["swift"]),
+        transform: { path in
+            print("@Option:", path)
+            return URL(fileURLWithPath: path)
+        }
+    )
+    var outputFileURL: URL
     
     func run() async throws {
         let protocolJSONData = try Data(contentsOf: GenerateCommand.protocolJSON)
