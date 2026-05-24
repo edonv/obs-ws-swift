@@ -15,7 +15,7 @@ public protocol OBSRequest: Sendable, Hashable, Codable {
     /// The expected type of Response.
     associatedtype Response: OBSRequestResponse
 }
-/// All types of ``OBSRequest/ResponseType``s conform to this.
+/// All types of ``OBSRequest/Response``s conform to this.
 public protocol OBSRequestResponse: Sendable, Hashable, Codable {}
 
 extension OBSWS.Requests {
