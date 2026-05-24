@@ -5375,6 +5375,305 @@ public enum OBSWS {
       case GetMonitorList
       case OpenVideoMixProjector
       case OpenSourceProjector
+
+      static func request(ofType type: AllTypes, from requestData: JSONValue) throws -> (any OBSRequest)? {
+        switch type {
+        case .GetCanvasList:
+          return try requestData.toCodable(OBSWS.Requests.GetCanvasList.self)
+        case .GetPersistentData:
+          return try requestData.toCodable(OBSWS.Requests.GetPersistentData.self)
+        case .SetPersistentData:
+          return try requestData.toCodable(OBSWS.Requests.SetPersistentData.self)
+        case .GetSceneCollectionList:
+          return try requestData.toCodable(OBSWS.Requests.GetSceneCollectionList.self)
+        case .SetCurrentSceneCollection:
+          return try requestData.toCodable(OBSWS.Requests.SetCurrentSceneCollection.self)
+        case .CreateSceneCollection:
+          return try requestData.toCodable(OBSWS.Requests.CreateSceneCollection.self)
+        case .GetProfileList:
+          return try requestData.toCodable(OBSWS.Requests.GetProfileList.self)
+        case .SetCurrentProfile:
+          return try requestData.toCodable(OBSWS.Requests.SetCurrentProfile.self)
+        case .CreateProfile:
+          return try requestData.toCodable(OBSWS.Requests.CreateProfile.self)
+        case .RemoveProfile:
+          return try requestData.toCodable(OBSWS.Requests.RemoveProfile.self)
+        case .GetProfileParameter:
+          return try requestData.toCodable(OBSWS.Requests.GetProfileParameter.self)
+        case .SetProfileParameter:
+          return try requestData.toCodable(OBSWS.Requests.SetProfileParameter.self)
+        case .GetVideoSettings:
+          return try requestData.toCodable(OBSWS.Requests.GetVideoSettings.self)
+        case .SetVideoSettings:
+          return try requestData.toCodable(OBSWS.Requests.SetVideoSettings.self)
+        case .GetStreamServiceSettings:
+          return try requestData.toCodable(OBSWS.Requests.GetStreamServiceSettings.self)
+        case .SetStreamServiceSettings:
+          return try requestData.toCodable(OBSWS.Requests.SetStreamServiceSettings.self)
+        case .GetRecordDirectory:
+          return try requestData.toCodable(OBSWS.Requests.GetRecordDirectory.self)
+        case .SetRecordDirectory:
+          return try requestData.toCodable(OBSWS.Requests.SetRecordDirectory.self)
+        case .GetSourceFilterKindList:
+          return try requestData.toCodable(OBSWS.Requests.GetSourceFilterKindList.self)
+        case .GetSourceFilterList:
+          return try requestData.toCodable(OBSWS.Requests.GetSourceFilterList.self)
+        case .GetSourceFilterDefaultSettings:
+          return try requestData.toCodable(OBSWS.Requests.GetSourceFilterDefaultSettings.self)
+        case .CreateSourceFilter:
+          return try requestData.toCodable(OBSWS.Requests.CreateSourceFilter.self)
+        case .RemoveSourceFilter:
+          return try requestData.toCodable(OBSWS.Requests.RemoveSourceFilter.self)
+        case .SetSourceFilterName:
+          return try requestData.toCodable(OBSWS.Requests.SetSourceFilterName.self)
+        case .GetSourceFilter:
+          return try requestData.toCodable(OBSWS.Requests.GetSourceFilter.self)
+        case .SetSourceFilterIndex:
+          return try requestData.toCodable(OBSWS.Requests.SetSourceFilterIndex.self)
+        case .SetSourceFilterSettings:
+          return try requestData.toCodable(OBSWS.Requests.SetSourceFilterSettings.self)
+        case .SetSourceFilterEnabled:
+          return try requestData.toCodable(OBSWS.Requests.SetSourceFilterEnabled.self)
+        case .GetVersion:
+          return try requestData.toCodable(OBSWS.Requests.GetVersion.self)
+        case .GetStats:
+          return try requestData.toCodable(OBSWS.Requests.GetStats.self)
+        case .BroadcastCustomEvent:
+          return try requestData.toCodable(OBSWS.Requests.BroadcastCustomEvent.self)
+        case .CallVendorRequest:
+          return try requestData.toCodable(OBSWS.Requests.CallVendorRequest.self)
+        case .GetHotkeyList:
+          return try requestData.toCodable(OBSWS.Requests.GetHotkeyList.self)
+        case .TriggerHotkeyByName:
+          return try requestData.toCodable(OBSWS.Requests.TriggerHotkeyByName.self)
+        case .TriggerHotkeyByKeySequence:
+          return try requestData.toCodable(OBSWS.Requests.TriggerHotkeyByKeySequence.self)
+        case .Sleep:
+          return try requestData.toCodable(OBSWS.Requests.Sleep.self)
+        case .GetInputList:
+          return try requestData.toCodable(OBSWS.Requests.GetInputList.self)
+        case .GetInputKindList:
+          return try requestData.toCodable(OBSWS.Requests.GetInputKindList.self)
+        case .GetSpecialInputs:
+          return try requestData.toCodable(OBSWS.Requests.GetSpecialInputs.self)
+        case .CreateInput:
+          return try requestData.toCodable(OBSWS.Requests.CreateInput.self)
+        case .RemoveInput:
+          return try requestData.toCodable(OBSWS.Requests.RemoveInput.self)
+        case .SetInputName:
+          return try requestData.toCodable(OBSWS.Requests.SetInputName.self)
+        case .GetInputDefaultSettings:
+          return try requestData.toCodable(OBSWS.Requests.GetInputDefaultSettings.self)
+        case .GetInputSettings:
+          return try requestData.toCodable(OBSWS.Requests.GetInputSettings.self)
+        case .SetInputSettings:
+          return try requestData.toCodable(OBSWS.Requests.SetInputSettings.self)
+        case .GetInputMute:
+          return try requestData.toCodable(OBSWS.Requests.GetInputMute.self)
+        case .SetInputMute:
+          return try requestData.toCodable(OBSWS.Requests.SetInputMute.self)
+        case .ToggleInputMute:
+          return try requestData.toCodable(OBSWS.Requests.ToggleInputMute.self)
+        case .GetInputVolume:
+          return try requestData.toCodable(OBSWS.Requests.GetInputVolume.self)
+        case .SetInputVolume:
+          return try requestData.toCodable(OBSWS.Requests.SetInputVolume.self)
+        case .GetInputAudioBalance:
+          return try requestData.toCodable(OBSWS.Requests.GetInputAudioBalance.self)
+        case .SetInputAudioBalance:
+          return try requestData.toCodable(OBSWS.Requests.SetInputAudioBalance.self)
+        case .GetInputAudioSyncOffset:
+          return try requestData.toCodable(OBSWS.Requests.GetInputAudioSyncOffset.self)
+        case .SetInputAudioSyncOffset:
+          return try requestData.toCodable(OBSWS.Requests.SetInputAudioSyncOffset.self)
+        case .GetInputAudioMonitorType:
+          return try requestData.toCodable(OBSWS.Requests.GetInputAudioMonitorType.self)
+        case .SetInputAudioMonitorType:
+          return try requestData.toCodable(OBSWS.Requests.SetInputAudioMonitorType.self)
+        case .GetInputAudioTracks:
+          return try requestData.toCodable(OBSWS.Requests.GetInputAudioTracks.self)
+        case .SetInputAudioTracks:
+          return try requestData.toCodable(OBSWS.Requests.SetInputAudioTracks.self)
+        case .GetInputDeinterlaceMode:
+          return try requestData.toCodable(OBSWS.Requests.GetInputDeinterlaceMode.self)
+        case .SetInputDeinterlaceMode:
+          return try requestData.toCodable(OBSWS.Requests.SetInputDeinterlaceMode.self)
+        case .GetInputDeinterlaceFieldOrder:
+          return try requestData.toCodable(OBSWS.Requests.GetInputDeinterlaceFieldOrder.self)
+        case .SetInputDeinterlaceFieldOrder:
+          return try requestData.toCodable(OBSWS.Requests.SetInputDeinterlaceFieldOrder.self)
+        case .GetInputPropertiesListPropertyItems:
+          return try requestData.toCodable(OBSWS.Requests.GetInputPropertiesListPropertyItems.self)
+        case .PressInputPropertiesButton:
+          return try requestData.toCodable(OBSWS.Requests.PressInputPropertiesButton.self)
+        case .GetMediaInputStatus:
+          return try requestData.toCodable(OBSWS.Requests.GetMediaInputStatus.self)
+        case .SetMediaInputCursor:
+          return try requestData.toCodable(OBSWS.Requests.SetMediaInputCursor.self)
+        case .OffsetMediaInputCursor:
+          return try requestData.toCodable(OBSWS.Requests.OffsetMediaInputCursor.self)
+        case .TriggerMediaInputAction:
+          return try requestData.toCodable(OBSWS.Requests.TriggerMediaInputAction.self)
+        case .GetVirtualCamStatus:
+          return try requestData.toCodable(OBSWS.Requests.GetVirtualCamStatus.self)
+        case .ToggleVirtualCam:
+          return try requestData.toCodable(OBSWS.Requests.ToggleVirtualCam.self)
+        case .StartVirtualCam:
+          return try requestData.toCodable(OBSWS.Requests.StartVirtualCam.self)
+        case .StopVirtualCam:
+          return try requestData.toCodable(OBSWS.Requests.StopVirtualCam.self)
+        case .GetReplayBufferStatus:
+          return try requestData.toCodable(OBSWS.Requests.GetReplayBufferStatus.self)
+        case .ToggleReplayBuffer:
+          return try requestData.toCodable(OBSWS.Requests.ToggleReplayBuffer.self)
+        case .StartReplayBuffer:
+          return try requestData.toCodable(OBSWS.Requests.StartReplayBuffer.self)
+        case .StopReplayBuffer:
+          return try requestData.toCodable(OBSWS.Requests.StopReplayBuffer.self)
+        case .SaveReplayBuffer:
+          return try requestData.toCodable(OBSWS.Requests.SaveReplayBuffer.self)
+        case .GetLastReplayBufferReplay:
+          return try requestData.toCodable(OBSWS.Requests.GetLastReplayBufferReplay.self)
+        case .GetOutputList:
+          return try requestData.toCodable(OBSWS.Requests.GetOutputList.self)
+        case .GetOutputStatus:
+          return try requestData.toCodable(OBSWS.Requests.GetOutputStatus.self)
+        case .ToggleOutput:
+          return try requestData.toCodable(OBSWS.Requests.ToggleOutput.self)
+        case .StartOutput:
+          return try requestData.toCodable(OBSWS.Requests.StartOutput.self)
+        case .StopOutput:
+          return try requestData.toCodable(OBSWS.Requests.StopOutput.self)
+        case .GetOutputSettings:
+          return try requestData.toCodable(OBSWS.Requests.GetOutputSettings.self)
+        case .SetOutputSettings:
+          return try requestData.toCodable(OBSWS.Requests.SetOutputSettings.self)
+        case .GetRecordStatus:
+          return try requestData.toCodable(OBSWS.Requests.GetRecordStatus.self)
+        case .ToggleRecord:
+          return try requestData.toCodable(OBSWS.Requests.ToggleRecord.self)
+        case .StartRecord:
+          return try requestData.toCodable(OBSWS.Requests.StartRecord.self)
+        case .StopRecord:
+          return try requestData.toCodable(OBSWS.Requests.StopRecord.self)
+        case .ToggleRecordPause:
+          return try requestData.toCodable(OBSWS.Requests.ToggleRecordPause.self)
+        case .PauseRecord:
+          return try requestData.toCodable(OBSWS.Requests.PauseRecord.self)
+        case .ResumeRecord:
+          return try requestData.toCodable(OBSWS.Requests.ResumeRecord.self)
+        case .SplitRecordFile:
+          return try requestData.toCodable(OBSWS.Requests.SplitRecordFile.self)
+        case .CreateRecordChapter:
+          return try requestData.toCodable(OBSWS.Requests.CreateRecordChapter.self)
+        case .GetSceneItemList:
+          return try requestData.toCodable(OBSWS.Requests.GetSceneItemList.self)
+        case .GetGroupSceneItemList:
+          return try requestData.toCodable(OBSWS.Requests.GetGroupSceneItemList.self)
+        case .GetSceneItemId:
+          return try requestData.toCodable(OBSWS.Requests.GetSceneItemId.self)
+        case .GetSceneItemSource:
+          return try requestData.toCodable(OBSWS.Requests.GetSceneItemSource.self)
+        case .CreateSceneItem:
+          return try requestData.toCodable(OBSWS.Requests.CreateSceneItem.self)
+        case .RemoveSceneItem:
+          return try requestData.toCodable(OBSWS.Requests.RemoveSceneItem.self)
+        case .DuplicateSceneItem:
+          return try requestData.toCodable(OBSWS.Requests.DuplicateSceneItem.self)
+        case .GetSceneItemTransform:
+          return try requestData.toCodable(OBSWS.Requests.GetSceneItemTransform.self)
+        case .SetSceneItemTransform:
+          return try requestData.toCodable(OBSWS.Requests.SetSceneItemTransform.self)
+        case .GetSceneItemEnabled:
+          return try requestData.toCodable(OBSWS.Requests.GetSceneItemEnabled.self)
+        case .SetSceneItemEnabled:
+          return try requestData.toCodable(OBSWS.Requests.SetSceneItemEnabled.self)
+        case .GetSceneItemLocked:
+          return try requestData.toCodable(OBSWS.Requests.GetSceneItemLocked.self)
+        case .SetSceneItemLocked:
+          return try requestData.toCodable(OBSWS.Requests.SetSceneItemLocked.self)
+        case .GetSceneItemIndex:
+          return try requestData.toCodable(OBSWS.Requests.GetSceneItemIndex.self)
+        case .SetSceneItemIndex:
+          return try requestData.toCodable(OBSWS.Requests.SetSceneItemIndex.self)
+        case .GetSceneItemBlendMode:
+          return try requestData.toCodable(OBSWS.Requests.GetSceneItemBlendMode.self)
+        case .SetSceneItemBlendMode:
+          return try requestData.toCodable(OBSWS.Requests.SetSceneItemBlendMode.self)
+        case .GetSceneList:
+          return try requestData.toCodable(OBSWS.Requests.GetSceneList.self)
+        case .GetGroupList:
+          return try requestData.toCodable(OBSWS.Requests.GetGroupList.self)
+        case .GetCurrentProgramScene:
+          return try requestData.toCodable(OBSWS.Requests.GetCurrentProgramScene.self)
+        case .SetCurrentProgramScene:
+          return try requestData.toCodable(OBSWS.Requests.SetCurrentProgramScene.self)
+        case .GetCurrentPreviewScene:
+          return try requestData.toCodable(OBSWS.Requests.GetCurrentPreviewScene.self)
+        case .SetCurrentPreviewScene:
+          return try requestData.toCodable(OBSWS.Requests.SetCurrentPreviewScene.self)
+        case .CreateScene:
+          return try requestData.toCodable(OBSWS.Requests.CreateScene.self)
+        case .RemoveScene:
+          return try requestData.toCodable(OBSWS.Requests.RemoveScene.self)
+        case .SetSceneName:
+          return try requestData.toCodable(OBSWS.Requests.SetSceneName.self)
+        case .GetSceneSceneTransitionOverride:
+          return try requestData.toCodable(OBSWS.Requests.GetSceneSceneTransitionOverride.self)
+        case .SetSceneSceneTransitionOverride:
+          return try requestData.toCodable(OBSWS.Requests.SetSceneSceneTransitionOverride.self)
+        case .GetSourceActive:
+          return try requestData.toCodable(OBSWS.Requests.GetSourceActive.self)
+        case .GetSourceScreenshot:
+          return try requestData.toCodable(OBSWS.Requests.GetSourceScreenshot.self)
+        case .SaveSourceScreenshot:
+          return try requestData.toCodable(OBSWS.Requests.SaveSourceScreenshot.self)
+        case .GetStreamStatus:
+          return try requestData.toCodable(OBSWS.Requests.GetStreamStatus.self)
+        case .ToggleStream:
+          return try requestData.toCodable(OBSWS.Requests.ToggleStream.self)
+        case .StartStream:
+          return try requestData.toCodable(OBSWS.Requests.StartStream.self)
+        case .StopStream:
+          return try requestData.toCodable(OBSWS.Requests.StopStream.self)
+        case .SendStreamCaption:
+          return try requestData.toCodable(OBSWS.Requests.SendStreamCaption.self)
+        case .GetTransitionKindList:
+          return try requestData.toCodable(OBSWS.Requests.GetTransitionKindList.self)
+        case .GetSceneTransitionList:
+          return try requestData.toCodable(OBSWS.Requests.GetSceneTransitionList.self)
+        case .GetCurrentSceneTransition:
+          return try requestData.toCodable(OBSWS.Requests.GetCurrentSceneTransition.self)
+        case .SetCurrentSceneTransition:
+          return try requestData.toCodable(OBSWS.Requests.SetCurrentSceneTransition.self)
+        case .SetCurrentSceneTransitionDuration:
+          return try requestData.toCodable(OBSWS.Requests.SetCurrentSceneTransitionDuration.self)
+        case .SetCurrentSceneTransitionSettings:
+          return try requestData.toCodable(OBSWS.Requests.SetCurrentSceneTransitionSettings.self)
+        case .GetCurrentSceneTransitionCursor:
+          return try requestData.toCodable(OBSWS.Requests.GetCurrentSceneTransitionCursor.self)
+        case .TriggerStudioModeTransition:
+          return try requestData.toCodable(OBSWS.Requests.TriggerStudioModeTransition.self)
+        case .SetTBarPosition:
+          return try requestData.toCodable(OBSWS.Requests.SetTBarPosition.self)
+        case .GetStudioModeEnabled:
+          return try requestData.toCodable(OBSWS.Requests.GetStudioModeEnabled.self)
+        case .SetStudioModeEnabled:
+          return try requestData.toCodable(OBSWS.Requests.SetStudioModeEnabled.self)
+        case .OpenInputPropertiesDialog:
+          return try requestData.toCodable(OBSWS.Requests.OpenInputPropertiesDialog.self)
+        case .OpenInputFiltersDialog:
+          return try requestData.toCodable(OBSWS.Requests.OpenInputFiltersDialog.self)
+        case .OpenInputInteractDialog:
+          return try requestData.toCodable(OBSWS.Requests.OpenInputInteractDialog.self)
+        case .GetMonitorList:
+          return try requestData.toCodable(OBSWS.Requests.GetMonitorList.self)
+        case .OpenVideoMixProjector:
+          return try requestData.toCodable(OBSWS.Requests.OpenVideoMixProjector.self)
+        case .OpenSourceProjector:
+          return try requestData.toCodable(OBSWS.Requests.OpenSourceProjector.self)
+        }
+      }
     }
   }
 
@@ -7091,6 +7390,131 @@ public enum OBSWS {
       case ScreenshotSaved
       case VendorEvent
       case CustomEvent
+
+      static func event(ofType type: AllTypes, from eventData: JSONValue) throws -> (any OBSEvent)? {
+        switch type {
+        case .CanvasCreated:
+          return try eventData.toCodable(OBSWS.Events.CanvasCreated.self)
+        case .CanvasRemoved:
+          return try eventData.toCodable(OBSWS.Events.CanvasRemoved.self)
+        case .CanvasNameChanged:
+          return try eventData.toCodable(OBSWS.Events.CanvasNameChanged.self)
+        case .CurrentSceneCollectionChanging:
+          return try eventData.toCodable(OBSWS.Events.CurrentSceneCollectionChanging.self)
+        case .CurrentSceneCollectionChanged:
+          return try eventData.toCodable(OBSWS.Events.CurrentSceneCollectionChanged.self)
+        case .SceneCollectionListChanged:
+          return try eventData.toCodable(OBSWS.Events.SceneCollectionListChanged.self)
+        case .CurrentProfileChanging:
+          return try eventData.toCodable(OBSWS.Events.CurrentProfileChanging.self)
+        case .CurrentProfileChanged:
+          return try eventData.toCodable(OBSWS.Events.CurrentProfileChanged.self)
+        case .ProfileListChanged:
+          return try eventData.toCodable(OBSWS.Events.ProfileListChanged.self)
+        case .SourceFilterListReindexed:
+          return try eventData.toCodable(OBSWS.Events.SourceFilterListReindexed.self)
+        case .SourceFilterCreated:
+          return try eventData.toCodable(OBSWS.Events.SourceFilterCreated.self)
+        case .SourceFilterRemoved:
+          return try eventData.toCodable(OBSWS.Events.SourceFilterRemoved.self)
+        case .SourceFilterNameChanged:
+          return try eventData.toCodable(OBSWS.Events.SourceFilterNameChanged.self)
+        case .SourceFilterSettingsChanged:
+          return try eventData.toCodable(OBSWS.Events.SourceFilterSettingsChanged.self)
+        case .SourceFilterEnableStateChanged:
+          return try eventData.toCodable(OBSWS.Events.SourceFilterEnableStateChanged.self)
+        case .ExitStarted:
+          return try eventData.toCodable(OBSWS.Events.ExitStarted.self)
+        case .InputCreated:
+          return try eventData.toCodable(OBSWS.Events.InputCreated.self)
+        case .InputRemoved:
+          return try eventData.toCodable(OBSWS.Events.InputRemoved.self)
+        case .InputNameChanged:
+          return try eventData.toCodable(OBSWS.Events.InputNameChanged.self)
+        case .InputSettingsChanged:
+          return try eventData.toCodable(OBSWS.Events.InputSettingsChanged.self)
+        case .InputActiveStateChanged:
+          return try eventData.toCodable(OBSWS.Events.InputActiveStateChanged.self)
+        case .InputShowStateChanged:
+          return try eventData.toCodable(OBSWS.Events.InputShowStateChanged.self)
+        case .InputMuteStateChanged:
+          return try eventData.toCodable(OBSWS.Events.InputMuteStateChanged.self)
+        case .InputVolumeChanged:
+          return try eventData.toCodable(OBSWS.Events.InputVolumeChanged.self)
+        case .InputAudioBalanceChanged:
+          return try eventData.toCodable(OBSWS.Events.InputAudioBalanceChanged.self)
+        case .InputAudioSyncOffsetChanged:
+          return try eventData.toCodable(OBSWS.Events.InputAudioSyncOffsetChanged.self)
+        case .InputAudioTracksChanged:
+          return try eventData.toCodable(OBSWS.Events.InputAudioTracksChanged.self)
+        case .InputAudioMonitorTypeChanged:
+          return try eventData.toCodable(OBSWS.Events.InputAudioMonitorTypeChanged.self)
+        case .InputVolumeMeters:
+          return try eventData.toCodable(OBSWS.Events.InputVolumeMeters.self)
+        case .MediaInputPlaybackStarted:
+          return try eventData.toCodable(OBSWS.Events.MediaInputPlaybackStarted.self)
+        case .MediaInputPlaybackEnded:
+          return try eventData.toCodable(OBSWS.Events.MediaInputPlaybackEnded.self)
+        case .MediaInputActionTriggered:
+          return try eventData.toCodable(OBSWS.Events.MediaInputActionTriggered.self)
+        case .StreamStateChanged:
+          return try eventData.toCodable(OBSWS.Events.StreamStateChanged.self)
+        case .RecordStateChanged:
+          return try eventData.toCodable(OBSWS.Events.RecordStateChanged.self)
+        case .RecordFileChanged:
+          return try eventData.toCodable(OBSWS.Events.RecordFileChanged.self)
+        case .ReplayBufferStateChanged:
+          return try eventData.toCodable(OBSWS.Events.ReplayBufferStateChanged.self)
+        case .VirtualcamStateChanged:
+          return try eventData.toCodable(OBSWS.Events.VirtualcamStateChanged.self)
+        case .ReplayBufferSaved:
+          return try eventData.toCodable(OBSWS.Events.ReplayBufferSaved.self)
+        case .SceneItemCreated:
+          return try eventData.toCodable(OBSWS.Events.SceneItemCreated.self)
+        case .SceneItemRemoved:
+          return try eventData.toCodable(OBSWS.Events.SceneItemRemoved.self)
+        case .SceneItemListReindexed:
+          return try eventData.toCodable(OBSWS.Events.SceneItemListReindexed.self)
+        case .SceneItemEnableStateChanged:
+          return try eventData.toCodable(OBSWS.Events.SceneItemEnableStateChanged.self)
+        case .SceneItemLockStateChanged:
+          return try eventData.toCodable(OBSWS.Events.SceneItemLockStateChanged.self)
+        case .SceneItemSelected:
+          return try eventData.toCodable(OBSWS.Events.SceneItemSelected.self)
+        case .SceneItemTransformChanged:
+          return try eventData.toCodable(OBSWS.Events.SceneItemTransformChanged.self)
+        case .SceneCreated:
+          return try eventData.toCodable(OBSWS.Events.SceneCreated.self)
+        case .SceneRemoved:
+          return try eventData.toCodable(OBSWS.Events.SceneRemoved.self)
+        case .SceneNameChanged:
+          return try eventData.toCodable(OBSWS.Events.SceneNameChanged.self)
+        case .CurrentProgramSceneChanged:
+          return try eventData.toCodable(OBSWS.Events.CurrentProgramSceneChanged.self)
+        case .CurrentPreviewSceneChanged:
+          return try eventData.toCodable(OBSWS.Events.CurrentPreviewSceneChanged.self)
+        case .SceneListChanged:
+          return try eventData.toCodable(OBSWS.Events.SceneListChanged.self)
+        case .CurrentSceneTransitionChanged:
+          return try eventData.toCodable(OBSWS.Events.CurrentSceneTransitionChanged.self)
+        case .CurrentSceneTransitionDurationChanged:
+          return try eventData.toCodable(OBSWS.Events.CurrentSceneTransitionDurationChanged.self)
+        case .SceneTransitionStarted:
+          return try eventData.toCodable(OBSWS.Events.SceneTransitionStarted.self)
+        case .SceneTransitionEnded:
+          return try eventData.toCodable(OBSWS.Events.SceneTransitionEnded.self)
+        case .SceneTransitionVideoEnded:
+          return try eventData.toCodable(OBSWS.Events.SceneTransitionVideoEnded.self)
+        case .StudioModeStateChanged:
+          return try eventData.toCodable(OBSWS.Events.StudioModeStateChanged.self)
+        case .ScreenshotSaved:
+          return try eventData.toCodable(OBSWS.Events.ScreenshotSaved.self)
+        case .VendorEvent:
+          return try eventData.toCodable(OBSWS.Events.VendorEvent.self)
+        case .CustomEvent:
+          return try eventData.toCodable(OBSWS.Events.CustomEvent.self)
+        }
+      }
     }
   }
 }
