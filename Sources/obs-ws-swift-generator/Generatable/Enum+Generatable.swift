@@ -122,7 +122,9 @@ extension OBSWSProtocol.Enum.EnumIdentifier {
         #warning("TODO: confirm if i like this")
         // TODO: check out `ObsOutputState`/`OutputState`
         for substring in splitByCapitals(enumName) {
-            if let range = identifier.lowercased().range(of: substring.lowercased()) {
+            if let range = identifier.lowercased().range(of: substring.lowercased()),
+               // Don't remove word if it's the last word of the identifier
+               range.upperBound != identifier.endIndex {
                 identifier.removeSubrange(range)
                 identifier = String(identifier.drop(while: { $0 == "_" }))
             }
