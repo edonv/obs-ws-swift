@@ -41,6 +41,21 @@ let package = Package(
                 .copy("Resources")
             ]
         ),
+        // Build Plugin
+        .plugin(
+            name: "OBSWSProtocolGenerator",
+            capability: .command(
+                intent: .custom(verb: "generate", description: "Generate Swift code from protocol JSON."),
+                permissions: [
+                    .writeToPackageDirectory(
+                        reason: "To write the generated Swift files back into the source directory of the package."
+                    )
+                ]
+            ),
+            dependencies: [
+                "obs-ws-swift-generator"
+            ]
+        ),
         .testTarget(
             name: "OBSWebSocketTests",
             dependencies: ["OBSWebSocket"]
