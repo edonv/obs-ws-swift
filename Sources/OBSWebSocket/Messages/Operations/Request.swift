@@ -22,7 +22,7 @@ extension OBSOpData {
         public let id: String
         public let data: JSONValue?
         
-        enum CodingKeys: String, CodingKey {
+        private enum CodingKeys: String, CodingKey {
             case type = "requestType"
             case id = "requestId"
             case data = "requestData"
