@@ -26,10 +26,3 @@ extension OBSWS.Requests {
 /// All types of Events conform to this.
 public protocol OBSEvent: Sendable, Hashable, Codable {}
 
-public extension OBSEvent {
-    /// Self's metatype as a string.
-    static var typeName: String {
-        String(describing: self)
-            .replacingOccurrences(of: #"\(.*\)"#, with: "", options: .regularExpression)
-    }
-}
