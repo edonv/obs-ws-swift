@@ -83,32 +83,37 @@ struct Documentation {
             .split(separator: "\n", omittingEmptySubsequences: false)
             .map { .docLineComment("/// " + $0) }
         
+        let asides: [TriviaPiece] = [
+            // /// > Event Subscription: ``OBSWS/Enums/EventSubscription/general``
+            self.eventSubscription
+                .map { .docLineComment("/// > Event Subscription: ``OBSWS/Enums/EventSubscription/\(camelize($0))``") },
+            // /// > Category: ``General``
+            self.category
+                .map { .docLineComment("/// > Category: `\($0 == "ui" ? "UI" : $0.capitalized)`") },
+            // /// > Complexity: `1/5`
+            self.complexity
+                .map { .docLineComment("/// > Complexity: `\($0)/5`") },
+            // /// > Latest Supported RPC Version: `1`
+            self.rpcVersion
+                .map { .docLineComment("/// > Version: Latest Supported RPC Version - `\($0)`") },
+            // /// > Added in v5.0.0
+            self.initialVersion
+                .map { .docLineComment("/// > Since: Added in v\($0)") },
+//            // Only print "Deprecated" if deprecated? should also add `@available(deprecated)`???
+//            self.deprecated
+//                .flatMap { $0 ? .docLineComment("/// - Deprecated") : nil },
+            self.valueRestrictions
+                .map { .docLineComment("/// > Value Restrictions: `\($0)`") },
+            // /// > Added in v5.0.0
+            self.valueOptionalBehavior
+                .map { .docLineComment("/// > Optional Behavior: \($0)") },
+        ].compactMap { $0 }
+        
         return Trivia(pieces: (
-            descPieces + [
-                // /// > Event Subscription: ``OBSWS/Enums/EventSubscription/general``
-                self.eventSubscription
-                    .map { .docLineComment("/// > Event Subscription: ``OBSWS/Enums/EventSubscription/\(camelize($0))``") },
-                // /// > Category: ``General``
-                self.category
-                    .map { .docLineComment("/// > Category: `\($0 == "ui" ? "UI" : $0.capitalized)`") },
-                // /// > Complexity: `1/5`
-                self.complexity
-                    .map { .docLineComment("/// > Complexity: `\($0)/5`") },
-                // /// > Latest Supported RPC Version: `1`
-                self.rpcVersion
-                    .map { .docLineComment("/// > Version: Latest Supported RPC Version - `\($0)`") },
-                // /// > Added in v5.0.0
-                self.initialVersion
-                    .map { .docLineComment("/// > Since: Added in v\($0)") },
-//                // Only print "Deprecated" if deprecated? should also add `@available(deprecated)`???
-//                self.deprecated
-//                    .flatMap { $0 ? .docLineComment("/// - Deprecated") : nil },
-                self.valueRestrictions
-                    .map { .docLineComment("/// > Value Restrictions: `\($0)`") },
-                // /// > Added in v5.0.0
-                self.valueOptionalBehavior
-                    .map { .docLineComment("/// > Optional Behavior: \($0)") },
-            ].compactMap { $0 }
+            descPieces
+                + asides
+                // Apparently they won't render correctly without extra line between each
+                .flatMap { [$0, .docLineComment("///")] }.dropLast()
         ).flatMap { [$0, .newlines(1)] })
     }
 }
