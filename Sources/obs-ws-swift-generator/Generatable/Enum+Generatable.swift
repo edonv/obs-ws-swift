@@ -32,7 +32,7 @@ extension OBSWSProtocol.Enum: Generatable {
         if isOptionSet {
             #warning("TODO: confirm if `raw` or `literal` is the right way to interpolate a string")
             typeDef = try DeclSyntax(
-                StructDeclSyntax("public struct \(raw: enumName)") {
+                StructDeclSyntax("public struct \(raw: enumName): OptionSet, Sendable, Hashable, Codable") {
                     try VariableDeclSyntax("public let rawValue: Int")
                         .with(\.leadingTrivia, .newline)
                         .with(\.trailingTrivia, .newline)
