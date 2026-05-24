@@ -43,7 +43,7 @@ extension OBSWSProtocol.Enum: Generatable {
                     .with(\.leadingTrivia, .newline)
                     .with(\.trailingTrivia, .newline)
                     
-                    for (i, enumCase) in self.enumIdentifiers.enumerated() {
+                    for enumCase in self.enumIdentifiers {
                         if let declString = enumCase.syntaxString(forOptionSet: enumName) {
                             try VariableDeclSyntax(declString)
                                 .with(
@@ -60,7 +60,7 @@ extension OBSWSProtocol.Enum: Generatable {
             typeDef = try DeclSyntax(
                 EnumDeclSyntax("public enum \(raw: enumName): \(raw: rawValueIsString ? "String" : "Int"), Codable") {
                     try MemberBlockItemListSyntax {
-                        for (i, enumCase) in self.enumIdentifiers.enumerated() {
+                        for enumCase in self.enumIdentifiers {
                             if let declString = enumCase.syntaxString(forEnum: enumName) {
                                 try EnumCaseDeclSyntax(declString)
                                     .with(
