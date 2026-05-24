@@ -30,12 +30,34 @@ struct GenerateCommand: AsyncParsableCommand {
         }
     )
     var outputFileURL: URL
+    private var outputFilePath: String {
+        if #available(macOS 13.0, *) {
+            outputFileURL.path(percentEncoded: false)
+        } else {
+            outputFileURL.path
+        }
+    }
     
     func run() async throws {
         let protocolJSONData = try Data(contentsOf: GenerateCommand.protocolJSON)
         let obsProtocol = try! JSONDecoder().decode(OBSWSProtocol.self, from: protocolJSONData)
         
         let sourceFile = try obsProtocol.generate()
-        print(sourceFile)
+        
+        try prepDestinationFile()
+        try sourceFile.description.write(to: outputFileURL, atomically: true, encoding: .utf8)
+        
+        print("Wrote to file successfully.")
+        throw ExitCode.success
+    }
+    
+    private func prepDestinationFile() throws {
+        if !FileManager.default.fileExists(atPath: outputFilePath) {
+            let success = FileManager.default.createFile(atPath: outputFilePath, contents: nil)
+            if !success {
+                print("Failed to create file.")
+                throw ExitCode.failure
+            }
+        }
     }
 }
