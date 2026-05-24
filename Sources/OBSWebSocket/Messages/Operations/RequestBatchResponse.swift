@@ -26,7 +26,7 @@ extension OBSOpData {
         
         /// Identical to ``OBSOpData/RequestResponse``, except ``id`` is optional.
         public struct Response: Sendable, Hashable, Codable {
-            public let type: String
+            public let type: OBSWS.Requests.AllTypes
             public let id: String?
             public let status: RequestResponse.Status
             public let data: JSONValue?

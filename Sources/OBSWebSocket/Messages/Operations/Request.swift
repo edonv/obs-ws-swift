@@ -18,7 +18,7 @@ extension OBSOpData {
     public struct Request: OBSOpDataProtocol {
         public static let opCode: OBSWS.Enums.OpCode = .request
         
-        public let type: String
+        public let type: OBSWS.Requests.AllTypes
         public let id: String
         public let data: JSONValue?
         
