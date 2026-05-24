@@ -60,6 +60,15 @@ extension OBSWSProtocol: Generatable {
                             .prepending(.newline, to: \.leadingTrivia)
                             .appending(.newline, to: \.trailingTrivia)
                     }
+                    
+                    try EnumDeclSyntax("public enum AllTypes: String, CaseIterable, Sendable, Hashable, Codable") {
+                        for reqDef in self.requests {
+                            try EnumCaseDeclSyntax("case \(raw: reqDef.requestType)")
+                                .appending(.newline, to: \.trailingTrivia)
+                        }
+                    }
+                    .with(\.leadingTrivia, .newline)
+                    .with(\.trailingTrivia, .newline)
                 }
                 .with(\.leadingTrivia, .newline)
                 .with(\.trailingTrivia, .newline)
@@ -70,6 +79,15 @@ extension OBSWSProtocol: Generatable {
                             .prepending(.newline, to: \.leadingTrivia)
                             .appending(.newline, to: \.trailingTrivia)
                     }
+                    
+                    try EnumDeclSyntax("public enum AllTypes: String, CaseIterable, Sendable, Hashable, Codable") {
+                        for eventDef in self.events {
+                            try EnumCaseDeclSyntax("case \(raw: eventDef.eventType)")
+                                .appending(.newline, to: \.trailingTrivia)
+                        }
+                    }
+                    .with(\.leadingTrivia, .newline)
+                    .with(\.trailingTrivia, .newline)
                 }
                 .with(\.leadingTrivia, .newline)
                 .with(\.trailingTrivia, .newline)
