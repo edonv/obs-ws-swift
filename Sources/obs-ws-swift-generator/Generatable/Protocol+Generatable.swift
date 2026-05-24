@@ -61,14 +61,7 @@ extension OBSWSProtocol: Generatable {
                             .appending(.newline, to: \.trailingTrivia)
                     }
                     
-                    try EnumDeclSyntax("public enum AllTypes: String, CaseIterable, Sendable, Hashable, Codable") {
-                        for reqDef in self.requests {
-                            try EnumCaseDeclSyntax("case \(raw: reqDef.requestType)")
-                                .appending(.newline, to: \.trailingTrivia)
-                        }
-                    }
-                    .with(\.leadingTrivia, .newline)
-                    .with(\.trailingTrivia, .newline)
+                    try requestsAllTypesEnum()
                 }
                 .with(\.leadingTrivia, .newline)
                 .with(\.trailingTrivia, .newline)
@@ -80,14 +73,7 @@ extension OBSWSProtocol: Generatable {
                             .appending(.newline, to: \.trailingTrivia)
                     }
                     
-                    try EnumDeclSyntax("public enum AllTypes: String, CaseIterable, Sendable, Hashable, Codable") {
-                        for eventDef in self.events {
-                            try EnumCaseDeclSyntax("case \(raw: eventDef.eventType)")
-                                .appending(.newline, to: \.trailingTrivia)
-                        }
-                    }
-                    .with(\.leadingTrivia, .newline)
-                    .with(\.trailingTrivia, .newline)
+                    try eventsAllTypesEnum()
                 }
                 .with(\.leadingTrivia, .newline)
                 .with(\.trailingTrivia, .newline)
@@ -101,5 +87,27 @@ extension OBSWSProtocol: Generatable {
         }
         .formatted(using: format)
         .as(SourceFileSyntax.self)!
+    }
+    
+    private func requestsAllTypesEnum() throws -> EnumDeclSyntax {
+        try EnumDeclSyntax("public enum AllTypes: String, CaseIterable, Sendable, Hashable, Codable") {
+            for reqDef in self.requests {
+                try EnumCaseDeclSyntax("case \(raw: reqDef.requestType)")
+                    .appending(.newline, to: \.trailingTrivia)
+            }
+        }
+        .with(\.leadingTrivia, .newline)
+        .with(\.trailingTrivia, .newline)
+    }
+    
+    private func eventsAllTypesEnum() throws -> EnumDeclSyntax {
+        try EnumDeclSyntax("public enum AllTypes: String, CaseIterable, Sendable, Hashable, Codable") {
+            for eventDef in self.events {
+                try EnumCaseDeclSyntax("case \(raw: eventDef.eventType)")
+                    .appending(.newline, to: \.trailingTrivia)
+            }
+        }
+        .with(\.leadingTrivia, .newline)
+        .with(\.trailingTrivia, .newline)
     }
 }
