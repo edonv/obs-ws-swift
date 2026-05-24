@@ -154,12 +154,12 @@ public enum OBSWS {
       /// The `requestType` field is missing from the request data.
       /// > Version: Latest Supported RPC Version - `1`
       /// > Since: Added in v5.0.0
-      case missingRType = 203
+      case missingType = 203
 
       /// The request type is invalid or does not exist.
       /// > Version: Latest Supported RPC Version - `1`
       /// > Since: Added in v5.0.0
-      case unknownRType = 204
+      case unknownType = 204
 
       /// Generic error code.
       /// 
@@ -171,7 +171,7 @@ public enum OBSWS {
       /// The request batch execution type is not supported.
       /// > Version: Latest Supported RPC Version - `1`
       /// > Since: Added in v5.0.0
-      case unsupportedRBatchExecutionType = 206
+      case unsupportedBatchExecutionType = 206
 
       /// The server is not ready to handle the request.
       /// 
@@ -183,39 +183,39 @@ public enum OBSWS {
       /// A required request field is missing.
       /// > Version: Latest Supported RPC Version - `1`
       /// > Since: Added in v5.0.0
-      case missingRField = 300
+      case missingField = 300
 
       /// The request does not have a valid requestData object.
       /// > Version: Latest Supported RPC Version - `1`
       /// > Since: Added in v5.0.0
-      case missingRData = 301
+      case missingData = 301
 
       /// Generic invalid request field message.
       /// 
       /// > Note: A comment is required to be provided by obs-websocket.
       /// > Version: Latest Supported RPC Version - `1`
       /// > Since: Added in v5.0.0
-      case invalidRField = 400
+      case invalidField = 400
 
       /// A request field has the wrong data type.
       /// > Version: Latest Supported RPC Version - `1`
       /// > Since: Added in v5.0.0
-      case invalidRFieldType = 401
+      case invalidFieldType = 401
 
       /// A request field (number) is outside of the allowed range.
       /// > Version: Latest Supported RPC Version - `1`
       /// > Since: Added in v5.0.0
-      case rFieldOutOfRange = 402
+      case fieldOutOfRange = 402
 
       /// A request field (string or array) is empty and cannot be.
       /// > Version: Latest Supported RPC Version - `1`
       /// > Since: Added in v5.0.0
-      case rFieldEmpty = 403
+      case fieldEmpty = 403
 
       /// There are too many request fields (eg. a request takes two optionals, where only one is allowed at a time).
       /// > Version: Latest Supported RPC Version - `1`
       /// > Since: Added in v5.0.0
-      case tooManyRFields = 404
+      case tooManyFields = 404
 
       /// An output is running and cannot be in order to perform the request.
       /// > Version: Latest Supported RPC Version - `1`
@@ -311,7 +311,7 @@ public enum OBSWS {
       /// > Note: A comment is required to be provided by obs-websocket.
       /// > Version: Latest Supported RPC Version - `1`
       /// > Since: Added in v5.0.0
-      case rProcessingFailed = 702
+      case processingFailed = 702
 
       /// The combination of request fields cannot be used to perform an action.
       /// > Version: Latest Supported RPC Version - `1`
@@ -323,91 +323,91 @@ public enum OBSWS {
       /// Unknown state.
       /// > Version: Latest Supported RPC Version - `1`
       /// > Since: Added in v5.0.0
-      case o_UNKNOWN = "OBS_WEBSOCKET_OUTPUT_UNKNOWN"
+      case unknown = "OBS_WEBSOCKET_OUTPUT_UNKNOWN"
 
       /// The output is starting.
       /// > Version: Latest Supported RPC Version - `1`
       /// > Since: Added in v5.0.0
-      case o_STARTING = "OBS_WEBSOCKET_OUTPUT_STARTING"
+      case starting = "OBS_WEBSOCKET_OUTPUT_STARTING"
 
       /// The input has started.
       /// > Version: Latest Supported RPC Version - `1`
       /// > Since: Added in v5.0.0
-      case o_STARTED = "OBS_WEBSOCKET_OUTPUT_STARTED"
+      case started = "OBS_WEBSOCKET_OUTPUT_STARTED"
 
       /// The output is stopping.
       /// > Version: Latest Supported RPC Version - `1`
       /// > Since: Added in v5.0.0
-      case o_STOPPING = "OBS_WEBSOCKET_OUTPUT_STOPPING"
+      case stopping = "OBS_WEBSOCKET_OUTPUT_STOPPING"
 
       /// The output has stopped.
       /// > Version: Latest Supported RPC Version - `1`
       /// > Since: Added in v5.0.0
-      case o_STOPPED = "OBS_WEBSOCKET_OUTPUT_STOPPED"
+      case stopped = "OBS_WEBSOCKET_OUTPUT_STOPPED"
 
       /// The output has disconnected and is reconnecting.
       /// > Version: Latest Supported RPC Version - `1`
       /// > Since: Added in v5.0.0
-      case o_RECONNECTING = "OBS_WEBSOCKET_OUTPUT_RECONNECTING"
+      case reconnecting = "OBS_WEBSOCKET_OUTPUT_RECONNECTING"
 
       /// The output has reconnected successfully.
       /// > Version: Latest Supported RPC Version - `1`
       /// > Since: Added in v5.1.0
-      case o_RECONNECTED = "OBS_WEBSOCKET_OUTPUT_RECONNECTED"
+      case reconnected = "OBS_WEBSOCKET_OUTPUT_RECONNECTED"
 
       /// The output is now paused.
       /// > Version: Latest Supported RPC Version - `1`
       /// > Since: Added in v5.1.0
-      case o_PAUSED = "OBS_WEBSOCKET_OUTPUT_PAUSED"
+      case paused = "OBS_WEBSOCKET_OUTPUT_PAUSED"
 
       /// The output has been resumed (unpaused).
       /// > Version: Latest Supported RPC Version - `1`
       /// > Since: Added in v5.0.0
-      case o_RESUMED = "OBS_WEBSOCKET_OUTPUT_RESUMED"
+      case resumed = "OBS_WEBSOCKET_OUTPUT_RESUMED"
     }
 
     public enum MediaInputAction: String, OBSEnum {
       /// No action.
       /// > Version: Latest Supported RPC Version - `1`
       /// > Since: Added in v5.0.0
-      case m_I_A_NONE = "OBS_WEBSOCKET_MEDIA_INPUT_ACTION_NONE"
+      case none = "OBS_WEBSOCKET_MEDIA_INPUT_ACTION_NONE"
 
       /// Play the media input.
       /// > Version: Latest Supported RPC Version - `1`
       /// > Since: Added in v5.0.0
-      case m_I_A_PLAY = "OBS_WEBSOCKET_MEDIA_INPUT_ACTION_PLAY"
+      case play = "OBS_WEBSOCKET_MEDIA_INPUT_ACTION_PLAY"
 
       /// Pause the media input.
       /// > Version: Latest Supported RPC Version - `1`
       /// > Since: Added in v5.0.0
-      case m_I_A_PAUSE = "OBS_WEBSOCKET_MEDIA_INPUT_ACTION_PAUSE"
+      case pause = "OBS_WEBSOCKET_MEDIA_INPUT_ACTION_PAUSE"
 
       /// Stop the media input.
       /// > Version: Latest Supported RPC Version - `1`
       /// > Since: Added in v5.0.0
-      case m_I_A_STOP = "OBS_WEBSOCKET_MEDIA_INPUT_ACTION_STOP"
+      case stop = "OBS_WEBSOCKET_MEDIA_INPUT_ACTION_STOP"
 
       /// Restart the media input.
       /// > Version: Latest Supported RPC Version - `1`
       /// > Since: Added in v5.0.0
-      case m_I_A_RESTART = "OBS_WEBSOCKET_MEDIA_INPUT_ACTION_RESTART"
+      case restart = "OBS_WEBSOCKET_MEDIA_INPUT_ACTION_RESTART"
 
       /// Go to the next playlist item.
       /// > Version: Latest Supported RPC Version - `1`
       /// > Since: Added in v5.0.0
-      case m_I_A_NEXT = "OBS_WEBSOCKET_MEDIA_INPUT_ACTION_NEXT"
+      case next = "OBS_WEBSOCKET_MEDIA_INPUT_ACTION_NEXT"
 
       /// Go to the previous playlist item.
       /// > Version: Latest Supported RPC Version - `1`
       /// > Since: Added in v5.0.0
-      case m_I_A_PREVIOUS = "OBS_WEBSOCKET_MEDIA_INPUT_ACTION_PREVIOUS"
+      case previous = "OBS_WEBSOCKET_MEDIA_INPUT_ACTION_PREVIOUS"
     }
 
     public enum CloseCode: Int, OBSEnum {
       /// For internal use only to tell the request handler not to perform any close action.
       /// > Version: Latest Supported RPC Version - `1`
       /// > Since: Added in v5.0.0
-      case dontC = 0
+      case dontClose = 0
 
       /// Unknown reason, should never be used.
       /// > Version: Latest Supported RPC Version - `1`
@@ -417,7 +417,7 @@ public enum OBSWS {
       /// The server was unable to decode the incoming websocket message.
       /// > Version: Latest Supported RPC Version - `1`
       /// > Since: Added in v5.0.0
-      case messageDecError = 4002
+      case messageDeError = 4002
 
       /// A data field is required but missing from the payload.
       /// > Version: Latest Supported RPC Version - `1`
@@ -437,7 +437,7 @@ public enum OBSWS {
       /// The specified `op` was invalid or missing.
       /// > Version: Latest Supported RPC Version - `1`
       /// > Since: Added in v5.0.0
-      case unknownOpC = 4006
+      case unknownOpCode = 4006
 
       /// The client sent a websocket message without first sending `Identify` message.
       /// > Version: Latest Supported RPC Version - `1`
@@ -508,7 +508,7 @@ public enum OBSWS {
       /// The message sent by obs-websocket in response to a particular request from a client.
       /// > Version: Latest Supported RPC Version - `1`
       /// > Since: Added in v5.0.0
-      case requestResonse = 7
+      case requestResponse = 7
 
       /// The message sent by a client to obs-websocket to perform a batch of requests.
       /// > Version: Latest Supported RPC Version - `1`
@@ -518,13 +518,12 @@ public enum OBSWS {
       /// The message sent by obs-websocket in response to a particular batch of requests from a client.
       /// > Version: Latest Supported RPC Version - `1`
       /// > Since: Added in v5.0.0
-      case requestBatchResonse = 9
+      case requestBatchResponse = 9
     }
   }
 
   public enum Requests {
     /// Gets an array of canvases in OBS.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/canvases``
     /// > Category: `Canvases`
     /// > Complexity: `3/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -540,7 +539,6 @@ public enum OBSWS {
     }
 
     /// Gets the value of a "slot" from the selected persistent data realm.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/config``
     /// > Category: `Config`
     /// > Complexity: `2/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -564,7 +562,6 @@ public enum OBSWS {
     }
 
     /// Sets the value of a "slot" from the selected persistent data realm.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/config``
     /// > Category: `Config`
     /// > Complexity: `2/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -589,7 +586,6 @@ public enum OBSWS {
     }
 
     /// Gets an array of all scene collections
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/config``
     /// > Category: `Config`
     /// > Complexity: `1/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -610,7 +606,6 @@ public enum OBSWS {
     /// Switches to a scene collection.
     /// 
     /// > Note: This will block until the collection has finished changing.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/config``
     /// > Category: `Config`
     /// > Complexity: `1/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -629,7 +624,6 @@ public enum OBSWS {
     /// Creates a new scene collection, switching to it in the process.
     /// 
     /// > Note: This will block until the collection has finished changing.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/config``
     /// > Category: `Config`
     /// > Complexity: `1/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -646,7 +640,6 @@ public enum OBSWS {
     }
 
     /// Gets an array of all profiles
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/config``
     /// > Category: `Config`
     /// > Complexity: `1/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -665,7 +658,6 @@ public enum OBSWS {
     }
 
     /// Switches to a profile.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/config``
     /// > Category: `Config`
     /// > Complexity: `1/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -682,7 +674,6 @@ public enum OBSWS {
     }
 
     /// Creates a new profile, switching to it in the process
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/config``
     /// > Category: `Config`
     /// > Complexity: `1/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -699,7 +690,6 @@ public enum OBSWS {
     }
 
     /// Removes a profile. If the current profile is chosen, it will change to a different profile first.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/config``
     /// > Category: `Config`
     /// > Complexity: `1/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -716,7 +706,6 @@ public enum OBSWS {
     }
 
     /// Gets a parameter from the current profile's configuration.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/config``
     /// > Category: `Config`
     /// > Complexity: `4/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -743,7 +732,6 @@ public enum OBSWS {
     }
 
     /// Sets the value of a parameter in the current profile's configuration.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/config``
     /// > Category: `Config`
     /// > Complexity: `4/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -770,7 +758,6 @@ public enum OBSWS {
     /// Gets the current video settings.
     /// 
     /// > Note: To get the true FPS value, divide the FPS numerator by the FPS denominator. Example: `60000/1001`
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/config``
     /// > Category: `Config`
     /// > Complexity: `2/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -803,7 +790,6 @@ public enum OBSWS {
     /// Sets the current video settings.
     /// 
     /// > Note: Fields must be specified in pairs. For example, you cannot set only `baseWidth` without needing to specify `baseHeight`.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/config``
     /// > Category: `Config`
     /// > Complexity: `2/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -852,7 +838,6 @@ public enum OBSWS {
     }
 
     /// Gets the current stream service settings (stream destination).
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/config``
     /// > Category: `Config`
     /// > Complexity: `4/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -873,7 +858,6 @@ public enum OBSWS {
     /// Sets the current stream service settings (stream destination).
     /// 
     /// > Note: Simple RTMP settings can be set with type `rtmp_custom` and the settings fields `server` and `key`.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/config``
     /// > Category: `Config`
     /// > Complexity: `4/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -894,7 +878,6 @@ public enum OBSWS {
     }
 
     /// Gets the current directory that the record output is set to.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/config``
     /// > Category: `Config`
     /// > Complexity: `2/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -910,7 +893,6 @@ public enum OBSWS {
     }
 
     /// Sets the current directory that the record output writes files to.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/config``
     /// > Category: `Config`
     /// > Complexity: `2/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -929,7 +911,6 @@ public enum OBSWS {
     /// Gets an array of all available source filter kinds.
     /// 
     /// Similar to `GetInputKindList`
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/filters``
     /// > Category: `Filters`
     /// > Complexity: `2/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -945,7 +926,6 @@ public enum OBSWS {
     }
 
     /// Gets an array of all of a source's filters.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/filters``
     /// > Category: `Filters`
     /// > Complexity: `2/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -976,7 +956,6 @@ public enum OBSWS {
     }
 
     /// Gets the default settings for a filter kind.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/filters``
     /// > Category: `Filters`
     /// > Complexity: `3/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -996,7 +975,6 @@ public enum OBSWS {
     }
 
     /// Creates a new filter, adding it to the specified source.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/filters``
     /// > Category: `Filters`
     /// > Complexity: `3/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -1037,7 +1015,6 @@ public enum OBSWS {
     }
 
     /// Removes a filter from a source.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/filters``
     /// > Category: `Filters`
     /// > Complexity: `2/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -1069,7 +1046,6 @@ public enum OBSWS {
     }
 
     /// Sets the name of a source filter (rename).
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/filters``
     /// > Category: `Filters`
     /// > Complexity: `2/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -1105,7 +1081,6 @@ public enum OBSWS {
     }
 
     /// Gets the info for a specific source filter.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/filters``
     /// > Category: `Filters`
     /// > Complexity: `2/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -1149,7 +1124,6 @@ public enum OBSWS {
     }
 
     /// Sets the index position of a filter on a source.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/filters``
     /// > Category: `Filters`
     /// > Complexity: `3/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -1186,7 +1160,6 @@ public enum OBSWS {
     }
 
     /// Sets the settings of a source filter.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/filters``
     /// > Category: `Filters`
     /// > Complexity: `3/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -1227,7 +1200,6 @@ public enum OBSWS {
     }
 
     /// Sets the enable state of a source filter.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/filters``
     /// > Category: `Filters`
     /// > Complexity: `3/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -1263,7 +1235,6 @@ public enum OBSWS {
     }
 
     /// Gets data about the current plugin and RPC version.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/general``
     /// > Category: `General`
     /// > Complexity: `1/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -1297,7 +1268,6 @@ public enum OBSWS {
     }
 
     /// Gets statistics about OBS, obs-websocket, and the current session.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/general``
     /// > Category: `General`
     /// > Complexity: `2/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -1343,7 +1313,6 @@ public enum OBSWS {
     }
 
     /// Broadcasts a `CustomEvent` to all WebSocket clients. Receivers are clients which are identified and subscribed.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/general``
     /// > Category: `General`
     /// > Complexity: `1/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -1363,7 +1332,6 @@ public enum OBSWS {
     /// 
     /// A vendor is a unique name registered by a third-party plugin or script, which allows for custom requests and events to be added to obs-websocket.
     /// If a plugin or script implements vendor requests or events, documentation is expected to be provided with them.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/general``
     /// > Category: `General`
     /// > Complexity: `3/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -1400,7 +1368,6 @@ public enum OBSWS {
     /// Gets an array of all hotkey names in OBS.
     /// 
     /// > Note: Hotkey functionality in obs-websocket comes as-is, and we do not guarantee support if things are broken. In 9/10 usages of hotkey requests, there exists a better, more reliable method via other requests.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/general``
     /// > Category: `General`
     /// > Complexity: `4/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -1418,7 +1385,6 @@ public enum OBSWS {
     /// Triggers a hotkey using its name. See `GetHotkeyList`.
     /// 
     /// > Note: Hotkey functionality in obs-websocket comes as-is, and we do not guarantee support if things are broken. In 9/10 usages of hotkey requests, there exists a better, more reliable method via other requests.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/general``
     /// > Category: `General`
     /// > Complexity: `4/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -1442,7 +1408,6 @@ public enum OBSWS {
     /// Triggers a hotkey using a sequence of keys.
     /// 
     /// > Note: Hotkey functionality in obs-websocket comes as-is, and we do not guarantee support if things are broken. In 9/10 usages of hotkey requests, there exists a better, more reliable method via other requests.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/general``
     /// > Category: `General`
     /// > Complexity: `4/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -1483,7 +1448,6 @@ public enum OBSWS {
     }
 
     /// Sleeps for a time duration or number of frames. Only available in request batches with types `SERIAL_REALTIME` or `SERIAL_FRAME`.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/general``
     /// > Category: `General`
     /// > Complexity: `2/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -1508,7 +1472,6 @@ public enum OBSWS {
     }
 
     /// Gets an array of all inputs in OBS.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/inputs``
     /// > Category: `Inputs`
     /// > Complexity: `2/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -1529,7 +1492,6 @@ public enum OBSWS {
     }
 
     /// Gets an array of all available input kinds in OBS.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/inputs``
     /// > Category: `Inputs`
     /// > Complexity: `2/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -1550,7 +1512,6 @@ public enum OBSWS {
     }
 
     /// Gets the names of all special inputs.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/inputs``
     /// > Category: `Inputs`
     /// > Complexity: `2/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -1581,7 +1542,6 @@ public enum OBSWS {
     }
 
     /// Creates a new input, adding it as a scene item to the specified scene.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/inputs``
     /// > Category: `Inputs`
     /// > Complexity: `3/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -1635,7 +1595,6 @@ public enum OBSWS {
     /// Removes an existing input.
     /// 
     /// > Note: Will immediately remove all associated scene items.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/inputs``
     /// > Category: `Inputs`
     /// > Complexity: `2/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -1658,7 +1617,6 @@ public enum OBSWS {
     }
 
     /// Sets the name of an input (rename).
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/inputs``
     /// > Category: `Inputs`
     /// > Complexity: `2/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -1685,7 +1643,6 @@ public enum OBSWS {
     }
 
     /// Gets the default settings for an input kind.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/inputs``
     /// > Category: `Inputs`
     /// > Complexity: `3/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -1707,7 +1664,6 @@ public enum OBSWS {
     /// Gets the settings of an input.
     /// 
     /// > Note: Does not include defaults. To create the entire settings object, overlay `inputSettings` over the `defaultInputSettings` provided by `GetInputDefaultSettings`.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/inputs``
     /// > Category: `Inputs`
     /// > Complexity: `3/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -1736,7 +1692,6 @@ public enum OBSWS {
     }
 
     /// Sets the settings of an input.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/inputs``
     /// > Category: `Inputs`
     /// > Complexity: `3/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -1768,7 +1723,6 @@ public enum OBSWS {
     }
 
     /// Gets the audio mute state of an input.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/inputs``
     /// > Category: `Inputs`
     /// > Complexity: `2/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -1794,7 +1748,6 @@ public enum OBSWS {
     }
 
     /// Sets the audio mute state of an input.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/inputs``
     /// > Category: `Inputs`
     /// > Complexity: `2/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -1821,7 +1774,6 @@ public enum OBSWS {
     }
 
     /// Toggles the audio mute state of an input.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/inputs``
     /// > Category: `Inputs`
     /// > Complexity: `2/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -1847,7 +1799,6 @@ public enum OBSWS {
     }
 
     /// Gets the current volume setting of an input.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/inputs``
     /// > Category: `Inputs`
     /// > Complexity: `3/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -1876,7 +1827,6 @@ public enum OBSWS {
     }
 
     /// Sets the volume setting of an input.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/inputs``
     /// > Category: `Inputs`
     /// > Complexity: `3/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -1911,7 +1861,6 @@ public enum OBSWS {
     }
 
     /// Gets the audio balance of an input.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/inputs``
     /// > Category: `Inputs`
     /// > Complexity: `2/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -1937,7 +1886,6 @@ public enum OBSWS {
     }
 
     /// Sets the audio balance of an input.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/inputs``
     /// > Category: `Inputs`
     /// > Complexity: `2/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -1967,7 +1915,6 @@ public enum OBSWS {
     /// Gets the audio sync offset of an input.
     /// 
     /// > Note: The audio sync offset can be negative too!
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/inputs``
     /// > Category: `Inputs`
     /// > Complexity: `3/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -1993,7 +1940,6 @@ public enum OBSWS {
     }
 
     /// Sets the audio sync offset of an input.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/inputs``
     /// > Category: `Inputs`
     /// > Complexity: `3/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -2027,7 +1973,6 @@ public enum OBSWS {
     /// - `OBS_MONITORING_TYPE_NONE`
     /// - `OBS_MONITORING_TYPE_MONITOR_ONLY`
     /// - `OBS_MONITORING_TYPE_MONITOR_AND_OUTPUT`
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/inputs``
     /// > Category: `Inputs`
     /// > Complexity: `2/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -2053,7 +1998,6 @@ public enum OBSWS {
     }
 
     /// Sets the audio monitor type of an input.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/inputs``
     /// > Category: `Inputs`
     /// > Complexity: `2/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -2080,7 +2024,6 @@ public enum OBSWS {
     }
 
     /// Gets the enable state of all audio tracks of an input.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/inputs``
     /// > Category: `Inputs`
     /// > Complexity: `2/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -2106,7 +2049,6 @@ public enum OBSWS {
     }
 
     /// Sets the enable state of audio tracks of an input.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/inputs``
     /// > Category: `Inputs`
     /// > Complexity: `2/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -2147,7 +2089,6 @@ public enum OBSWS {
     /// - `OBS_DEINTERLACE_MODE_YADIF_2X`
     /// 
     /// > Note: Deinterlacing functionality is restricted to async inputs only.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/inputs``
     /// > Category: `Inputs`
     /// > Complexity: `2/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -2175,7 +2116,6 @@ public enum OBSWS {
     /// Sets the deinterlace mode of an input.
     /// 
     /// > Note: Deinterlacing functionality is restricted to async inputs only.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/inputs``
     /// > Category: `Inputs`
     /// > Complexity: `2/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -2209,7 +2149,6 @@ public enum OBSWS {
     /// - `OBS_DEINTERLACE_FIELD_ORDER_BOTTOM`
     /// 
     /// > Note: Deinterlacing functionality is restricted to async inputs only.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/inputs``
     /// > Category: `Inputs`
     /// > Complexity: `2/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -2237,7 +2176,6 @@ public enum OBSWS {
     /// Sets the deinterlace field order of an input.
     /// 
     /// > Note: Deinterlacing functionality is restricted to async inputs only.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/inputs``
     /// > Category: `Inputs`
     /// > Complexity: `2/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -2266,7 +2204,6 @@ public enum OBSWS {
     /// Gets the items of a list property from an input's properties.
     /// 
     /// > Note: Use this in cases where an input provides a dynamic, selectable list of items. For example, display capture, where it provides a list of available displays.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/inputs``
     /// > Category: `Inputs`
     /// > Complexity: `4/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -2302,7 +2239,6 @@ public enum OBSWS {
     /// - `refreshnocache` - Browser source reload button
     /// 
     /// > Note: Use this in cases where there is a button in the properties of an input that cannot be accessed in any other way. For example, browser sources, where there is a refresh button.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/inputs``
     /// > Category: `Inputs`
     /// > Complexity: `4/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -2340,7 +2276,6 @@ public enum OBSWS {
     /// - `OBS_MEDIA_STATE_STOPPED`
     /// - `OBS_MEDIA_STATE_ENDED`
     /// - `OBS_MEDIA_STATE_ERROR`
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/media inputs``
     /// > Category: `Media Inputs`
     /// > Complexity: `2/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -2374,7 +2309,6 @@ public enum OBSWS {
     /// Sets the cursor position of a media input.
     /// 
     /// This request does not perform bounds checking of the cursor position.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/media inputs``
     /// > Category: `Media Inputs`
     /// > Complexity: `2/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -2404,7 +2338,6 @@ public enum OBSWS {
     /// Offsets the current cursor position of a media input by the specified value.
     /// 
     /// This request does not perform bounds checking of the cursor position.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/media inputs``
     /// > Category: `Media Inputs`
     /// > Complexity: `2/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -2431,7 +2364,6 @@ public enum OBSWS {
     }
 
     /// Triggers an action on a media input.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/media inputs``
     /// > Category: `Media Inputs`
     /// > Complexity: `2/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -2458,7 +2390,6 @@ public enum OBSWS {
     }
 
     /// Gets the status of the virtualcam output.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/outputs``
     /// > Category: `Outputs`
     /// > Complexity: `1/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -2474,7 +2405,6 @@ public enum OBSWS {
     }
 
     /// Toggles the state of the virtualcam output.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/outputs``
     /// > Category: `Outputs`
     /// > Complexity: `1/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -2490,7 +2420,6 @@ public enum OBSWS {
     }
 
     /// Starts the virtualcam output.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/outputs``
     /// > Category: `Outputs`
     /// > Complexity: `1/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -2503,7 +2432,6 @@ public enum OBSWS {
     }
 
     /// Stops the virtualcam output.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/outputs``
     /// > Category: `Outputs`
     /// > Complexity: `1/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -2516,7 +2444,6 @@ public enum OBSWS {
     }
 
     /// Gets the status of the replay buffer output.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/outputs``
     /// > Category: `Outputs`
     /// > Complexity: `1/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -2532,7 +2459,6 @@ public enum OBSWS {
     }
 
     /// Toggles the state of the replay buffer output.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/outputs``
     /// > Category: `Outputs`
     /// > Complexity: `1/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -2548,7 +2474,6 @@ public enum OBSWS {
     }
 
     /// Starts the replay buffer output.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/outputs``
     /// > Category: `Outputs`
     /// > Complexity: `1/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -2561,7 +2486,6 @@ public enum OBSWS {
     }
 
     /// Stops the replay buffer output.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/outputs``
     /// > Category: `Outputs`
     /// > Complexity: `1/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -2574,7 +2498,6 @@ public enum OBSWS {
     }
 
     /// Saves the contents of the replay buffer output.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/outputs``
     /// > Category: `Outputs`
     /// > Complexity: `1/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -2587,7 +2510,6 @@ public enum OBSWS {
     }
 
     /// Gets the filename of the last replay buffer save file.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/outputs``
     /// > Category: `Outputs`
     /// > Complexity: `2/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -2603,7 +2525,6 @@ public enum OBSWS {
     }
 
     /// Gets the list of available outputs.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/outputs``
     /// > Category: `Outputs`
     /// > Complexity: `4/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -2619,7 +2540,6 @@ public enum OBSWS {
     }
 
     /// Gets the status of an output.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/outputs``
     /// > Category: `Outputs`
     /// > Complexity: `4/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -2660,7 +2580,6 @@ public enum OBSWS {
     }
 
     /// Toggles the status of an output.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/outputs``
     /// > Category: `Outputs`
     /// > Complexity: `4/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -2680,7 +2599,6 @@ public enum OBSWS {
     }
 
     /// Starts an output.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/outputs``
     /// > Category: `Outputs`
     /// > Complexity: `4/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -2697,7 +2615,6 @@ public enum OBSWS {
     }
 
     /// Stops an output.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/outputs``
     /// > Category: `Outputs`
     /// > Complexity: `4/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -2714,7 +2631,6 @@ public enum OBSWS {
     }
 
     /// Gets the settings of an output.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/outputs``
     /// > Category: `Outputs`
     /// > Complexity: `4/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -2734,7 +2650,6 @@ public enum OBSWS {
     }
 
     /// Sets the settings of an output.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/outputs``
     /// > Category: `Outputs`
     /// > Complexity: `4/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -2755,7 +2670,6 @@ public enum OBSWS {
     }
 
     /// Gets the status of the record output.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/record``
     /// > Category: `Record`
     /// > Complexity: `2/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -2783,7 +2697,6 @@ public enum OBSWS {
     }
 
     /// Toggles the status of the record output.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/record``
     /// > Category: `Record`
     /// > Complexity: `1/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -2799,7 +2712,6 @@ public enum OBSWS {
     }
 
     /// Starts the record output.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/record``
     /// > Category: `Record`
     /// > Complexity: `1/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -2812,7 +2724,6 @@ public enum OBSWS {
     }
 
     /// Stops the record output.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/record``
     /// > Category: `Record`
     /// > Complexity: `1/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -2828,7 +2739,6 @@ public enum OBSWS {
     }
 
     /// Toggles pause on the record output.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/record``
     /// > Category: `Record`
     /// > Complexity: `1/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -2841,7 +2751,6 @@ public enum OBSWS {
     }
 
     /// Pauses the record output.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/record``
     /// > Category: `Record`
     /// > Complexity: `1/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -2854,7 +2763,6 @@ public enum OBSWS {
     }
 
     /// Resumes the record output.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/record``
     /// > Category: `Record`
     /// > Complexity: `1/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -2867,7 +2775,6 @@ public enum OBSWS {
     }
 
     /// Splits the current file being recorded into a new file.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/record``
     /// > Category: `Record`
     /// > Complexity: `2/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -2882,7 +2789,6 @@ public enum OBSWS {
     /// Adds a new chapter marker to the file currently being recorded.
     /// 
     /// > Note: As of OBS 30.2.0, the only file format supporting this feature is Hybrid MP4.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/record``
     /// > Category: `Record`
     /// > Complexity: `2/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -2902,7 +2808,6 @@ public enum OBSWS {
     /// Gets a list of all scene items in a scene.
     /// 
     /// Scenes only
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/scene items``
     /// > Category: `Scene Items`
     /// > Complexity: `3/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -2937,7 +2842,6 @@ public enum OBSWS {
     /// Using groups at all in OBS is discouraged, as they are very broken under the hood. Please use nested scenes instead.
     /// 
     /// Groups only
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/scene items``
     /// > Category: `Scene Items`
     /// > Complexity: `3/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -2970,7 +2874,6 @@ public enum OBSWS {
     /// Searches a scene for a source, and returns its id.
     /// 
     /// Scenes and Groups
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/scene items``
     /// > Category: `Scene Items`
     /// > Complexity: `3/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -3011,7 +2914,6 @@ public enum OBSWS {
     }
 
     /// Gets the source associated with a scene item.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/scene items``
     /// > Category: `Scene Items`
     /// > Complexity: `3/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -3052,7 +2954,6 @@ public enum OBSWS {
     /// Creates a new scene item using a source.
     /// 
     /// Scenes only
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/scene items``
     /// > Category: `Scene Items`
     /// > Complexity: `3/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -3100,7 +3001,6 @@ public enum OBSWS {
     /// Removes a scene item from a scene.
     /// 
     /// Scenes only
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/scene items``
     /// > Category: `Scene Items`
     /// > Complexity: `3/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -3135,7 +3035,6 @@ public enum OBSWS {
     /// Duplicates a scene item, copying all transform and crop info.
     /// 
     /// Scenes only
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/scene items``
     /// > Category: `Scene Items`
     /// > Complexity: `3/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -3183,7 +3082,6 @@ public enum OBSWS {
     /// Gets the transform and crop info of a scene item.
     /// 
     /// Scenes and Groups
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/scene items``
     /// > Category: `Scene Items`
     /// > Complexity: `3/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -3219,7 +3117,6 @@ public enum OBSWS {
     }
 
     /// Sets the transform and crop info of a scene item.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/scene items``
     /// > Category: `Scene Items`
     /// > Complexity: `3/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -3258,7 +3155,6 @@ public enum OBSWS {
     /// Gets the enable state of a scene item.
     /// 
     /// Scenes and Groups
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/scene items``
     /// > Category: `Scene Items`
     /// > Complexity: `3/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -3296,7 +3192,6 @@ public enum OBSWS {
     /// Sets the enable state of a scene item.
     /// 
     /// Scenes and Groups
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/scene items``
     /// > Category: `Scene Items`
     /// > Complexity: `3/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -3335,7 +3230,6 @@ public enum OBSWS {
     /// Gets the lock state of a scene item.
     /// 
     /// Scenes and Groups
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/scene items``
     /// > Category: `Scene Items`
     /// > Complexity: `3/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -3373,7 +3267,6 @@ public enum OBSWS {
     /// Sets the lock state of a scene item.
     /// 
     /// Scenes and Group
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/scene items``
     /// > Category: `Scene Items`
     /// > Complexity: `3/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -3414,7 +3307,6 @@ public enum OBSWS {
     /// An index of 0 is at the bottom of the source list in the UI.
     /// 
     /// Scenes and Groups
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/scene items``
     /// > Category: `Scene Items`
     /// > Complexity: `3/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -3452,7 +3344,6 @@ public enum OBSWS {
     /// Sets the index position of a scene item in a scene.
     /// 
     /// Scenes and Groups
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/scene items``
     /// > Category: `Scene Items`
     /// > Complexity: `3/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -3502,7 +3393,6 @@ public enum OBSWS {
     /// - `OBS_BLEND_DARKEN`
     /// 
     /// Scenes and Groups
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/scene items``
     /// > Category: `Scene Items`
     /// > Complexity: `2/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -3540,7 +3430,6 @@ public enum OBSWS {
     /// Sets the blend mode of a scene item.
     /// 
     /// Scenes and Groups
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/scene items``
     /// > Category: `Scene Items`
     /// > Complexity: `2/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -3577,7 +3466,6 @@ public enum OBSWS {
     }
 
     /// Gets an array of scenes in OBS.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/scenes``
     /// > Category: `Scenes`
     /// > Complexity: `2/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -3612,7 +3500,6 @@ public enum OBSWS {
     /// Gets an array of all groups in OBS.
     /// 
     /// Groups in OBS are actually scenes, but renamed and modified. In obs-websocket, we treat them as scenes where we can.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/scenes``
     /// > Category: `Scenes`
     /// > Complexity: `2/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -3632,7 +3519,6 @@ public enum OBSWS {
     /// Note 1: This request is slated to have the `currentProgram`-prefixed fields removed from in an upcoming RPC version.
     /// 
     /// Note 2: Canvases do not have any concept of a program or preview scene, so this request does not support canvases.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/scenes``
     /// > Category: `Scenes`
     /// > Complexity: `1/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -3657,7 +3543,6 @@ public enum OBSWS {
     }
 
     /// Sets the current program scene.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/scenes``
     /// > Category: `Scenes`
     /// > Complexity: `1/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -3684,7 +3569,6 @@ public enum OBSWS {
     /// Only available when studio mode is enabled.
     /// 
     /// > Note: This request is slated to have the `currentPreview`-prefixed fields removed from in an upcoming RPC version.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/scenes``
     /// > Category: `Scenes`
     /// > Complexity: `1/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -3711,7 +3595,6 @@ public enum OBSWS {
     /// Sets the current preview scene.
     /// 
     /// Only available when studio mode is enabled.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/scenes``
     /// > Category: `Scenes`
     /// > Complexity: `1/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -3734,7 +3617,6 @@ public enum OBSWS {
     }
 
     /// Creates a new scene in OBS.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/scenes``
     /// > Category: `Scenes`
     /// > Complexity: `2/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -3759,7 +3641,6 @@ public enum OBSWS {
     }
 
     /// Removes a scene from OBS.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/scenes``
     /// > Category: `Scenes`
     /// > Complexity: `2/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -3787,7 +3668,6 @@ public enum OBSWS {
     }
 
     /// Sets the name of a scene (rename).
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/scenes``
     /// > Category: `Scenes`
     /// > Complexity: `2/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -3821,7 +3701,6 @@ public enum OBSWS {
     /// Gets the scene transition overridden for a scene.
     /// 
     /// > Note: A transition UUID response field is not currently able to be implemented as of 2024-1-18.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/scenes``
     /// > Category: `Scenes`
     /// > Complexity: `2/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -3855,7 +3734,6 @@ public enum OBSWS {
     }
 
     /// Sets the scene transition overridden for a scene.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/scenes``
     /// > Category: `Scenes`
     /// > Complexity: `2/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -3896,7 +3774,6 @@ public enum OBSWS {
     /// Gets the active and show state of a source.
     /// 
     /// **Compatible with inputs and scenes.**
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/sources``
     /// > Category: `Sources`
     /// > Complexity: `2/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -3935,7 +3812,6 @@ public enum OBSWS {
     /// If `imageWidth` and `imageHeight` are not specified, the compressed image will use the full resolution of the source.
     /// 
     /// **Compatible with inputs and scenes.**
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/sources``
     /// > Category: `Sources`
     /// > Complexity: `4/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -3993,7 +3869,6 @@ public enum OBSWS {
     /// If `imageWidth` and `imageHeight` are not specified, the compressed image will use the full resolution of the source.
     /// 
     /// **Compatible with inputs and scenes.**
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/sources``
     /// > Category: `Sources`
     /// > Complexity: `3/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -4047,7 +3922,6 @@ public enum OBSWS {
     }
 
     /// Gets the status of the stream output.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/stream``
     /// > Category: `Stream`
     /// > Complexity: `2/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -4084,7 +3958,6 @@ public enum OBSWS {
     }
 
     /// Toggles the status of the stream output.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/stream``
     /// > Category: `Stream`
     /// > Complexity: `1/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -4100,7 +3973,6 @@ public enum OBSWS {
     }
 
     /// Starts the stream output.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/stream``
     /// > Category: `Stream`
     /// > Complexity: `1/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -4113,7 +3985,6 @@ public enum OBSWS {
     }
 
     /// Stops the stream output.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/stream``
     /// > Category: `Stream`
     /// > Complexity: `1/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -4126,7 +3997,6 @@ public enum OBSWS {
     }
 
     /// Sends CEA-608 caption text over the stream output.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/stream``
     /// > Category: `Stream`
     /// > Complexity: `2/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -4145,7 +4015,6 @@ public enum OBSWS {
     /// Gets an array of all available transition kinds.
     /// 
     /// Similar to `GetInputKindList`
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/transitions``
     /// > Category: `Transitions`
     /// > Complexity: `2/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -4161,7 +4030,6 @@ public enum OBSWS {
     }
 
     /// Gets an array of all scene transitions in OBS.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/transitions``
     /// > Category: `Transitions`
     /// > Complexity: `3/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -4186,7 +4054,6 @@ public enum OBSWS {
     }
 
     /// Gets information about the current scene transition.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/transitions``
     /// > Category: `Transitions`
     /// > Complexity: `2/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -4222,7 +4089,6 @@ public enum OBSWS {
     /// Sets the current scene transition.
     /// 
     /// Small note: While the namespace of scene transitions is generally unique, that uniqueness is not a guarantee as it is with other resources like inputs.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/transitions``
     /// > Category: `Transitions`
     /// > Complexity: `2/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -4239,7 +4105,6 @@ public enum OBSWS {
     }
 
     /// Sets the duration of the current scene transition, if it is not fixed.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/transitions``
     /// > Category: `Transitions`
     /// > Complexity: `2/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -4257,7 +4122,6 @@ public enum OBSWS {
     }
 
     /// Sets the settings of the current scene transition.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/transitions``
     /// > Category: `Transitions`
     /// > Complexity: `3/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -4281,7 +4145,6 @@ public enum OBSWS {
     /// Gets the cursor position of the current scene transition.
     /// 
     /// > Note: `transitionCursor` will return 1.0 when the transition is inactive.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/transitions``
     /// > Category: `Transitions`
     /// > Complexity: `2/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -4297,7 +4160,6 @@ public enum OBSWS {
     }
 
     /// Triggers the current scene transition. Same functionality as the `Transition` button in studio mode.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/transitions``
     /// > Category: `Transitions`
     /// > Complexity: `1/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -4312,7 +4174,6 @@ public enum OBSWS {
     /// Sets the position of the TBar.
     /// 
     /// > Important: This will be deprecated and replaced in a future version of obs-websocket.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/transitions``
     /// > Category: `Transitions`
     /// > Complexity: `3/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -4335,7 +4196,6 @@ public enum OBSWS {
     }
 
     /// Gets whether studio is enabled.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/ui``
     /// > Category: `UI`
     /// > Complexity: `1/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -4351,7 +4211,6 @@ public enum OBSWS {
     }
 
     /// Enables or disables studio mode
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/ui``
     /// > Category: `UI`
     /// > Complexity: `1/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -4368,7 +4227,6 @@ public enum OBSWS {
     }
 
     /// Opens the properties dialog of an input.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/ui``
     /// > Category: `UI`
     /// > Complexity: `1/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -4391,7 +4249,6 @@ public enum OBSWS {
     }
 
     /// Opens the filters dialog of an input.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/ui``
     /// > Category: `UI`
     /// > Complexity: `1/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -4414,7 +4271,6 @@ public enum OBSWS {
     }
 
     /// Opens the interact dialog of an input.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/ui``
     /// > Category: `UI`
     /// > Complexity: `1/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -4437,7 +4293,6 @@ public enum OBSWS {
     }
 
     /// Gets a list of connected monitors and information about them.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/ui``
     /// > Category: `UI`
     /// > Complexity: `2/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -4461,7 +4316,6 @@ public enum OBSWS {
     /// - `OBS_WEBSOCKET_VIDEO_MIX_TYPE_MULTIVIEW`
     /// 
     /// > Note: This request serves to provide feature parity with 4.x. It is very likely to be changed/deprecated in a future release.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/ui``
     /// > Category: `UI`
     /// > Complexity: `3/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -4490,7 +4344,6 @@ public enum OBSWS {
     /// Opens a projector for a source.
     /// 
     /// > Note: This request serves to provide feature parity with 4.x. It is very likely to be changed/deprecated in a future release.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/ui``
     /// > Category: `UI`
     /// > Complexity: `3/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -4530,7 +4383,7 @@ public enum OBSWS {
 
   public enum Events {
     /// A new canvas has been created.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/canvases``
+    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/canvases``
     /// > Category: `Canvases`
     /// > Complexity: `2/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -4549,7 +4402,7 @@ public enum OBSWS {
     }
 
     /// A canvas has been removed.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/canvases``
+    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/canvases``
     /// > Category: `Canvases`
     /// > Complexity: `2/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -4568,7 +4421,7 @@ public enum OBSWS {
     }
 
     /// The name of a canvas has changed.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/canvases``
+    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/canvases``
     /// > Category: `Canvases`
     /// > Complexity: `2/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -4594,7 +4447,7 @@ public enum OBSWS {
     /// 
     /// > Note: We recommend using this event to trigger a pause of all polling requests, as performing any requests during a
     /// scene collection change is considered undefined behavior and can cause crashes!
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/config``
+    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/config``
     /// > Category: `Config`
     /// > Complexity: `1/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -4611,7 +4464,7 @@ public enum OBSWS {
     /// The current scene collection has changed.
     /// 
     /// > Note: If polling has been paused during `CurrentSceneCollectionChanging`, this is the que to restart polling.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/config``
+    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/config``
     /// > Category: `Config`
     /// > Complexity: `1/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -4626,7 +4479,7 @@ public enum OBSWS {
     }
 
     /// The scene collection list has changed.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/config``
+    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/config``
     /// > Category: `Config`
     /// > Complexity: `1/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -4641,7 +4494,7 @@ public enum OBSWS {
     }
 
     /// The current profile has begun changing.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/config``
+    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/config``
     /// > Category: `Config`
     /// > Complexity: `1/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -4656,7 +4509,7 @@ public enum OBSWS {
     }
 
     /// The current profile has changed.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/config``
+    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/config``
     /// > Category: `Config`
     /// > Complexity: `1/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -4671,7 +4524,7 @@ public enum OBSWS {
     }
 
     /// The profile list has changed.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/config``
+    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/config``
     /// > Category: `Config`
     /// > Complexity: `1/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -4686,7 +4539,7 @@ public enum OBSWS {
     }
 
     /// A source's filter list has been reindexed.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/filters``
+    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/filters``
     /// > Category: `Filters`
     /// > Complexity: `3/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -4705,7 +4558,7 @@ public enum OBSWS {
     }
 
     /// A filter has been added to a source.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/filters``
+    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/filters``
     /// > Category: `Filters`
     /// > Complexity: `2/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -4740,7 +4593,7 @@ public enum OBSWS {
     }
 
     /// A filter has been removed from a source.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/filters``
+    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/filters``
     /// > Category: `Filters`
     /// > Complexity: `2/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -4759,7 +4612,7 @@ public enum OBSWS {
     }
 
     /// The name of a source filter has changed.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/filters``
+    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/filters``
     /// > Category: `Filters`
     /// > Complexity: `2/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -4782,7 +4635,7 @@ public enum OBSWS {
     }
 
     /// An source filter's settings have changed (been updated).
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/filters``
+    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/filters``
     /// > Category: `Filters`
     /// > Complexity: `3/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -4805,7 +4658,7 @@ public enum OBSWS {
     }
 
     /// A source filter's enable state has changed.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/filters``
+    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/filters``
     /// > Category: `Filters`
     /// > Complexity: `3/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -4828,7 +4681,7 @@ public enum OBSWS {
     }
 
     /// OBS has begun the shutdown process.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/general``
+    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/general``
     /// > Category: `General`
     /// > Complexity: `1/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -4839,7 +4692,7 @@ public enum OBSWS {
     }
 
     /// An input has been created.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/inputs``
+    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/inputs``
     /// > Category: `Inputs`
     /// > Complexity: `2/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -4878,7 +4731,7 @@ public enum OBSWS {
     }
 
     /// An input has been removed.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/inputs``
+    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/inputs``
     /// > Category: `Inputs`
     /// > Complexity: `2/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -4897,7 +4750,7 @@ public enum OBSWS {
     }
 
     /// The name of an input has changed.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/inputs``
+    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/inputs``
     /// > Category: `Inputs`
     /// > Complexity: `2/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -4922,7 +4775,7 @@ public enum OBSWS {
     /// An input's settings have changed (been updated).
     /// 
     /// > Note: On some inputs, changing values in the properties dialog will cause an immediate update. Pressing the "Cancel" button will revert the settings, resulting in another event being fired.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/inputs``
+    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/inputs``
     /// > Category: `Inputs`
     /// > Complexity: `3/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -4947,7 +4800,7 @@ public enum OBSWS {
     /// An input's active state has changed.
     /// 
     /// When an input is active, it means it's being shown by the program feed.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/inputs``
+    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/inputActiveStateChanged``
     /// > Category: `Inputs`
     /// > Complexity: `3/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -4972,7 +4825,7 @@ public enum OBSWS {
     /// An input's show state has changed.
     /// 
     /// When an input is showing, it means it's being shown by the preview or a dialog.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/inputs``
+    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/inputShowStateChanged``
     /// > Category: `Inputs`
     /// > Complexity: `3/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -4995,7 +4848,7 @@ public enum OBSWS {
     }
 
     /// An input's mute state has changed.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/inputs``
+    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/inputs``
     /// > Category: `Inputs`
     /// > Complexity: `2/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -5018,7 +4871,7 @@ public enum OBSWS {
     }
 
     /// An input's volume level has changed.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/inputs``
+    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/inputs``
     /// > Category: `Inputs`
     /// > Complexity: `3/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -5045,7 +4898,7 @@ public enum OBSWS {
     }
 
     /// The audio balance value of an input has changed.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/inputs``
+    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/inputs``
     /// > Category: `Inputs`
     /// > Complexity: `2/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -5068,7 +4921,7 @@ public enum OBSWS {
     }
 
     /// The sync offset of an input has changed.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/inputs``
+    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/inputs``
     /// > Category: `Inputs`
     /// > Complexity: `3/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -5091,7 +4944,7 @@ public enum OBSWS {
     }
 
     /// The audio tracks of an input have changed.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/inputs``
+    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/inputs``
     /// > Category: `Inputs`
     /// > Complexity: `3/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -5120,7 +4973,7 @@ public enum OBSWS {
     /// - `OBS_MONITORING_TYPE_NONE`
     /// - `OBS_MONITORING_TYPE_MONITOR_ONLY`
     /// - `OBS_MONITORING_TYPE_MONITOR_AND_OUTPUT`
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/inputs``
+    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/inputs``
     /// > Category: `Inputs`
     /// > Complexity: `2/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -5143,7 +4996,7 @@ public enum OBSWS {
     }
 
     /// A high-volume event providing volume levels of all active inputs every 50 milliseconds.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/inputs``
+    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/inputVolumeMeters``
     /// > Category: `Inputs`
     /// > Complexity: `4/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -5158,7 +5011,7 @@ public enum OBSWS {
     }
 
     /// A media input has started playing.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/media inputs``
+    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/mediaInputs``
     /// > Category: `Media Inputs`
     /// > Complexity: `2/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -5177,7 +5030,7 @@ public enum OBSWS {
     }
 
     /// A media input has finished playing.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/media inputs``
+    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/mediaInputs``
     /// > Category: `Media Inputs`
     /// > Complexity: `2/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -5196,7 +5049,7 @@ public enum OBSWS {
     }
 
     /// An action has been performed on an input.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/media inputs``
+    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/mediaInputs``
     /// > Category: `Media Inputs`
     /// > Complexity: `2/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -5219,7 +5072,7 @@ public enum OBSWS {
     }
 
     /// The state of the stream output has changed.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/outputs``
+    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/outputs``
     /// > Category: `Outputs`
     /// > Complexity: `2/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -5238,7 +5091,7 @@ public enum OBSWS {
     }
 
     /// The state of the record output has changed.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/outputs``
+    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/outputs``
     /// > Category: `Outputs`
     /// > Complexity: `2/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -5261,7 +5114,7 @@ public enum OBSWS {
     }
 
     /// The record output has started writing to a new file. For example, when a file split happens.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/outputs``
+    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/outputs``
     /// > Category: `Outputs`
     /// > Complexity: `2/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -5276,7 +5129,7 @@ public enum OBSWS {
     }
 
     /// The state of the replay buffer output has changed.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/outputs``
+    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/outputs``
     /// > Category: `Outputs`
     /// > Complexity: `2/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -5295,7 +5148,7 @@ public enum OBSWS {
     }
 
     /// The state of the virtualcam output has changed.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/outputs``
+    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/outputs``
     /// > Category: `Outputs`
     /// > Complexity: `2/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -5314,7 +5167,7 @@ public enum OBSWS {
     }
 
     /// The replay buffer has been saved.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/outputs``
+    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/outputs``
     /// > Category: `Outputs`
     /// > Complexity: `2/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -5329,7 +5182,7 @@ public enum OBSWS {
     }
 
     /// A scene item has been created.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/scene items``
+    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/sceneItems``
     /// > Category: `Scene Items`
     /// > Complexity: `3/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -5366,7 +5219,7 @@ public enum OBSWS {
     /// A scene item has been removed.
     /// 
     /// This event is not emitted when the scene the item is in is removed.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/scene items``
+    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/sceneItems``
     /// > Category: `Scene Items`
     /// > Complexity: `3/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -5397,7 +5250,7 @@ public enum OBSWS {
     }
 
     /// A scene's item list has been reindexed.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/scene items``
+    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/sceneItems``
     /// > Category: `Scene Items`
     /// > Complexity: `3/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -5420,7 +5273,7 @@ public enum OBSWS {
     }
 
     /// A scene item's enable state has changed.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/scene items``
+    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/sceneItems``
     /// > Category: `Scene Items`
     /// > Complexity: `3/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -5447,7 +5300,7 @@ public enum OBSWS {
     }
 
     /// A scene item's lock state has changed.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/scene items``
+    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/sceneItems``
     /// > Category: `Scene Items`
     /// > Complexity: `3/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -5474,7 +5327,7 @@ public enum OBSWS {
     }
 
     /// A scene item has been selected in the Ui.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/scene items``
+    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/sceneItems``
     /// > Category: `Scene Items`
     /// > Complexity: `2/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -5497,7 +5350,7 @@ public enum OBSWS {
     }
 
     /// The transform/crop of a scene item has changed.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/scene items``
+    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/sceneItemTransformChanged``
     /// > Category: `Scene Items`
     /// > Complexity: `4/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -5524,7 +5377,7 @@ public enum OBSWS {
     }
 
     /// A new scene has been created.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/scenes``
+    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/scenes``
     /// > Category: `Scenes`
     /// > Complexity: `2/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -5547,7 +5400,7 @@ public enum OBSWS {
     }
 
     /// A scene has been removed.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/scenes``
+    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/scenes``
     /// > Category: `Scenes`
     /// > Complexity: `2/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -5570,7 +5423,7 @@ public enum OBSWS {
     }
 
     /// The name of a scene has changed.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/scenes``
+    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/scenes``
     /// > Category: `Scenes`
     /// > Complexity: `2/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -5593,7 +5446,7 @@ public enum OBSWS {
     }
 
     /// The current program scene has changed.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/scenes``
+    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/scenes``
     /// > Category: `Scenes`
     /// > Complexity: `1/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -5612,7 +5465,7 @@ public enum OBSWS {
     }
 
     /// The current preview scene has changed.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/scenes``
+    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/scenes``
     /// > Category: `Scenes`
     /// > Complexity: `1/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -5633,7 +5486,7 @@ public enum OBSWS {
     /// The list of scenes has changed.
     /// 
     /// > TODO: Make OBS fire this event when scenes are reordered.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/scenes``
+    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/scenes``
     /// > Category: `Scenes`
     /// > Complexity: `2/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -5648,7 +5501,7 @@ public enum OBSWS {
     }
 
     /// The current scene transition has changed.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/transitions``
+    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/transitions``
     /// > Category: `Transitions`
     /// > Complexity: `2/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -5667,7 +5520,7 @@ public enum OBSWS {
     }
 
     /// The current scene transition duration has changed.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/transitions``
+    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/transitions``
     /// > Category: `Transitions`
     /// > Complexity: `2/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -5682,7 +5535,7 @@ public enum OBSWS {
     }
 
     /// A scene transition has started.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/transitions``
+    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/transitions``
     /// > Category: `Transitions`
     /// > Complexity: `2/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -5703,7 +5556,7 @@ public enum OBSWS {
     /// A scene transition has completed fully.
     /// 
     /// > Note: Does not appear to trigger when the transition is interrupted by the user.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/transitions``
+    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/transitions``
     /// > Category: `Transitions`
     /// > Complexity: `2/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -5727,7 +5580,7 @@ public enum OBSWS {
     /// `SceneTransitionEnded` only signifies the cut point, not the completion of transition playback.
     /// 
     /// > Note: Appears to be called by every transition, regardless of relevance.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/transitions``
+    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/transitions``
     /// > Category: `Transitions`
     /// > Complexity: `2/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -5746,7 +5599,7 @@ public enum OBSWS {
     }
 
     /// Studio mode has been enabled or disabled.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/ui``
+    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/ui``
     /// > Category: `UI`
     /// > Complexity: `1/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -5765,7 +5618,7 @@ public enum OBSWS {
     /// > Note: Triggered for the screenshot feature available in `Settings -> Hotkeys -> Screenshot Output` ONLY.
     /// Applications using `Get/SaveSourceScreenshot` should implement a `CustomEvent` if this kind of inter-client
     /// communication is desired.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/ui``
+    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/ui``
     /// > Category: `UI`
     /// > Complexity: `2/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -5783,7 +5636,7 @@ public enum OBSWS {
     /// 
     /// A vendor is a unique name registered by a third-party plugin or script, which allows for custom requests and events to be added to obs-websocket.
     /// If a plugin or script implements vendor requests or events, documentation is expected to be provided with them.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/general``
+    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/vendors``
     /// > Category: `General`
     /// > Complexity: `3/5`
     /// > Version: Latest Supported RPC Version - `1`
@@ -5806,7 +5659,7 @@ public enum OBSWS {
     }
 
     /// Custom event emitted by `BroadcastCustomEvent`.
-    /// > Event Subscription: ``OBSWS/Enums/EventSusbcription/general``
+    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/general``
     /// > Category: `General`
     /// > Complexity: `1/5`
     /// > Version: Latest Supported RPC Version - `1`
