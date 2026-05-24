@@ -58,7 +58,7 @@ extension OBSWSProtocol.Enum: Generatable {
             )
         } else {
             typeDef = try DeclSyntax(
-                EnumDeclSyntax("public enum \(raw: enumName): \(raw: rawValueIsString ? "String" : "Int"), Codable") {
+                EnumDeclSyntax("public enum \(raw: enumName): \(raw: rawValueIsString ? "String" : "Int"), Sendable, Hashable, Codable") {
                     try MemberBlockItemListSyntax {
                         for enumCase in self.enumIdentifiers {
                             if let declString = enumCase.syntaxString(forEnum: enumName) {
