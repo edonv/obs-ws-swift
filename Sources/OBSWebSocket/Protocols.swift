@@ -7,6 +7,9 @@
 
 import Foundation
 
+/// All types of Enums conform to this.
+public protocol OBSEnum: Sendable, Hashable, Codable {}
+
 /// All types of Requests conform to this.
 public protocol OBSRequest: Sendable, Hashable, Codable {
     /// The expected type of Response.
