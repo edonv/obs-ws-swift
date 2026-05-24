@@ -59,7 +59,7 @@ extension FieldType {
         
         // TODO: implement `getExplicitType()` and `explicitTypes`
         
-        if newType == "Number" {
+        if newType.contains("Number") {
             let shouldBeFloat = valueRestrictions?.contains(".") == true
             || floatProperties.contains(
                 fullPropertyPath(withParent: parentTypeName)
@@ -69,7 +69,7 @@ extension FieldType {
                 of: "Number",
                 with: shouldBeFloat ? "Float" : "Int"
             )
-        } else if newType == "String" {
+        } else if newType.contains("String") {
             // If it's a String-based enum type
             if let range = valueDescription.range(of: #"(`\w+`) enum"#, options: .regularExpression) {
                 let substring = String(valueDescription[range])
