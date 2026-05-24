@@ -29,4 +29,49 @@ extension OBSOpData {
             public let challenge: String
             public let salt: String
         }
+        
+        /// Maps `Hello` instance to a new ``Identify`` message body.
+        /// - Parameters:
+        ///   - password: If provided, it's used with ``Hello/authentication`` to create a final
+        ///   authentication string.
+        ///   - events: If provided, it tells `obs-websocket` that it's interested in being
+        ///   alerted about specific categories of ``OBSWS/Events``.
+        /// - Throws: ``OBSWS/Error/missingPasswordWhereRequired`` if
+        /// ``Hello/authentication`` is present without a provided password.
+        /// - Returns: A new ``Identify`` message body with the generated authentication string.
+        public func toIdentify(
+            password: String?,
+            subscribeTo events: OBSWS.Enums.EventSubscription?
+        ) throws -> Identify {
+            var auth: String? = nil
+            
+            // To generate the authentication string, follow these steps:
+            if let a = authentication {
+                if let pass = password,
+                   !pass.isEmpty {
+                    // Concatenate the websocket password with the salt provided by the server (password + salt)
+                    let secretString = pass + a.salt
+                    
+                    // Generate an SHA256 binary hash of the result and base64 encode it, known as a base64 secret.
+                    let secretHash = SHA256.hash(data: secretString.data(using: .utf8)!)
+                    let encodedSecret = Data(secretHash)
+                        .base64EncodedString()
+                    
+                    // Concatenate the base64 secret with the challenge sent by the server (base64_secret + challenge)
+                    let authResponseString = encodedSecret + a.challenge
+                    
+                    // Generate a binary SHA256 hash of that result and base64 encode it. You now have your authentication string.
+                    let authResponseHash = SHA256.hash(data: authResponseString.data(using: .utf8)!)
+                    auth = Data(authResponseHash)
+                        .base64EncodedString()
+                } else {
+                    // If there is authentication data in the Hello message, then it requires a password.
+                    // If the user didn't enter a password where one is required, throw error.
+                    throw OBSWS.Error.missingPasswordWhereRequired
+                }
+            }
+            
+            return Identify(rpcVersion: rpcVersion, authentication: auth, eventSubscriptions: events)
+        }
+    }
 }
