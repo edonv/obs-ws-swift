@@ -8,8 +8,8 @@
 import Foundation
 
 extension OBSOpData {
-    /// The ``OpDataTypes/Identify`` request was received and validated, and the connection is now ready for
-    /// normal operation.
+    /// The ``OBSOpData/Identify`` request was received and validated, and the connection is
+    /// now ready for normal operation.
     ///
     /// If rpc version negotiation succeeds, the server determines the RPC version to be used
     /// and gives it to the client as `negotiatedRpcVersion`.
