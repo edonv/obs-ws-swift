@@ -17,28 +17,16 @@ func camelize(_ string: String) -> String {
     
     let possibleSeparators: [Character] = ["_", " "]
     
-    // If string does not contain an allowed separator...
-    if !string.contains(where: { possibleSeparators.contains($0) }) {
-        // Add a space before each uppercase character
-        // Move backwards through indices
-        var i = tempStr.index(before: tempStr.endIndex)
-        func moveIndexBack() {
-            guard i > tempStr.startIndex else { return }
-            i = tempStr.index(before: i)
-        }
-        
-        while i > tempStr.startIndex {
-            if tempStr[i].isUppercase {
-                tempStr.insert(" ", at: i)
-                moveIndexBack()
-            }
-            
-            moveIndexBack()
-        }
+    let split: [String]
+    if tempStr.contains(where: { possibleSeparators.contains($0) }) {
+        split = tempStr
+            .split { possibleSeparators.contains($0) }
+            .map(String.init)
+    } else {
+        split = splitByCapitals(tempStr)
     }
     
-    tempStr = tempStr
-        .split { possibleSeparators.contains($0) }
+    tempStr = split
         .enumerated().map { i, str in
             guard i > 0 else { return str.lowercased() }
             return str.prefix(1).uppercased() + str.dropFirst().lowercased()
