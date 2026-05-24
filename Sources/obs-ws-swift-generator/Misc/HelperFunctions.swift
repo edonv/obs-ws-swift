@@ -56,9 +56,16 @@ func pascalize(_ string: String) -> String {
 }
 
 func splitByCapitals(_ string: String) -> [String] {
-    string.enumerated().split { (i, char) in
-        char.isUppercase || i == 0
+    string.reduce(into: [String]()) { prev, char in
+        if prev.isEmpty {
+            prev.append("")
+        }
+        
+        if char.isUppercase {
+            prev.append(String(char))
+        } else {
+            prev[prev.count - 1].append(String(char))
+        }
     }
-    .map { $0.map(\.element) }
-    .map { String($0) }
+    .filter { !$0.isEmpty }
 }
