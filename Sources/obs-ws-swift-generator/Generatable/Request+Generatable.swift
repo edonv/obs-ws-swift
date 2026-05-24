@@ -77,6 +77,8 @@ extension OBSWSProtocol.Request: Generatable {
         .with(\.leadingTrivia, self.generateDocsTrivia())
     }
     
+    // MARK: - Helper Functions
+    
     private func splitFields() -> (normalFields: [RequestField], subtypes: [String: [RequestField]]) {
         guard !requestFields.isEmpty
                 && requestFields.contains(where: { $0.valueName.contains(".") }) else {
