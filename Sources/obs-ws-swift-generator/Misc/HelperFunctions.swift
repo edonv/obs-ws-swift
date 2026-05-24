@@ -17,6 +17,11 @@ func camelize(_ string: String) -> String {
     
     let possibleSeparators: [Character] = ["_", " "]
     
+    // This means there is no separator, and it's all-caps
+    if tempStr.allSatisfy({ $0.isUppercase }) {
+        tempStr = tempStr.lowercased()
+    }
+    
     let split: [String]
     if tempStr.contains(where: { possibleSeparators.contains($0) }) {
         split = tempStr
