@@ -22,8 +22,9 @@ extension OBSOpData {
         public let obsWebSocketVersion: String
         
         /// `rpcVersion` is a version number which gets incremented on each breaking change to the `obs-websocket`
-        /// protocol. Its usage in this context is to provide the current rpc version that the server
-        /// would like to use.
+        /// protocol.
+        ///
+        /// Its usage in this context is to provide the current rpc version that the server would like to use.
         public let rpcVersion: Int
         public let authentication: Authentication?
         
