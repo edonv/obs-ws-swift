@@ -11,4 +11,7 @@ import Foundation
 public protocol OBSEvent: Sendable, Hashable, Codable {
     /// Enum representation of its own ``OBSEvent`` type.
     static var eventType: OBSWS.Events.AllTypes { get }
+    
+    /// Required ``OBSWS/Enums/EventSubscription`` to receive this event.
+    static var eventSubscription: OBSWS.Enums.EventSubscription { get }
 }
