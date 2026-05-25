@@ -17,6 +17,8 @@ extension OBSWSProtocol.Event: Generatable {
             // - Static Properties
             try VariableDeclSyntax("public static let eventType: OBSWS.Events.AllTypes = .\(raw: self.eventType)")
                 .with(\.leadingTrivia, .newline)
+            try VariableDeclSyntax("public static let eventSubscription: OBSWS.Enums.EventSubscription = .\(raw: camelize(self.eventSubscription))")
+                .with(\.leadingTrivia, .newline)
                 .with(\.trailingTrivia, .newline)
             
             // - Properties/Fields
