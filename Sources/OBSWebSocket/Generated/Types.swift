@@ -5690,6 +5690,7 @@ public enum OBSWS {
     /// > Since: Added in v5.7.0
     public struct CanvasCreated: OBSEvent {
       public static let eventType: OBSWS.Events.AllTypes = .CanvasCreated
+      public static let eventSubscription: OBSWS.Enums.EventSubscription = .canvases
 
       /// Name of the new canvas
       public let canvasName: String
@@ -5715,6 +5716,7 @@ public enum OBSWS {
     /// > Since: Added in v5.7.0
     public struct CanvasRemoved: OBSEvent {
       public static let eventType: OBSWS.Events.AllTypes = .CanvasRemoved
+      public static let eventSubscription: OBSWS.Enums.EventSubscription = .canvases
 
       /// Name of the removed canvas
       public let canvasName: String
@@ -5740,6 +5742,7 @@ public enum OBSWS {
     /// > Since: Added in v5.7.0
     public struct CanvasNameChanged: OBSEvent {
       public static let eventType: OBSWS.Events.AllTypes = .CanvasNameChanged
+      public static let eventSubscription: OBSWS.Enums.EventSubscription = .canvases
 
       /// UUID of the canvas
       public let canvasUuid: UUID
@@ -5772,6 +5775,7 @@ public enum OBSWS {
     /// > Since: Added in v5.0.0
     public struct CurrentSceneCollectionChanging: OBSEvent {
       public static let eventType: OBSWS.Events.AllTypes = .CurrentSceneCollectionChanging
+      public static let eventSubscription: OBSWS.Enums.EventSubscription = .config
 
       /// Name of the current scene collection
       public let sceneCollectionName: String
@@ -5795,6 +5799,7 @@ public enum OBSWS {
     /// > Since: Added in v5.0.0
     public struct CurrentSceneCollectionChanged: OBSEvent {
       public static let eventType: OBSWS.Events.AllTypes = .CurrentSceneCollectionChanged
+      public static let eventSubscription: OBSWS.Enums.EventSubscription = .config
 
       /// Name of the new scene collection
       public let sceneCollectionName: String
@@ -5816,6 +5821,7 @@ public enum OBSWS {
     /// > Since: Added in v5.0.0
     public struct SceneCollectionListChanged: OBSEvent {
       public static let eventType: OBSWS.Events.AllTypes = .SceneCollectionListChanged
+      public static let eventSubscription: OBSWS.Enums.EventSubscription = .config
 
       /// Updated list of scene collections
       public let sceneCollections: [String]
@@ -5837,6 +5843,7 @@ public enum OBSWS {
     /// > Since: Added in v5.0.0
     public struct CurrentProfileChanging: OBSEvent {
       public static let eventType: OBSWS.Events.AllTypes = .CurrentProfileChanging
+      public static let eventSubscription: OBSWS.Enums.EventSubscription = .config
 
       /// Name of the current profile
       public let profileName: String
@@ -5858,6 +5865,7 @@ public enum OBSWS {
     /// > Since: Added in v5.0.0
     public struct CurrentProfileChanged: OBSEvent {
       public static let eventType: OBSWS.Events.AllTypes = .CurrentProfileChanged
+      public static let eventSubscription: OBSWS.Enums.EventSubscription = .config
 
       /// Name of the new profile
       public let profileName: String
@@ -5879,6 +5887,7 @@ public enum OBSWS {
     /// > Since: Added in v5.0.0
     public struct ProfileListChanged: OBSEvent {
       public static let eventType: OBSWS.Events.AllTypes = .ProfileListChanged
+      public static let eventSubscription: OBSWS.Enums.EventSubscription = .config
 
       /// Updated list of profiles
       public let profiles: [String]
@@ -5900,6 +5909,7 @@ public enum OBSWS {
     /// > Since: Added in v5.0.0
     public struct SourceFilterListReindexed: OBSEvent {
       public static let eventType: OBSWS.Events.AllTypes = .SourceFilterListReindexed
+      public static let eventSubscription: OBSWS.Enums.EventSubscription = .filters
 
       /// Name of the source
       public let sourceName: String
@@ -5925,6 +5935,7 @@ public enum OBSWS {
     /// > Since: Added in v5.0.0
     public struct SourceFilterCreated: OBSEvent {
       public static let eventType: OBSWS.Events.AllTypes = .SourceFilterCreated
+      public static let eventSubscription: OBSWS.Enums.EventSubscription = .filters
 
       /// Name of the source the filter was added to
       public let sourceName: String
@@ -5966,6 +5977,7 @@ public enum OBSWS {
     /// > Since: Added in v5.0.0
     public struct SourceFilterRemoved: OBSEvent {
       public static let eventType: OBSWS.Events.AllTypes = .SourceFilterRemoved
+      public static let eventSubscription: OBSWS.Enums.EventSubscription = .filters
 
       /// Name of the source the filter was on
       public let sourceName: String
@@ -5991,6 +6003,7 @@ public enum OBSWS {
     /// > Since: Added in v5.0.0
     public struct SourceFilterNameChanged: OBSEvent {
       public static let eventType: OBSWS.Events.AllTypes = .SourceFilterNameChanged
+      public static let eventSubscription: OBSWS.Enums.EventSubscription = .filters
 
       /// The source the filter is on
       public let sourceName: String
@@ -6020,6 +6033,7 @@ public enum OBSWS {
     /// > Since: Added in v5.4.0
     public struct SourceFilterSettingsChanged: OBSEvent {
       public static let eventType: OBSWS.Events.AllTypes = .SourceFilterSettingsChanged
+      public static let eventSubscription: OBSWS.Enums.EventSubscription = .filters
 
       /// Name of the source the filter is on
       public let sourceName: String
@@ -6049,6 +6063,7 @@ public enum OBSWS {
     /// > Since: Added in v5.0.0
     public struct SourceFilterEnableStateChanged: OBSEvent {
       public static let eventType: OBSWS.Events.AllTypes = .SourceFilterEnableStateChanged
+      public static let eventSubscription: OBSWS.Enums.EventSubscription = .filters
 
       /// Name of the source the filter is on
       public let sourceName: String
@@ -6078,6 +6093,7 @@ public enum OBSWS {
     /// > Since: Added in v5.0.0
     public struct ExitStarted: OBSEvent {
       public static let eventType: OBSWS.Events.AllTypes = .ExitStarted
+      public static let eventSubscription: OBSWS.Enums.EventSubscription = .general
 
       public init() {
       }
@@ -6095,6 +6111,7 @@ public enum OBSWS {
     /// > Since: Added in v5.0.0
     public struct InputCreated: OBSEvent {
       public static let eventType: OBSWS.Events.AllTypes = .InputCreated
+      public static let eventSubscription: OBSWS.Enums.EventSubscription = .inputs
 
       /// Name of the input
       public let inputName: String
@@ -6140,6 +6157,7 @@ public enum OBSWS {
     /// > Since: Added in v5.0.0
     public struct InputRemoved: OBSEvent {
       public static let eventType: OBSWS.Events.AllTypes = .InputRemoved
+      public static let eventSubscription: OBSWS.Enums.EventSubscription = .inputs
 
       /// Name of the input
       public let inputName: String
@@ -6165,6 +6183,7 @@ public enum OBSWS {
     /// > Since: Added in v5.0.0
     public struct InputNameChanged: OBSEvent {
       public static let eventType: OBSWS.Events.AllTypes = .InputNameChanged
+      public static let eventSubscription: OBSWS.Enums.EventSubscription = .inputs
 
       /// UUID of the input
       public let inputUuid: UUID
@@ -6196,6 +6215,7 @@ public enum OBSWS {
     /// > Since: Added in v5.4.0
     public struct InputSettingsChanged: OBSEvent {
       public static let eventType: OBSWS.Events.AllTypes = .InputSettingsChanged
+      public static let eventSubscription: OBSWS.Enums.EventSubscription = .inputs
 
       /// Name of the input
       public let inputName: String
@@ -6227,6 +6247,7 @@ public enum OBSWS {
     /// > Since: Added in v5.0.0
     public struct InputActiveStateChanged: OBSEvent {
       public static let eventType: OBSWS.Events.AllTypes = .InputActiveStateChanged
+      public static let eventSubscription: OBSWS.Enums.EventSubscription = .inputActiveStateChanged
 
       /// Name of the input
       public let inputName: String
@@ -6258,6 +6279,7 @@ public enum OBSWS {
     /// > Since: Added in v5.0.0
     public struct InputShowStateChanged: OBSEvent {
       public static let eventType: OBSWS.Events.AllTypes = .InputShowStateChanged
+      public static let eventSubscription: OBSWS.Enums.EventSubscription = .inputShowStateChanged
 
       /// Name of the input
       public let inputName: String
@@ -6287,6 +6309,7 @@ public enum OBSWS {
     /// > Since: Added in v5.0.0
     public struct InputMuteStateChanged: OBSEvent {
       public static let eventType: OBSWS.Events.AllTypes = .InputMuteStateChanged
+      public static let eventSubscription: OBSWS.Enums.EventSubscription = .inputs
 
       /// Name of the input
       public let inputName: String
@@ -6316,6 +6339,7 @@ public enum OBSWS {
     /// > Since: Added in v5.0.0
     public struct InputVolumeChanged: OBSEvent {
       public static let eventType: OBSWS.Events.AllTypes = .InputVolumeChanged
+      public static let eventSubscription: OBSWS.Enums.EventSubscription = .inputs
 
       /// Name of the input
       public let inputName: String
@@ -6349,6 +6373,7 @@ public enum OBSWS {
     /// > Since: Added in v5.0.0
     public struct InputAudioBalanceChanged: OBSEvent {
       public static let eventType: OBSWS.Events.AllTypes = .InputAudioBalanceChanged
+      public static let eventSubscription: OBSWS.Enums.EventSubscription = .inputs
 
       /// Name of the input
       public let inputName: String
@@ -6378,6 +6403,7 @@ public enum OBSWS {
     /// > Since: Added in v5.0.0
     public struct InputAudioSyncOffsetChanged: OBSEvent {
       public static let eventType: OBSWS.Events.AllTypes = .InputAudioSyncOffsetChanged
+      public static let eventSubscription: OBSWS.Enums.EventSubscription = .inputs
 
       /// Name of the input
       public let inputName: String
@@ -6407,6 +6433,7 @@ public enum OBSWS {
     /// > Since: Added in v5.0.0
     public struct InputAudioTracksChanged: OBSEvent {
       public static let eventType: OBSWS.Events.AllTypes = .InputAudioTracksChanged
+      public static let eventSubscription: OBSWS.Enums.EventSubscription = .inputs
 
       /// Name of the input
       public let inputName: String
@@ -6442,6 +6469,7 @@ public enum OBSWS {
     /// > Since: Added in v5.0.0
     public struct InputAudioMonitorTypeChanged: OBSEvent {
       public static let eventType: OBSWS.Events.AllTypes = .InputAudioMonitorTypeChanged
+      public static let eventSubscription: OBSWS.Enums.EventSubscription = .inputs
 
       /// Name of the input
       public let inputName: String
@@ -6471,6 +6499,7 @@ public enum OBSWS {
     /// > Since: Added in v5.0.0
     public struct InputVolumeMeters: OBSEvent {
       public static let eventType: OBSWS.Events.AllTypes = .InputVolumeMeters
+      public static let eventSubscription: OBSWS.Enums.EventSubscription = .inputVolumeMeters
 
       /// Array of active inputs with their associated volume levels
       public let inputs: [JSONValue]
@@ -6492,6 +6521,7 @@ public enum OBSWS {
     /// > Since: Added in v5.0.0
     public struct MediaInputPlaybackStarted: OBSEvent {
       public static let eventType: OBSWS.Events.AllTypes = .MediaInputPlaybackStarted
+      public static let eventSubscription: OBSWS.Enums.EventSubscription = .mediaInputs
 
       /// Name of the input
       public let inputName: String
@@ -6517,6 +6547,7 @@ public enum OBSWS {
     /// > Since: Added in v5.0.0
     public struct MediaInputPlaybackEnded: OBSEvent {
       public static let eventType: OBSWS.Events.AllTypes = .MediaInputPlaybackEnded
+      public static let eventSubscription: OBSWS.Enums.EventSubscription = .mediaInputs
 
       /// Name of the input
       public let inputName: String
@@ -6542,6 +6573,7 @@ public enum OBSWS {
     /// > Since: Added in v5.0.0
     public struct MediaInputActionTriggered: OBSEvent {
       public static let eventType: OBSWS.Events.AllTypes = .MediaInputActionTriggered
+      public static let eventSubscription: OBSWS.Enums.EventSubscription = .mediaInputs
 
       /// Name of the input
       public let inputName: String
@@ -6571,6 +6603,7 @@ public enum OBSWS {
     /// > Since: Added in v5.0.0
     public struct StreamStateChanged: OBSEvent {
       public static let eventType: OBSWS.Events.AllTypes = .StreamStateChanged
+      public static let eventSubscription: OBSWS.Enums.EventSubscription = .outputs
 
       /// Whether the output is active
       public let outputActive: Bool
@@ -6596,6 +6629,7 @@ public enum OBSWS {
     /// > Since: Added in v5.0.0
     public struct RecordStateChanged: OBSEvent {
       public static let eventType: OBSWS.Events.AllTypes = .RecordStateChanged
+      public static let eventSubscription: OBSWS.Enums.EventSubscription = .outputs
 
       /// Whether the output is active
       public let outputActive: Bool
@@ -6625,6 +6659,7 @@ public enum OBSWS {
     /// > Since: Added in v5.5.0
     public struct RecordFileChanged: OBSEvent {
       public static let eventType: OBSWS.Events.AllTypes = .RecordFileChanged
+      public static let eventSubscription: OBSWS.Enums.EventSubscription = .outputs
 
       /// File name that the output has begun writing to
       public let newOutputPath: String
@@ -6646,6 +6681,7 @@ public enum OBSWS {
     /// > Since: Added in v5.0.0
     public struct ReplayBufferStateChanged: OBSEvent {
       public static let eventType: OBSWS.Events.AllTypes = .ReplayBufferStateChanged
+      public static let eventSubscription: OBSWS.Enums.EventSubscription = .outputs
 
       /// Whether the output is active
       public let outputActive: Bool
@@ -6671,6 +6707,7 @@ public enum OBSWS {
     /// > Since: Added in v5.0.0
     public struct VirtualcamStateChanged: OBSEvent {
       public static let eventType: OBSWS.Events.AllTypes = .VirtualcamStateChanged
+      public static let eventSubscription: OBSWS.Enums.EventSubscription = .outputs
 
       /// Whether the output is active
       public let outputActive: Bool
@@ -6696,6 +6733,7 @@ public enum OBSWS {
     /// > Since: Added in v5.0.0
     public struct ReplayBufferSaved: OBSEvent {
       public static let eventType: OBSWS.Events.AllTypes = .ReplayBufferSaved
+      public static let eventSubscription: OBSWS.Enums.EventSubscription = .outputs
 
       /// Path of the saved replay file
       public let savedReplayPath: String
@@ -6717,6 +6755,7 @@ public enum OBSWS {
     /// > Since: Added in v5.0.0
     public struct SceneItemCreated: OBSEvent {
       public static let eventType: OBSWS.Events.AllTypes = .SceneItemCreated
+      public static let eventSubscription: OBSWS.Enums.EventSubscription = .sceneItems
 
       /// Name of the scene the item was added to
       public let sceneName: String
@@ -6760,6 +6799,7 @@ public enum OBSWS {
     /// > Since: Added in v5.0.0
     public struct SceneItemRemoved: OBSEvent {
       public static let eventType: OBSWS.Events.AllTypes = .SceneItemRemoved
+      public static let eventSubscription: OBSWS.Enums.EventSubscription = .sceneItems
 
       /// Name of the scene the item was removed from
       public let sceneName: String
@@ -6797,6 +6837,7 @@ public enum OBSWS {
     /// > Since: Added in v5.0.0
     public struct SceneItemListReindexed: OBSEvent {
       public static let eventType: OBSWS.Events.AllTypes = .SceneItemListReindexed
+      public static let eventSubscription: OBSWS.Enums.EventSubscription = .sceneItems
 
       /// Name of the scene
       public let sceneName: String
@@ -6826,6 +6867,7 @@ public enum OBSWS {
     /// > Since: Added in v5.0.0
     public struct SceneItemEnableStateChanged: OBSEvent {
       public static let eventType: OBSWS.Events.AllTypes = .SceneItemEnableStateChanged
+      public static let eventSubscription: OBSWS.Enums.EventSubscription = .sceneItems
 
       /// Name of the scene the item is in
       public let sceneName: String
@@ -6859,6 +6901,7 @@ public enum OBSWS {
     /// > Since: Added in v5.0.0
     public struct SceneItemLockStateChanged: OBSEvent {
       public static let eventType: OBSWS.Events.AllTypes = .SceneItemLockStateChanged
+      public static let eventSubscription: OBSWS.Enums.EventSubscription = .sceneItems
 
       /// Name of the scene the item is in
       public let sceneName: String
@@ -6892,6 +6935,7 @@ public enum OBSWS {
     /// > Since: Added in v5.0.0
     public struct SceneItemSelected: OBSEvent {
       public static let eventType: OBSWS.Events.AllTypes = .SceneItemSelected
+      public static let eventSubscription: OBSWS.Enums.EventSubscription = .sceneItems
 
       /// Name of the scene the item is in
       public let sceneName: String
@@ -6921,6 +6965,7 @@ public enum OBSWS {
     /// > Since: Added in v5.0.0
     public struct SceneItemTransformChanged: OBSEvent {
       public static let eventType: OBSWS.Events.AllTypes = .SceneItemTransformChanged
+      public static let eventSubscription: OBSWS.Enums.EventSubscription = .sceneItemTransformChanged
 
       /// The name of the scene the item is in
       public let sceneName: String
@@ -6954,6 +6999,7 @@ public enum OBSWS {
     /// > Since: Added in v5.0.0
     public struct SceneCreated: OBSEvent {
       public static let eventType: OBSWS.Events.AllTypes = .SceneCreated
+      public static let eventSubscription: OBSWS.Enums.EventSubscription = .scenes
 
       /// Name of the new scene
       public let sceneName: String
@@ -6983,6 +7029,7 @@ public enum OBSWS {
     /// > Since: Added in v5.0.0
     public struct SceneRemoved: OBSEvent {
       public static let eventType: OBSWS.Events.AllTypes = .SceneRemoved
+      public static let eventSubscription: OBSWS.Enums.EventSubscription = .scenes
 
       /// Name of the removed scene
       public let sceneName: String
@@ -7012,6 +7059,7 @@ public enum OBSWS {
     /// > Since: Added in v5.0.0
     public struct SceneNameChanged: OBSEvent {
       public static let eventType: OBSWS.Events.AllTypes = .SceneNameChanged
+      public static let eventSubscription: OBSWS.Enums.EventSubscription = .scenes
 
       /// UUID of the scene
       public let sceneUuid: UUID
@@ -7041,6 +7089,7 @@ public enum OBSWS {
     /// > Since: Added in v5.0.0
     public struct CurrentProgramSceneChanged: OBSEvent {
       public static let eventType: OBSWS.Events.AllTypes = .CurrentProgramSceneChanged
+      public static let eventSubscription: OBSWS.Enums.EventSubscription = .scenes
 
       /// Name of the scene that was switched to
       public let sceneName: String
@@ -7066,6 +7115,7 @@ public enum OBSWS {
     /// > Since: Added in v5.0.0
     public struct CurrentPreviewSceneChanged: OBSEvent {
       public static let eventType: OBSWS.Events.AllTypes = .CurrentPreviewSceneChanged
+      public static let eventSubscription: OBSWS.Enums.EventSubscription = .scenes
 
       /// Name of the scene that was switched to
       public let sceneName: String
@@ -7093,6 +7143,7 @@ public enum OBSWS {
     /// > Since: Added in v5.0.0
     public struct SceneListChanged: OBSEvent {
       public static let eventType: OBSWS.Events.AllTypes = .SceneListChanged
+      public static let eventSubscription: OBSWS.Enums.EventSubscription = .scenes
 
       /// Updated array of scenes
       public let scenes: [JSONValue]
@@ -7114,6 +7165,7 @@ public enum OBSWS {
     /// > Since: Added in v5.0.0
     public struct CurrentSceneTransitionChanged: OBSEvent {
       public static let eventType: OBSWS.Events.AllTypes = .CurrentSceneTransitionChanged
+      public static let eventSubscription: OBSWS.Enums.EventSubscription = .transitions
 
       /// Name of the new transition
       public let transitionName: String
@@ -7139,6 +7191,7 @@ public enum OBSWS {
     /// > Since: Added in v5.0.0
     public struct CurrentSceneTransitionDurationChanged: OBSEvent {
       public static let eventType: OBSWS.Events.AllTypes = .CurrentSceneTransitionDurationChanged
+      public static let eventSubscription: OBSWS.Enums.EventSubscription = .transitions
 
       /// Transition duration in milliseconds
       public let transitionDuration: Int
@@ -7160,6 +7213,7 @@ public enum OBSWS {
     /// > Since: Added in v5.0.0
     public struct SceneTransitionStarted: OBSEvent {
       public static let eventType: OBSWS.Events.AllTypes = .SceneTransitionStarted
+      public static let eventSubscription: OBSWS.Enums.EventSubscription = .transitions
 
       /// Scene transition name
       public let transitionName: String
@@ -7187,6 +7241,7 @@ public enum OBSWS {
     /// > Since: Added in v5.0.0
     public struct SceneTransitionEnded: OBSEvent {
       public static let eventType: OBSWS.Events.AllTypes = .SceneTransitionEnded
+      public static let eventSubscription: OBSWS.Enums.EventSubscription = .transitions
 
       /// Scene transition name
       public let transitionName: String
@@ -7217,6 +7272,7 @@ public enum OBSWS {
     /// > Since: Added in v5.0.0
     public struct SceneTransitionVideoEnded: OBSEvent {
       public static let eventType: OBSWS.Events.AllTypes = .SceneTransitionVideoEnded
+      public static let eventSubscription: OBSWS.Enums.EventSubscription = .transitions
 
       /// Scene transition name
       public let transitionName: String
@@ -7242,6 +7298,7 @@ public enum OBSWS {
     /// > Since: Added in v5.0.0
     public struct StudioModeStateChanged: OBSEvent {
       public static let eventType: OBSWS.Events.AllTypes = .StudioModeStateChanged
+      public static let eventSubscription: OBSWS.Enums.EventSubscription = .ui
 
       /// True == Enabled, False == Disabled
       public let studioModeEnabled: Bool
@@ -7267,6 +7324,7 @@ public enum OBSWS {
     /// > Since: Added in v5.1.0
     public struct ScreenshotSaved: OBSEvent {
       public static let eventType: OBSWS.Events.AllTypes = .ScreenshotSaved
+      public static let eventSubscription: OBSWS.Enums.EventSubscription = .ui
 
       /// Path of the saved image file
       public let savedScreenshotPath: String
@@ -7291,6 +7349,7 @@ public enum OBSWS {
     /// > Since: Added in v5.0.0
     public struct VendorEvent: OBSEvent {
       public static let eventType: OBSWS.Events.AllTypes = .VendorEvent
+      public static let eventSubscription: OBSWS.Enums.EventSubscription = .vendors
 
       /// Name of the vendor emitting the event
       public let vendorName: String
@@ -7320,6 +7379,7 @@ public enum OBSWS {
     /// > Since: Added in v5.0.0
     public struct CustomEvent: OBSEvent {
       public static let eventType: OBSWS.Events.AllTypes = .CustomEvent
+      public static let eventSubscription: OBSWS.Enums.EventSubscription = .general
 
       /// Custom event data
       public let eventData: JSONValue
