@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import JSONValue
 
 /// A type used for sending and receiving information to and from OBS.
 public struct OBSMessage<Body: OBSOpDataProtocol>: OBSMessageProtocol {
@@ -23,5 +24,12 @@ public struct OBSMessage<Body: OBSOpDataProtocol>: OBSMessageProtocol {
     public init(data: Body) {
         self.operation = Body.opCode
         self.data = data
+    }
+    
+    func untyped() throws -> OBSUntypedMessage {
+        .init(
+            operation: operation,
+            data: try JSONValue.fromCodable(data)
+        )
     }
 }
