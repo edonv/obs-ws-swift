@@ -31,7 +31,7 @@ public struct OBSUntypedMessage: OBSMessageProtocol {
     /// 
     /// It tries to do this based on the value of the ``operation`` property. It fails immediately if ``operation`` doesn't match ``OBSOpDataProtocol/opCode`` of the specified `type`.
     /// - Parameter type: <#type description#>
-    /// - Throws: ``Error/unableToCastBody(operation:)`` if unable to cast successfully.
+    /// - Throws: An ``Error`` if unable to cast successfully.
     /// - Returns: A typed `OBSMessage`.
     public func `as`<T: OBSOpDataProtocol>(_ type: T.Type = T.self) throws(Error) -> OBSMessage<T> {
         try .init(operation: type.opCode, data: messageData())
