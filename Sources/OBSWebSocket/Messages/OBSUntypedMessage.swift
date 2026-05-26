@@ -10,7 +10,9 @@ import JSONValue
 
 /// A general type used for easier receipt of messages without having to cast immediately.
 public struct OBSUntypedMessage: OBSMessageProtocol {
-    public let operation: OBSWS.Enums.OpCode
+    public typealias OpCode = OBSWS.Enums.OpCode
+    
+    public let operation: OpCode
     
     /// The body of the message.
     ///
@@ -18,7 +20,7 @@ public struct OBSUntypedMessage: OBSMessageProtocol {
     public let data: JSONValue
     
     public init(
-        operation: OBSWS.Enums.OpCode,
+        operation: OpCode,
         data: JSONValue
     ) {
         self.operation = operation
