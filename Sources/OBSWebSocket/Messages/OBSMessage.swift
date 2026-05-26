@@ -10,11 +10,13 @@ import JSONValue
 
 /// A type used for sending and receiving information to and from OBS.
 public struct OBSMessage<Body: OBSOpDataProtocol>: OBSMessageProtocol {
-    public let operation: OBSWS.Enums.OpCode
+    public typealias OpCode = OBSWS.Enums.OpCode
+    
+    public let operation: OpCode
     public let data: Body
     
     public init(
-        operation: OBSWS.Enums.OpCode,
+        operation: OpCode,
         data: Body
     ) {
         self.operation = operation
