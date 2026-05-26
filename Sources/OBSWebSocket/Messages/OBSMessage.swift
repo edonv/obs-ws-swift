@@ -35,3 +35,16 @@ public struct OBSMessage<Body: OBSOpDataProtocol>: OBSMessageProtocol {
         )
     }
 }
+
+/// Namespace for type aliases of typed ``OBSMessage``s.
+public enum OBSMessages {
+    public typealias Hello = OBSMessage<OBSOpData.Hello>
+    public typealias Identify = OBSMessage<OBSOpData.Identify>
+    public typealias Identified = OBSMessage<OBSOpData.Identified>
+    public typealias Reidentify = OBSMessage<OBSOpData.Reidentify>
+    public typealias Event = OBSMessage<OBSOpData.Event>
+    public typealias Request = OBSMessage<OBSOpData.Request>
+    public typealias RequestResponse = OBSMessage<OBSOpData.RequestResponse>
+    public typealias RequestBatch = OBSMessage<OBSOpData.RequestBatch>
+    public typealias RequestBatchResponse = OBSMessage<OBSOpData.RequestBatchResponse>
+}
