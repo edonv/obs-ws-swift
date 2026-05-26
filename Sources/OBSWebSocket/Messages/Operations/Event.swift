@@ -17,7 +17,6 @@ extension OBSOpData {
         public static let opCode: OBSWS.Enums.OpCode = .event
         
         public let type: OBSWS.Events.AllTypes
-        
         /// The original intent required to be subscribed to in order to receive the event.
         public let intent: OBSWS.Enums.EventSubscription
         public let data: JSONValue
