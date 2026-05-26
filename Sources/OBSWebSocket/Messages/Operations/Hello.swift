@@ -28,9 +28,24 @@ extension OBSOpData {
         public let rpcVersion: Int
         public let authentication: Authentication?
         
+        internal init(
+            obsWebSocketVersion: String,
+            rpcVersion: Int,
+            authentication: Authentication?
+        ) {
+            self.obsWebSocketVersion = obsWebSocketVersion
+            self.rpcVersion = rpcVersion
+            self.authentication = authentication
+        }
+        
         public struct Authentication: Sendable, Hashable, Codable {
             public let challenge: String
             public let salt: String
+            
+            internal init(challenge: String, salt: String) {
+                self.challenge = challenge
+                self.salt = salt
+            }
         }
         
         /// Maps `Hello` instance to a new ``Identify`` message body.

@@ -18,5 +18,9 @@ extension OBSOpData {
         public static let opCode: OBSWS.Enums.OpCode = .reidentify
         
         public let eventSubscriptions: OBSWS.Enums.EventSubscription?
+        
+        internal init(eventSubscriptions: OBSWS.Enums.EventSubscription?) {
+            self.eventSubscriptions = eventSubscriptions
+        }
     }
 }

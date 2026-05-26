@@ -27,5 +27,24 @@ extension OBSOpData {
             case id = "requestId"
             case data = "requestData"
         }
+        
+        internal init(
+            type: OBSWS.Requests.AllTypes,
+            id: String,
+            data: JSONValue?
+        ) {
+            self.type = type
+            self.id = id
+            self.data = data
+        }
+        
+        internal init<R: OBSRequest>(
+            _ request: R,
+            id: String
+        ) throws {
+            self.type = R.requestType
+            self.id = id
+            self.data = try .fromCodable(request)
+        }
     }
 }

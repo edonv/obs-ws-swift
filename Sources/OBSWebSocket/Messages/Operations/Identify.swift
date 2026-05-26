@@ -28,5 +28,15 @@ extension OBSOpData {
         /// By default, all event categories are subscribed, except for events marked as high volume.
         /// High volume events must be explicitly subscribed to.
         public let eventSubscriptions: OBSWS.Enums.EventSubscription?
+        
+        internal init(
+            rpcVersion: Int,
+            authentication: String?,
+            eventSubscriptions: OBSWS.Enums.EventSubscription? = nil
+        ) {
+            self.rpcVersion = rpcVersion
+            self.authentication = authentication
+            self.eventSubscriptions = eventSubscriptions
+        }
     }
 }

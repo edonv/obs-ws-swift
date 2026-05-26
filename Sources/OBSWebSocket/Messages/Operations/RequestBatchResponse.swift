@@ -19,6 +19,14 @@ extension OBSOpData {
         public let id: String
         public let results: [Response]
         
+        internal init(
+            id: String,
+            results: [Response]
+        ) {
+            self.id = id
+            self.results = results
+        }
+        
         private enum CodingKeys: String, CodingKey {
             case id = "requestId"
             case results
@@ -32,6 +40,30 @@ extension OBSOpData {
             public let id: String?
             public let status: Status
             public let data: JSONValue?
+            
+            internal init(
+                type: OBSWS.Requests.AllTypes,
+                id: String?,
+                status: Status,
+                data: JSONValue?
+            ) {
+                self.type = type
+                self.id = id
+                self.status = status
+                self.data = data
+            }
+            
+            internal init<R: OBSRequest>(
+                _ type: R.Type = R.self,
+                id: String? = nil,
+                status: Status,
+                response: R.Response
+            ) throws {
+                self.type = R.requestType
+                self.id = id
+                self.status = status
+                self.data = try .fromCodable(response)
+            }
             
             private enum CodingKeys: String, CodingKey {
                 case type = "requestType"

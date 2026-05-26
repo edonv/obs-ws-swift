@@ -19,5 +19,9 @@ extension OBSOpData {
         public static let opCode: OBSWS.Enums.OpCode = .identified
         
         public let negotiatedRpcVersion: Int
+        
+        internal init(negotiatedRpcVersion: Int) {
+            self.negotiatedRpcVersion = negotiatedRpcVersion
+        }
     }
 }

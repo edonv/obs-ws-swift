@@ -33,6 +33,18 @@ extension OBSOpData {
         /// Requests in the `requests` array follow the same structure as the ``Request`` payload data format, however ``Request/id`` is an optional field.
         public let requests: [Request]
         
+        internal init(
+            id: String,
+            haltOnFailure: Bool? = nil,
+            executionType: OBSWS.Enums.RequestBatchExecutionType? = nil,
+            requests: [Request]
+        ) {
+            self.id = id
+            self.haltOnFailure = haltOnFailure
+            self.executionType = executionType
+            self.requests = requests
+        }
+        
         private enum CodingKeys: String, CodingKey {
             case id = "requestId"
             case haltOnFailure
@@ -45,6 +57,25 @@ extension OBSOpData {
             public let type: OBSWS.Requests.AllTypes
             public let id: String?
             public let data: JSONValue?
+            
+            internal init(
+                type: OBSWS.Requests.AllTypes,
+                id: String? = nil,
+                data: JSONValue?
+            ) {
+                self.type = type
+                self.id = id
+                self.data = data
+            }
+            
+            internal init<R: OBSRequest>(
+                _ request: R,
+                id: String? = nil
+            ) throws {
+                self.type = R.requestType
+                self.id = id
+                self.data = try .fromCodable(request)
+            }
             
             private enum CodingKeys: String, CodingKey {
                 case type = "requestType"

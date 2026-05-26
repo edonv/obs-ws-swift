@@ -22,6 +22,24 @@ extension OBSOpData {
         public let intent: OBSWS.Enums.EventSubscription
         public let data: JSONValue
         
+        internal init(
+            type: OBSWS.Events.AllTypes,
+            intent: OBSWS.Enums.EventSubscription,
+            data: JSONValue
+        ) {
+            self.type = type
+            self.intent = intent
+            self.data = data
+        }
+        
+        internal init<E: OBSEvent>(
+            _ event: E
+        ) throws {
+            self.type = E.eventType
+            self.intent = E.eventSubscription
+            self.data = try .fromCodable(event)
+        }
+        
         private enum CodingKeys: String, CodingKey {
             case type = "eventType"
             case intent = "eventIntent"
