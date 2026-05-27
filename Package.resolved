@@ -1,5 +1,5 @@
 {
-  "originHash" : "bd25c0571a1531c795fe66a66aba9f81f86b5618d147b735ec1c19ed4c59a762",
+  "originHash" : "4bd33b54711373556a11ff79fbc02828a6abdbf32196ff0bad89fd77f3c8e431",
   "pins" : [
     {
       "identity" : "jsonvalue",
@@ -15,8 +15,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/edonv/MessagePacker.git",
       "state" : {
-        "revision" : "f754309ff9f6b363637f3212ddd73ce93b23af31",
-        "version" : "0.5.0"
+        "revision" : "118212310032a3f430ec9b6aa939decae0e01f26",
+        "version" : "0.5.1"
       }
     },
     {
