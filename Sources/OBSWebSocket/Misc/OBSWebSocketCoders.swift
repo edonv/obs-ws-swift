@@ -19,7 +19,7 @@ protocol OBSWebSocketEncoder: Sendable, Copyable {
 protocol OBSWebSocketDecoder: Sendable, Copyable {
     init()
     
-    func decode<T:Decodable>(
+    func decode<T: Decodable>(
         _ type: T.Type,
         from data: Data
     ) throws -> T
