@@ -98,7 +98,7 @@ internal struct MessagePackCoders: CoderPair {
 }
 
 extension AnyCoderPair {
-    static func pair(for mode: OBSWebSocket.Connection.MessageEncoding?) -> Self {
+    static func pair(for mode: OBSWebSocket.ConnectionDetails.MessageEncoding?) -> Self {
         mode == .msgPack
         ? .msgPack
         : .json

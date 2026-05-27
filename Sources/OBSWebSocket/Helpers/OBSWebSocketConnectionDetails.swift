@@ -1,5 +1,5 @@
 //
-//  OBSWebSocketConnection.swift
+//  OBSWebSocketConnectionDetails.swift
 //  obs-ws-swift
 //
 //  Created by Edon Valdman on 5/26/26.
@@ -9,7 +9,7 @@ import Foundation
 
 extension OBSWebSocket {
     /// A container type for managing information for connecting to `obs-websocket`.
-    public struct Connection: Sendable, Hashable, Codable {
+    public struct ConnectionDetails: Sendable, Hashable, Codable {
         // MARK: - Stored Properties
         
         /// URL scheme to use.
@@ -59,7 +59,7 @@ extension OBSWebSocket {
         
         /// Initializes connection data from a [`URLRequest`](https://developer.apple.com/documentation/foundation/urlrequest).
         ///
-        /// `encodingProtocol` can be specified in the `request` parameter by setting the appropriate header field (``Connection/encodingProtocolHeaderKey``) to a supported value (``MessageEncoding``).
+        /// `encodingProtocol` can be specified in the `request` parameter by setting the appropriate header field (``ConnectionDetails/encodingProtocolHeaderKey``) to a supported value (``MessageEncoding``).
         /// - Parameters:
         ///   - request: A preconfigured `URLRequest`.
         ///   - encodingProtocol: The type of encoding to use when communicating with `obs-websocket`, if not already included in `request` as a header field.
@@ -96,13 +96,13 @@ extension OBSWebSocket {
         }
         
         /// A [`URL`](https://developer.apple.com/documentation/foundation/url) initialized
-        /// from ``Connection/urlString``.
+        /// from ``ConnectionDetails/urlString``.
         public var url: URL? {
             return URL(string: urlString)
         }
         
         /// A [`URLRequest`](https://developer.apple.com/documentation/foundation/urlrequest) initialized
-        /// from ``Connection/url`` and ``Connection/encodingProtocol``, if not `nil`.
+        /// from ``ConnectionDetails/url`` and ``ConnectionDetails/encodingProtocol``, if not `nil`.
         public var urlRequest: URLRequest? {
             guard let url = self.url else { return nil }
             

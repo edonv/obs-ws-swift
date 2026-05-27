@@ -10,7 +10,7 @@ import Foundation
 extension URLRequest {
     static let encodingProtocolHeaderKey = "Sec-WebSocket-Protocol"
     
-    public var webSocketProtocolHeader: OBSWebSocket.Connection.MessageEncoding? {
+    public var webSocketProtocolHeader: OBSWebSocket.ConnectionDetails.MessageEncoding? {
         get {
             self.value(forHTTPHeaderField: URLRequest.encodingProtocolHeaderKey)
                 .flatMap { .init(rawValue: $0) }
