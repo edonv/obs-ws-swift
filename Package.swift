@@ -18,6 +18,7 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/edonv/JSONValue.git", from: "1.1.4"),
+        .package(url: "https://github.com/edonv/MessagePacker.git", from: "0.4.8"),
         .package(url: "https://github.com/apple/swift-argument-parser.git", from: "1.7.1"),
         .package(url: "https://github.com/swiftlang/swift-syntax.git", from: "603.0.1"),
 
@@ -29,6 +30,7 @@ let package = Package(
             name: "OBSWebSocket",
             dependencies: [
                 .product(name: "JSONValue", package: "JSONValue"),
+                .product(name: "MessagePacker", package: "MessagePacker"),
             ]
         ),
         // Generator CLI
