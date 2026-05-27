@@ -62,7 +62,7 @@ extension OBSMessages.Hello {
     /// - Returns: A new ``OBSMessages/Identify`` (``OBSMessage`` with an ``OBSOpData/Identify`` `Body`) with the generated authentication string.
     internal func toIdentify(
         password: String?,
-        subscribeTo events: OBSWS.Enums.EventSubscription?
+        subscribingTo events: OBSWS.Enums.EventSubscription?
     ) throws -> OBSMessages.Identify {
         var auth: String? = nil
         
