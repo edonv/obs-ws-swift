@@ -21,7 +21,7 @@ let package = Package(
         .package(url: "https://github.com/edonv/MessagePacker.git", from: "0.5.1"),
         .package(url: "https://github.com/apple/swift-argument-parser.git", from: "1.8.0"),
         .package(url: "https://github.com/swiftlang/swift-syntax.git", from: "603.0.1"),
-
+        .package(url: "https://github.com/apple/swift-async-algorithms", from: "1.1.4"),
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
@@ -31,6 +31,7 @@ let package = Package(
             dependencies: [
                 .product(name: "JSONValue", package: "JSONValue"),
                 .product(name: "MessagePacker", package: "MessagePacker"),
+                .product(name: "AsyncAlgorithms", package: "swift-async-algorithms"),
             ]
         ),
         // Generator CLI
