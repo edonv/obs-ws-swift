@@ -59,7 +59,7 @@ extension OBSWebSocket {
         
         /// Initializes connection data from a [`URLRequest`](https://developer.apple.com/documentation/foundation/urlrequest).
         ///
-        /// `encodingProtocol` can be specified in the `request` parameter by setting the appropriate header field (``ConnectionDetails/encodingProtocolHeaderKey``) to a supported value (``MessageEncoding``).
+        /// `encodingProtocol` can be specified in the `request` parameter by setting the appropriate header field (``Foundation/URLRequest/webSocketProtocolHeader``) to a supported value (``MessageEncoding``).
         /// - Parameters:
         ///   - request: A preconfigured `URLRequest`.
         ///   - encodingProtocol: The type of encoding to use when communicating with `obs-websocket`, if not already included in `request` as a header field.
