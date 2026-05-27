@@ -8,5 +8,7 @@
 import Foundation
 
 public class WebSocketSession {
+    public typealias Message = URLSessionWebSocketTask.Message
+    public typealias CloseCode = URLSessionWebSocketTask.CloseCode
     
 }
