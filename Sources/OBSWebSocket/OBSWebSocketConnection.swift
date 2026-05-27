@@ -10,6 +10,23 @@ import Foundation
 extension OBSWebSocket {
     /// A container type for managing information for connecting to `obs-websocket`.
     public struct Connection: Sendable, Hashable, Codable {
+        // MARK: - Stored Properties
+        
+        /// URL scheme to use.
+        public let scheme: String
+        
+        /// IP address of the `obs-websocket` server.
+        public let ipAddress: String
+        
+        /// Port number of the `obs-websocket` server.
+        public let port: Int
+        
+        /// Password for `obs-websocket` connection, if authentication is turned on.
+        public let password: String?
+        
+        /// Which method of encoding messages the connection should use.
+        public let encodingProtocol: MessageEncoding?
+        
         // MARK: - Initializers
         
         /// Memberwise initializer.
@@ -66,23 +83,6 @@ extension OBSWebSocket {
             
             self.encodingProtocol = request.webSocketProtocolHeader
         }
-        
-        // MARK: - Stored Properties
-        
-        /// URL scheme to use.
-        public let scheme: String
-        
-        /// IP address of the `obs-websocket` server.
-        public let ipAddress: String
-        
-        /// Port number of the `obs-websocket` server.
-        public let port: Int
-        
-        /// Password for `obs-websocket` connection, if authentication is turned on.
-        public let password: String?
-        
-        /// Which method of encoding messages the connection should use.
-        public let encodingProtocol: MessageEncoding?
         
         // MARK: - Computed Properties
         
