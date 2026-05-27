@@ -57,7 +57,7 @@ extension OBSOpData {
         /// - Throws: ``OBSWS/Error/missingPasswordWhereRequired`` if
         /// ``Hello/authentication`` is present without a provided password.
         /// - Returns: A new ``Identify`` message body with the generated authentication string.
-        public func toIdentify(
+        internal func toIdentify(
             password: String?,
             subscribeTo events: OBSWS.Enums.EventSubscription?
         ) throws -> Identify {
