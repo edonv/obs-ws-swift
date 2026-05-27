@@ -180,6 +180,12 @@ public final class OBSWebSocket: Sendable {
                 with: closeCode.map { .init(rawValue: $0.rawValue)! },
                 reason: reason)
         }
+        
+        self.clearTaskData()
+    }
+    
+    /// Cleans up properties after closing a connection.
+    private func clearTaskData() {
         self.connectionDetails.withLock { $0 = nil }
         self.handshakeDetails.withLock { $0 = nil }
     }
