@@ -66,6 +66,10 @@ extension OBSMessages.Hello {
     ) throws -> OBSMessages.Identify {
         var auth: String? = nil
         
+        // If there should be a password but not provided to function, can also
+        // ignore and allow for OBS-WS to close with specific error.
+        // Currently throwing, not ignoring
+        
         // To generate the authentication string, follow these steps:
         if let a = self.data.authentication {
             if let pass = password,
