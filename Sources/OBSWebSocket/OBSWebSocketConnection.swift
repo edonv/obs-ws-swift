@@ -10,8 +10,6 @@ import Foundation
 extension OBSWebSocket {
     /// A container type for managing information for connecting to `obs-websocket`.
     public struct Connection: Sendable, Hashable, Codable {
-        public static let encodingProtocolHeaderKey = "Sec-WebSocket-Protocol"
-        
         // MARK: - Initializers
         
         /// Memberwise initializer.
@@ -34,9 +32,11 @@ extension OBSWebSocket {
             fromUrl url: URL,
             encodingProtocol: MessageEncoding? = nil
         ) {
+            var request = URLRequest(url: url)
+            request.webSocketProtocolHeader = encodingProtocol
+            
             self.init(
-                fromUrlRequest: URLRequest(url: url),
-                encodingProtocol: encodingProtocol
+                fromUrlRequest: request
             )
         }
         
@@ -47,8 +47,7 @@ extension OBSWebSocket {
         ///   - request: A preconfigured `URLRequest`.
         ///   - encodingProtocol: The type of encoding to use when communicating with `obs-websocket`, if not already included in `request` as a header field.
         public init?(
-            fromUrlRequest request: URLRequest,
-            encodingProtocol: MessageEncoding? = nil
+            fromUrlRequest request: URLRequest
         ) {
             guard let url = request.url,
                   let components = URLComponents(url: url, resolvingAgainstBaseURL: false),
@@ -65,13 +64,7 @@ extension OBSWebSocket {
             let path = components.path.replacingOccurrences(of: "/", with: "")
             self.password = path.isEmpty ? nil : path
             
-            if let encodingStr = request.value(forHTTPHeaderField: Self.encodingProtocolHeaderKey),
-               let encoding = MessageEncoding(rawValue: encodingStr) {
-                self.encodingProtocol = encoding
-            } else {
-                // Otherwise, use the provided
-                self.encodingProtocol = nil
-            }
+            self.encodingProtocol = request.webSocketProtocolHeader
         }
         
         // MARK: - Stored Properties
@@ -112,11 +105,10 @@ extension OBSWebSocket {
         /// from ``Connection/url`` and ``Connection/encodingProtocol``, if not `nil`.
         public var urlRequest: URLRequest? {
             guard let url = self.url else { return nil }
-            var req = URLRequest(url: url)
             
-            if let encoding = self.encodingProtocol {
-                req.addValue(encoding.rawValue, forHTTPHeaderField: Self.encodingProtocolHeaderKey)
-            }
+            var req = URLRequest(url: url)
+            req.webSocketProtocolHeader = encodingProtocol
+            
             return req
         }
         
