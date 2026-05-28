@@ -11,15 +11,15 @@ import MessagePacker
 extension WebSocketAsyncSession {
     internal func send<M: OBSMessageProtocol>(
         _ message: M,
-        encodingProtocol: OBSWebSocket.ConnectionDetails.MessageEncoding
+        encodingProtocol: OBSWebSocket.ConnectionDetails.MessageEncoding?
     ) async throws {
         let data: Data
         
         switch encodingProtocol {
-        case .json:
-            data = try JSONCoders().encoder.encode(message)
         case .msgPack:
             data = try MessagePackCoders().encoder.encode(message)
+        default:
+            data = try JSONCoders().encoder.encode(message)
         }
         
         try await self.send(obsWSData: data, encodingProtocol: encodingProtocol)
@@ -27,13 +27,13 @@ extension WebSocketAsyncSession {
     
     private func send(
         obsWSData data: Data,
-        encodingProtocol: OBSWebSocket.ConnectionDetails.MessageEncoding
+        encodingProtocol: OBSWebSocket.ConnectionDetails.MessageEncoding?
     ) async throws {
         switch encodingProtocol {
-        case .json:
-            try await self.send(String(data: data, encoding: .utf8)!)
         case .msgPack:
             try await self.send(data)
+        default:
+            try await self.send(String(data: data, encoding: .utf8)!)
         }
     }
 }
