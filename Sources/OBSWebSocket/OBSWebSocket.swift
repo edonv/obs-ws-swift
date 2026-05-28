@@ -90,7 +90,7 @@ public final class OBSWebSocket: Sendable {
             throw .test
         }
         
-        let encodingProtocol = request.webSocketProtocolHeader ?? .json
+        let encodingProtocol = request.webSocketProtocolHeader
         
         // START CONNECTION
         let session = WebSocketAsyncSession(request: request)
