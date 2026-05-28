@@ -11,9 +11,6 @@ import MessagePacker
 import AsyncAlgorithms
 
 public final class OBSWebSocket: Sendable {
-    typealias RequestResponseBacklog = [OBSWS.Requests.AllTypes: OBSMessages.RequestResponse]
-    typealias EventBacklog = [OBSWS.Events.AllTypes: OBSMessages.Event]
-    
     public typealias UntypedMessage = OBSUntypedMessage
     public typealias Message = OBSMessage
     public typealias CloseCode = OBSWS.Enums.CloseCode
@@ -61,9 +58,6 @@ public final class OBSWebSocket: Sendable {
     // MARK: - Public Initializers
     
     public init() {
-        self.reqResponseBacklog = .init([:])
-        self.eventBacklog = .init([:])
-        
         self._session = .init(nil)
         self.connectionDetails = .init(nil)
         self.handshakeDetails = .init(nil)
