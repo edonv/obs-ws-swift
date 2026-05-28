@@ -7,10 +7,7 @@
 
 import Foundation
 
-public final class WebSocketAsyncSession: NSObject, @unchecked Sendable {
-    public typealias Message = URLSessionWebSocketTask.Message
-    public typealias CloseCode = URLSessionWebSocketTask.CloseCode
-    
+public final class WebSocketAsyncSession: NSObject, WebSocketSessionProtocol, @unchecked Sendable {
     /// The `URLRequest` used for creating an `URLSession` to start a connection.
     private let urlRequest: URLRequest
     
@@ -49,10 +46,6 @@ public final class WebSocketAsyncSession: NSObject, @unchecked Sendable {
         
         // Start `webSocketTask`
         self.webSocketTask.resume()
-    }
-    
-    public convenience init(url: URL) {
-        self.init(request: .init(url: url))
     }
     
     deinit {
