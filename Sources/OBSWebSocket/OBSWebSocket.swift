@@ -149,7 +149,7 @@ public final class OBSWebSocket: Sendable {
             )
         } catch let error as Errors {
             throw error
-        } catch let error as WebSocketAsyncSession.Error {
+        } catch let error as WebSocketError {
             throw .wsError(error)
         } catch {
             #warning("TODO: custom error")
@@ -186,10 +186,10 @@ public final class OBSWebSocket: Sendable {
     
     public enum Errors: Error {
         case test
-        case webSocketError(WebSocketAsyncSession.Error)
+        case webSocketError(WebSocketError)
         case obsWebSocketClosed(OBSWS.Enums.CloseCode, reason: String?)
         
-        fileprivate static func wsError(_ error: WebSocketAsyncSession.Error) -> Self {
+        fileprivate static func wsError(_ error: WebSocketError) -> Self {
             switch error {
             case .connectionClosed(let code, let reason):
                 if let code = OBSWS.Enums.CloseCode(rawValue: code) {
