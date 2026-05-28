@@ -63,10 +63,10 @@ public final class WebSocketAsyncSession: NSObject, @unchecked Sendable {
     
     /// Disconnects from the current session, if there is an active one.
     /// - Parameters:
-    ///   - closeCode: `URLSessionWebSocketTask.CloseCode` representation of reason for disconnecting.
+    ///   - closeCode: `CloseCode` representation of reason for disconnecting.
     ///   - reason: `String` representation of reason for disconnecting.
     public func disconnect(
-        with closeCode: URLSessionWebSocketTask.CloseCode? = nil,
+        with closeCode: CloseCode? = nil,
         reason: String? = nil
     ) {
         // No need to add a gaurd statement, because if one isn't active, webSocketTask will be nil.
