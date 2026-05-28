@@ -108,6 +108,7 @@ public final class WebSocketAsyncSession: NSObject, @unchecked Sendable {
     private func createConnectionClosedError() -> WebSocketError {
         .connectionClosed(code: self.webSocketTask.closeCode, reason: self.webSocketTask.closeReason)
     }
+    
     private func ensureConnectionOpen() throws(WebSocketError) {
         guard self.webSocketTask.closeCode == .invalid else {
             throw createConnectionClosedError()
