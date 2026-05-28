@@ -1,5 +1,5 @@
 //
-//  WebSocketSession.swift
+//  WebSocketAsyncSession.swift
 //  obs-ws-swift
 //
 //  Created by Edon Valdman on 5/26/26.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-public final class WebSocketSession: NSObject, @unchecked Sendable {
+public final class WebSocketAsyncSession: NSObject, @unchecked Sendable {
     public typealias Message = URLSessionWebSocketTask.Message
     public typealias CloseCode = URLSessionWebSocketTask.CloseCode
     
@@ -56,7 +56,7 @@ public final class WebSocketSession: NSObject, @unchecked Sendable {
     }
     
     deinit {
-        self.disconnect(with: .goingAway, reason: "WebSocketSession is being deallocated.")
+        self.disconnect(with: .goingAway, reason: "WebSocketAsyncSession is being deallocated.")
     }
     
     // MARK: - Connection Management
@@ -135,7 +135,7 @@ public final class WebSocketSession: NSObject, @unchecked Sendable {
 
 // MARK: - URLSessionWebSocketDelegate
 
-extension WebSocketSession: URLSessionWebSocketDelegate {
+extension WebSocketAsyncSession: URLSessionWebSocketDelegate {
     /// This function is called automatically by the delegate system when the WebSocket connection
     /// opens successfully.
     public func urlSession(

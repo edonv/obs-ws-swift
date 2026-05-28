@@ -17,7 +17,7 @@ public final class OBSWebSocket: Sendable {
     
     // MARK: - Private Stored Properties
     
-    private let _session: Mutex<WebSocketSession?>
+    private let _session: Mutex<WebSocketAsyncSession?>
     
     private let connectionDetails: Mutex<ConnectionDetails?>
     
@@ -84,7 +84,7 @@ public final class OBSWebSocket: Sendable {
     private static func initiateHandshake(
         with connectionData: ConnectionDetails,
         subscribingTo eventSubscription: OBSWS.Enums.EventSubscription?
-    ) async throws(Errors) -> (session: WebSocketSession, details: HandshakeDetails) {
+    ) async throws(Errors) -> (session: WebSocketAsyncSession, details: HandshakeDetails) {
         guard let request = connectionData.urlRequest else {
             #warning("TODO: make new more specific error case")
             throw .test
@@ -93,7 +93,7 @@ public final class OBSWebSocket: Sendable {
         let encodingProtocol = request.webSocketProtocolHeader ?? .json
         
         // START CONNECTION
-        let session = WebSocketSession(request: request)
+        let session = WebSocketAsyncSession(request: request)
         
         // Use local `session` because `self.session` hasn't been set yet
         let messages = session.messages
@@ -149,7 +149,7 @@ public final class OBSWebSocket: Sendable {
             )
         } catch let error as Errors {
             throw error
-        } catch let error as WebSocketSession.Error {
+        } catch let error as WebSocketAsyncSession.Error {
             throw .wsError(error)
         } catch {
             #warning("TODO: custom error")
@@ -186,10 +186,10 @@ public final class OBSWebSocket: Sendable {
     
     public enum Errors: Error {
         case test
-        case webSocketError(WebSocketSession.Error)
+        case webSocketError(WebSocketAsyncSession.Error)
         case obsWebSocketClosed(OBSWS.Enums.CloseCode, reason: String?)
         
-        fileprivate static func wsError(_ error: WebSocketSession.Error) -> Self {
+        fileprivate static func wsError(_ error: WebSocketAsyncSession.Error) -> Self {
             switch error {
             case .connectionClosed(let code, let reason):
                 if let code = OBSWS.Enums.CloseCode(rawValue: code) {

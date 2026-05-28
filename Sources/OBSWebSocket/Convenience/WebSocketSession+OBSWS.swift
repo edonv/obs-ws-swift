@@ -1,5 +1,5 @@
 //
-//  WebSocketSession+OBSWS.swift
+//  WebSocketAsyncSession+OBSWS.swift
 //  obs-ws-swift
 //
 //  Created by Edon Valdman on 5/27/26.
@@ -8,7 +8,7 @@
 import Foundation
 import MessagePacker
 
-extension WebSocketSession {
+extension WebSocketAsyncSession {
     internal func send<M: OBSMessageProtocol>(
         _ message: M,
         encodingProtocol: OBSWebSocket.ConnectionDetails.MessageEncoding
@@ -38,7 +38,7 @@ extension WebSocketSession {
     }
 }
 
-extension WebSocketSession.Messages {
+extension WebSocketAsyncSession.Messages {
     /// Map each message to an ``OBSUntypedMessage``.
     func asOBSWSMessages<Decoder: OBSWSDecoder>(_ decoder: Decoder) -> some AsyncSequence<OBSUntypedMessage, any Error> {
         self.map { msg in

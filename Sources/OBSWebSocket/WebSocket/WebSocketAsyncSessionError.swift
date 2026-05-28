@@ -1,5 +1,5 @@
 //
-//  WebSocketSessionError.swift
+//  WebSocketAsyncSessionError.swift
 //  obs-ws-swift
 //
 //  Created by Edon Valdman on 5/27/26.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension WebSocketSession {
+extension WebSocketAsyncSession {
     public enum Error: Swift.Error {
         case connectionClosed(code: Int, reason: String?)
         

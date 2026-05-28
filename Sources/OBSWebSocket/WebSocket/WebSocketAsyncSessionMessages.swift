@@ -1,5 +1,5 @@
 //
-//  WebSocketSessionMessages.swift
+//  WebSocketAsyncSessionMessages.swift
 //  obs-ws-swift
 //
 //  Created by Edon Valdman on 5/26/26.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension WebSocketSession {
+extension WebSocketAsyncSession {
     #warning("TODO: make session generic so Messages could be swapped for a different monitoring method")
     public struct Messages: AsyncSequence, Sendable {
         public typealias Stream = AsyncThrowingStream<URLSessionWebSocketTask.Message, Swift.Error>
