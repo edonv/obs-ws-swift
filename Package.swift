@@ -35,6 +35,9 @@ let package = Package(
                 .product(name: "AsyncAlgorithms", package: "swift-async-algorithms"),
             ]
         ),
+        .target(
+            name: "WebSocketSession"
+        ),
         // Generator CLI
         .executableTarget(
             name: "obs-ws-swift-generator",
