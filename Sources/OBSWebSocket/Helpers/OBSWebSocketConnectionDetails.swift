@@ -13,19 +13,19 @@ extension OBSWebSocket {
         // MARK: - Stored Properties
         
         /// URL scheme to use.
-        public let scheme: String
+        public var scheme: String
         
         /// IP address of the `obs-websocket` server.
-        public let ipAddress: String
+        public var ipAddress: String
         
         /// Port number of the `obs-websocket` server.
-        public let port: Int
+        public var port: Int
         
         /// Password for `obs-websocket` connection, if authentication is turned on.
-        public let password: String?
+        public var password: String?
         
         /// Which method of encoding messages the connection should use.
-        public let encodingProtocol: MessageEncoding?
+        public var encodingProtocol: MessageEncoding?
         
         // MARK: - Initializers
         
