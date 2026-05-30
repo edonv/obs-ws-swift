@@ -7,6 +7,7 @@
 
 import Foundation
 import MessagePacker
+import WebSocketSession
 
 extension WebSocketAsyncSession {
     internal func send<M: OBSMessageProtocol>(

@@ -30,6 +30,7 @@ let package = Package(
         .target(
             name: "OBSWebSocket",
             dependencies: [
+                "WebSocketSession",
                 .product(name: "JSONValue", package: "JSONValue"),
                 .product(name: "MessagePacker", package: "MessagePacker"),
                 .product(name: "AsyncAlgorithms", package: "swift-async-algorithms"),

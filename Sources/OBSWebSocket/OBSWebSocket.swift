@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import WebSocketSession
+
 import Synchronization
 import MessagePacker
 import AsyncAlgorithms
