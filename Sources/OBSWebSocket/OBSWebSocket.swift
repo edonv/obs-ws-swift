@@ -103,7 +103,7 @@ public final class OBSWebSocket: Sendable {
         
         // Use local `session` because `self.session` hasn't been set yet
         let messages = session.messages
-            .asOBSWSMessages(AnyCoderPair.pair(for: encodingProtocol).decoder)
+            .asOBSWSMessages()
         
         do {
             // 1 - Wait for `Hello` message from OBS-WS
