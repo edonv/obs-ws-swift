@@ -79,6 +79,6 @@ public struct OBSUntypedMessage: OBSMessageProtocol {
         case opCodeDoesNotMatchCastingType(messageCode: OpCode, expectedCode: OpCode)
         
         /// Thrown when trying to type-cast an untyped message and the contained ``OBSUntypedMessage/data`` is not the expected type (specified by ``OBSUntypedMessage/operation``).
-        case dataDoesNotMatchExpectedType(data: JSONValue, code: OpCode)
+        case dataDoesNotMatchExpectedType(data: JSONValue?, code: OpCode)
     }
 }
