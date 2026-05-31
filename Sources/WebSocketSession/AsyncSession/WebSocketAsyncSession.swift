@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import AsyncAlgorithms
 
 public final class WebSocketAsyncSession: NSObject, WebSocketSessionProtocol, @unchecked Sendable {
     /// The `URLRequest` used for creating an `URLSession` to start a connection.
@@ -16,8 +17,9 @@ public final class WebSocketAsyncSession: NSObject, WebSocketSessionProtocol, @u
     
     /// An `AsyncSequence` for subscribing to receiving WebSocket messages.
     private var _messages: Messages!
-    public var messages: Messages {
+    public var messages: some Sendable & AsyncSequence<Message, any Error> {
         _messages
+            .share(bufferingPolicy: .bounded(1))
     }
     
     // MARK: - Public Initializers
