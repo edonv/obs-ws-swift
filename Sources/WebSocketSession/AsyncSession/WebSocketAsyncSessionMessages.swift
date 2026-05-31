@@ -9,15 +9,15 @@ import Foundation
 
 extension WebSocketAsyncSession {
     #warning("TODO: make session generic so Messages could be swapped for a different monitoring method")
-    public struct Messages: AsyncSequence, Sendable {
-        public typealias Stream = AsyncThrowingStream<URLSessionWebSocketTask.Message, Swift.Error>
-        public typealias AsyncIterator = Stream.Iterator
-        public typealias Element = Message
+    package struct Messages: AsyncSequence, Sendable {
+        package typealias Stream = AsyncThrowingStream<URLSessionWebSocketTask.Message, Swift.Error>
+        package typealias AsyncIterator = Stream.Iterator
+        package typealias Element = Message
         
         private let stream: Stream
         private let continuation: Stream.Continuation
         
-        public init(
+        package init(
             onTermination: (@Sendable (Stream.Continuation.Termination) -> Void)? = nil
         ) {
             // Set `stream`/`continuation`
@@ -38,7 +38,7 @@ extension WebSocketAsyncSession {
             self.continuation.finish(throwing: error)
         }
         
-        public func makeAsyncIterator() -> AsyncIterator {
+        package func makeAsyncIterator() -> AsyncIterator {
             return stream.makeAsyncIterator()
         }
     }
