@@ -10,7 +10,7 @@ import Foundation
 /// An internal helper `AsyncSequence` type.
 ///
 /// `AsyncOBSUntypedMessageSequence` internally maps basic `URLSessionWebSocketTask.Message`s to OBS WebSocket-specific messages.
-public struct AsyncOBSUntypedMessageSequence<Base: AsyncSequence>: AsyncSequence, Sendable where Base: Sendable, Base.Element == URLSessionWebSocketTask.Message {
+internal struct AsyncOBSUntypedMessageSequence<Base: AsyncSequence>: AsyncSequence, Sendable where Base: Sendable, Base.Element == URLSessionWebSocketTask.Message {
     typealias Decoder = JSONDecoder
     
     let base: Base
