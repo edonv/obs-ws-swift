@@ -35,7 +35,7 @@ public final class OBSWebSocket: Sendable {
     // MARK: - Public Computed Properties
     
     #warning("TODO: make this not a computed property so it can use .share()")
-    public var messages: some AsyncSequence<OBSUntypedMessage, any Error> {
+    private var messages: some AsyncSequence<OBSUntypedMessage, any Error> {
         let messages = _session.withLock(\.?.messages)
         
         guard let messages else {
