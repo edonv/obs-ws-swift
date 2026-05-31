@@ -9,6 +9,8 @@ import Foundation
 import MessagePacker
 import WebSocketSession
 
+// MARK: - WebSocketAsyncSession.send()
+
 extension WebSocketAsyncSession {
     internal func send<M: OBSMessageProtocol>(
         _ message: M,
@@ -38,6 +40,8 @@ extension WebSocketAsyncSession {
         }
     }
 }
+
+// MARK: - WebSocketAsyncSession.Messages
 
 extension WebSocketAsyncSession.Messages {
     /// Map each message to an ``OBSUntypedMessage``.
