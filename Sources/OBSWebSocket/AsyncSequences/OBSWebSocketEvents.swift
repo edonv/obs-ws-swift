@@ -45,3 +45,19 @@ extension OBSWebSocket {
         }
     }
 }
+
+extension AsyncSequence where Self: Sendable, Element == OBSUntypedMessage {
+    public func events(
+        isIncluded: (@Sendable (OBSOpData.Event) throws -> Bool)? = nil
+    ) -> OBSWebSocket.Events<Self> {
+        .init(self, isIncluded: isIncluded ?? { _ in true })
+    }
+    
+    public func events<E: OBSEvent>(
+        ofType type: E.Type,
+        isIncluded: (@Sendable (OBSOpData.Event) throws -> Bool)? = nil
+    ) -> some AsyncSequence<E, any Error> {
+        OBSWebSocket.Events(self, isIncluded: isIncluded ?? { _ in true })
+            .compactMap { try? $0.asEvent(ofType: E.self) }
+    }
+}
