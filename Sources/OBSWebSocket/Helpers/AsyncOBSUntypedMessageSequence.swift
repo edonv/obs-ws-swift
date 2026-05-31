@@ -14,9 +14,14 @@ public struct AsyncOBSUntypedMessageSequence<Base: AsyncSequence>: AsyncSequence
     typealias Decoder = JSONDecoder
     
     let base: Base
+    let throwIfIncompatible: Bool
     
-    init(_ base: Base) {
+    init(
+        _ base: Base,
+        throwIfIncompatible: Bool = false
+    ) {
         self.base = base
+        self.throwIfIncompatible = throwIfIncompatible
     }
     
     public func makeAsyncIterator() -> AsyncIterator {
@@ -25,9 +30,14 @@ public struct AsyncOBSUntypedMessageSequence<Base: AsyncSequence>: AsyncSequence
     
     public struct AsyncIterator: AsyncIteratorProtocol {
         var base: Base.AsyncIterator
+        let throwIfIncompatible: Bool
         
-        init(_ base: Base.AsyncIterator) {
+        init(
+            _ base: Base.AsyncIterator,
+            throwIfIncompatible: Bool = false
+        ) {
             self.base = base
+            self.throwIfIncompatible = throwIfIncompatible
         }
         
         public mutating func next() async throws -> OBSUntypedMessage? {
@@ -51,7 +61,16 @@ public struct AsyncOBSUntypedMessageSequence<Base: AsyncSequence>: AsyncSequence
                     throw OBSWebSocket.Errors.test
                 }
                 
-                guard let obsMsg = try? Decoder().decode(OBSUntypedMessage.self, from: decodable) else { continue }
+                do {
+                    let obsMsg = try Decoder().decode(OBSUntypedMessage.self, from: decodable)
+                    return obsMsg
+                } catch {
+                    if throwIfIncompatible {
+                        throw error
+                    } else {
+                        continue
+                    }
+                }
             }
             
             return nil
