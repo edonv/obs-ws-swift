@@ -11,6 +11,8 @@ Spiritual successor to `OBSwiftSocket`.
 
 ## To-Do's
 
+- [ ] Figure out coding for MsgPack
+    - there's an issue when decoding from data and a value is a string
 - [x] Add generated section that makes enums of all enums, requests, and events
     - [x] Add to shared protocols that they must have a static property with that type.
     - [x] Maybe also generated functions that convert a generic message to a typed message
