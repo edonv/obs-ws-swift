@@ -154,15 +154,13 @@ public final class OBSWebSocket: Sendable {
         with closeCode: CloseCode? = nil,
         reason: String? = nil
     ) {
-        self._session.withLock {
-            $0?.disconnect(
-                // despite OBSWS's close codes aren't standard, Swift let's them be converted to
-                // a URLSessionWebSocketTask.CloseCode, but only when forced.
-                // it fails when not force unwrapped
-                with: closeCode.map { .init(rawValue: $0.rawValue)! },
-                reason: reason
-            )
-        }
+        self._session.withLock { $0 }?.disconnect(
+            // despite OBSWS's close codes aren't standard, Swift let's them be converted to
+            // a URLSessionWebSocketTask.CloseCode, but only when forced.
+            // it fails when not force unwrapped
+            with: closeCode.map { .init(rawValue: $0.rawValue)! },
+            reason: reason
+        )
         
         self.clearTaskData()
     }
