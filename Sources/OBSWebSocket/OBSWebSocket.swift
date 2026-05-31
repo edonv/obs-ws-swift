@@ -174,6 +174,7 @@ public final class OBSWebSocket: Sendable {
     
     // MARK: - Communication (In)
     
+    #warning("TODO: replace `any Error` with custom error type")
     #warning("TODO: make this not a computed property so it can use .share() and be prepended with  backlogs")
     private var messages: some AsyncSequence<OBSUntypedMessage, any Error> {
         let messages = _session.withLock(\.?.messages)
