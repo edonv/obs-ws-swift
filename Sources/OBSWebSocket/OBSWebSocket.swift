@@ -154,6 +154,7 @@ public final class OBSWebSocket: Sendable {
         with closeCode: CloseCode? = nil,
         reason: String? = nil
     ) {
+        #warning("TODO: not actually passing through the correct close code")
         self._session.withLock { $0 }?.disconnect(
             // despite OBSWS's close codes aren't standard, Swift let's them be converted to
             // a URLSessionWebSocketTask.CloseCode, but only when forced.
