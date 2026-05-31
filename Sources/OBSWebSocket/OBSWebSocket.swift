@@ -34,18 +34,16 @@ public final class OBSWebSocket: Sendable {
     
     // MARK: - Public Computed Properties
     
-    #warning("TODO: replace `any Error` with custom error type")
-    public var messages: any AsyncSequence<OBSUntypedMessage, any Error> {
+    #warning("TODO: make this not a computed property so it can use .share()")
+    public var messages: some AsyncSequence<OBSUntypedMessage, any Error> {
         let messages = _session.withLock(\.?.messages)
         
         guard let messages else {
-            return [OBSUntypedMessage]()
-                .async
-                .mapError { $0 as any Error }
+            return AsyncOBSWebSocketMessages(nil)
         }
         
         return messages
-            .asOBSWSMessages(coders.decoder)
+            .asOBSWSMessages()
     }
     
     /// Current details of connection to `obs-websocket`.
