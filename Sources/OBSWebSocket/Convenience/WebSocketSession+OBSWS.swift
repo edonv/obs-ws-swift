@@ -43,11 +43,11 @@ extension WebSocketAsyncSession {
 
 // MARK: - WebSocketAsyncSession.Messages
 
-typealias AsyncOBSWebSocketMessages = AsyncOptionalSequence<AsyncOBSUntypedMessageSequence<WebSocketAsyncSession.Messages>>
+typealias AsyncOBSWebSocketMessages<S: AsyncSequence> = AsyncOptionalSequence<AsyncOBSUntypedMessageSequence<WebSocketAsyncSession.Messages>> where S: Sendable, S.Element == URLSessionWebSocketTask.Message
 
-extension WebSocketAsyncSession.Messages {
+extension AsyncSequence where Self: Sendable, Element == URLSessionWebSocketTask.Message {
     /// Map each message to an ``OBSUntypedMessage``.
-    func asOBSWSMessages() -> AsyncOBSWebSocketMessages {
+    func asOBSWSMessages() -> some Sendable & AsyncSequence<OBSUntypedMessage, any Error> {
         AsyncOBSUntypedMessageSequence(self, throwIfIncompatible: false)
             .optional
     }
