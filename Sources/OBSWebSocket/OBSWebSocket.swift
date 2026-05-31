@@ -160,7 +160,8 @@ public final class OBSWebSocket: Sendable {
                 // a URLSessionWebSocketTask.CloseCode, but only when forced.
                 // it fails when not force unwrapped
                 with: closeCode.map { .init(rawValue: $0.rawValue)! },
-                reason: reason)
+                reason: reason
+            )
         }
         
         self.clearTaskData()
