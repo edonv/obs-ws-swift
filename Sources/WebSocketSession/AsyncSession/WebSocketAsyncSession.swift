@@ -17,10 +17,11 @@ public final class WebSocketAsyncSession: NSObject, WebSocketSessionProtocol, @u
     
     /// An `AsyncSequence` for subscribing to receiving WebSocket messages.
     private var _messages: Messages!
-    public var messages: some Sendable & AsyncSequence<Message, any Error> {
-        _messages
-            .share(bufferingPolicy: .bounded(1))
-    }
+    /// An `AsyncSequence` for subscribing to receiving WebSocket messages.
+    ///
+    /// Behind the scenes, `messages` uses `AsyncAlgorithms`'s `.share()` feature to allow for multiple tasks for observe its contents.
+    public private(set) lazy var messages: some Sendable & AsyncSequence<Message, any Error> = _messages
+        .share(bufferingPolicy: .bounded(1))
     
     // MARK: - Public Initializers
     
