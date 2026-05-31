@@ -34,24 +34,6 @@ public final class OBSWebSocket: Sendable {
     
     // MARK: - Public Computed Properties
     
-    #warning("TODO: make this not a computed property so it can use .share()")
-    private var messages: some AsyncSequence<OBSUntypedMessage, any Error> {
-        let messages = _session.withLock(\.?.messages)
-        
-        guard let messages else {
-            return AsyncOBSWebSocketMessages(nil)
-        }
-        
-        return messages
-            .asOBSWSMessages()
-    }
-    
-    public var events: some AsyncSequence<OBSOpData.Event, any Error> {
-        messages
-            .compactMap { try? $0.as(OBSOpData.Event.self) }
-            .map(\.data)
-    }
-    
     /// Current details of connection to `obs-websocket`.
     public var activeConnectionDetails: ConnectionDetails? {
         self.connectionDetails.withLock { $0 }
@@ -188,6 +170,26 @@ public final class OBSWebSocket: Sendable {
     private func clearTaskData() {
         self.connectionDetails.withLock { $0 = nil }
         self.handshakeDetails.withLock { $0 = nil }
+    }
+    
+    // MARK: - Communication (In)
+    
+    #warning("TODO: make this not a computed property so it can use .share() and be prepended with  backlogs")
+    private var messages: some AsyncSequence<OBSUntypedMessage, any Error> {
+        let messages = _session.withLock(\.?.messages)
+        
+        guard let messages else {
+            return AsyncOBSWebSocketMessages(nil)
+        }
+        
+        return messages
+            .asOBSWSMessages()
+    }
+    
+    public var events: some AsyncSequence<OBSOpData.Event, any Error> {
+        messages
+            .compactMap { try? $0.as(OBSOpData.Event.self) }
+            .map(\.data)
     }
     
     public enum Errors: Error {
