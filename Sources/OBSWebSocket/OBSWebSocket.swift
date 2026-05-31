@@ -158,7 +158,7 @@ public final class OBSWebSocket: Sendable {
             // despite OBSWS's close codes aren't standard, Swift let's them be converted to
             // a URLSessionWebSocketTask.CloseCode, but only when forced.
             // it fails when not force unwrapped
-            with: closeCode.map { .init(rawValue: $0.rawValue)! },
+            with: closeCode.map { URLSessionWebSocketTask.CloseCode(rawValue: $0.rawValue)! },
             reason: reason
         )
         
