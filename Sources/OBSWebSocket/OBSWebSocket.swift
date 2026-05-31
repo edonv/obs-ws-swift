@@ -187,7 +187,7 @@ public final class OBSWebSocket: Sendable {
             .asOBSWSMessages()
     }
     
-    public var events: some AsyncSequence<OBSOpData.Event, any Error> {
+    public var events: some Sendable & AsyncSequence<OBSOpData.Event, any Error> {
         messages.events()
     }
     
