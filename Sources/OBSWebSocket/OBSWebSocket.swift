@@ -188,9 +188,7 @@ public final class OBSWebSocket: Sendable {
     }
     
     public var events: some AsyncSequence<OBSOpData.Event, any Error> {
-        messages
-            .compactMap { try? $0.as(OBSOpData.Event.self) }
-            .map(\.data)
+        messages.events()
     }
     
     public enum Errors: Error {
