@@ -11,7 +11,7 @@ import AsyncAlgorithms
 /// An internal helper `AsyncSequence` type.
 ///
 /// `AsyncOptionalSequence` supports initialization from a `nil` value, creating an `AsyncSequence` that ends immediately.
-internal struct AsyncOptionalSequence<Base: AsyncSequence>: AsyncSequence {
+internal struct AsyncOptionalSequence<Base: AsyncSequence>: AsyncSequence, Sendable where Base: Sendable {
     typealias Element = Base.Element
     typealias Failure = Base.Failure
     
@@ -61,7 +61,7 @@ internal struct AsyncOptionalSequence<Base: AsyncSequence>: AsyncSequence {
     }
 }
 
-extension AsyncSequence {
+extension AsyncSequence where Self: Sendable {
     /// Creates an `AsyncOptionalSequence` from another `AsyncSequence`.
     var optional: AsyncOptionalSequence<Self> {
         .init(self)
