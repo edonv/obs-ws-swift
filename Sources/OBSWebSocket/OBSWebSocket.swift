@@ -46,6 +46,12 @@ public final class OBSWebSocket: Sendable {
             .asOBSWSMessages()
     }
     
+    public var events: some AsyncSequence<OBSOpData.Event, any Error> {
+        messages
+            .compactMap { try? $0.as(OBSOpData.Event.self) }
+            .map(\.data)
+    }
+    
     /// Current details of connection to `obs-websocket`.
     public var activeConnectionDetails: ConnectionDetails? {
         self.connectionDetails.withLock { $0 }
