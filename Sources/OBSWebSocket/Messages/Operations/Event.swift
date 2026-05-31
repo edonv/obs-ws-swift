@@ -44,5 +44,14 @@ extension OBSOpData {
             case intent = "eventIntent"
             case data = "eventData"
         }
+        
+        public func asEvent<E: OBSEvent>(ofType type: E.Type) throws -> E {
+            guard self.type == E.eventType else {
+                throw OBSUntypedMessage.Error
+                    .dataDoesNotMatchExpectedType(data: data, code: Event.opCode)
+            }
+            
+            return try data.toCodable(E.self)
+        }
     }
 }
