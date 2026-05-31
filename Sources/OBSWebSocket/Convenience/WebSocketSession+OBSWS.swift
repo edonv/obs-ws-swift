@@ -43,29 +43,12 @@ extension WebSocketAsyncSession {
 
 // MARK: - WebSocketAsyncSession.Messages
 
+typealias AsyncOBSWebSocketMessages = AsyncOptionalSequence<AsyncOBSUntypedMessageSequence<WebSocketAsyncSession.Messages>>
+
 extension WebSocketAsyncSession.Messages {
     /// Map each message to an ``OBSUntypedMessage``.
-    func asOBSWSMessages<Decoder: OBSWSDecoder>(_ decoder: Decoder) -> some AsyncSequence<OBSUntypedMessage, any Error> {
-        self.map { msg in
-            let decodable: Data
-            switch msg {
-            case .string(let str):
-                guard let data = str.data(using: .utf8) else {
-                    #warning("TODO: new error for this")
-                    throw OBSWebSocket.Errors.test
-                }
-                
-                decodable = data
-                
-            case .data(let data):
-                decodable = data
-                
-            @unknown default:
-                #warning("TODO: new error for this")
-                throw OBSWebSocket.Errors.test
-            }
-            
-            return try decoder.decode(OBSUntypedMessage.self, from: decodable)
-        }
+    func asOBSWSMessages() -> AsyncOBSWebSocketMessages {
+        AsyncOBSUntypedMessageSequence(self, throwIfIncompatible: false)
+            .optional
     }
 }
