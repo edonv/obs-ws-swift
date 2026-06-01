@@ -35,6 +35,10 @@ public final class OBSWebSocket: Sendable {
     
     // MARK: - Public Computed Properties
     
+    public var isConnected: Bool {
+        _session.withLock { $0 != nil }
+    }
+    
     /// Current details of connection to `obs-websocket`.
     public var activeConnectionDetails: ConnectionDetails? {
         self.connectionDetails.withLock { $0 }
