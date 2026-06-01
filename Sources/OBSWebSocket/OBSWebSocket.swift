@@ -185,6 +185,13 @@ public final class OBSWebSocket: Sendable {
         messages.events()
     }
     
+    public func events<E: OBSEvent>(
+        ofType type: E.Type,
+        isIncluded: (@Sendable (OBSOpData.Event) throws -> Bool)? = nil
+    ) -> some AsyncSendableSequence<E, any Error> {
+        messages.events(ofType: type.self, isIncluded: isIncluded)
+    }
+    
     public enum Errors: Error {
         case test
         case webSocketError(WebSocketError)
