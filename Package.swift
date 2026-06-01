@@ -30,6 +30,7 @@ let package = Package(
         .target(
             name: "OBSWebSocket",
             dependencies: [
+                "HelperTypes",
                 "WebSocketSession",
                 .product(name: "JSONValue", package: "JSONValue"),
                 .product(name: "MessagePacker", package: "MessagePacker"),
@@ -37,8 +38,13 @@ let package = Package(
             ]
         ),
         .target(
-            name: "WebSocketSession"
+            name: "WebSocketSession",
+            dependencies: [
+                "HelperTypes",
+                .product(name: "AsyncAlgorithms", package: "swift-async-algorithms"),
+            ]
         ),
+        .target(name: "HelperTypes"),
         // Generator CLI
         .executableTarget(
             name: "obs-ws-swift-generator",
