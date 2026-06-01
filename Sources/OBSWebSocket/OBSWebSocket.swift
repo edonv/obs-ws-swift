@@ -7,6 +7,7 @@
 
 import Foundation
 import WebSocketSession
+import HelperTypes
 
 import Synchronization
 import MessagePacker
@@ -175,12 +176,12 @@ public final class OBSWebSocket: Sendable {
     // MARK: - Communication (In)
     
     #warning("TODO: replace `any Error` with custom error type")
-    private var messages: some Sendable & AsyncSequence<OBSUntypedMessage, any Error> {
+    private var messages: some AsyncSendableSequence<OBSUntypedMessage, any Error> {
         return _session
             .withLock(\.?.messages)?.asOBSWSMessages().optional ?? .init(nil)
     }
     
-    public var events: some Sendable & AsyncSequence<OBSOpData.Event, any Error> {
+    public var events: some AsyncSendableSequence<OBSOpData.Event, any Error> {
         messages.events()
     }
     

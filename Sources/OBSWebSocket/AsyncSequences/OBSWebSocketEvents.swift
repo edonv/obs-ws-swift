@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import HelperTypes
 
 extension OBSWebSocket {
     public struct Events<Base: AsyncSequence>: AsyncSequence, Sendable where Base: Sendable, Base.Element == OBSUntypedMessage {
@@ -56,7 +57,7 @@ extension AsyncSequence where Self: Sendable, Element == OBSUntypedMessage {
     public func events<E: OBSEvent>(
         ofType type: E.Type,
         isIncluded: (@Sendable (OBSOpData.Event) throws -> Bool)? = nil
-    ) -> some Sendable & AsyncSequence<E, any Error> {
+    ) -> some AsyncSendableSequence<E, any Error> {
         OBSWebSocket.Events(self, isIncluded: isIncluded ?? { _ in true })
             .compactMap { try? $0.asEvent(ofType: E.self) }
     }

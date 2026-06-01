@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import HelperTypes
+
 import MessagePacker
 import WebSocketSession
 
@@ -47,7 +49,7 @@ typealias AsyncOBSWebSocketMessages<S: AsyncSequence> = AsyncOptionalSequence<As
 
 extension AsyncSequence where Self: Sendable, Element == URLSessionWebSocketTask.Message {
     /// Map each message to an ``OBSUntypedMessage``.
-    func asOBSWSMessages() -> some Sendable & AsyncSequence<OBSUntypedMessage, any Error> {
+    func asOBSWSMessages() -> some AsyncSendableSequence<OBSUntypedMessage, any Error> {
         AsyncOBSUntypedMessageSequence(self, throwIfIncompatible: false)
             .optional
     }
