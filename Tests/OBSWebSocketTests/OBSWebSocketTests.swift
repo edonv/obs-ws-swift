@@ -2,8 +2,9 @@ import Testing
 @testable import OBSWebSocket
 
 struct OBSWebSocketTests {
-    @Test func webSocketConnection() async throws {
-        let obsWS = OBSWebSocket()
+    private let obsWS = OBSWebSocket()
+    
+    private func connect() async throws {
         try await obsWS.connect(
             with: .init(
 //                scheme: "wss",
@@ -14,6 +15,10 @@ struct OBSWebSocketTests {
             ),
             subscribingTo: .all
         )
+    }
+    
+    @Test func webSocketConnection() async throws {
+        try await connect()
         
         #expect(obsWS.activeConnectionDetails != nil)
         
