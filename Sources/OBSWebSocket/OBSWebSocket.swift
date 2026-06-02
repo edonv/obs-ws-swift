@@ -200,6 +200,7 @@ public final class OBSWebSocket: Sendable {
         case test
         case webSocketError(WebSocketError)
         case obsWebSocketClosed(OBSWS.Enums.CloseCode, reason: String?)
+        case noActiveConnection
         
         fileprivate static func wsError(_ error: WebSocketError) -> Self {
             switch error {
