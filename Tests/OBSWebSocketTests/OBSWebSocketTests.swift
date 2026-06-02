@@ -17,12 +17,23 @@ struct OBSWebSocketTests {
         
         #expect(obsWS.activeConnectionDetails != nil)
         
-        try await Task.sleep(for: .seconds(5))
+        let events = obsWS.events.prefix(3)
+        
+        let task1 = Task {
+            for try await event in events {
+                print("Task 1:", event)
+            }
+        }
+        
+        let task2 = Task {
+            for try await event in events {
+                print("Task 2:", event)
+            }
+        }
+        
+        try await task1.value
+        try await task2.value
         
         obsWS.disconnect(with: .invalidDataFieldType, reason: "This is a test")
-        
-//        for try await msg in obsWS.messages {
-//            print(msg)
-//        }
     }
 }
