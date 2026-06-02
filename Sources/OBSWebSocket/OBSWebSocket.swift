@@ -204,6 +204,8 @@ public final class OBSWebSocket: Sendable {
         messages.events(ofType: type.self, isIncluded: isIncluded)
     }
     
+    // MARK: - Communication (Out)
+    
     public func send<R: OBSRequest>(
         _ request: R,
         withID id: UUID = UUID()
@@ -226,6 +228,8 @@ public final class OBSWebSocket: Sendable {
             }
             .map { try $0.data.asResponse(ofType: R.self) }
     }
+    
+    // MARK: - Errors
     
     public enum Errors: Error {
         case test
