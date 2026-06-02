@@ -177,6 +177,14 @@ public final class OBSWebSocket: Sendable {
         self.handshakeDetails.withLock { $0 = nil }
     }
     
+    private func ensureConnectionOpen() throws(Errors) -> WebSocketAsyncSession {
+        guard let session = self._session.withLock(\.?.self) else {
+            throw .noActiveConnection
+        }
+        
+        return session
+    }
+    
     // MARK: - Communication (In)
     
     #warning("TODO: replace `any Error` with custom error type")
