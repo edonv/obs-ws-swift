@@ -2,10 +2,10 @@ import Testing
 @testable import OBSWebSocket
 
 struct OBSWebSocketTests {
-    private let obsWS = OBSWebSocket()
+    private let obs = OBSWebSocket()
     
     private func connect() async throws {
-        try await obsWS.connect(
+        try await obs.connect(
             with: .init(
 //                scheme: "wss",
                 ipAddress: "192.168.1.178",
@@ -20,9 +20,9 @@ struct OBSWebSocketTests {
     @Test func webSocketConnection() async throws {
         try await connect()
         
-        #expect(obsWS.activeConnectionDetails != nil)
+        #expect(obs.activeConnectionDetails != nil)
         
-        let events = obsWS.events.prefix(3)
+        let events = obs.events.prefix(3)
         
         let task1 = Task {
             for try await event in events {
@@ -39,6 +39,6 @@ struct OBSWebSocketTests {
         try await task1.value
         try await task2.value
         
-        obsWS.disconnect(with: .invalidDataFieldType, reason: "This is a test")
+        obs.disconnect(with: .invalidDataFieldType, reason: "This is a test")
     }
 }
