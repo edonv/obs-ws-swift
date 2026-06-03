@@ -12,6 +12,7 @@ import HelperTypes
 import Synchronization
 import MessagePacker
 import AsyncAlgorithms
+import Timeout
 
 public final class OBSWebSocket: Sendable {
     public typealias UntypedMessage = OBSUntypedMessage
@@ -210,7 +211,7 @@ public final class OBSWebSocket: Sendable {
     public func send<R: OBSRequest>(
         _ request: R,
         withID id: UUID = UUID()
-    ) async throws -> R.Response? {
+    ) async throws -> R.Response {
         let session = try ensureConnectionOpen()
         
         try await session
@@ -219,15 +220,23 @@ public final class OBSWebSocket: Sendable {
                 encodingProtocol: self.connectionDetails.withLock(\.?.encodingProtocol)
             )
         
-        return try await self.messages
-            .compactMap { msg in
-                try? msg.as(OBSOpData.RequestResponse.self)
-            }
-            .first {
-                $0.data.type == R.requestType
-                && $0.data.id == id.uuidString
-            }
-            .map { try $0.data.asResponse(ofType: R.self) }
+        // Throw error if 5 seconds passes without finding a `RequestResponse` message
+        let reqRespMsg = try await withThrowingTimeout(after: .now.advanced(by: .seconds(5))) {
+            try await self.messages
+                .compactMap { msg in
+                    try? msg.as(OBSOpData.RequestResponse.self)
+                }
+                .first {
+                    $0.data.type == R.requestType
+                    && $0.data.id == id.uuidString
+                }
+        }
+        
+        guard let reqRespMsg else {
+            throw Errors.test
+        }
+        
+        return try reqRespMsg.data.asResponse(ofType: R.self)
     }
     
     // MARK: - Errors
