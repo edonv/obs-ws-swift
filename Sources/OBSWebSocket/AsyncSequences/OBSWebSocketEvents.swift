@@ -9,7 +9,7 @@ import Foundation
 import HelperTypes
 
 extension OBSWebSocket {
-    public struct Events<Base: AsyncSequence>: AsyncSequence, Sendable where Base: Sendable, Base.Element == OBSUntypedMessage {
+    public struct Events<Base: AsyncSequence>: AsyncSequence, Sendable where Base: Sendable, Base.Element == OBS.UntypedMessage {
         public typealias Element = OBS.OpData.Event
         
         let base: Base
@@ -47,7 +47,7 @@ extension OBSWebSocket {
     }
 }
 
-extension AsyncSequence where Self: Sendable, Element == OBSUntypedMessage {
+extension AsyncSequence where Self: Sendable, Element == OBS.UntypedMessage {
     public func events(
         isIncluded: (@Sendable (OBS.OpData.Event) throws -> Bool)? = nil
     ) -> OBSWebSocket.Events<Self> {

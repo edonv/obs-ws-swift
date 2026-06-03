@@ -47,7 +47,7 @@ extension OBS.OpData {
         
         public func asEvent<E: OBSEvent>(ofType type: E.Type) throws -> E {
             guard self.type == E.eventType else {
-                throw OBSUntypedMessage.Error
+                throw OBS.UntypedMessage.Error
                     .dataDoesNotMatchExpectedType(data: data, code: Event.opCode)
             }
             

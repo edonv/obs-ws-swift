@@ -16,7 +16,7 @@ import AsyncAlgorithms
 import Timeout
 
 public final class OBSWebSocket: Sendable {
-    public typealias UntypedMessage = OBSUntypedMessage
+    public typealias UntypedMessage = OBS.UntypedMessage
     public typealias Message = OBS.Message
     public typealias CloseCode = OBSWS.Enums.CloseCode
     
@@ -189,7 +189,7 @@ public final class OBSWebSocket: Sendable {
     // MARK: - Communication (In)
     
     #warning("TODO: replace `any Error` with custom error type")
-    private var messages: some AsyncSendableSequence<OBSUntypedMessage, any Error> {
+    private var messages: some AsyncSendableSequence<OBS.UntypedMessage, any Error> {
         return _session
             .withLock(\.?.messages)?.asOBSWSMessages().optional ?? .init(nil)
     }
