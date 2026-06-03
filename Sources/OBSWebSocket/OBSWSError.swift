@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension OBSWS {
+extension OBS {
     public enum Error: Swift.Error {
         case missingPasswordWhereRequired
         

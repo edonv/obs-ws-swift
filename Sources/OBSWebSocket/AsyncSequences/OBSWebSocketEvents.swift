@@ -9,8 +9,8 @@ import Foundation
 import HelperTypes
 
 extension OBSWebSocket {
-    public struct Events<Base: AsyncSequence>: AsyncSequence, Sendable where Base: Sendable, Base.Element == OBSUntypedMessage {
-        public typealias Element = OBSOpData.Event
+    public struct Events<Base: AsyncSequence>: AsyncSequence, Sendable where Base: Sendable, Base.Element == OBS.UntypedMessage {
+        public typealias Element = OBS.OpData.Event
         
         let base: Base
         private let isIncluded: @Sendable (Element) throws -> Bool
@@ -36,7 +36,7 @@ extension OBSWebSocket {
             
             public mutating func next() async throws -> Element? {
                 while let msg = try await iterator.next() {
-                    guard let eventMsg = try? msg.as(OBSOpData.Event.self),
+                    guard let eventMsg = try? msg.as(OBS.OpData.Event.self),
                           try self.isIncluded(eventMsg.data) else { continue }
                     return eventMsg.data
                 }
@@ -47,16 +47,16 @@ extension OBSWebSocket {
     }
 }
 
-extension AsyncSequence where Self: Sendable, Element == OBSUntypedMessage {
+extension AsyncSequence where Self: Sendable, Element == OBS.UntypedMessage {
     public func events(
-        isIncluded: (@Sendable (OBSOpData.Event) throws -> Bool)? = nil
+        isIncluded: (@Sendable (OBS.OpData.Event) throws -> Bool)? = nil
     ) -> OBSWebSocket.Events<Self> {
         .init(self, isIncluded: isIncluded ?? { _ in true })
     }
     
     public func events<E: OBSEvent>(
         ofType type: E.Type,
-        isIncluded: (@Sendable (OBSOpData.Event) throws -> Bool)? = nil
+        isIncluded: (@Sendable (OBS.OpData.Event) throws -> Bool)? = nil
     ) -> some AsyncSendableSequence<E, any Error> {
         OBSWebSocket.Events(self, isIncluded: isIncluded ?? { _ in true })
             .compactMap { try? $0.asEvent(ofType: E.self) }

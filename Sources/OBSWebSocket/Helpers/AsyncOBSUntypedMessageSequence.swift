@@ -40,7 +40,7 @@ internal struct AsyncOBSUntypedMessageSequence<Base: AsyncSequence>: AsyncSequen
             self.throwIfIncompatible = throwIfIncompatible
         }
         
-        public mutating func next() async throws -> OBSUntypedMessage? {
+        public mutating func next() async throws -> OBS.UntypedMessage? {
             while let msg = try await base.next() {
                 let decodable: Data
                 
@@ -62,7 +62,7 @@ internal struct AsyncOBSUntypedMessageSequence<Base: AsyncSequence>: AsyncSequen
                 }
                 
                 do {
-                    let obsMsg = try Decoder().decode(OBSUntypedMessage.self, from: decodable)
+                    let obsMsg = try Decoder().decode(OBS.UntypedMessage.self, from: decodable)
                     return obsMsg
                 } catch {
                     if throwIfIncompatible {

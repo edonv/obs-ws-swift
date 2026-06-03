@@ -84,9 +84,9 @@ struct Documentation {
             .map { .docLineComment("/// " + $0) }
         
         let asides: [TriviaPiece] = [
-            // /// > Event Subscription: ``OBSWS/Enums/EventSubscription/general``
+            // /// > Event Subscription: ``OBS/Enums/EventSubscription/general``
             self.eventSubscription
-                .map { .docLineComment("/// > Event Subscription: ``OBSWS/Enums/EventSubscription/\(camelize($0))``") },
+                .map { .docLineComment("/// > Event Subscription: ``OBS/Enums/EventSubscription/\(camelize($0))``") },
             // /// > Category: ``General``
             self.category
                 .map { .docLineComment("/// > Category: `\($0 == "ui" ? "UI" : $0.capitalized)`") },

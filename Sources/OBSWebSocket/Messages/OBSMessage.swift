@@ -8,43 +8,45 @@
 import Foundation
 import JSONValue
 
-/// A type used for sending and receiving information to and from OBS.
-public struct OBSMessage<Body: OBSOpDataProtocol>: OBSMessageProtocol {
-    public typealias OpCode = OBSWS.Enums.OpCode
-    
-    public let operation: OpCode
-    public let data: Body
-    
-    public init(
-        operation: OpCode,
-        data: Body
-    ) {
-        self.operation = operation
-        self.data = data
+extension OBS {
+    /// A type used for sending and receiving information to and from OBS.
+    public struct Message<Body: OBSOpDataProtocol>: OBSMessageProtocol {
+        public typealias OpCode = OBS.Enums.OpCode
+        
+        public let operation: OpCode
+        public let data: Body
+        
+        public init(
+            operation: OpCode,
+            data: Body
+        ) {
+            self.operation = operation
+            self.data = data
+        }
+        
+        public init(data: Body) {
+            self.operation = Body.opCode
+            self.data = data
+        }
+        
+        func untyped() throws -> OBS.UntypedMessage {
+            .init(
+                operation: operation,
+                data: try JSONValue.fromCodable(data)
+            )
+        }
     }
     
-    public init(data: Body) {
-        self.operation = Body.opCode
-        self.data = data
+    /// Namespace for type aliases of typed ``OBS/Message``s.
+    public enum Messages {
+        public typealias Hello = OBS.Message<OBS.OpData.Hello>
+        public typealias Identify = OBS.Message<OBS.OpData.Identify>
+        public typealias Identified = OBS.Message<OBS.OpData.Identified>
+        public typealias Reidentify = OBS.Message<OBS.OpData.Reidentify>
+        public typealias Event = OBS.Message<OBS.OpData.Event>
+        public typealias Request = OBS.Message<OBS.OpData.Request>
+        public typealias RequestResponse = OBS.Message<OBS.OpData.RequestResponse>
+        public typealias RequestBatch = OBS.Message<OBS.OpData.RequestBatch>
+        public typealias RequestBatchResponse = OBS.Message<OBS.OpData.RequestBatchResponse>
     }
-    
-    func untyped() throws -> OBSUntypedMessage {
-        .init(
-            operation: operation,
-            data: try JSONValue.fromCodable(data)
-        )
-    }
-}
-
-/// Namespace for type aliases of typed ``OBSMessage``s.
-public enum OBSMessages {
-    public typealias Hello = OBSMessage<OBSOpData.Hello>
-    public typealias Identify = OBSMessage<OBSOpData.Identify>
-    public typealias Identified = OBSMessage<OBSOpData.Identified>
-    public typealias Reidentify = OBSMessage<OBSOpData.Reidentify>
-    public typealias Event = OBSMessage<OBSOpData.Event>
-    public typealias Request = OBSMessage<OBSOpData.Request>
-    public typealias RequestResponse = OBSMessage<OBSOpData.RequestResponse>
-    public typealias RequestBatch = OBSMessage<OBSOpData.RequestBatch>
-    public typealias RequestBatchResponse = OBSMessage<OBSOpData.RequestBatchResponse>
 }

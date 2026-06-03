@@ -8,7 +8,7 @@
 import Foundation
 import JSONValue
 
-extension OBSOpData {
+extension OBS.OpData {
     /// Client is making a batch of requests for `obs-websocket`.
     ///
     /// Requests are processed serially (in order) by the server
@@ -16,19 +16,19 @@ extension OBSOpData {
     /// - term Sent From: Identified client
     /// - term Sent To: `obs-websocket`
     public struct RequestBatch: OBSOpDataProtocol {
-        public static let opCode: OBSWS.Enums.OpCode = .requestBatch
+        public static let opCode: OBS.Enums.OpCode = .requestBatch
         
         public let id: String
         
         /// When `haltOnFailure` is `true`, the processing of requests will be halted on first failure.
         ///
-        /// Returns only the processed requests in ``OBSOpData/RequestBatchResponse``.
+        /// Returns only the processed requests in ``OBS/OpData/RequestBatchResponse``.
         ///
         /// Defaults to `false`.
         public let haltOnFailure: Bool?
         
-        /// Defaults to ``OBSWS/Enums/RequestBatchExecutionType/serialRealtime``.
-        public let executionType: OBSWS.Enums.RequestBatchExecutionType?
+        /// Defaults to ``OBS/Enums/RequestBatchExecutionType/serialRealtime``.
+        public let executionType: OBS.Enums.RequestBatchExecutionType?
         
         /// Requests in the `requests` array follow the same structure as the ``Request`` payload data format, however ``Request/id`` is an optional field.
         public let requests: [Request]
@@ -36,7 +36,7 @@ extension OBSOpData {
         internal init(
             id: String,
             haltOnFailure: Bool? = nil,
-            executionType: OBSWS.Enums.RequestBatchExecutionType? = nil,
+            executionType: OBS.Enums.RequestBatchExecutionType? = nil,
             requests: [Request]
         ) {
             self.id = id
@@ -52,14 +52,14 @@ extension OBSOpData {
             case requests
         }
         
-        /// Identical to ``OBSOpData/Request``, except ``id`` is optional.
+        /// Identical to ``OBS/OpData/Request``, except ``id`` is optional.
         public struct Request: OBSOpDataRequest, Sendable, Hashable, Codable {
-            public let type: OBSWS.Requests.AllTypes
+            public let type: OBS.Requests.AllTypes
             public let id: String?
             public let data: JSONValue?
             
             internal init(
-                type: OBSWS.Requests.AllTypes,
+                type: OBS.Requests.AllTypes,
                 id: String? = nil,
                 data: JSONValue?
             ) {

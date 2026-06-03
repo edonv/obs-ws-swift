@@ -9,6 +9,6 @@ import Foundation
 import JSONValue
 
 public protocol OBSOpDataRequest: Codable {
-    var type: OBSWS.Requests.AllTypes { get }
+    var type: OBS.Requests.AllTypes { get }
     var data: JSONValue? { get }
 }

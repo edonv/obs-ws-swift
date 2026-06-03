@@ -16,12 +16,12 @@ import AsyncAlgorithms
 import Timeout
 
 public final class OBSWebSocket: Sendable {
-    typealias RequestResponseBacklog = [OBSWS.Requests.AllTypes: any OBSOpDataRequestResponse]
-    typealias EventBacklog = [OBSWS.Events.AllTypes: OBSOpData.Event]
+    typealias RequestResponseBacklog = [OBS.Requests.AllTypes: any OBSOpDataRequestResponse]
+    typealias EventBacklog = [OBS.Events.AllTypes: OBS.OpData.Event]
     
-    public typealias UntypedMessage = OBSUntypedMessage
-    public typealias Message = OBSMessage
-    public typealias CloseCode = OBSWS.Enums.CloseCode
+    public typealias UntypedMessage = OBS.UntypedMessage
+    public typealias Message = OBS.Message
+    public typealias CloseCode = OBS.Enums.CloseCode
     
     // MARK: - Private Stored Properties
     
@@ -71,10 +71,12 @@ public final class OBSWebSocket: Sendable {
     // MARK: - Connection Management
     
     /// Creates and starts a WebSocket connection.
-    /// - Parameter request: The connection data to connect to.
+    /// - Parameters:
+    ///   - connectionData: The connection data to connect to
+    ///   - eventSubscription: The bitmask of event categories to subscribe to.
     public func connect(
         with connectionData: ConnectionDetails,
-        subscribingTo eventSubscription: OBSWS.Enums.EventSubscription? = nil
+        subscribingTo eventSubscription: OBS.Enums.EventSubscription? = nil
     ) async throws(Errors) {
         let (session, details) = try await Self.initiateHandshake(
             with: connectionData,
@@ -94,7 +96,7 @@ public final class OBSWebSocket: Sendable {
     
     private static func initiateHandshake(
         with connectionData: ConnectionDetails,
-        subscribingTo eventSubscription: OBSWS.Enums.EventSubscription?
+        subscribingTo eventSubscription: OBS.Enums.EventSubscription?
     ) async throws(Errors) -> (session: WebSocketAsyncSession, details: HandshakeDetails) {
         guard let request = connectionData.urlRequest else {
             #warning("TODO: make new more specific error case")
@@ -117,7 +119,7 @@ public final class OBSWebSocket: Sendable {
             let helloUntyped = try await messages
                 .first(where: { $0.operation == .hello })
             
-            guard let hello = try? helloUntyped?.as(OBSOpData.Hello.self) else {
+            guard let hello = try? helloUntyped?.as(OBS.OpData.Hello.self) else {
                 #warning("TODO: custom error")
                 throw Errors.test
             }
@@ -144,7 +146,7 @@ public final class OBSWebSocket: Sendable {
             let identifiedUntyped = try await messages
                 .first(where: { $0.operation == .identified })
             
-            guard let identified = try? identifiedUntyped?.as(OBSOpData.Identified.self) else {
+            guard let identified = try? identifiedUntyped?.as(OBS.OpData.Identified.self) else {
                 #warning("TODO: custom error")
                 throw Errors.test
             }
@@ -210,12 +212,12 @@ public final class OBSWebSocket: Sendable {
     // MARK: - Communication (In)
     
     #warning("TODO: replace `any Error` with custom error type")
-    private var messages: some AsyncSendableSequence<OBSUntypedMessage, any Error> {
+    private var messages: some AsyncSendableSequence<OBS.UntypedMessage, any Error> {
         return _session
             .withLock(\.?.messages)?.asOBSWSMessages().optional ?? .init(nil)
     }
     
-    public var events: some AsyncSendableSequence<OBSOpData.Event, any Error> {
+    public var events: some AsyncSendableSequence<OBS.OpData.Event, any Error> {
         chain(
             eventBacklog.withLock(\.values)
                 .async
@@ -226,7 +228,7 @@ public final class OBSWebSocket: Sendable {
     
     public func events<E: OBSEvent>(
         ofType type: E.Type,
-        isIncluded: (@Sendable (OBSOpData.Event) throws -> Bool)? = nil
+        isIncluded: (@Sendable (OBS.OpData.Event) throws -> Bool)? = nil
     ) -> some AsyncSendableSequence<E, any Error> {
         let isIncluded = isIncluded ?? { _ in true }
         
@@ -250,22 +252,22 @@ public final class OBSWebSocket: Sendable {
     }
     
     nonisolated
-    private func logMessageToBacklog(_ message: OBSUntypedMessage) {
+    private func logMessageToBacklog(_ message: OBS.UntypedMessage) {
         switch message.operation {
         case .event:
-            guard let event = try? message.as(OBSOpData.Event.self) else { return }
+            guard let event = try? message.as(OBS.OpData.Event.self) else { return }
             
             self.eventBacklog
                 .withLock { $0[event.data.type] = event.data }
             
         case .requestResponse:
-            guard let resp = try? message.as(OBSOpData.RequestResponse.self) else { return }
+            guard let resp = try? message.as(OBS.OpData.RequestResponse.self) else { return }
             
             self.reqResponseBacklog
                 .withLock { $0[resp.data.type] = resp.data }
             
         case .requestBatchResponse:
-            guard let batchResp = try? message.as(OBSOpData.RequestBatchResponse.self) else { return }
+            guard let batchResp = try? message.as(OBS.OpData.RequestBatchResponse.self) else { return }
             
             self.reqResponseBacklog
                 .withLock { backlog in
@@ -288,7 +290,7 @@ public final class OBSWebSocket: Sendable {
     ) async throws -> R.Response {
         let session = try ensureConnectionOpen()
         
-        let requestMessage = try OBSMessages.Request(data: .init(request, id: id.uuidString))
+        let requestMessage = try OBS.Messages.Request(data: .init(request, id: id.uuidString))
         try await session
             .send(
                 requestMessage,
@@ -303,7 +305,7 @@ public final class OBSWebSocket: Sendable {
                 .mapError { $0 as any Error },
             messages
                 .compactMap { msg in
-                    (try? msg.as(OBSOpData.RequestResponse.self))?.data
+                    (try? msg.as(OBS.OpData.RequestResponse.self))?.data
                 }
         )
         
@@ -338,14 +340,14 @@ public final class OBSWebSocket: Sendable {
     public enum Errors: Error {
         case test
         case webSocketError(WebSocketError)
-        case obsWebSocketClosed(OBSWS.Enums.CloseCode, reason: String?)
+        case obsWebSocketClosed(OBS.Enums.CloseCode, reason: String?)
         case noActiveConnection
-        case requestFailed(type: OBSWS.Requests.AllTypes, id: String, request: JSONValue?, response: JSONValue?, status: OBSOpData.RequestResponse.Status)
+        case requestFailed(type: OBS.Requests.AllTypes, id: String, request: JSONValue?, response: JSONValue?, status: OBS.OpData.RequestResponse.Status)
         
         fileprivate static func wsError(_ error: WebSocketError) -> Self {
             switch error {
             case .connectionClosed(let code, let reason):
-                if let code = OBSWS.Enums.CloseCode(rawValue: code) {
+                if let code = OBS.Enums.CloseCode(rawValue: code) {
                     return .obsWebSocketClosed(code, reason: reason)
                 }
             }

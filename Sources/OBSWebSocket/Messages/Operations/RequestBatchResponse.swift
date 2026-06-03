@@ -8,13 +8,13 @@
 import Foundation
 import JSONValue
 
-extension OBSOpData {
+extension OBS.OpData {
     /// `obs-websocket` is responding to a request batch coming from the client.
     ///
     /// - term Sent From: `obs-websocket`
     /// - term Sent To: Identified client which made the request
     public struct RequestBatchResponse: OBSOpDataProtocol {
-        public static let opCode: OBSWS.Enums.OpCode = .requestBatchResponse
+        public static let opCode: OBS.Enums.OpCode = .requestBatchResponse
         
         public let id: String
         public let results: [Response]
@@ -32,19 +32,19 @@ extension OBSOpData {
             case results
         }
         
-        /// Identical to ``OBSOpData/RequestResponse``, except ``id`` is optional.
+        /// Identical to ``OBS/OpData/RequestResponse``, except ``id`` is optional.
         public struct Response: OBSOpDataRequestResponse, Sendable, Hashable, Codable {
             public typealias Status = RequestResponse.Status
             
-            public static var opCode: OBSWS.Enums.OpCode { RequestBatchResponse.opCode }
+            public static var opCode: OBS.Enums.OpCode { RequestBatchResponse.opCode }
             
-            public let type: OBSWS.Requests.AllTypes
+            public let type: OBS.Requests.AllTypes
             public let id: String?
             public let status: Status
             public let data: JSONValue?
             
             internal init(
-                type: OBSWS.Requests.AllTypes,
+                type: OBS.Requests.AllTypes,
                 id: String?,
                 status: Status,
                 data: JSONValue?

@@ -8,7 +8,7 @@
 import Foundation
 import JSONValue
 
-extension OBSOpData {
+extension OBS.OpData {
     /// Client is making a request to `obs-websocket`.
     ///
     /// e.g. get current scene, create source.
@@ -16,9 +16,9 @@ extension OBSOpData {
     /// - term Sent From: Identified client
     /// - term Sent To: `obs-websocket`
     public struct Request: OBSOpDataProtocol, OBSOpDataRequest {
-        public static let opCode: OBSWS.Enums.OpCode = .request
+        public static let opCode: OBS.Enums.OpCode = .request
         
-        public let type: OBSWS.Requests.AllTypes
+        public let type: OBS.Requests.AllTypes
         public let id: String
         public let data: JSONValue?
         
@@ -29,7 +29,7 @@ extension OBSOpData {
         }
         
         internal init(
-            type: OBSWS.Requests.AllTypes,
+            type: OBS.Requests.AllTypes,
             id: String,
             data: JSONValue?
         ) {

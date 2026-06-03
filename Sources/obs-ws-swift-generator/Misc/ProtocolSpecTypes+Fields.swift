@@ -52,9 +52,7 @@ extension FieldType {
         // TODO: difference between "omit" (optional) and "nil" (null)?
     }
     
-    func fieldType(
-        withParent parentTypeName: String
-    ) -> String {
+    func fieldType() -> String {
         let newType = self.clean(type: self.sharedPart1())
         
         // TODO: implement `getExplicitType()` and `explicitTypes`
@@ -62,7 +60,7 @@ extension FieldType {
         if newType.contains("Number") {
             let shouldBeFloat = valueRestrictions?.contains(".") == true
             || floatProperties.contains(
-                fullPropertyPath(withParent: parentTypeName)
+                fullPropertyPath()
             )
             
             return newType.replacingOccurrences(
@@ -76,7 +74,7 @@ extension FieldType {
                     .replacingOccurrences(of: "`", with: "")
                     .replacingOccurrences(of: " enum", with: "")
                     .replacingOccurrences(of: "Obs", with: "")
-                return "OBSWS.Enums." + substring
+                return "OBS.Enums." + substring
             }
             
             // If it's a UUID
@@ -88,11 +86,9 @@ extension FieldType {
         return newType
     }
     
-    func fullPropertyPath(
-        withParent parentTypeName: String
-    ) -> String {
+    func fullPropertyPath() -> String {
         [
-            propertyPathPrefix(withParent: parentTypeName),
+            propertyPathPrefix(withParent: String(reflecting: Self.self)),
             valueName,
         ].joined(separator: ".")
     }

@@ -9,7 +9,7 @@ import Foundation
 
 extension OBSWebSocket {
     public struct HandshakeDetails: Sendable, Hashable {
-        public let eventSubscription: OBSWS.Enums.EventSubscription?
+        public let eventSubscription: OBS.Enums.EventSubscription?
         
         // Received as part of hello message
         public let obsWebSocketVersion: String
@@ -17,7 +17,7 @@ extension OBSWebSocket {
         public let rpcVersion: Int
         
         internal init(
-            eventSubscription: OBSWS.Enums.EventSubscription?,
+            eventSubscription: OBS.Enums.EventSubscription?,
             obsWebSocketVersion: String,
             rpcVersion: Int
         ) {
