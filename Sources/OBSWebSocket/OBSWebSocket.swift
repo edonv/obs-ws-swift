@@ -17,7 +17,7 @@ import Timeout
 
 public final class OBSWebSocket: Sendable {
     public typealias UntypedMessage = OBSUntypedMessage
-    public typealias Message = OBSMessage
+    public typealias Message = OBS.Message
     public typealias CloseCode = OBSWS.Enums.CloseCode
     
     // MARK: - Private Stored Properties

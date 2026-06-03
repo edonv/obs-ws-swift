@@ -27,13 +27,13 @@ public struct OBSUntypedMessage: OBSMessageProtocol {
         self.data = data
     }
     
-    /// Attempts to cast the message to a ``OBSMessage`` with a typed ``OBSMessage/data`` property.
+    /// Attempts to cast the message to a ``OBS/Message`` with a typed ``OBS/Message/data`` property.
     /// 
     /// It tries to do this based on the value of the ``operation`` property. It fails immediately if ``operation`` doesn't match ``OBSOpDataProtocol/opCode`` of the specified `type`.
     /// - Parameter type: <#type description#>
     /// - Throws: An ``Error`` if unable to cast successfully.
-    /// - Returns: A typed `OBSMessage`.
-    public func `as`<T: OBSOpDataProtocol>(_ type: T.Type = T.self) throws(Error) -> OBSMessage<T> {
+    /// - Returns: A typed `OBS.Message`.
+    public func `as`<T: OBSOpDataProtocol>(_ type: T.Type = T.self) throws(Error) -> OBS.Message<T> {
         try .init(operation: type.opCode, data: messageData())
     }
     

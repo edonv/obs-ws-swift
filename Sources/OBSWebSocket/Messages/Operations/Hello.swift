@@ -51,7 +51,7 @@ extension OBS.OpData {
 }
 
 extension OBSMessages.Hello {
-    /// Maps `Hello` instance to a new ``OBSMessages/Identify`` (``OBSMessage`` with an ``OBS/OpData/Identify`` `Body`).
+    /// Maps `Hello` instance to a new ``OBSMessages/Identify`` (``OBS/Message`` with an ``OBS/OpData/Identify`` `Body`).
     /// - Parameters:
     ///   - password: If provided, it's used with ``OBS/OpData/Hello/authentication`` to create a final
     ///   authentication string.
@@ -59,7 +59,7 @@ extension OBSMessages.Hello {
     ///   alerted about specific categories of ``OBSWS/Events``.
     /// - Throws: ``OBSWS/Error/missingPasswordWhereRequired`` if
     /// ``OBS/OpData/Hello/authentication`` is present without a provided password.
-    /// - Returns: A new ``OBSMessages/Identify`` (``OBSMessage`` with an ``OBS/OpData/Identify`` `Body`) with the generated authentication string.
+    /// - Returns: A new ``OBSMessages/Identify`` (``OBS/Message`` with an ``OBS/OpData/Identify`` `Body`) with the generated authentication string.
     internal func toIdentify(
         password: String?,
         subscribingTo events: OBSWS.Enums.EventSubscription?
