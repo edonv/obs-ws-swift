@@ -76,7 +76,7 @@ extension FieldType {
                     .replacingOccurrences(of: "`", with: "")
                     .replacingOccurrences(of: " enum", with: "")
                     .replacingOccurrences(of: "Obs", with: "")
-                return "OBSWS.Enums." + substring
+                return "OBS.Enums." + substring
             }
             
             // If it's a UUID
