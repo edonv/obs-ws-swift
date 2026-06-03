@@ -1,5 +1,5 @@
 {
-  "originHash" : "a71b895c5dde6fa55868e0c8013849065c5f177605de21bcdec055466b98cd77",
+  "originHash" : "610770cc54190ddcb196604d02b9249d9109cb269188455ba3315f47c5d9eee4",
   "pins" : [
     {
       "identity" : "jsonvalue",
@@ -53,6 +53,15 @@
       "state" : {
         "revision" : "9de99a78f099e59caf2b2beec65a4c45d54b2081",
         "version" : "603.0.1"
+      }
+    },
+    {
+      "identity" : "swift-timeout",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/swhitty/swift-timeout",
+      "state" : {
+        "revision" : "4efb73b593d5553b90766d531db701ecf2306237",
+        "version" : "0.4.1"
       }
     }
   ],
