@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension OBSOpData {
+extension OBS.OpData {
     /// Sent at any time after initial identification to update the provided session parameters.
     ///
     /// Only the listed parameters may be changed after initial identification. To change

@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension OBSOpData {
+extension OBS.OpData {
     /// Response to ``Hello`` message.
     ///
     /// If authentication is required by `obs-websocket`, `Identify` must contain an

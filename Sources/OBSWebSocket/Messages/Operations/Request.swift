@@ -8,7 +8,7 @@
 import Foundation
 import JSONValue
 
-extension OBSOpData {
+extension OBS.OpData {
     /// Client is making a request to `obs-websocket`.
     ///
     /// e.g. get current scene, create source.

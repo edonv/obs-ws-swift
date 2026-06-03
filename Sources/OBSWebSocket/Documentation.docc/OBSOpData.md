@@ -1,4 +1,4 @@
-# ``OBSWebSocket/OBSOpData``
+# ``OBSWebSocket/OBS/OpData``
 
 ## Topics
 

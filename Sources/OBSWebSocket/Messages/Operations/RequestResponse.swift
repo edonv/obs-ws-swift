@@ -8,7 +8,7 @@
 import Foundation
 import JSONValue
 
-extension OBSOpData {
+extension OBS.OpData {
     /// `obs-websocket` is responding to a request coming from a client.
     ///
     /// - term Sent From: `obs-websocket`

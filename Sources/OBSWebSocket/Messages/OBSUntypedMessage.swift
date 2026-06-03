@@ -44,24 +44,24 @@ public struct OBSUntypedMessage: OBSMessageProtocol {
         
         do {
             switch operation {
-            case .hello where T.self is OBSOpData.Hello.Type:
-                return try data.toCodable(OBSOpData.Hello.self) as! T
-            case .identify where T.self is OBSOpData.Identify.Type:
-                return try data.toCodable(OBSOpData.Identify.self) as! T
-            case .identified where T.self is OBSOpData.Identified.Type:
-                return try data.toCodable(OBSOpData.Identified.self) as! T
-            case .reidentify where T.self is OBSOpData.Reidentify.Type:
-                return try data.toCodable(OBSOpData.Reidentify.self) as! T
-            case .event where T.self is OBSOpData.Event.Type:
-                return try data.toCodable(OBSOpData.Event.self) as! T
-            case .request where T.self is OBSOpData.Request.Type:
-                return try data.toCodable(OBSOpData.Request.self) as! T
-            case .requestResponse where T.self is OBSOpData.RequestResponse.Type:
-                return try data.toCodable(OBSOpData.RequestResponse.self) as! T
-            case .requestBatch where T.self is OBSOpData.RequestBatch.Type:
-                return try data.toCodable(OBSOpData.RequestBatch.self) as! T
-            case .requestBatchResponse where T.self is OBSOpData.RequestBatchResponse.Type:
-                return try data.toCodable(OBSOpData.RequestBatchResponse.self) as! T
+            case .hello where T.self is OBS.OpData.Hello.Type:
+                return try data.toCodable(OBS.OpData.Hello.self) as! T
+            case .identify where T.self is OBS.OpData.Identify.Type:
+                return try data.toCodable(OBS.OpData.Identify.self) as! T
+            case .identified where T.self is OBS.OpData.Identified.Type:
+                return try data.toCodable(OBS.OpData.Identified.self) as! T
+            case .reidentify where T.self is OBS.OpData.Reidentify.Type:
+                return try data.toCodable(OBS.OpData.Reidentify.self) as! T
+            case .event where T.self is OBS.OpData.Event.Type:
+                return try data.toCodable(OBS.OpData.Event.self) as! T
+            case .request where T.self is OBS.OpData.Request.Type:
+                return try data.toCodable(OBS.OpData.Request.self) as! T
+            case .requestResponse where T.self is OBS.OpData.RequestResponse.Type:
+                return try data.toCodable(OBS.OpData.RequestResponse.self) as! T
+            case .requestBatch where T.self is OBS.OpData.RequestBatch.Type:
+                return try data.toCodable(OBS.OpData.RequestBatch.self) as! T
+            case .requestBatchResponse where T.self is OBS.OpData.RequestBatchResponse.Type:
+                return try data.toCodable(OBS.OpData.RequestBatchResponse.self) as! T
                 
             default:
                 throw Error.dataDoesNotMatchExpectedType(data: data, code: operation)
