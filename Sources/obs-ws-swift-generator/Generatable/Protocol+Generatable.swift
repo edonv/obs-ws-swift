@@ -43,7 +43,7 @@ extension OBSWSProtocol: Generatable {
             try ImportDeclSyntax("import JSONValue")
                 .with(\.trailingTrivia, .newline)
             
-            try ExtensionDeclSyntax("public extension OBS") {
+            try ExtensionDeclSyntax("extension OBS") {
                 try EnumDeclSyntax("public enum Enums") {
                     for enumDef in self.enums {
                         try enumDef.generate()
