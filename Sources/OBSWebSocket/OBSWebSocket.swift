@@ -216,14 +216,37 @@ public final class OBSWebSocket: Sendable {
     }
     
     public var events: some AsyncSendableSequence<OBSOpData.Event, any Error> {
-        messages.events()
+        chain(
+            eventBacklog.withLock(\.values)
+                .async
+                .mapError { $0 as any Error },
+            messages.events()
+        )
     }
     
     public func events<E: OBSEvent>(
         ofType type: E.Type,
         isIncluded: (@Sendable (OBSOpData.Event) throws -> Bool)? = nil
     ) -> some AsyncSendableSequence<E, any Error> {
-        messages.events(ofType: type.self, isIncluded: isIncluded)
+        let isIncluded = isIncluded ?? { _ in true }
+        
+        let latestEvent = eventBacklog.withLock { $0[E.eventType] }
+            .flatMap { e -> E? in
+                guard e.type == E.eventType,
+                      (try? isIncluded(e)) == true else { return nil }
+
+                return try? e.asEvent(ofType: E.self)
+            }
+        
+        return chain(
+            (latestEvent.map(CollectionOfOne.init).map(Array.init) ?? [])
+                .async
+                .mapError { $0 as any Error },
+            messages.events(
+                ofType: type.self,
+                isIncluded: isIncluded
+            )
+        )
     }
     
     nonisolated
@@ -272,33 +295,42 @@ public final class OBSWebSocket: Sendable {
                 encodingProtocol: self.connectionDetails.withLock(\.?.encodingProtocol)
             )
         
-        // Throw error if 5 seconds passes without finding a `RequestResponse` message
-        let reqRespMsg = try await withThrowingTimeout(after: .now.advanced(by: .seconds(5))) {
-            try await self.messages
+        // Get the latest response of the provided type
+        let latestResponse = reqResponseBacklog.withLock { $0[R.requestType] }
+        let reqRespSeq: some AsyncSendableSequence<any OBSOpDataRequestResponse, any Error> = chain(
+            (latestResponse.map(CollectionOfOne.init).map(Array.init) ?? [])
+                .async
+                .mapError { $0 as any Error },
+            messages
                 .compactMap { msg in
-                    try? msg.as(OBSOpData.RequestResponse.self)
+                    (try? msg.as(OBSOpData.RequestResponse.self))?.data
                 }
+        )
+        
+        // Throw error if 5 seconds passes without finding a `RequestResponse` message
+        let reqResp = try await withThrowingTimeout(after: .now.advanced(by: .seconds(5))) {
+            try await reqRespSeq
                 .first {
-                    $0.data.type == R.requestType
-                    && $0.data.id == id.uuidString
+                    $0.type == R.requestType
+                    && AnyHashable($0.id) == AnyHashable(id.uuidString)
                 }
         }
         
-        guard let reqRespMsg else {
+        guard let reqResp else {
             throw Errors.test
         }
         
-        guard reqRespMsg.data.status.result else {
+        guard reqResp.status.result else {
             throw Errors.requestFailed(
                 type: requestMessage.data.type,
                 id: requestMessage.data.id,
                 request: requestMessage.data.data,
-                response: reqRespMsg.data.data,
-                status: reqRespMsg.data.status
+                response: reqResp.data,
+                status: reqResp.status
             )
         }
         
-        return try reqRespMsg.data.asResponse(ofType: R.self)
+        return try reqResp.asResponse(ofType: R.self)
     }
     
     // MARK: - Errors
