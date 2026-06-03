@@ -214,7 +214,7 @@ public final class OBSWebSocket: Sendable {
     ) async throws -> R.Response {
         let session = try ensureConnectionOpen()
         
-        let requestMessage = try OBSMessages.Request(data: .init(request, id: id.uuidString))
+        let requestMessage = try OBS.Messages.Request(data: .init(request, id: id.uuidString))
         try await session
             .send(
                 requestMessage,
