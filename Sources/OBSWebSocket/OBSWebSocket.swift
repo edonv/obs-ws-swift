@@ -8,6 +8,7 @@
 import Foundation
 import WebSocketSession
 import HelperTypes
+import JSONValue
 
 import Synchronization
 import MessagePacker
@@ -213,9 +214,10 @@ public final class OBSWebSocket: Sendable {
     ) async throws -> R.Response {
         let session = try ensureConnectionOpen()
         
+        let requestMessage = try OBSMessages.Request(data: .init(request, id: id.uuidString))
         try await session
             .send(
-                OBSMessages.Request(data: .init(request, id: id.uuidString)),
+                requestMessage,
                 encodingProtocol: self.connectionDetails.withLock(\.?.encodingProtocol)
             )
         
@@ -235,6 +237,16 @@ public final class OBSWebSocket: Sendable {
             throw Errors.test
         }
         
+        guard reqRespMsg.data.status.result else {
+            throw Errors.requestFailed(
+                type: requestMessage.data.type,
+                id: requestMessage.data.id,
+                request: requestMessage.data.data,
+                response: reqRespMsg.data.data,
+                status: reqRespMsg.data.status
+            )
+        }
+        
         return try reqRespMsg.data.asResponse(ofType: R.self)
     }
     
@@ -245,6 +257,7 @@ public final class OBSWebSocket: Sendable {
         case webSocketError(WebSocketError)
         case obsWebSocketClosed(OBSWS.Enums.CloseCode, reason: String?)
         case noActiveConnection
+        case requestFailed(type: OBSWS.Requests.AllTypes, id: String, request: JSONValue?, response: JSONValue?, status: OBSOpData.RequestResponse.Status)
         
         fileprivate static func wsError(_ error: WebSocketError) -> Self {
             switch error {
