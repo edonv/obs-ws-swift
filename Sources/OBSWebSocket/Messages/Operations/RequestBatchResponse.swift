@@ -33,8 +33,10 @@ extension OBSOpData {
         }
         
         /// Identical to ``OBSOpData/RequestResponse``, except ``id`` is optional.
-        public struct Response: Sendable, Hashable, Codable {
+        public struct Response: OBSOpDataRequestResponse, Sendable, Hashable, Codable {
             public typealias Status = RequestResponse.Status
+            
+            public static var opCode: OBSWS.Enums.OpCode { RequestBatchResponse.opCode }
             
             public let type: OBSWS.Requests.AllTypes
             public let id: String?

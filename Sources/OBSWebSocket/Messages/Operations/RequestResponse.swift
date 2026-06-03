@@ -13,7 +13,7 @@ extension OBSOpData {
     ///
     /// - term Sent From: `obs-websocket`
     /// - term Sent To: Identified client which made the request
-    public struct RequestResponse: OBSOpDataProtocol {
+    public struct RequestResponse: OBSOpDataProtocol, OBSOpDataRequestResponse {
         public static let opCode: OBSWS.Enums.OpCode = .requestResponse
         
         public let type: OBSWS.Requests.AllTypes
@@ -71,19 +71,6 @@ extension OBSOpData {
             case id = "requestId"
             case status = "requestStatus"
             case data = "responseData"
-        }
-        
-        func asResponse<R: OBSRequest>(ofType type: R.Type = R.self) throws -> R.Response {
-            let d: JSONValue
-            
-            if R.Response.self != OBSWS.Requests.EmptyResponse.self
-                && data == nil {
-                throw OBSUntypedMessage.Error.dataDoesNotMatchExpectedType(data: data, code: RequestResponse.opCode)
-            } else {
-                d = data ?? .object([:])
-            }
-            
-            return try d.toCodable(R.Response.self)
         }
     }
 }
