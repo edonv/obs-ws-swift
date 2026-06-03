@@ -11,7 +11,7 @@ import Testing
 import JSONValue
 
 struct OBSMessageTests {
-    private let untypedMessages: [OBSUntypedMessage] = [
+    private let untypedMessages: [OBS.UntypedMessage] = [
         .init(operation: .hello, data: [
             "obsWebSocketVersion": "5.7.2",
             "rpcVersion": 1,

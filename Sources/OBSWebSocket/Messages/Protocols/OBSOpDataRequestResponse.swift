@@ -25,7 +25,7 @@ extension OBSOpDataRequestResponse {
         
         if R.Response.self != OBSWS.Requests.EmptyResponse.self
             && data == nil {
-            throw OBSUntypedMessage.Error.dataDoesNotMatchExpectedType(data: data, code: Self.opCode)
+            throw OBS.UntypedMessage.Error.dataDoesNotMatchExpectedType(data: data, code: Self.opCode)
         } else {
             d = data ?? .object([:])
         }

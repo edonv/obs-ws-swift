@@ -48,8 +48,8 @@ extension WebSocketAsyncSession {
 typealias AsyncOBSWebSocketMessages<S: AsyncSequence> = AsyncOptionalSequence<AsyncOBSUntypedMessageSequence<WebSocketAsyncSession.Messages>> where S: Sendable, S.Element == URLSessionWebSocketTask.Message
 
 extension AsyncSequence where Self: Sendable, Element == URLSessionWebSocketTask.Message {
-    /// Map each message to an ``OBSUntypedMessage``.
-    func asOBSWSMessages() -> some AsyncSendableSequence<OBSUntypedMessage, any Error> {
+    /// Map each message to an ``OBS/UntypedMessage``.
+    func asOBSWSMessages() -> some AsyncSendableSequence<OBS.UntypedMessage, any Error> {
         AsyncOBSUntypedMessageSequence(self, throwIfIncompatible: false)
             .optional
     }

@@ -29,7 +29,7 @@ extension OBS {
             self.data = data
         }
         
-        func untyped() throws -> OBSUntypedMessage {
+        func untyped() throws -> OBS.UntypedMessage {
             .init(
                 operation: operation,
                 data: try JSONValue.fromCodable(data)
