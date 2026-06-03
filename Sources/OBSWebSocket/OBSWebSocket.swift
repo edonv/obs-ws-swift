@@ -206,6 +206,7 @@ public final class OBSWebSocket: Sendable {
     
     // MARK: - Communication (Out)
     
+    @discardableResult
     public func send<R: OBSRequest>(
         _ request: R,
         withID id: UUID = UUID()
