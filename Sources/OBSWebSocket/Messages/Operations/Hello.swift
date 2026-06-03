@@ -50,7 +50,7 @@ extension OBS.OpData {
     }
 }
 
-extension OBSMessages.Hello {
+extension OBS.Messages.Hello {
     /// Maps `Hello` instance to a new ``OBSMessages/Identify`` (``OBS/Message`` with an ``OBS/OpData/Identify`` `Body`).
     /// - Parameters:
     ///   - password: If provided, it's used with ``OBS/OpData/Hello/authentication`` to create a final
@@ -63,7 +63,7 @@ extension OBSMessages.Hello {
     internal func toIdentify(
         password: String?,
         subscribingTo events: OBSWS.Enums.EventSubscription?
-    ) throws -> OBSMessages.Identify {
+    ) throws -> OBS.Messages.Identify {
         var auth: String? = nil
         
         // If there should be a password but not provided to function, can also

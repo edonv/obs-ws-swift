@@ -36,17 +36,17 @@ extension OBS {
             )
         }
     }
-}
-
-/// Namespace for type aliases of typed ``OBS/Message``s.
-public enum OBSMessages {
-    public typealias Hello = OBS.Message<OBS.OpData.Hello>
-    public typealias Identify = OBS.Message<OBS.OpData.Identify>
-    public typealias Identified = OBS.Message<OBS.OpData.Identified>
-    public typealias Reidentify = OBS.Message<OBS.OpData.Reidentify>
-    public typealias Event = OBS.Message<OBS.OpData.Event>
-    public typealias Request = OBS.Message<OBS.OpData.Request>
-    public typealias RequestResponse = OBS.Message<OBS.OpData.RequestResponse>
-    public typealias RequestBatch = OBS.Message<OBS.OpData.RequestBatch>
-    public typealias RequestBatchResponse = OBS.Message<OBS.OpData.RequestBatchResponse>
+    
+    /// Namespace for type aliases of typed ``OBS/Message``s.
+    public enum Messages {
+        public typealias Hello = OBS.Message<OBS.OpData.Hello>
+        public typealias Identify = OBS.Message<OBS.OpData.Identify>
+        public typealias Identified = OBS.Message<OBS.OpData.Identified>
+        public typealias Reidentify = OBS.Message<OBS.OpData.Reidentify>
+        public typealias Event = OBS.Message<OBS.OpData.Event>
+        public typealias Request = OBS.Message<OBS.OpData.Request>
+        public typealias RequestResponse = OBS.Message<OBS.OpData.RequestResponse>
+        public typealias RequestBatch = OBS.Message<OBS.OpData.RequestBatch>
+        public typealias RequestBatchResponse = OBS.Message<OBS.OpData.RequestBatchResponse>
+    }
 }
