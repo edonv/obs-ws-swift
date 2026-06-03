@@ -9,9 +9,12 @@ import Foundation
 import JSONValue
 
 public protocol OBSOpDataRequestResponse: Sendable, Hashable {
+    associatedtype ID: Sendable, Hashable
+    
     static var opCode: OBSWS.Enums.OpCode { get }
     
     var type: OBSWS.Requests.AllTypes { get }
+    var id: ID { get }
     var status: OBSOpData.RequestResponse.Status { get }
     var data: JSONValue? { get }
 }
