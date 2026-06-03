@@ -15,7 +15,7 @@ extension OBSOpData {
     ///
     /// - term Sent From: Identified client
     /// - term Sent To: `obs-websocket`
-    public struct Request: OBSOpDataProtocol {
+    public struct Request: OBSOpDataProtocol, OBSOpDataRequest {
         public static let opCode: OBSWS.Enums.OpCode = .request
         
         public let type: OBSWS.Requests.AllTypes
