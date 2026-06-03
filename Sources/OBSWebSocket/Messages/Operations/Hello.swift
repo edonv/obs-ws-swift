@@ -63,7 +63,7 @@ extension OBS.Messages.Hello {
     internal func toIdentify(
         password: String?,
         subscribingTo events: OBS.Enums.EventSubscription?
-    ) throws -> OBS.Messages.Identify {
+    ) throws(OBS.Error) -> OBS.Messages.Identify {
         var auth: String? = nil
         
         // If there should be a password but not provided to function, can also
@@ -92,7 +92,7 @@ extension OBS.Messages.Hello {
             } else {
                 // If there is authentication data in the Hello message, then it requires a password.
                 // If the user didn't enter a password where one is required, throw error.
-                throw OBS.Error.missingPasswordWhereRequired
+                throw .missingPasswordWhereRequired
             }
         }
         
