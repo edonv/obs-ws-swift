@@ -15,7 +15,9 @@ public protocol OBSOpDataProtocol: Sendable, Hashable, Codable {
     static var opCode: OBSWS.Enums.OpCode { get }
 }
 
-/// Namespace for all `OBSMessage` body types.
-///
-/// Adapted from the [official documentation](https://github.com/obsproject/obs-websocket/blob/master/docs/generated/protocol.md#message-types-opcodes).
-public enum OBSOpData {}
+extension OBS {
+    /// Namespace for all `OBSMessage` body types.
+    ///
+    /// Adapted from the [official documentation](https://github.com/obsproject/obs-websocket/blob/master/docs/generated/protocol.md#message-types-opcodes).
+    public enum OpData {}
+}
