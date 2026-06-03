@@ -43,7 +43,7 @@ extension OBSWSProtocol: Generatable {
             try ImportDeclSyntax("import JSONValue")
                 .with(\.trailingTrivia, .newline)
             
-            try EnumDeclSyntax("public enum OBSWS") {
+            try ExtensionDeclSyntax("public extension OBS") {
                 try EnumDeclSyntax("public enum Enums") {
                     for enumDef in self.enums {
                         try enumDef.generate()
@@ -105,7 +105,7 @@ extension OBSWSProtocol: Generatable {
                 try SwitchExprSyntax("switch type") {
                     for reqDef in self.requests {
                         SwitchCaseSyntax("case .\(raw: reqDef.requestType):") {
-                            CodeBlockItemSyntax("return try requestData.toCodable(OBSWS.Requests.\(raw: reqDef.requestType).self)")
+                            CodeBlockItemSyntax("return try requestData.toCodable(OBS.Requests.\(raw: reqDef.requestType).self)")
                                 .with(\.leadingTrivia, .newline)
                         }
                         .with(\.leadingTrivia, .newline)
@@ -137,7 +137,7 @@ extension OBSWSProtocol: Generatable {
                 try SwitchExprSyntax("switch type") {
                     for eventDef in self.events {
                         SwitchCaseSyntax("case .\(raw: eventDef.eventType):") {
-                            CodeBlockItemSyntax("return try eventData.toCodable(OBSWS.Events.\(raw: eventDef.eventType).self)")
+                            CodeBlockItemSyntax("return try eventData.toCodable(OBS.Events.\(raw: eventDef.eventType).self)")
                                 .with(\.leadingTrivia, .newline)
                         }
                         .with(\.leadingTrivia, .newline)
