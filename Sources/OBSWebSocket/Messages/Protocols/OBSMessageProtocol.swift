@@ -12,11 +12,11 @@ public protocol OBSMessageProtocol: Sendable, Hashable, Codable {
     associatedtype Body: Sendable, Hashable, Codable
     
     /// The type of message.
-    var operation: OBSWS.Enums.OpCode { get }
+    var operation: OBS.Enums.OpCode { get }
     /// The body of the message.
     var data: Body { get }
     
-    init(operation: OBSWS.Enums.OpCode, data: Body)
+    init(operation: OBS.Enums.OpCode, data: Body)
 }
 
 private enum OBSMessageProtocolCodingKeys: String, CodingKey {
@@ -36,7 +36,7 @@ extension OBSMessageProtocol {
         let container = try decoder.container(keyedBy: OBSMessageProtocolCodingKeys.self)
         
         self.init(
-            operation: try container.decode(OBSWS.Enums.OpCode.self, forKey: .operation),
+            operation: try container.decode(OBS.Enums.OpCode.self, forKey: .operation),
             data: try container.decode(Body.self, forKey: .data)
         )
     }

@@ -11,7 +11,7 @@ import JSONValue
 extension OBS {
     /// A general type used for easier receipt of messages without having to cast immediately.
     public struct UntypedMessage: OBSMessageProtocol {
-        public typealias OpCode = OBSWS.Enums.OpCode
+        public typealias OpCode = OBS.Enums.OpCode
         
         public let operation: OpCode
         

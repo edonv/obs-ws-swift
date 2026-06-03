@@ -16,7 +16,7 @@ extension OBS.OpData {
     /// - term Sent From: `obs-websocket`
     /// - term Sent To: Freshly identified client
     public struct Identified: OBSOpDataProtocol {
-        public static let opCode: OBSWS.Enums.OpCode = .identified
+        public static let opCode: OBS.Enums.OpCode = .identified
         
         public let negotiatedRpcVersion: Int
         

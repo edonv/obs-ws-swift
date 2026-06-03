@@ -12,7 +12,7 @@ import Foundation
 /// This is the low-level message data which may be sent to and from `obs-websocket`.
 public protocol OBSOpDataProtocol: Sendable, Hashable, Codable {
     /// The enum/numerical representation of the message type.
-    static var opCode: OBSWS.Enums.OpCode { get }
+    static var opCode: OBS.Enums.OpCode { get }
 }
 
 extension OBS {
