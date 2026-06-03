@@ -16,13 +16,20 @@ import AsyncAlgorithms
 import Timeout
 
 public final class OBSWebSocket: Sendable {
+    typealias RequestResponseBacklog = [OBSWS.Requests.AllTypes: any OBSOpDataRequestResponse]
+    typealias EventBacklog = [OBSWS.Events.AllTypes: OBSOpData.Event]
+    
     public typealias UntypedMessage = OBSUntypedMessage
     public typealias Message = OBSMessage
     public typealias CloseCode = OBSWS.Enums.CloseCode
     
     // MARK: - Private Stored Properties
     
+    private let reqResponseBacklog: Mutex<RequestResponseBacklog>
+    private let eventBacklog: Mutex<EventBacklog>
+    
     private let _session: Mutex<WebSocketAsyncSession?>
+    private let _backlogTask: Mutex<Task<Void, any Error>?>
     
     private let connectionDetails: Mutex<ConnectionDetails?>
     private let handshakeDetails: Mutex<HandshakeDetails?>
@@ -52,7 +59,11 @@ public final class OBSWebSocket: Sendable {
     // MARK: - Public Initializers
     
     public init() {
+        self.reqResponseBacklog = .init([:])
+        self.eventBacklog = .init([:])
+        
         self._session = .init(nil)
+        self._backlogTask = .init(nil)
         self.connectionDetails = .init(nil)
         self.handshakeDetails = .init(nil)
     }
@@ -71,6 +82,12 @@ public final class OBSWebSocket: Sendable {
         )
         
         self._session.withLock { $0 = session }
+        let backlogTask = Task {
+            for try await msg in session.messages.asOBSWSMessages() {
+                self.logMessageToBacklog(msg)
+            }
+        }
+        self._backlogTask.withLock { $0 = backlogTask }
         self.connectionDetails.withLock { $0 = connectionData }
         self.handshakeDetails.withLock { $0 = details }
     }
@@ -176,6 +193,10 @@ public final class OBSWebSocket: Sendable {
     private func clearTaskData() {
         self.connectionDetails.withLock { $0 = nil }
         self.handshakeDetails.withLock { $0 = nil }
+        
+        self._backlogTask.withLock { $0 = nil }
+        self.reqResponseBacklog.withLock { $0 = [:] }
+        self.eventBacklog.withLock { $0 = [:] }
     }
     
     private func ensureConnectionOpen() throws(Errors) -> WebSocketAsyncSession {
@@ -203,6 +224,36 @@ public final class OBSWebSocket: Sendable {
         isIncluded: (@Sendable (OBSOpData.Event) throws -> Bool)? = nil
     ) -> some AsyncSendableSequence<E, any Error> {
         messages.events(ofType: type.self, isIncluded: isIncluded)
+    }
+    
+    nonisolated
+    private func logMessageToBacklog(_ message: OBSUntypedMessage) {
+        switch message.operation {
+        case .event:
+            guard let event = try? message.as(OBSOpData.Event.self) else { return }
+            
+            self.eventBacklog
+                .withLock { $0[event.data.type] = event.data }
+            
+        case .requestResponse:
+            guard let resp = try? message.as(OBSOpData.RequestResponse.self) else { return }
+            
+            self.reqResponseBacklog
+                .withLock { $0[resp.data.type] = resp.data }
+            
+        case .requestBatchResponse:
+            guard let batchResp = try? message.as(OBSOpData.RequestBatchResponse.self) else { return }
+            
+            self.reqResponseBacklog
+                .withLock { backlog in
+                    batchResp.data.results.forEach { resp in
+                        backlog[resp.type] = resp
+                    }
+                }
+            
+        default:
+            break
+        }
     }
     
     // MARK: - Communication (Out)
