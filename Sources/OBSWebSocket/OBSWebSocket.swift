@@ -60,7 +60,9 @@ public final class OBSWebSocket: Sendable {
     // MARK: - Connection Management
     
     /// Creates and starts a WebSocket connection.
-    /// - Parameter request: The connection data to connect to.
+    /// - Parameters:
+    ///   - connectionData: The connection data to connect to
+    ///   - eventSubscription: The bitmask of event categories to subscribe to.
     public func connect(
         with connectionData: ConnectionDetails,
         subscribingTo eventSubscription: OBS.Enums.EventSubscription? = nil
