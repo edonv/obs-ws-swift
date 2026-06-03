@@ -14,16 +14,16 @@ extension OBS.OpData {
     /// - term Sent From: `obs-websocket`
     /// - term Sent To: All subscribed and identified clients
     public struct Event: OBSOpDataProtocol {
-        public static let opCode: OBSWS.Enums.OpCode = .event
+        public static let opCode: OBS.Enums.OpCode = .event
         
-        public let type: OBSWS.Events.AllTypes
+        public let type: OBS.Events.AllTypes
         /// The original intent required to be subscribed to in order to receive the event.
-        public let intent: OBSWS.Enums.EventSubscription
+        public let intent: OBS.Enums.EventSubscription
         public let data: JSONValue
         
         internal init(
-            type: OBSWS.Events.AllTypes,
-            intent: OBSWS.Enums.EventSubscription,
+            type: OBS.Events.AllTypes,
+            intent: OBS.Enums.EventSubscription,
             data: JSONValue
         ) {
             self.type = type

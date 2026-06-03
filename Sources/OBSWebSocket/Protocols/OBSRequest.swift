@@ -13,11 +13,11 @@ public protocol OBSRequest: Sendable, Hashable, Codable {
     associatedtype Response: OBSRequestResponse
     
     /// Enum representation of its own ``OBSRequest`` type.
-    static var requestType: OBSWS.Requests.AllTypes { get }
+    static var requestType: OBS.Requests.AllTypes { get }
 }
 /// All types of ``OBSRequest/Response``s conform to this.
 public protocol OBSRequestResponse: Sendable, Hashable, Codable {}
 
-extension OBSWS.Requests {
+extension OBS.Requests {
     public struct EmptyResponse: OBSRequestResponse {}
 }

@@ -16,9 +16,9 @@ extension OBS.OpData {
     /// - term Sent From: Identified client
     /// - term Sent To: `obs-websocket`
     public struct Request: OBSOpDataProtocol, OBSOpDataRequest {
-        public static let opCode: OBSWS.Enums.OpCode = .request
+        public static let opCode: OBS.Enums.OpCode = .request
         
-        public let type: OBSWS.Requests.AllTypes
+        public let type: OBS.Requests.AllTypes
         public let id: String
         public let data: JSONValue?
         
@@ -29,7 +29,7 @@ extension OBS.OpData {
         }
         
         internal init(
-            type: OBSWS.Requests.AllTypes,
+            type: OBS.Requests.AllTypes,
             id: String,
             data: JSONValue?
         ) {

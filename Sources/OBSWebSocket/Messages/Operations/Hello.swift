@@ -17,7 +17,7 @@ extension OBS.OpData {
     /// - term Sent From: `obs-websocket`
     /// - term Sent To: Freshly connected websocket client
     public struct Hello: OBSOpDataProtocol {
-        public static let opCode: OBSWS.Enums.OpCode = .hello
+        public static let opCode: OBS.Enums.OpCode = .hello
         
         public let obsWebSocketVersion: String
         
@@ -56,13 +56,13 @@ extension OBS.Messages.Hello {
     ///   - password: If provided, it's used with ``OBS/OpData/Hello/authentication`` to create a final
     ///   authentication string.
     ///   - events: If provided, it tells `obs-websocket` that it's interested in being
-    ///   alerted about specific categories of ``OBSWS/Events``.
-    /// - Throws: ``OBSWS/Error/missingPasswordWhereRequired`` if
+    ///   alerted about specific categories of ``OBS/Events``.
+    /// - Throws: ``OBS/Error/missingPasswordWhereRequired`` if
     /// ``OBS/OpData/Hello/authentication`` is present without a provided password.
     /// - Returns: A new ``OBSMessages/Identify`` (``OBS/Message`` with an ``OBS/OpData/Identify`` `Body`) with the generated authentication string.
     internal func toIdentify(
         password: String?,
-        subscribingTo events: OBSWS.Enums.EventSubscription?
+        subscribingTo events: OBS.Enums.EventSubscription?
     ) throws -> OBS.Messages.Identify {
         var auth: String? = nil
         
@@ -92,7 +92,7 @@ extension OBS.Messages.Hello {
             } else {
                 // If there is authentication data in the Hello message, then it requires a password.
                 // If the user didn't enter a password where one is required, throw error.
-                throw OBSWS.Error.missingPasswordWhereRequired
+                throw OBS.Error.missingPasswordWhereRequired
             }
         }
         

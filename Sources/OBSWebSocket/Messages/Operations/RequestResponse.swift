@@ -14,15 +14,15 @@ extension OBS.OpData {
     /// - term Sent From: `obs-websocket`
     /// - term Sent To: Identified client which made the request
     public struct RequestResponse: OBSOpDataProtocol, OBSOpDataRequestResponse {
-        public static let opCode: OBSWS.Enums.OpCode = .requestResponse
+        public static let opCode: OBS.Enums.OpCode = .requestResponse
         
-        public let type: OBSWS.Requests.AllTypes
+        public let type: OBS.Requests.AllTypes
         public let id: String
         public let status: Status
         public let data: JSONValue?
         
         internal init(
-            type: OBSWS.Requests.AllTypes,
+            type: OBS.Requests.AllTypes,
             id: String,
             status: Status,
             data: JSONValue?
@@ -46,18 +46,18 @@ extension OBS.OpData {
         }
         
         public struct Status: Sendable, Hashable, Codable {
-            /// `result` is `true` if the request resulted in ``OBSWS/Enums/RequestStatus/success`` (100).
+            /// `result` is `true` if the request resulted in ``OBS/Enums/RequestStatus/success`` (100).
             /// `false` if otherwise.
             public let result: Bool
             
-            public let code: OBSWS.Enums.RequestStatus
+            public let code: OBS.Enums.RequestStatus
             
             /// May be provided by the server on errors to offer further details on why a request failed.
             public let comment: String?
             
             internal init(
                 result: Bool,
-                code: OBSWS.Enums.RequestStatus,
+                code: OBS.Enums.RequestStatus,
                 comment: String?
             ) {
                 self.result = result

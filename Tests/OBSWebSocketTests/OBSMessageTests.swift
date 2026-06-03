@@ -20,17 +20,17 @@ struct OBSMessageTests {
         .init(operation: .identify, data: [
             "rpcVersion": 1,
 //            "authentication": nil,
-            "eventSubscriptions": .int(OBSWS.Enums.EventSubscription.all.rawValue),
+            "eventSubscriptions": .int(OBS.Enums.EventSubscription.all.rawValue),
         ]),
         .init(operation: .identified, data: [
             "negotiatedRpcVersion": 1,
         ]),
         .init(operation: .reidentify, data: [
-            "eventSubscriptions": .int(OBSWS.Enums.EventSubscription.all.rawValue),
+            "eventSubscriptions": .int(OBS.Enums.EventSubscription.all.rawValue),
         ]),
         .init(operation: .event, data: [
             "eventType": "CurrentSceneCollectionChanging",
-            "eventIntent": .int(OBSWS.Enums.EventSubscription.config.rawValue),
+            "eventIntent": .int(OBS.Enums.EventSubscription.config.rawValue),
             "eventData": [
                 "sceneCollectionName": "New Scene Collection",
             ],
@@ -49,7 +49,7 @@ struct OBSMessageTests {
             "requestId": .string(UUID().uuidString),
             "requestStatus": [
                 "result": true,
-                "code": .int(OBSWS.Enums.RequestStatus.success.rawValue),
+                "code": .int(OBS.Enums.RequestStatus.success.rawValue),
                 "comment": "Example comment",
             ],
             "responseData": [
@@ -60,7 +60,7 @@ struct OBSMessageTests {
         .init(operation: .requestBatch, data: [
             "requestId": .string(UUID().uuidString),
             "haltOnFailure": true,
-            "executionType": .int(OBSWS.Enums.RequestBatchExecutionType.serialFrame.rawValue),
+            "executionType": .int(OBS.Enums.RequestBatchExecutionType.serialFrame.rawValue),
             "requests": [
                 [
                     "requestType": "SetProfileParameter",
@@ -81,7 +81,7 @@ struct OBSMessageTests {
                     "requestId": .string(UUID().uuidString),
                     "requestStatus": [
                         "result": true,
-                        "code": .int(OBSWS.Enums.RequestStatus.success.rawValue),
+                        "code": .int(OBS.Enums.RequestStatus.success.rawValue),
                         "comment": "Example comment",
                     ],
                     "responseData": [
@@ -124,13 +124,13 @@ struct OBSMessageTests {
             case .event:
                 let event1Msg = try msg.as(OBS.OpData.Event.self)
                 let event2Data = try OBS.OpData.Event(
-                    OBSWS.Events.CurrentSceneCollectionChanging(sceneCollectionName: "New Scene Collection")
+                    OBS.Events.CurrentSceneCollectionChanging(sceneCollectionName: "New Scene Collection")
                 )
                 #expect(event1Msg.data == event2Data)
                 
             case .request:
                 let req1Msg = try msg.as(OBS.OpData.Request.self)
-                let req2Data = try OBS.OpData.Request(OBSWS.Requests.SetProfileParameter(
+                let req2Data = try OBS.OpData.Request(OBS.Requests.SetProfileParameter(
                     parameterCategory: "category",
                     parameterName: "name",
                     parameterValue: "value"
@@ -140,7 +140,7 @@ struct OBSMessageTests {
             case .requestResponse:
                 let resp1Msg = try msg.as(OBS.OpData.RequestResponse.self)
                 let resp2Data = try OBS.OpData.RequestResponse(
-                    OBSWS.Requests.GetProfileParameter.self,
+                    OBS.Requests.GetProfileParameter.self,
                     id: resp1Msg.data.id,
                     status: .init(
                         result: true,
@@ -162,7 +162,7 @@ struct OBSMessageTests {
                     executionType: .serialFrame,
                     requests: [
                         try .init(
-                            OBSWS.Requests.SetProfileParameter(
+                            OBS.Requests.SetProfileParameter(
                                 parameterCategory: "category",
                                 parameterName: "name",
                                 parameterValue: "value"
@@ -179,7 +179,7 @@ struct OBSMessageTests {
                     id: batchResp1Msg.data.id,
                     results: [
                         .init(
-                            OBSWS.Requests.GetProfileParameter.self,
+                            OBS.Requests.GetProfileParameter.self,
                             id: batchResp1Msg.data.results[0].id,
                             status: .init(
                                 result: true,

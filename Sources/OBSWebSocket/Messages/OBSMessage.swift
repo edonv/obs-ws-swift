@@ -11,7 +11,7 @@ import JSONValue
 extension OBS {
     /// A type used for sending and receiving information to and from OBS.
     public struct Message<Body: OBSOpDataProtocol>: OBSMessageProtocol {
-        public typealias OpCode = OBSWS.Enums.OpCode
+        public typealias OpCode = OBS.Enums.OpCode
         
         public let operation: OpCode
         public let data: Body
