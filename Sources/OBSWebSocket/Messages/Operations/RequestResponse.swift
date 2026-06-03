@@ -72,5 +72,18 @@ extension OBSOpData {
             case status = "requestStatus"
             case data = "responseData"
         }
+        
+        func asResponse<R: OBSRequest>(ofType type: R.Type = R.self) throws -> R.Response {
+            let d: JSONValue
+            
+            if R.Response.self != OBSWS.Requests.EmptyResponse.self
+                && data == nil {
+                throw OBSUntypedMessage.Error.dataDoesNotMatchExpectedType(data: data, code: RequestResponse.opCode)
+            } else {
+                d = data ?? .object([:])
+            }
+            
+            return try d.toCodable(R.Response.self)
+        }
     }
 }
