@@ -6,7 +6,7 @@ import Foundation
 import JSONValue
 
 /// Namespace for all generated OBS WebSocket types.
-public enum OBSWS {
+extension OBS {
   public enum Enums {
     public struct EventSubscription: OptionSet, OBSEnum {
       public let rawValue: Int
@@ -626,7 +626,7 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.7.0
     public struct GetCanvasList: OBSRequest {
-      public static let requestType: OBSWS.Requests.AllTypes = .GetCanvasList
+      public static let requestType: OBS.Requests.AllTypes = .GetCanvasList
 
       public init() {
       }
@@ -646,7 +646,7 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetPersistentData: OBSRequest {
-      public static let requestType: OBSWS.Requests.AllTypes = .GetPersistentData
+      public static let requestType: OBS.Requests.AllTypes = .GetPersistentData
 
       /// The data realm to select. `OBS_WEBSOCKET_DATA_REALM_GLOBAL` or `OBS_WEBSOCKET_DATA_REALM_PROFILE`
       public let realm: String
@@ -676,7 +676,7 @@ public enum OBSWS {
     public struct SetPersistentData: OBSRequest {
       public typealias Response = EmptyResponse
 
-      public static let requestType: OBSWS.Requests.AllTypes = .SetPersistentData
+      public static let requestType: OBS.Requests.AllTypes = .SetPersistentData
 
       /// The data realm to select. `OBS_WEBSOCKET_DATA_REALM_GLOBAL` or `OBS_WEBSOCKET_DATA_REALM_PROFILE`
       public let realm: String
@@ -703,7 +703,7 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetSceneCollectionList: OBSRequest {
-      public static let requestType: OBSWS.Requests.AllTypes = .GetSceneCollectionList
+      public static let requestType: OBS.Requests.AllTypes = .GetSceneCollectionList
 
       public init() {
       }
@@ -730,7 +730,7 @@ public enum OBSWS {
     public struct SetCurrentSceneCollection: OBSRequest {
       public typealias Response = EmptyResponse
 
-      public static let requestType: OBSWS.Requests.AllTypes = .SetCurrentSceneCollection
+      public static let requestType: OBS.Requests.AllTypes = .SetCurrentSceneCollection
 
       /// Name of the scene collection to switch to
       public let sceneCollectionName: String
@@ -753,7 +753,7 @@ public enum OBSWS {
     public struct CreateSceneCollection: OBSRequest {
       public typealias Response = EmptyResponse
 
-      public static let requestType: OBSWS.Requests.AllTypes = .CreateSceneCollection
+      public static let requestType: OBS.Requests.AllTypes = .CreateSceneCollection
 
       /// Name for the new scene collection
       public let sceneCollectionName: String
@@ -772,7 +772,7 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetProfileList: OBSRequest {
-      public static let requestType: OBSWS.Requests.AllTypes = .GetProfileList
+      public static let requestType: OBS.Requests.AllTypes = .GetProfileList
 
       public init() {
       }
@@ -797,7 +797,7 @@ public enum OBSWS {
     public struct SetCurrentProfile: OBSRequest {
       public typealias Response = EmptyResponse
 
-      public static let requestType: OBSWS.Requests.AllTypes = .SetCurrentProfile
+      public static let requestType: OBS.Requests.AllTypes = .SetCurrentProfile
 
       /// Name of the profile to switch to
       public let profileName: String
@@ -818,7 +818,7 @@ public enum OBSWS {
     public struct CreateProfile: OBSRequest {
       public typealias Response = EmptyResponse
 
-      public static let requestType: OBSWS.Requests.AllTypes = .CreateProfile
+      public static let requestType: OBS.Requests.AllTypes = .CreateProfile
 
       /// Name for the new profile
       public let profileName: String
@@ -839,7 +839,7 @@ public enum OBSWS {
     public struct RemoveProfile: OBSRequest {
       public typealias Response = EmptyResponse
 
-      public static let requestType: OBSWS.Requests.AllTypes = .RemoveProfile
+      public static let requestType: OBS.Requests.AllTypes = .RemoveProfile
 
       /// Name of the profile to remove
       public let profileName: String
@@ -858,7 +858,7 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetProfileParameter: OBSRequest {
-      public static let requestType: OBSWS.Requests.AllTypes = .GetProfileParameter
+      public static let requestType: OBS.Requests.AllTypes = .GetProfileParameter
 
       /// Category of the parameter to get
       public let parameterCategory: String
@@ -891,7 +891,7 @@ public enum OBSWS {
     public struct SetProfileParameter: OBSRequest {
       public typealias Response = EmptyResponse
 
-      public static let requestType: OBSWS.Requests.AllTypes = .SetProfileParameter
+      public static let requestType: OBS.Requests.AllTypes = .SetProfileParameter
 
       /// Category of the parameter to set
       public let parameterCategory: String
@@ -920,7 +920,7 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetVideoSettings: OBSRequest {
-      public static let requestType: OBSWS.Requests.AllTypes = .GetVideoSettings
+      public static let requestType: OBS.Requests.AllTypes = .GetVideoSettings
 
       public init() {
       }
@@ -959,7 +959,7 @@ public enum OBSWS {
     public struct SetVideoSettings: OBSRequest {
       public typealias Response = EmptyResponse
 
-      public static let requestType: OBSWS.Requests.AllTypes = .SetVideoSettings
+      public static let requestType: OBS.Requests.AllTypes = .SetVideoSettings
 
       /// Numerator of the fractional FPS value
       /// > Value Restrictions: `>= 1`
@@ -1016,7 +1016,7 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetStreamServiceSettings: OBSRequest {
-      public static let requestType: OBSWS.Requests.AllTypes = .GetStreamServiceSettings
+      public static let requestType: OBS.Requests.AllTypes = .GetStreamServiceSettings
 
       public init() {
       }
@@ -1043,7 +1043,7 @@ public enum OBSWS {
     public struct SetStreamServiceSettings: OBSRequest {
       public typealias Response = EmptyResponse
 
-      public static let requestType: OBSWS.Requests.AllTypes = .SetStreamServiceSettings
+      public static let requestType: OBS.Requests.AllTypes = .SetStreamServiceSettings
 
       /// Type of stream service to apply. Example: `rtmp_common` or `rtmp_custom`
       public let streamServiceType: String
@@ -1066,7 +1066,7 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetRecordDirectory: OBSRequest {
-      public static let requestType: OBSWS.Requests.AllTypes = .GetRecordDirectory
+      public static let requestType: OBS.Requests.AllTypes = .GetRecordDirectory
 
       public init() {
       }
@@ -1088,7 +1088,7 @@ public enum OBSWS {
     public struct SetRecordDirectory: OBSRequest {
       public typealias Response = EmptyResponse
 
-      public static let requestType: OBSWS.Requests.AllTypes = .SetRecordDirectory
+      public static let requestType: OBS.Requests.AllTypes = .SetRecordDirectory
 
       /// Output directory
       public let recordDirectory: String
@@ -1109,7 +1109,7 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.4.0
     public struct GetSourceFilterKindList: OBSRequest {
-      public static let requestType: OBSWS.Requests.AllTypes = .GetSourceFilterKindList
+      public static let requestType: OBS.Requests.AllTypes = .GetSourceFilterKindList
 
       public init() {
       }
@@ -1129,7 +1129,7 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetSourceFilterList: OBSRequest {
-      public static let requestType: OBSWS.Requests.AllTypes = .GetSourceFilterList
+      public static let requestType: OBS.Requests.AllTypes = .GetSourceFilterList
 
       /// UUID of the canvas the source is in, if using the sourceName field
       /// > Optional Behavior: Unknown
@@ -1164,7 +1164,7 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetSourceFilterDefaultSettings: OBSRequest {
-      public static let requestType: OBSWS.Requests.AllTypes = .GetSourceFilterDefaultSettings
+      public static let requestType: OBS.Requests.AllTypes = .GetSourceFilterDefaultSettings
 
       /// Filter kind to get the default settings for
       public let filterKind: String
@@ -1190,7 +1190,7 @@ public enum OBSWS {
     public struct CreateSourceFilter: OBSRequest {
       public typealias Response = EmptyResponse
 
-      public static let requestType: OBSWS.Requests.AllTypes = .CreateSourceFilter
+      public static let requestType: OBS.Requests.AllTypes = .CreateSourceFilter
 
       /// UUID of the canvas the source is in, if using the sourceName field
       /// > Optional Behavior: Unknown
@@ -1235,7 +1235,7 @@ public enum OBSWS {
     public struct RemoveSourceFilter: OBSRequest {
       public typealias Response = EmptyResponse
 
-      public static let requestType: OBSWS.Requests.AllTypes = .RemoveSourceFilter
+      public static let requestType: OBS.Requests.AllTypes = .RemoveSourceFilter
 
       /// UUID of the canvas the source is in, if using the sourceName field
       /// > Optional Behavior: Unknown
@@ -1271,7 +1271,7 @@ public enum OBSWS {
     public struct SetSourceFilterName: OBSRequest {
       public typealias Response = EmptyResponse
 
-      public static let requestType: OBSWS.Requests.AllTypes = .SetSourceFilterName
+      public static let requestType: OBS.Requests.AllTypes = .SetSourceFilterName
 
       /// UUID of the canvas the source is in, if using the sourceName field
       /// > Optional Behavior: Unknown
@@ -1309,7 +1309,7 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetSourceFilter: OBSRequest {
-      public static let requestType: OBSWS.Requests.AllTypes = .GetSourceFilter
+      public static let requestType: OBS.Requests.AllTypes = .GetSourceFilter
 
       /// UUID of the canvas the source is in, if using the sourceName field
       /// > Optional Behavior: Unknown
@@ -1359,7 +1359,7 @@ public enum OBSWS {
     public struct SetSourceFilterIndex: OBSRequest {
       public typealias Response = EmptyResponse
 
-      public static let requestType: OBSWS.Requests.AllTypes = .SetSourceFilterIndex
+      public static let requestType: OBS.Requests.AllTypes = .SetSourceFilterIndex
 
       /// UUID of the canvas the source is in, if using the sourceName field
       /// > Optional Behavior: Unknown
@@ -1400,7 +1400,7 @@ public enum OBSWS {
     public struct SetSourceFilterSettings: OBSRequest {
       public typealias Response = EmptyResponse
 
-      public static let requestType: OBSWS.Requests.AllTypes = .SetSourceFilterSettings
+      public static let requestType: OBS.Requests.AllTypes = .SetSourceFilterSettings
 
       /// UUID of the canvas the source is in, if using the sourceName field
       /// > Optional Behavior: Unknown
@@ -1445,7 +1445,7 @@ public enum OBSWS {
     public struct SetSourceFilterEnabled: OBSRequest {
       public typealias Response = EmptyResponse
 
-      public static let requestType: OBSWS.Requests.AllTypes = .SetSourceFilterEnabled
+      public static let requestType: OBS.Requests.AllTypes = .SetSourceFilterEnabled
 
       /// UUID of the canvas the source is in, if using the sourceName field
       /// > Optional Behavior: Unknown
@@ -1483,7 +1483,7 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetVersion: OBSRequest {
-      public static let requestType: OBSWS.Requests.AllTypes = .GetVersion
+      public static let requestType: OBS.Requests.AllTypes = .GetVersion
 
       public init() {
       }
@@ -1521,7 +1521,7 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetStats: OBSRequest {
-      public static let requestType: OBSWS.Requests.AllTypes = .GetStats
+      public static let requestType: OBS.Requests.AllTypes = .GetStats
 
       public init() {
       }
@@ -1573,7 +1573,7 @@ public enum OBSWS {
     public struct BroadcastCustomEvent: OBSRequest {
       public typealias Response = EmptyResponse
 
-      public static let requestType: OBSWS.Requests.AllTypes = .BroadcastCustomEvent
+      public static let requestType: OBS.Requests.AllTypes = .BroadcastCustomEvent
 
       /// Data payload to emit to all receivers
       public let eventData: JSONValue
@@ -1595,7 +1595,7 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct CallVendorRequest: OBSRequest {
-      public static let requestType: OBSWS.Requests.AllTypes = .CallVendorRequest
+      public static let requestType: OBS.Requests.AllTypes = .CallVendorRequest
 
       /// Name of the vendor to use
       public let vendorName: String
@@ -1636,7 +1636,7 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetHotkeyList: OBSRequest {
-      public static let requestType: OBSWS.Requests.AllTypes = .GetHotkeyList
+      public static let requestType: OBS.Requests.AllTypes = .GetHotkeyList
 
       public init() {
       }
@@ -1660,7 +1660,7 @@ public enum OBSWS {
     public struct TriggerHotkeyByName: OBSRequest {
       public typealias Response = EmptyResponse
 
-      public static let requestType: OBSWS.Requests.AllTypes = .TriggerHotkeyByName
+      public static let requestType: OBS.Requests.AllTypes = .TriggerHotkeyByName
 
       /// Name of the hotkey to trigger
       public let hotkeyName: String
@@ -1688,7 +1688,7 @@ public enum OBSWS {
     public struct TriggerHotkeyByKeySequence: OBSRequest {
       public typealias Response = EmptyResponse
 
-      public static let requestType: OBSWS.Requests.AllTypes = .TriggerHotkeyByKeySequence
+      public static let requestType: OBS.Requests.AllTypes = .TriggerHotkeyByKeySequence
 
       /// The OBS key ID to use. See https://github.com/obsproject/obs-studio/blob/master/libobs/obs-hotkeys.h
       /// > Optional Behavior: Not pressed
@@ -1733,7 +1733,7 @@ public enum OBSWS {
     public struct Sleep: OBSRequest {
       public typealias Response = EmptyResponse
 
-      public static let requestType: OBSWS.Requests.AllTypes = .Sleep
+      public static let requestType: OBS.Requests.AllTypes = .Sleep
 
       /// Number of milliseconds to sleep for (if `SERIAL_REALTIME` mode)
       /// > Value Restrictions: `>= 0, <= 50000`
@@ -1762,7 +1762,7 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetInputList: OBSRequest {
-      public static let requestType: OBSWS.Requests.AllTypes = .GetInputList
+      public static let requestType: OBS.Requests.AllTypes = .GetInputList
 
       /// Restrict the array to only inputs of the specified kind
       /// > Optional Behavior: All kinds included
@@ -1787,7 +1787,7 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetInputKindList: OBSRequest {
-      public static let requestType: OBSWS.Requests.AllTypes = .GetInputKindList
+      public static let requestType: OBS.Requests.AllTypes = .GetInputKindList
 
       /// True == Return all kinds as unversioned, False == Return with version suffixes (if available)
       /// > Optional Behavior: false
@@ -1812,7 +1812,7 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetSpecialInputs: OBSRequest {
-      public static let requestType: OBSWS.Requests.AllTypes = .GetSpecialInputs
+      public static let requestType: OBS.Requests.AllTypes = .GetSpecialInputs
 
       public init() {
       }
@@ -1847,7 +1847,7 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct CreateInput: OBSRequest {
-      public static let requestType: OBSWS.Requests.AllTypes = .CreateInput
+      public static let requestType: OBS.Requests.AllTypes = .CreateInput
 
       /// UUID of the canvas the scene is in, if using the sceneName field
       /// > Optional Behavior: Unknown
@@ -1907,7 +1907,7 @@ public enum OBSWS {
     public struct RemoveInput: OBSRequest {
       public typealias Response = EmptyResponse
 
-      public static let requestType: OBSWS.Requests.AllTypes = .RemoveInput
+      public static let requestType: OBS.Requests.AllTypes = .RemoveInput
 
       /// Name of the input to remove
       /// > Optional Behavior: Unknown
@@ -1934,7 +1934,7 @@ public enum OBSWS {
     public struct SetInputName: OBSRequest {
       public typealias Response = EmptyResponse
 
-      public static let requestType: OBSWS.Requests.AllTypes = .SetInputName
+      public static let requestType: OBS.Requests.AllTypes = .SetInputName
 
       /// Current input name
       /// > Optional Behavior: Unknown
@@ -1963,7 +1963,7 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetInputDefaultSettings: OBSRequest {
-      public static let requestType: OBSWS.Requests.AllTypes = .GetInputDefaultSettings
+      public static let requestType: OBS.Requests.AllTypes = .GetInputDefaultSettings
 
       /// Input kind to get the default settings for
       public let inputKind: String
@@ -1989,7 +1989,7 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetInputSettings: OBSRequest {
-      public static let requestType: OBSWS.Requests.AllTypes = .GetInputSettings
+      public static let requestType: OBS.Requests.AllTypes = .GetInputSettings
 
       /// Name of the input to get the settings of
       /// > Optional Behavior: Unknown
@@ -2024,7 +2024,7 @@ public enum OBSWS {
     public struct SetInputSettings: OBSRequest {
       public typealias Response = EmptyResponse
 
-      public static let requestType: OBSWS.Requests.AllTypes = .SetInputSettings
+      public static let requestType: OBS.Requests.AllTypes = .SetInputSettings
 
       /// Name of the input to set the settings of
       /// > Optional Behavior: Unknown
@@ -2058,7 +2058,7 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetInputMute: OBSRequest {
-      public static let requestType: OBSWS.Requests.AllTypes = .GetInputMute
+      public static let requestType: OBS.Requests.AllTypes = .GetInputMute
 
       /// Name of input to get the mute state of
       /// > Optional Behavior: Unknown
@@ -2090,7 +2090,7 @@ public enum OBSWS {
     public struct SetInputMute: OBSRequest {
       public typealias Response = EmptyResponse
 
-      public static let requestType: OBSWS.Requests.AllTypes = .SetInputMute
+      public static let requestType: OBS.Requests.AllTypes = .SetInputMute
 
       /// Name of the input to set the mute state of
       /// > Optional Behavior: Unknown
@@ -2119,7 +2119,7 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct ToggleInputMute: OBSRequest {
-      public static let requestType: OBSWS.Requests.AllTypes = .ToggleInputMute
+      public static let requestType: OBS.Requests.AllTypes = .ToggleInputMute
 
       /// Name of the input to toggle the mute state of
       /// > Optional Behavior: Unknown
@@ -2149,7 +2149,7 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetInputVolume: OBSRequest {
-      public static let requestType: OBSWS.Requests.AllTypes = .GetInputVolume
+      public static let requestType: OBS.Requests.AllTypes = .GetInputVolume
 
       /// Name of the input to get the volume of
       /// > Optional Behavior: Unknown
@@ -2184,7 +2184,7 @@ public enum OBSWS {
     public struct SetInputVolume: OBSRequest {
       public typealias Response = EmptyResponse
 
-      public static let requestType: OBSWS.Requests.AllTypes = .SetInputVolume
+      public static let requestType: OBS.Requests.AllTypes = .SetInputVolume
 
       /// Name of the input to set the volume of
       /// > Optional Behavior: Unknown
@@ -2223,7 +2223,7 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetInputAudioBalance: OBSRequest {
-      public static let requestType: OBSWS.Requests.AllTypes = .GetInputAudioBalance
+      public static let requestType: OBS.Requests.AllTypes = .GetInputAudioBalance
 
       /// Name of the input to get the audio balance of
       /// > Optional Behavior: Unknown
@@ -2255,7 +2255,7 @@ public enum OBSWS {
     public struct SetInputAudioBalance: OBSRequest {
       public typealias Response = EmptyResponse
 
-      public static let requestType: OBSWS.Requests.AllTypes = .SetInputAudioBalance
+      public static let requestType: OBS.Requests.AllTypes = .SetInputAudioBalance
 
       /// Name of the input to set the audio balance of
       /// > Optional Behavior: Unknown
@@ -2287,7 +2287,7 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetInputAudioSyncOffset: OBSRequest {
-      public static let requestType: OBSWS.Requests.AllTypes = .GetInputAudioSyncOffset
+      public static let requestType: OBS.Requests.AllTypes = .GetInputAudioSyncOffset
 
       /// Name of the input to get the audio sync offset of
       /// > Optional Behavior: Unknown
@@ -2319,7 +2319,7 @@ public enum OBSWS {
     public struct SetInputAudioSyncOffset: OBSRequest {
       public typealias Response = EmptyResponse
 
-      public static let requestType: OBSWS.Requests.AllTypes = .SetInputAudioSyncOffset
+      public static let requestType: OBS.Requests.AllTypes = .SetInputAudioSyncOffset
 
       /// Name of the input to set the audio sync offset of
       /// > Optional Behavior: Unknown
@@ -2355,7 +2355,7 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetInputAudioMonitorType: OBSRequest {
-      public static let requestType: OBSWS.Requests.AllTypes = .GetInputAudioMonitorType
+      public static let requestType: OBS.Requests.AllTypes = .GetInputAudioMonitorType
 
       /// Name of the input to get the audio monitor type of
       /// > Optional Behavior: Unknown
@@ -2387,7 +2387,7 @@ public enum OBSWS {
     public struct SetInputAudioMonitorType: OBSRequest {
       public typealias Response = EmptyResponse
 
-      public static let requestType: OBSWS.Requests.AllTypes = .SetInputAudioMonitorType
+      public static let requestType: OBS.Requests.AllTypes = .SetInputAudioMonitorType
 
       /// Name of the input to set the audio monitor type of
       /// > Optional Behavior: Unknown
@@ -2416,7 +2416,7 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetInputAudioTracks: OBSRequest {
-      public static let requestType: OBSWS.Requests.AllTypes = .GetInputAudioTracks
+      public static let requestType: OBS.Requests.AllTypes = .GetInputAudioTracks
 
       /// Name of the input
       /// > Optional Behavior: Unknown
@@ -2448,7 +2448,7 @@ public enum OBSWS {
     public struct SetInputAudioTracks: OBSRequest {
       public typealias Response = EmptyResponse
 
-      public static let requestType: OBSWS.Requests.AllTypes = .SetInputAudioTracks
+      public static let requestType: OBS.Requests.AllTypes = .SetInputAudioTracks
 
       /// Name of the input
       /// > Optional Behavior: Unknown
@@ -2491,7 +2491,7 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.6.0
     public struct GetInputDeinterlaceMode: OBSRequest {
-      public static let requestType: OBSWS.Requests.AllTypes = .GetInputDeinterlaceMode
+      public static let requestType: OBS.Requests.AllTypes = .GetInputDeinterlaceMode
 
       /// Name of the input
       /// > Optional Behavior: Unknown
@@ -2525,7 +2525,7 @@ public enum OBSWS {
     public struct SetInputDeinterlaceMode: OBSRequest {
       public typealias Response = EmptyResponse
 
-      public static let requestType: OBSWS.Requests.AllTypes = .SetInputDeinterlaceMode
+      public static let requestType: OBS.Requests.AllTypes = .SetInputDeinterlaceMode
 
       /// Name of the input
       /// > Optional Behavior: Unknown
@@ -2561,7 +2561,7 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.6.0
     public struct GetInputDeinterlaceFieldOrder: OBSRequest {
-      public static let requestType: OBSWS.Requests.AllTypes = .GetInputDeinterlaceFieldOrder
+      public static let requestType: OBS.Requests.AllTypes = .GetInputDeinterlaceFieldOrder
 
       /// Name of the input
       /// > Optional Behavior: Unknown
@@ -2595,7 +2595,7 @@ public enum OBSWS {
     public struct SetInputDeinterlaceFieldOrder: OBSRequest {
       public typealias Response = EmptyResponse
 
-      public static let requestType: OBSWS.Requests.AllTypes = .SetInputDeinterlaceFieldOrder
+      public static let requestType: OBS.Requests.AllTypes = .SetInputDeinterlaceFieldOrder
 
       /// Name of the input
       /// > Optional Behavior: Unknown
@@ -2626,7 +2626,7 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetInputPropertiesListPropertyItems: OBSRequest {
-      public static let requestType: OBSWS.Requests.AllTypes = .GetInputPropertiesListPropertyItems
+      public static let requestType: OBS.Requests.AllTypes = .GetInputPropertiesListPropertyItems
 
       /// Name of the input
       /// > Optional Behavior: Unknown
@@ -2668,7 +2668,7 @@ public enum OBSWS {
     public struct PressInputPropertiesButton: OBSRequest {
       public typealias Response = EmptyResponse
 
-      public static let requestType: OBSWS.Requests.AllTypes = .PressInputPropertiesButton
+      public static let requestType: OBS.Requests.AllTypes = .PressInputPropertiesButton
 
       /// Name of the input
       /// > Optional Behavior: Unknown
@@ -2708,7 +2708,7 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetMediaInputStatus: OBSRequest {
-      public static let requestType: OBSWS.Requests.AllTypes = .GetMediaInputStatus
+      public static let requestType: OBS.Requests.AllTypes = .GetMediaInputStatus
 
       /// Name of the media input
       /// > Optional Behavior: Unknown
@@ -2748,7 +2748,7 @@ public enum OBSWS {
     public struct SetMediaInputCursor: OBSRequest {
       public typealias Response = EmptyResponse
 
-      public static let requestType: OBSWS.Requests.AllTypes = .SetMediaInputCursor
+      public static let requestType: OBS.Requests.AllTypes = .SetMediaInputCursor
 
       /// Name of the media input
       /// > Optional Behavior: Unknown
@@ -2782,7 +2782,7 @@ public enum OBSWS {
     public struct OffsetMediaInputCursor: OBSRequest {
       public typealias Response = EmptyResponse
 
-      public static let requestType: OBSWS.Requests.AllTypes = .OffsetMediaInputCursor
+      public static let requestType: OBS.Requests.AllTypes = .OffsetMediaInputCursor
 
       /// Name of the media input
       /// > Optional Behavior: Unknown
@@ -2813,7 +2813,7 @@ public enum OBSWS {
     public struct TriggerMediaInputAction: OBSRequest {
       public typealias Response = EmptyResponse
 
-      public static let requestType: OBSWS.Requests.AllTypes = .TriggerMediaInputAction
+      public static let requestType: OBS.Requests.AllTypes = .TriggerMediaInputAction
 
       /// Name of the media input
       /// > Optional Behavior: Unknown
@@ -2824,9 +2824,9 @@ public enum OBSWS {
       public let inputUuid: UUID
 
       /// Identifier of the `ObsMediaInputAction` enum
-      public let mediaAction: OBSWS.Enums.MediaInputAction
+      public let mediaAction: OBS.Enums.MediaInputAction
 
-      public init(inputName: String?, inputUuid: UUID, mediaAction: OBSWS.Enums.MediaInputAction) {
+      public init(inputName: String?, inputUuid: UUID, mediaAction: OBS.Enums.MediaInputAction) {
         self.inputName = inputName
         self.inputUuid = inputUuid
         self.mediaAction = mediaAction
@@ -2842,7 +2842,7 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetVirtualCamStatus: OBSRequest {
-      public static let requestType: OBSWS.Requests.AllTypes = .GetVirtualCamStatus
+      public static let requestType: OBS.Requests.AllTypes = .GetVirtualCamStatus
 
       public init() {
       }
@@ -2862,7 +2862,7 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct ToggleVirtualCam: OBSRequest {
-      public static let requestType: OBSWS.Requests.AllTypes = .ToggleVirtualCam
+      public static let requestType: OBS.Requests.AllTypes = .ToggleVirtualCam
 
       public init() {
       }
@@ -2884,7 +2884,7 @@ public enum OBSWS {
     public struct StartVirtualCam: OBSRequest {
       public typealias Response = EmptyResponse
 
-      public static let requestType: OBSWS.Requests.AllTypes = .StartVirtualCam
+      public static let requestType: OBS.Requests.AllTypes = .StartVirtualCam
 
       public init() {
       }
@@ -2901,7 +2901,7 @@ public enum OBSWS {
     public struct StopVirtualCam: OBSRequest {
       public typealias Response = EmptyResponse
 
-      public static let requestType: OBSWS.Requests.AllTypes = .StopVirtualCam
+      public static let requestType: OBS.Requests.AllTypes = .StopVirtualCam
 
       public init() {
       }
@@ -2916,7 +2916,7 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetReplayBufferStatus: OBSRequest {
-      public static let requestType: OBSWS.Requests.AllTypes = .GetReplayBufferStatus
+      public static let requestType: OBS.Requests.AllTypes = .GetReplayBufferStatus
 
       public init() {
       }
@@ -2936,7 +2936,7 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct ToggleReplayBuffer: OBSRequest {
-      public static let requestType: OBSWS.Requests.AllTypes = .ToggleReplayBuffer
+      public static let requestType: OBS.Requests.AllTypes = .ToggleReplayBuffer
 
       public init() {
       }
@@ -2958,7 +2958,7 @@ public enum OBSWS {
     public struct StartReplayBuffer: OBSRequest {
       public typealias Response = EmptyResponse
 
-      public static let requestType: OBSWS.Requests.AllTypes = .StartReplayBuffer
+      public static let requestType: OBS.Requests.AllTypes = .StartReplayBuffer
 
       public init() {
       }
@@ -2975,7 +2975,7 @@ public enum OBSWS {
     public struct StopReplayBuffer: OBSRequest {
       public typealias Response = EmptyResponse
 
-      public static let requestType: OBSWS.Requests.AllTypes = .StopReplayBuffer
+      public static let requestType: OBS.Requests.AllTypes = .StopReplayBuffer
 
       public init() {
       }
@@ -2992,7 +2992,7 @@ public enum OBSWS {
     public struct SaveReplayBuffer: OBSRequest {
       public typealias Response = EmptyResponse
 
-      public static let requestType: OBSWS.Requests.AllTypes = .SaveReplayBuffer
+      public static let requestType: OBS.Requests.AllTypes = .SaveReplayBuffer
 
       public init() {
       }
@@ -3007,7 +3007,7 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetLastReplayBufferReplay: OBSRequest {
-      public static let requestType: OBSWS.Requests.AllTypes = .GetLastReplayBufferReplay
+      public static let requestType: OBS.Requests.AllTypes = .GetLastReplayBufferReplay
 
       public init() {
       }
@@ -3027,7 +3027,7 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetOutputList: OBSRequest {
-      public static let requestType: OBSWS.Requests.AllTypes = .GetOutputList
+      public static let requestType: OBS.Requests.AllTypes = .GetOutputList
 
       public init() {
       }
@@ -3047,7 +3047,7 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetOutputStatus: OBSRequest {
-      public static let requestType: OBSWS.Requests.AllTypes = .GetOutputStatus
+      public static let requestType: OBS.Requests.AllTypes = .GetOutputStatus
 
       /// Output name
       public let outputName: String
@@ -3092,7 +3092,7 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct ToggleOutput: OBSRequest {
-      public static let requestType: OBSWS.Requests.AllTypes = .ToggleOutput
+      public static let requestType: OBS.Requests.AllTypes = .ToggleOutput
 
       /// Output name
       public let outputName: String
@@ -3118,7 +3118,7 @@ public enum OBSWS {
     public struct StartOutput: OBSRequest {
       public typealias Response = EmptyResponse
 
-      public static let requestType: OBSWS.Requests.AllTypes = .StartOutput
+      public static let requestType: OBS.Requests.AllTypes = .StartOutput
 
       /// Output name
       public let outputName: String
@@ -3139,7 +3139,7 @@ public enum OBSWS {
     public struct StopOutput: OBSRequest {
       public typealias Response = EmptyResponse
 
-      public static let requestType: OBSWS.Requests.AllTypes = .StopOutput
+      public static let requestType: OBS.Requests.AllTypes = .StopOutput
 
       /// Output name
       public let outputName: String
@@ -3158,7 +3158,7 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetOutputSettings: OBSRequest {
-      public static let requestType: OBSWS.Requests.AllTypes = .GetOutputSettings
+      public static let requestType: OBS.Requests.AllTypes = .GetOutputSettings
 
       /// Output name
       public let outputName: String
@@ -3184,7 +3184,7 @@ public enum OBSWS {
     public struct SetOutputSettings: OBSRequest {
       public typealias Response = EmptyResponse
 
-      public static let requestType: OBSWS.Requests.AllTypes = .SetOutputSettings
+      public static let requestType: OBS.Requests.AllTypes = .SetOutputSettings
 
       /// Output name
       public let outputName: String
@@ -3207,7 +3207,7 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetRecordStatus: OBSRequest {
-      public static let requestType: OBSWS.Requests.AllTypes = .GetRecordStatus
+      public static let requestType: OBS.Requests.AllTypes = .GetRecordStatus
 
       public init() {
       }
@@ -3239,7 +3239,7 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct ToggleRecord: OBSRequest {
-      public static let requestType: OBSWS.Requests.AllTypes = .ToggleRecord
+      public static let requestType: OBS.Requests.AllTypes = .ToggleRecord
 
       public init() {
       }
@@ -3261,7 +3261,7 @@ public enum OBSWS {
     public struct StartRecord: OBSRequest {
       public typealias Response = EmptyResponse
 
-      public static let requestType: OBSWS.Requests.AllTypes = .StartRecord
+      public static let requestType: OBS.Requests.AllTypes = .StartRecord
 
       public init() {
       }
@@ -3276,7 +3276,7 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct StopRecord: OBSRequest {
-      public static let requestType: OBSWS.Requests.AllTypes = .StopRecord
+      public static let requestType: OBS.Requests.AllTypes = .StopRecord
 
       public init() {
       }
@@ -3298,7 +3298,7 @@ public enum OBSWS {
     public struct ToggleRecordPause: OBSRequest {
       public typealias Response = EmptyResponse
 
-      public static let requestType: OBSWS.Requests.AllTypes = .ToggleRecordPause
+      public static let requestType: OBS.Requests.AllTypes = .ToggleRecordPause
 
       public init() {
       }
@@ -3315,7 +3315,7 @@ public enum OBSWS {
     public struct PauseRecord: OBSRequest {
       public typealias Response = EmptyResponse
 
-      public static let requestType: OBSWS.Requests.AllTypes = .PauseRecord
+      public static let requestType: OBS.Requests.AllTypes = .PauseRecord
 
       public init() {
       }
@@ -3332,7 +3332,7 @@ public enum OBSWS {
     public struct ResumeRecord: OBSRequest {
       public typealias Response = EmptyResponse
 
-      public static let requestType: OBSWS.Requests.AllTypes = .ResumeRecord
+      public static let requestType: OBS.Requests.AllTypes = .ResumeRecord
 
       public init() {
       }
@@ -3349,7 +3349,7 @@ public enum OBSWS {
     public struct SplitRecordFile: OBSRequest {
       public typealias Response = EmptyResponse
 
-      public static let requestType: OBSWS.Requests.AllTypes = .SplitRecordFile
+      public static let requestType: OBS.Requests.AllTypes = .SplitRecordFile
 
       public init() {
       }
@@ -3368,7 +3368,7 @@ public enum OBSWS {
     public struct CreateRecordChapter: OBSRequest {
       public typealias Response = EmptyResponse
 
-      public static let requestType: OBSWS.Requests.AllTypes = .CreateRecordChapter
+      public static let requestType: OBS.Requests.AllTypes = .CreateRecordChapter
 
       /// Name of the new chapter
       /// > Optional Behavior: Unknown
@@ -3390,7 +3390,7 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetSceneItemList: OBSRequest {
-      public static let requestType: OBSWS.Requests.AllTypes = .GetSceneItemList
+      public static let requestType: OBS.Requests.AllTypes = .GetSceneItemList
 
       /// UUID of the canvas the scene is in, if using the sceneName field
       /// > Optional Behavior: Unknown
@@ -3429,7 +3429,7 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetGroupSceneItemList: OBSRequest {
-      public static let requestType: OBSWS.Requests.AllTypes = .GetGroupSceneItemList
+      public static let requestType: OBS.Requests.AllTypes = .GetGroupSceneItemList
 
       /// UUID of the canvas the group is in, if using the sceneName field
       /// > Optional Behavior: Unknown
@@ -3466,7 +3466,7 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetSceneItemId: OBSRequest {
-      public static let requestType: OBSWS.Requests.AllTypes = .GetSceneItemId
+      public static let requestType: OBS.Requests.AllTypes = .GetSceneItemId
 
       /// UUID of the canvas the scene or group is in, if using the sceneName field
       /// > Optional Behavior: Unknown
@@ -3512,7 +3512,7 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.4.0
     public struct GetSceneItemSource: OBSRequest {
-      public static let requestType: OBSWS.Requests.AllTypes = .GetSceneItemSource
+      public static let requestType: OBS.Requests.AllTypes = .GetSceneItemSource
 
       /// UUID of the canvas the scene is in, if using the sceneName field
       /// > Optional Behavior: Unknown
@@ -3557,7 +3557,7 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct CreateSceneItem: OBSRequest {
-      public static let requestType: OBSWS.Requests.AllTypes = .CreateSceneItem
+      public static let requestType: OBS.Requests.AllTypes = .CreateSceneItem
 
       /// UUID of the canvas the scene is in, if using the sceneName field
       /// > Optional Behavior: Unknown
@@ -3611,7 +3611,7 @@ public enum OBSWS {
     public struct RemoveSceneItem: OBSRequest {
       public typealias Response = EmptyResponse
 
-      public static let requestType: OBSWS.Requests.AllTypes = .RemoveSceneItem
+      public static let requestType: OBS.Requests.AllTypes = .RemoveSceneItem
 
       /// UUID of the canvas the scene is in, if using the sceneName field
       /// > Optional Behavior: Unknown
@@ -3648,7 +3648,7 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct DuplicateSceneItem: OBSRequest {
-      public static let requestType: OBSWS.Requests.AllTypes = .DuplicateSceneItem
+      public static let requestType: OBS.Requests.AllTypes = .DuplicateSceneItem
 
       /// UUID of the canvas the scene is in, if using the sceneName field
       /// > Optional Behavior: Unknown
@@ -3700,7 +3700,7 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetSceneItemTransform: OBSRequest {
-      public static let requestType: OBSWS.Requests.AllTypes = .GetSceneItemTransform
+      public static let requestType: OBS.Requests.AllTypes = .GetSceneItemTransform
 
       /// UUID of the canvas the scene is in, if using the sceneName field
       /// > Optional Behavior: Unknown
@@ -3742,7 +3742,7 @@ public enum OBSWS {
     public struct SetSceneItemTransform: OBSRequest {
       public typealias Response = EmptyResponse
 
-      public static let requestType: OBSWS.Requests.AllTypes = .SetSceneItemTransform
+      public static let requestType: OBS.Requests.AllTypes = .SetSceneItemTransform
 
       /// UUID of the canvas the scene is in, if using the sceneName field
       /// > Optional Behavior: Unknown
@@ -3783,7 +3783,7 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetSceneItemEnabled: OBSRequest {
-      public static let requestType: OBSWS.Requests.AllTypes = .GetSceneItemEnabled
+      public static let requestType: OBS.Requests.AllTypes = .GetSceneItemEnabled
 
       /// UUID of the canvas the scene is in, if using the sceneName field
       /// > Optional Behavior: Unknown
@@ -3827,7 +3827,7 @@ public enum OBSWS {
     public struct SetSceneItemEnabled: OBSRequest {
       public typealias Response = EmptyResponse
 
-      public static let requestType: OBSWS.Requests.AllTypes = .SetSceneItemEnabled
+      public static let requestType: OBS.Requests.AllTypes = .SetSceneItemEnabled
 
       /// UUID of the canvas the scene is in, if using the sceneName field
       /// > Optional Behavior: Unknown
@@ -3868,7 +3868,7 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetSceneItemLocked: OBSRequest {
-      public static let requestType: OBSWS.Requests.AllTypes = .GetSceneItemLocked
+      public static let requestType: OBS.Requests.AllTypes = .GetSceneItemLocked
 
       /// UUID of the canvas the scene is in, if using the sceneName field
       /// > Optional Behavior: Unknown
@@ -3912,7 +3912,7 @@ public enum OBSWS {
     public struct SetSceneItemLocked: OBSRequest {
       public typealias Response = EmptyResponse
 
-      public static let requestType: OBSWS.Requests.AllTypes = .SetSceneItemLocked
+      public static let requestType: OBS.Requests.AllTypes = .SetSceneItemLocked
 
       /// UUID of the canvas the scene is in, if using the sceneName field
       /// > Optional Behavior: Unknown
@@ -3955,7 +3955,7 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetSceneItemIndex: OBSRequest {
-      public static let requestType: OBSWS.Requests.AllTypes = .GetSceneItemIndex
+      public static let requestType: OBS.Requests.AllTypes = .GetSceneItemIndex
 
       /// UUID of the canvas the scene is in, if using the sceneName field
       /// > Optional Behavior: Unknown
@@ -3999,7 +3999,7 @@ public enum OBSWS {
     public struct SetSceneItemIndex: OBSRequest {
       public typealias Response = EmptyResponse
 
-      public static let requestType: OBSWS.Requests.AllTypes = .SetSceneItemIndex
+      public static let requestType: OBS.Requests.AllTypes = .SetSceneItemIndex
 
       /// UUID of the canvas the scene is in, if using the sceneName field
       /// > Optional Behavior: Unknown
@@ -4051,7 +4051,7 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetSceneItemBlendMode: OBSRequest {
-      public static let requestType: OBSWS.Requests.AllTypes = .GetSceneItemBlendMode
+      public static let requestType: OBS.Requests.AllTypes = .GetSceneItemBlendMode
 
       /// UUID of the canvas the scene is in, if using the sceneName field
       /// > Optional Behavior: Unknown
@@ -4095,7 +4095,7 @@ public enum OBSWS {
     public struct SetSceneItemBlendMode: OBSRequest {
       public typealias Response = EmptyResponse
 
-      public static let requestType: OBSWS.Requests.AllTypes = .SetSceneItemBlendMode
+      public static let requestType: OBS.Requests.AllTypes = .SetSceneItemBlendMode
 
       /// UUID of the canvas the scene is in, if using the sceneName field
       /// > Optional Behavior: Unknown
@@ -4134,7 +4134,7 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetSceneList: OBSRequest {
-      public static let requestType: OBSWS.Requests.AllTypes = .GetSceneList
+      public static let requestType: OBS.Requests.AllTypes = .GetSceneList
 
       /// UUID of the canvas the scenes are in
       /// > Optional Behavior: Unknown
@@ -4173,7 +4173,7 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetGroupList: OBSRequest {
-      public static let requestType: OBSWS.Requests.AllTypes = .GetGroupList
+      public static let requestType: OBS.Requests.AllTypes = .GetGroupList
 
       public init() {
       }
@@ -4197,7 +4197,7 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetCurrentProgramScene: OBSRequest {
-      public static let requestType: OBSWS.Requests.AllTypes = .GetCurrentProgramScene
+      public static let requestType: OBS.Requests.AllTypes = .GetCurrentProgramScene
 
       public init() {
       }
@@ -4228,7 +4228,7 @@ public enum OBSWS {
     public struct SetCurrentProgramScene: OBSRequest {
       public typealias Response = EmptyResponse
 
-      public static let requestType: OBSWS.Requests.AllTypes = .SetCurrentProgramScene
+      public static let requestType: OBS.Requests.AllTypes = .SetCurrentProgramScene
 
       /// Scene name to set as the current program scene
       /// > Optional Behavior: Unknown
@@ -4257,7 +4257,7 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetCurrentPreviewScene: OBSRequest {
-      public static let requestType: OBSWS.Requests.AllTypes = .GetCurrentPreviewScene
+      public static let requestType: OBS.Requests.AllTypes = .GetCurrentPreviewScene
 
       public init() {
       }
@@ -4290,7 +4290,7 @@ public enum OBSWS {
     public struct SetCurrentPreviewScene: OBSRequest {
       public typealias Response = EmptyResponse
 
-      public static let requestType: OBSWS.Requests.AllTypes = .SetCurrentPreviewScene
+      public static let requestType: OBS.Requests.AllTypes = .SetCurrentPreviewScene
 
       /// Scene name to set as the current preview scene
       /// > Optional Behavior: Unknown
@@ -4315,7 +4315,7 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct CreateScene: OBSRequest {
-      public static let requestType: OBSWS.Requests.AllTypes = .CreateScene
+      public static let requestType: OBS.Requests.AllTypes = .CreateScene
 
       /// UUID of the canvas to create the new scene in. Leave default to assume main canvas
       /// > Optional Behavior: Unknown
@@ -4346,7 +4346,7 @@ public enum OBSWS {
     public struct RemoveScene: OBSRequest {
       public typealias Response = EmptyResponse
 
-      public static let requestType: OBSWS.Requests.AllTypes = .RemoveScene
+      public static let requestType: OBS.Requests.AllTypes = .RemoveScene
 
       /// UUID of the canvas the scene is in, if using the sceneName field
       /// > Optional Behavior: Unknown
@@ -4378,7 +4378,7 @@ public enum OBSWS {
     public struct SetSceneName: OBSRequest {
       public typealias Response = EmptyResponse
 
-      public static let requestType: OBSWS.Requests.AllTypes = .SetSceneName
+      public static let requestType: OBS.Requests.AllTypes = .SetSceneName
 
       /// UUID of the canvas the scene is in, if using the sceneName field
       /// > Optional Behavior: Unknown
@@ -4414,7 +4414,7 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetSceneSceneTransitionOverride: OBSRequest {
-      public static let requestType: OBSWS.Requests.AllTypes = .GetSceneSceneTransitionOverride
+      public static let requestType: OBS.Requests.AllTypes = .GetSceneSceneTransitionOverride
 
       /// UUID of the canvas the scene is in, if using the sceneName field
       /// > Optional Behavior: Unknown
@@ -4454,7 +4454,7 @@ public enum OBSWS {
     public struct SetSceneSceneTransitionOverride: OBSRequest {
       public typealias Response = EmptyResponse
 
-      public static let requestType: OBSWS.Requests.AllTypes = .SetSceneSceneTransitionOverride
+      public static let requestType: OBS.Requests.AllTypes = .SetSceneSceneTransitionOverride
 
       /// UUID of the canvas the scene is in, if using the sceneName field
       /// > Optional Behavior: Unknown
@@ -4498,7 +4498,7 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetSourceActive: OBSRequest {
-      public static let requestType: OBSWS.Requests.AllTypes = .GetSourceActive
+      public static let requestType: OBS.Requests.AllTypes = .GetSourceActive
 
       /// UUID of the canvas the source is in, if using sourceName field
       /// > Optional Behavior: Unknown
@@ -4541,7 +4541,7 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetSourceScreenshot: OBSRequest {
-      public static let requestType: OBSWS.Requests.AllTypes = .GetSourceScreenshot
+      public static let requestType: OBS.Requests.AllTypes = .GetSourceScreenshot
 
       /// UUID of the canvas the source is in, if using sourceName field
       /// > Optional Behavior: Unknown
@@ -4608,7 +4608,7 @@ public enum OBSWS {
     public struct SaveSourceScreenshot: OBSRequest {
       public typealias Response = EmptyResponse
 
-      public static let requestType: OBSWS.Requests.AllTypes = .SaveSourceScreenshot
+      public static let requestType: OBS.Requests.AllTypes = .SaveSourceScreenshot
 
       /// UUID of the canvas the source is in, if using sourceName field
       /// > Optional Behavior: Unknown
@@ -4667,7 +4667,7 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetStreamStatus: OBSRequest {
-      public static let requestType: OBSWS.Requests.AllTypes = .GetStreamStatus
+      public static let requestType: OBS.Requests.AllTypes = .GetStreamStatus
 
       public init() {
       }
@@ -4708,7 +4708,7 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct ToggleStream: OBSRequest {
-      public static let requestType: OBSWS.Requests.AllTypes = .ToggleStream
+      public static let requestType: OBS.Requests.AllTypes = .ToggleStream
 
       public init() {
       }
@@ -4730,7 +4730,7 @@ public enum OBSWS {
     public struct StartStream: OBSRequest {
       public typealias Response = EmptyResponse
 
-      public static let requestType: OBSWS.Requests.AllTypes = .StartStream
+      public static let requestType: OBS.Requests.AllTypes = .StartStream
 
       public init() {
       }
@@ -4747,7 +4747,7 @@ public enum OBSWS {
     public struct StopStream: OBSRequest {
       public typealias Response = EmptyResponse
 
-      public static let requestType: OBSWS.Requests.AllTypes = .StopStream
+      public static let requestType: OBS.Requests.AllTypes = .StopStream
 
       public init() {
       }
@@ -4764,7 +4764,7 @@ public enum OBSWS {
     public struct SendStreamCaption: OBSRequest {
       public typealias Response = EmptyResponse
 
-      public static let requestType: OBSWS.Requests.AllTypes = .SendStreamCaption
+      public static let requestType: OBS.Requests.AllTypes = .SendStreamCaption
 
       /// Caption text
       public let captionText: String
@@ -4785,7 +4785,7 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetTransitionKindList: OBSRequest {
-      public static let requestType: OBSWS.Requests.AllTypes = .GetTransitionKindList
+      public static let requestType: OBS.Requests.AllTypes = .GetTransitionKindList
 
       public init() {
       }
@@ -4805,7 +4805,7 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetSceneTransitionList: OBSRequest {
-      public static let requestType: OBSWS.Requests.AllTypes = .GetSceneTransitionList
+      public static let requestType: OBS.Requests.AllTypes = .GetSceneTransitionList
 
       public init() {
       }
@@ -4834,7 +4834,7 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetCurrentSceneTransition: OBSRequest {
-      public static let requestType: OBSWS.Requests.AllTypes = .GetCurrentSceneTransition
+      public static let requestType: OBS.Requests.AllTypes = .GetCurrentSceneTransition
 
       public init() {
       }
@@ -4876,7 +4876,7 @@ public enum OBSWS {
     public struct SetCurrentSceneTransition: OBSRequest {
       public typealias Response = EmptyResponse
 
-      public static let requestType: OBSWS.Requests.AllTypes = .SetCurrentSceneTransition
+      public static let requestType: OBS.Requests.AllTypes = .SetCurrentSceneTransition
 
       /// Name of the transition to make active
       public let transitionName: String
@@ -4897,7 +4897,7 @@ public enum OBSWS {
     public struct SetCurrentSceneTransitionDuration: OBSRequest {
       public typealias Response = EmptyResponse
 
-      public static let requestType: OBSWS.Requests.AllTypes = .SetCurrentSceneTransitionDuration
+      public static let requestType: OBS.Requests.AllTypes = .SetCurrentSceneTransitionDuration
 
       /// Duration in milliseconds
       /// > Value Restrictions: `>= 50, <= 20000`
@@ -4919,7 +4919,7 @@ public enum OBSWS {
     public struct SetCurrentSceneTransitionSettings: OBSRequest {
       public typealias Response = EmptyResponse
 
-      public static let requestType: OBSWS.Requests.AllTypes = .SetCurrentSceneTransitionSettings
+      public static let requestType: OBS.Requests.AllTypes = .SetCurrentSceneTransitionSettings
 
       /// Settings object to apply to the transition. Can be `{}`
       public let transitionSettings: JSONValue
@@ -4945,7 +4945,7 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetCurrentSceneTransitionCursor: OBSRequest {
-      public static let requestType: OBSWS.Requests.AllTypes = .GetCurrentSceneTransitionCursor
+      public static let requestType: OBS.Requests.AllTypes = .GetCurrentSceneTransitionCursor
 
       public init() {
       }
@@ -4967,7 +4967,7 @@ public enum OBSWS {
     public struct TriggerStudioModeTransition: OBSRequest {
       public typealias Response = EmptyResponse
 
-      public static let requestType: OBSWS.Requests.AllTypes = .TriggerStudioModeTransition
+      public static let requestType: OBS.Requests.AllTypes = .TriggerStudioModeTransition
 
       public init() {
       }
@@ -4986,7 +4986,7 @@ public enum OBSWS {
     public struct SetTBarPosition: OBSRequest {
       public typealias Response = EmptyResponse
 
-      public static let requestType: OBSWS.Requests.AllTypes = .SetTBarPosition
+      public static let requestType: OBS.Requests.AllTypes = .SetTBarPosition
 
       /// New position
       /// > Value Restrictions: `>= 0.0, <= 1.0`
@@ -5011,7 +5011,7 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetStudioModeEnabled: OBSRequest {
-      public static let requestType: OBSWS.Requests.AllTypes = .GetStudioModeEnabled
+      public static let requestType: OBS.Requests.AllTypes = .GetStudioModeEnabled
 
       public init() {
       }
@@ -5033,7 +5033,7 @@ public enum OBSWS {
     public struct SetStudioModeEnabled: OBSRequest {
       public typealias Response = EmptyResponse
 
-      public static let requestType: OBSWS.Requests.AllTypes = .SetStudioModeEnabled
+      public static let requestType: OBS.Requests.AllTypes = .SetStudioModeEnabled
 
       /// True == Enabled, False == Disabled
       public let studioModeEnabled: Bool
@@ -5054,7 +5054,7 @@ public enum OBSWS {
     public struct OpenInputPropertiesDialog: OBSRequest {
       public typealias Response = EmptyResponse
 
-      public static let requestType: OBSWS.Requests.AllTypes = .OpenInputPropertiesDialog
+      public static let requestType: OBS.Requests.AllTypes = .OpenInputPropertiesDialog
 
       /// Name of the input to open the dialog of
       /// > Optional Behavior: Unknown
@@ -5081,7 +5081,7 @@ public enum OBSWS {
     public struct OpenInputFiltersDialog: OBSRequest {
       public typealias Response = EmptyResponse
 
-      public static let requestType: OBSWS.Requests.AllTypes = .OpenInputFiltersDialog
+      public static let requestType: OBS.Requests.AllTypes = .OpenInputFiltersDialog
 
       /// Name of the input to open the dialog of
       /// > Optional Behavior: Unknown
@@ -5108,7 +5108,7 @@ public enum OBSWS {
     public struct OpenInputInteractDialog: OBSRequest {
       public typealias Response = EmptyResponse
 
-      public static let requestType: OBSWS.Requests.AllTypes = .OpenInputInteractDialog
+      public static let requestType: OBS.Requests.AllTypes = .OpenInputInteractDialog
 
       /// Name of the input to open the dialog of
       /// > Optional Behavior: Unknown
@@ -5133,7 +5133,7 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct GetMonitorList: OBSRequest {
-      public static let requestType: OBSWS.Requests.AllTypes = .GetMonitorList
+      public static let requestType: OBS.Requests.AllTypes = .GetMonitorList
 
       public init() {
       }
@@ -5163,7 +5163,7 @@ public enum OBSWS {
     public struct OpenVideoMixProjector: OBSRequest {
       public typealias Response = EmptyResponse
 
-      public static let requestType: OBSWS.Requests.AllTypes = .OpenVideoMixProjector
+      public static let requestType: OBS.Requests.AllTypes = .OpenVideoMixProjector
 
       /// Type of mix to open
       public let videoMixType: String
@@ -5196,7 +5196,7 @@ public enum OBSWS {
     public struct OpenSourceProjector: OBSRequest {
       public typealias Response = EmptyResponse
 
-      public static let requestType: OBSWS.Requests.AllTypes = .OpenSourceProjector
+      public static let requestType: OBS.Requests.AllTypes = .OpenSourceProjector
 
       /// UUID of the canvas the source is in, if using the sourceName field
       /// > Optional Behavior: Unknown
@@ -5379,299 +5379,299 @@ public enum OBSWS {
       static func request(ofType type: AllTypes, from requestData: JSONValue) throws -> (any OBSRequest)? {
         switch type {
         case .GetCanvasList:
-          return try requestData.toCodable(OBSWS.Requests.GetCanvasList.self)
+          return try requestData.toCodable(OBS.Requests.GetCanvasList.self)
         case .GetPersistentData:
-          return try requestData.toCodable(OBSWS.Requests.GetPersistentData.self)
+          return try requestData.toCodable(OBS.Requests.GetPersistentData.self)
         case .SetPersistentData:
-          return try requestData.toCodable(OBSWS.Requests.SetPersistentData.self)
+          return try requestData.toCodable(OBS.Requests.SetPersistentData.self)
         case .GetSceneCollectionList:
-          return try requestData.toCodable(OBSWS.Requests.GetSceneCollectionList.self)
+          return try requestData.toCodable(OBS.Requests.GetSceneCollectionList.self)
         case .SetCurrentSceneCollection:
-          return try requestData.toCodable(OBSWS.Requests.SetCurrentSceneCollection.self)
+          return try requestData.toCodable(OBS.Requests.SetCurrentSceneCollection.self)
         case .CreateSceneCollection:
-          return try requestData.toCodable(OBSWS.Requests.CreateSceneCollection.self)
+          return try requestData.toCodable(OBS.Requests.CreateSceneCollection.self)
         case .GetProfileList:
-          return try requestData.toCodable(OBSWS.Requests.GetProfileList.self)
+          return try requestData.toCodable(OBS.Requests.GetProfileList.self)
         case .SetCurrentProfile:
-          return try requestData.toCodable(OBSWS.Requests.SetCurrentProfile.self)
+          return try requestData.toCodable(OBS.Requests.SetCurrentProfile.self)
         case .CreateProfile:
-          return try requestData.toCodable(OBSWS.Requests.CreateProfile.self)
+          return try requestData.toCodable(OBS.Requests.CreateProfile.self)
         case .RemoveProfile:
-          return try requestData.toCodable(OBSWS.Requests.RemoveProfile.self)
+          return try requestData.toCodable(OBS.Requests.RemoveProfile.self)
         case .GetProfileParameter:
-          return try requestData.toCodable(OBSWS.Requests.GetProfileParameter.self)
+          return try requestData.toCodable(OBS.Requests.GetProfileParameter.self)
         case .SetProfileParameter:
-          return try requestData.toCodable(OBSWS.Requests.SetProfileParameter.self)
+          return try requestData.toCodable(OBS.Requests.SetProfileParameter.self)
         case .GetVideoSettings:
-          return try requestData.toCodable(OBSWS.Requests.GetVideoSettings.self)
+          return try requestData.toCodable(OBS.Requests.GetVideoSettings.self)
         case .SetVideoSettings:
-          return try requestData.toCodable(OBSWS.Requests.SetVideoSettings.self)
+          return try requestData.toCodable(OBS.Requests.SetVideoSettings.self)
         case .GetStreamServiceSettings:
-          return try requestData.toCodable(OBSWS.Requests.GetStreamServiceSettings.self)
+          return try requestData.toCodable(OBS.Requests.GetStreamServiceSettings.self)
         case .SetStreamServiceSettings:
-          return try requestData.toCodable(OBSWS.Requests.SetStreamServiceSettings.self)
+          return try requestData.toCodable(OBS.Requests.SetStreamServiceSettings.self)
         case .GetRecordDirectory:
-          return try requestData.toCodable(OBSWS.Requests.GetRecordDirectory.self)
+          return try requestData.toCodable(OBS.Requests.GetRecordDirectory.self)
         case .SetRecordDirectory:
-          return try requestData.toCodable(OBSWS.Requests.SetRecordDirectory.self)
+          return try requestData.toCodable(OBS.Requests.SetRecordDirectory.self)
         case .GetSourceFilterKindList:
-          return try requestData.toCodable(OBSWS.Requests.GetSourceFilterKindList.self)
+          return try requestData.toCodable(OBS.Requests.GetSourceFilterKindList.self)
         case .GetSourceFilterList:
-          return try requestData.toCodable(OBSWS.Requests.GetSourceFilterList.self)
+          return try requestData.toCodable(OBS.Requests.GetSourceFilterList.self)
         case .GetSourceFilterDefaultSettings:
-          return try requestData.toCodable(OBSWS.Requests.GetSourceFilterDefaultSettings.self)
+          return try requestData.toCodable(OBS.Requests.GetSourceFilterDefaultSettings.self)
         case .CreateSourceFilter:
-          return try requestData.toCodable(OBSWS.Requests.CreateSourceFilter.self)
+          return try requestData.toCodable(OBS.Requests.CreateSourceFilter.self)
         case .RemoveSourceFilter:
-          return try requestData.toCodable(OBSWS.Requests.RemoveSourceFilter.self)
+          return try requestData.toCodable(OBS.Requests.RemoveSourceFilter.self)
         case .SetSourceFilterName:
-          return try requestData.toCodable(OBSWS.Requests.SetSourceFilterName.self)
+          return try requestData.toCodable(OBS.Requests.SetSourceFilterName.self)
         case .GetSourceFilter:
-          return try requestData.toCodable(OBSWS.Requests.GetSourceFilter.self)
+          return try requestData.toCodable(OBS.Requests.GetSourceFilter.self)
         case .SetSourceFilterIndex:
-          return try requestData.toCodable(OBSWS.Requests.SetSourceFilterIndex.self)
+          return try requestData.toCodable(OBS.Requests.SetSourceFilterIndex.self)
         case .SetSourceFilterSettings:
-          return try requestData.toCodable(OBSWS.Requests.SetSourceFilterSettings.self)
+          return try requestData.toCodable(OBS.Requests.SetSourceFilterSettings.self)
         case .SetSourceFilterEnabled:
-          return try requestData.toCodable(OBSWS.Requests.SetSourceFilterEnabled.self)
+          return try requestData.toCodable(OBS.Requests.SetSourceFilterEnabled.self)
         case .GetVersion:
-          return try requestData.toCodable(OBSWS.Requests.GetVersion.self)
+          return try requestData.toCodable(OBS.Requests.GetVersion.self)
         case .GetStats:
-          return try requestData.toCodable(OBSWS.Requests.GetStats.self)
+          return try requestData.toCodable(OBS.Requests.GetStats.self)
         case .BroadcastCustomEvent:
-          return try requestData.toCodable(OBSWS.Requests.BroadcastCustomEvent.self)
+          return try requestData.toCodable(OBS.Requests.BroadcastCustomEvent.self)
         case .CallVendorRequest:
-          return try requestData.toCodable(OBSWS.Requests.CallVendorRequest.self)
+          return try requestData.toCodable(OBS.Requests.CallVendorRequest.self)
         case .GetHotkeyList:
-          return try requestData.toCodable(OBSWS.Requests.GetHotkeyList.self)
+          return try requestData.toCodable(OBS.Requests.GetHotkeyList.self)
         case .TriggerHotkeyByName:
-          return try requestData.toCodable(OBSWS.Requests.TriggerHotkeyByName.self)
+          return try requestData.toCodable(OBS.Requests.TriggerHotkeyByName.self)
         case .TriggerHotkeyByKeySequence:
-          return try requestData.toCodable(OBSWS.Requests.TriggerHotkeyByKeySequence.self)
+          return try requestData.toCodable(OBS.Requests.TriggerHotkeyByKeySequence.self)
         case .Sleep:
-          return try requestData.toCodable(OBSWS.Requests.Sleep.self)
+          return try requestData.toCodable(OBS.Requests.Sleep.self)
         case .GetInputList:
-          return try requestData.toCodable(OBSWS.Requests.GetInputList.self)
+          return try requestData.toCodable(OBS.Requests.GetInputList.self)
         case .GetInputKindList:
-          return try requestData.toCodable(OBSWS.Requests.GetInputKindList.self)
+          return try requestData.toCodable(OBS.Requests.GetInputKindList.self)
         case .GetSpecialInputs:
-          return try requestData.toCodable(OBSWS.Requests.GetSpecialInputs.self)
+          return try requestData.toCodable(OBS.Requests.GetSpecialInputs.self)
         case .CreateInput:
-          return try requestData.toCodable(OBSWS.Requests.CreateInput.self)
+          return try requestData.toCodable(OBS.Requests.CreateInput.self)
         case .RemoveInput:
-          return try requestData.toCodable(OBSWS.Requests.RemoveInput.self)
+          return try requestData.toCodable(OBS.Requests.RemoveInput.self)
         case .SetInputName:
-          return try requestData.toCodable(OBSWS.Requests.SetInputName.self)
+          return try requestData.toCodable(OBS.Requests.SetInputName.self)
         case .GetInputDefaultSettings:
-          return try requestData.toCodable(OBSWS.Requests.GetInputDefaultSettings.self)
+          return try requestData.toCodable(OBS.Requests.GetInputDefaultSettings.self)
         case .GetInputSettings:
-          return try requestData.toCodable(OBSWS.Requests.GetInputSettings.self)
+          return try requestData.toCodable(OBS.Requests.GetInputSettings.self)
         case .SetInputSettings:
-          return try requestData.toCodable(OBSWS.Requests.SetInputSettings.self)
+          return try requestData.toCodable(OBS.Requests.SetInputSettings.self)
         case .GetInputMute:
-          return try requestData.toCodable(OBSWS.Requests.GetInputMute.self)
+          return try requestData.toCodable(OBS.Requests.GetInputMute.self)
         case .SetInputMute:
-          return try requestData.toCodable(OBSWS.Requests.SetInputMute.self)
+          return try requestData.toCodable(OBS.Requests.SetInputMute.self)
         case .ToggleInputMute:
-          return try requestData.toCodable(OBSWS.Requests.ToggleInputMute.self)
+          return try requestData.toCodable(OBS.Requests.ToggleInputMute.self)
         case .GetInputVolume:
-          return try requestData.toCodable(OBSWS.Requests.GetInputVolume.self)
+          return try requestData.toCodable(OBS.Requests.GetInputVolume.self)
         case .SetInputVolume:
-          return try requestData.toCodable(OBSWS.Requests.SetInputVolume.self)
+          return try requestData.toCodable(OBS.Requests.SetInputVolume.self)
         case .GetInputAudioBalance:
-          return try requestData.toCodable(OBSWS.Requests.GetInputAudioBalance.self)
+          return try requestData.toCodable(OBS.Requests.GetInputAudioBalance.self)
         case .SetInputAudioBalance:
-          return try requestData.toCodable(OBSWS.Requests.SetInputAudioBalance.self)
+          return try requestData.toCodable(OBS.Requests.SetInputAudioBalance.self)
         case .GetInputAudioSyncOffset:
-          return try requestData.toCodable(OBSWS.Requests.GetInputAudioSyncOffset.self)
+          return try requestData.toCodable(OBS.Requests.GetInputAudioSyncOffset.self)
         case .SetInputAudioSyncOffset:
-          return try requestData.toCodable(OBSWS.Requests.SetInputAudioSyncOffset.self)
+          return try requestData.toCodable(OBS.Requests.SetInputAudioSyncOffset.self)
         case .GetInputAudioMonitorType:
-          return try requestData.toCodable(OBSWS.Requests.GetInputAudioMonitorType.self)
+          return try requestData.toCodable(OBS.Requests.GetInputAudioMonitorType.self)
         case .SetInputAudioMonitorType:
-          return try requestData.toCodable(OBSWS.Requests.SetInputAudioMonitorType.self)
+          return try requestData.toCodable(OBS.Requests.SetInputAudioMonitorType.self)
         case .GetInputAudioTracks:
-          return try requestData.toCodable(OBSWS.Requests.GetInputAudioTracks.self)
+          return try requestData.toCodable(OBS.Requests.GetInputAudioTracks.self)
         case .SetInputAudioTracks:
-          return try requestData.toCodable(OBSWS.Requests.SetInputAudioTracks.self)
+          return try requestData.toCodable(OBS.Requests.SetInputAudioTracks.self)
         case .GetInputDeinterlaceMode:
-          return try requestData.toCodable(OBSWS.Requests.GetInputDeinterlaceMode.self)
+          return try requestData.toCodable(OBS.Requests.GetInputDeinterlaceMode.self)
         case .SetInputDeinterlaceMode:
-          return try requestData.toCodable(OBSWS.Requests.SetInputDeinterlaceMode.self)
+          return try requestData.toCodable(OBS.Requests.SetInputDeinterlaceMode.self)
         case .GetInputDeinterlaceFieldOrder:
-          return try requestData.toCodable(OBSWS.Requests.GetInputDeinterlaceFieldOrder.self)
+          return try requestData.toCodable(OBS.Requests.GetInputDeinterlaceFieldOrder.self)
         case .SetInputDeinterlaceFieldOrder:
-          return try requestData.toCodable(OBSWS.Requests.SetInputDeinterlaceFieldOrder.self)
+          return try requestData.toCodable(OBS.Requests.SetInputDeinterlaceFieldOrder.self)
         case .GetInputPropertiesListPropertyItems:
-          return try requestData.toCodable(OBSWS.Requests.GetInputPropertiesListPropertyItems.self)
+          return try requestData.toCodable(OBS.Requests.GetInputPropertiesListPropertyItems.self)
         case .PressInputPropertiesButton:
-          return try requestData.toCodable(OBSWS.Requests.PressInputPropertiesButton.self)
+          return try requestData.toCodable(OBS.Requests.PressInputPropertiesButton.self)
         case .GetMediaInputStatus:
-          return try requestData.toCodable(OBSWS.Requests.GetMediaInputStatus.self)
+          return try requestData.toCodable(OBS.Requests.GetMediaInputStatus.self)
         case .SetMediaInputCursor:
-          return try requestData.toCodable(OBSWS.Requests.SetMediaInputCursor.self)
+          return try requestData.toCodable(OBS.Requests.SetMediaInputCursor.self)
         case .OffsetMediaInputCursor:
-          return try requestData.toCodable(OBSWS.Requests.OffsetMediaInputCursor.self)
+          return try requestData.toCodable(OBS.Requests.OffsetMediaInputCursor.self)
         case .TriggerMediaInputAction:
-          return try requestData.toCodable(OBSWS.Requests.TriggerMediaInputAction.self)
+          return try requestData.toCodable(OBS.Requests.TriggerMediaInputAction.self)
         case .GetVirtualCamStatus:
-          return try requestData.toCodable(OBSWS.Requests.GetVirtualCamStatus.self)
+          return try requestData.toCodable(OBS.Requests.GetVirtualCamStatus.self)
         case .ToggleVirtualCam:
-          return try requestData.toCodable(OBSWS.Requests.ToggleVirtualCam.self)
+          return try requestData.toCodable(OBS.Requests.ToggleVirtualCam.self)
         case .StartVirtualCam:
-          return try requestData.toCodable(OBSWS.Requests.StartVirtualCam.self)
+          return try requestData.toCodable(OBS.Requests.StartVirtualCam.self)
         case .StopVirtualCam:
-          return try requestData.toCodable(OBSWS.Requests.StopVirtualCam.self)
+          return try requestData.toCodable(OBS.Requests.StopVirtualCam.self)
         case .GetReplayBufferStatus:
-          return try requestData.toCodable(OBSWS.Requests.GetReplayBufferStatus.self)
+          return try requestData.toCodable(OBS.Requests.GetReplayBufferStatus.self)
         case .ToggleReplayBuffer:
-          return try requestData.toCodable(OBSWS.Requests.ToggleReplayBuffer.self)
+          return try requestData.toCodable(OBS.Requests.ToggleReplayBuffer.self)
         case .StartReplayBuffer:
-          return try requestData.toCodable(OBSWS.Requests.StartReplayBuffer.self)
+          return try requestData.toCodable(OBS.Requests.StartReplayBuffer.self)
         case .StopReplayBuffer:
-          return try requestData.toCodable(OBSWS.Requests.StopReplayBuffer.self)
+          return try requestData.toCodable(OBS.Requests.StopReplayBuffer.self)
         case .SaveReplayBuffer:
-          return try requestData.toCodable(OBSWS.Requests.SaveReplayBuffer.self)
+          return try requestData.toCodable(OBS.Requests.SaveReplayBuffer.self)
         case .GetLastReplayBufferReplay:
-          return try requestData.toCodable(OBSWS.Requests.GetLastReplayBufferReplay.self)
+          return try requestData.toCodable(OBS.Requests.GetLastReplayBufferReplay.self)
         case .GetOutputList:
-          return try requestData.toCodable(OBSWS.Requests.GetOutputList.self)
+          return try requestData.toCodable(OBS.Requests.GetOutputList.self)
         case .GetOutputStatus:
-          return try requestData.toCodable(OBSWS.Requests.GetOutputStatus.self)
+          return try requestData.toCodable(OBS.Requests.GetOutputStatus.self)
         case .ToggleOutput:
-          return try requestData.toCodable(OBSWS.Requests.ToggleOutput.self)
+          return try requestData.toCodable(OBS.Requests.ToggleOutput.self)
         case .StartOutput:
-          return try requestData.toCodable(OBSWS.Requests.StartOutput.self)
+          return try requestData.toCodable(OBS.Requests.StartOutput.self)
         case .StopOutput:
-          return try requestData.toCodable(OBSWS.Requests.StopOutput.self)
+          return try requestData.toCodable(OBS.Requests.StopOutput.self)
         case .GetOutputSettings:
-          return try requestData.toCodable(OBSWS.Requests.GetOutputSettings.self)
+          return try requestData.toCodable(OBS.Requests.GetOutputSettings.self)
         case .SetOutputSettings:
-          return try requestData.toCodable(OBSWS.Requests.SetOutputSettings.self)
+          return try requestData.toCodable(OBS.Requests.SetOutputSettings.self)
         case .GetRecordStatus:
-          return try requestData.toCodable(OBSWS.Requests.GetRecordStatus.self)
+          return try requestData.toCodable(OBS.Requests.GetRecordStatus.self)
         case .ToggleRecord:
-          return try requestData.toCodable(OBSWS.Requests.ToggleRecord.self)
+          return try requestData.toCodable(OBS.Requests.ToggleRecord.self)
         case .StartRecord:
-          return try requestData.toCodable(OBSWS.Requests.StartRecord.self)
+          return try requestData.toCodable(OBS.Requests.StartRecord.self)
         case .StopRecord:
-          return try requestData.toCodable(OBSWS.Requests.StopRecord.self)
+          return try requestData.toCodable(OBS.Requests.StopRecord.self)
         case .ToggleRecordPause:
-          return try requestData.toCodable(OBSWS.Requests.ToggleRecordPause.self)
+          return try requestData.toCodable(OBS.Requests.ToggleRecordPause.self)
         case .PauseRecord:
-          return try requestData.toCodable(OBSWS.Requests.PauseRecord.self)
+          return try requestData.toCodable(OBS.Requests.PauseRecord.self)
         case .ResumeRecord:
-          return try requestData.toCodable(OBSWS.Requests.ResumeRecord.self)
+          return try requestData.toCodable(OBS.Requests.ResumeRecord.self)
         case .SplitRecordFile:
-          return try requestData.toCodable(OBSWS.Requests.SplitRecordFile.self)
+          return try requestData.toCodable(OBS.Requests.SplitRecordFile.self)
         case .CreateRecordChapter:
-          return try requestData.toCodable(OBSWS.Requests.CreateRecordChapter.self)
+          return try requestData.toCodable(OBS.Requests.CreateRecordChapter.self)
         case .GetSceneItemList:
-          return try requestData.toCodable(OBSWS.Requests.GetSceneItemList.self)
+          return try requestData.toCodable(OBS.Requests.GetSceneItemList.self)
         case .GetGroupSceneItemList:
-          return try requestData.toCodable(OBSWS.Requests.GetGroupSceneItemList.self)
+          return try requestData.toCodable(OBS.Requests.GetGroupSceneItemList.self)
         case .GetSceneItemId:
-          return try requestData.toCodable(OBSWS.Requests.GetSceneItemId.self)
+          return try requestData.toCodable(OBS.Requests.GetSceneItemId.self)
         case .GetSceneItemSource:
-          return try requestData.toCodable(OBSWS.Requests.GetSceneItemSource.self)
+          return try requestData.toCodable(OBS.Requests.GetSceneItemSource.self)
         case .CreateSceneItem:
-          return try requestData.toCodable(OBSWS.Requests.CreateSceneItem.self)
+          return try requestData.toCodable(OBS.Requests.CreateSceneItem.self)
         case .RemoveSceneItem:
-          return try requestData.toCodable(OBSWS.Requests.RemoveSceneItem.self)
+          return try requestData.toCodable(OBS.Requests.RemoveSceneItem.self)
         case .DuplicateSceneItem:
-          return try requestData.toCodable(OBSWS.Requests.DuplicateSceneItem.self)
+          return try requestData.toCodable(OBS.Requests.DuplicateSceneItem.self)
         case .GetSceneItemTransform:
-          return try requestData.toCodable(OBSWS.Requests.GetSceneItemTransform.self)
+          return try requestData.toCodable(OBS.Requests.GetSceneItemTransform.self)
         case .SetSceneItemTransform:
-          return try requestData.toCodable(OBSWS.Requests.SetSceneItemTransform.self)
+          return try requestData.toCodable(OBS.Requests.SetSceneItemTransform.self)
         case .GetSceneItemEnabled:
-          return try requestData.toCodable(OBSWS.Requests.GetSceneItemEnabled.self)
+          return try requestData.toCodable(OBS.Requests.GetSceneItemEnabled.self)
         case .SetSceneItemEnabled:
-          return try requestData.toCodable(OBSWS.Requests.SetSceneItemEnabled.self)
+          return try requestData.toCodable(OBS.Requests.SetSceneItemEnabled.self)
         case .GetSceneItemLocked:
-          return try requestData.toCodable(OBSWS.Requests.GetSceneItemLocked.self)
+          return try requestData.toCodable(OBS.Requests.GetSceneItemLocked.self)
         case .SetSceneItemLocked:
-          return try requestData.toCodable(OBSWS.Requests.SetSceneItemLocked.self)
+          return try requestData.toCodable(OBS.Requests.SetSceneItemLocked.self)
         case .GetSceneItemIndex:
-          return try requestData.toCodable(OBSWS.Requests.GetSceneItemIndex.self)
+          return try requestData.toCodable(OBS.Requests.GetSceneItemIndex.self)
         case .SetSceneItemIndex:
-          return try requestData.toCodable(OBSWS.Requests.SetSceneItemIndex.self)
+          return try requestData.toCodable(OBS.Requests.SetSceneItemIndex.self)
         case .GetSceneItemBlendMode:
-          return try requestData.toCodable(OBSWS.Requests.GetSceneItemBlendMode.self)
+          return try requestData.toCodable(OBS.Requests.GetSceneItemBlendMode.self)
         case .SetSceneItemBlendMode:
-          return try requestData.toCodable(OBSWS.Requests.SetSceneItemBlendMode.self)
+          return try requestData.toCodable(OBS.Requests.SetSceneItemBlendMode.self)
         case .GetSceneList:
-          return try requestData.toCodable(OBSWS.Requests.GetSceneList.self)
+          return try requestData.toCodable(OBS.Requests.GetSceneList.self)
         case .GetGroupList:
-          return try requestData.toCodable(OBSWS.Requests.GetGroupList.self)
+          return try requestData.toCodable(OBS.Requests.GetGroupList.self)
         case .GetCurrentProgramScene:
-          return try requestData.toCodable(OBSWS.Requests.GetCurrentProgramScene.self)
+          return try requestData.toCodable(OBS.Requests.GetCurrentProgramScene.self)
         case .SetCurrentProgramScene:
-          return try requestData.toCodable(OBSWS.Requests.SetCurrentProgramScene.self)
+          return try requestData.toCodable(OBS.Requests.SetCurrentProgramScene.self)
         case .GetCurrentPreviewScene:
-          return try requestData.toCodable(OBSWS.Requests.GetCurrentPreviewScene.self)
+          return try requestData.toCodable(OBS.Requests.GetCurrentPreviewScene.self)
         case .SetCurrentPreviewScene:
-          return try requestData.toCodable(OBSWS.Requests.SetCurrentPreviewScene.self)
+          return try requestData.toCodable(OBS.Requests.SetCurrentPreviewScene.self)
         case .CreateScene:
-          return try requestData.toCodable(OBSWS.Requests.CreateScene.self)
+          return try requestData.toCodable(OBS.Requests.CreateScene.self)
         case .RemoveScene:
-          return try requestData.toCodable(OBSWS.Requests.RemoveScene.self)
+          return try requestData.toCodable(OBS.Requests.RemoveScene.self)
         case .SetSceneName:
-          return try requestData.toCodable(OBSWS.Requests.SetSceneName.self)
+          return try requestData.toCodable(OBS.Requests.SetSceneName.self)
         case .GetSceneSceneTransitionOverride:
-          return try requestData.toCodable(OBSWS.Requests.GetSceneSceneTransitionOverride.self)
+          return try requestData.toCodable(OBS.Requests.GetSceneSceneTransitionOverride.self)
         case .SetSceneSceneTransitionOverride:
-          return try requestData.toCodable(OBSWS.Requests.SetSceneSceneTransitionOverride.self)
+          return try requestData.toCodable(OBS.Requests.SetSceneSceneTransitionOverride.self)
         case .GetSourceActive:
-          return try requestData.toCodable(OBSWS.Requests.GetSourceActive.self)
+          return try requestData.toCodable(OBS.Requests.GetSourceActive.self)
         case .GetSourceScreenshot:
-          return try requestData.toCodable(OBSWS.Requests.GetSourceScreenshot.self)
+          return try requestData.toCodable(OBS.Requests.GetSourceScreenshot.self)
         case .SaveSourceScreenshot:
-          return try requestData.toCodable(OBSWS.Requests.SaveSourceScreenshot.self)
+          return try requestData.toCodable(OBS.Requests.SaveSourceScreenshot.self)
         case .GetStreamStatus:
-          return try requestData.toCodable(OBSWS.Requests.GetStreamStatus.self)
+          return try requestData.toCodable(OBS.Requests.GetStreamStatus.self)
         case .ToggleStream:
-          return try requestData.toCodable(OBSWS.Requests.ToggleStream.self)
+          return try requestData.toCodable(OBS.Requests.ToggleStream.self)
         case .StartStream:
-          return try requestData.toCodable(OBSWS.Requests.StartStream.self)
+          return try requestData.toCodable(OBS.Requests.StartStream.self)
         case .StopStream:
-          return try requestData.toCodable(OBSWS.Requests.StopStream.self)
+          return try requestData.toCodable(OBS.Requests.StopStream.self)
         case .SendStreamCaption:
-          return try requestData.toCodable(OBSWS.Requests.SendStreamCaption.self)
+          return try requestData.toCodable(OBS.Requests.SendStreamCaption.self)
         case .GetTransitionKindList:
-          return try requestData.toCodable(OBSWS.Requests.GetTransitionKindList.self)
+          return try requestData.toCodable(OBS.Requests.GetTransitionKindList.self)
         case .GetSceneTransitionList:
-          return try requestData.toCodable(OBSWS.Requests.GetSceneTransitionList.self)
+          return try requestData.toCodable(OBS.Requests.GetSceneTransitionList.self)
         case .GetCurrentSceneTransition:
-          return try requestData.toCodable(OBSWS.Requests.GetCurrentSceneTransition.self)
+          return try requestData.toCodable(OBS.Requests.GetCurrentSceneTransition.self)
         case .SetCurrentSceneTransition:
-          return try requestData.toCodable(OBSWS.Requests.SetCurrentSceneTransition.self)
+          return try requestData.toCodable(OBS.Requests.SetCurrentSceneTransition.self)
         case .SetCurrentSceneTransitionDuration:
-          return try requestData.toCodable(OBSWS.Requests.SetCurrentSceneTransitionDuration.self)
+          return try requestData.toCodable(OBS.Requests.SetCurrentSceneTransitionDuration.self)
         case .SetCurrentSceneTransitionSettings:
-          return try requestData.toCodable(OBSWS.Requests.SetCurrentSceneTransitionSettings.self)
+          return try requestData.toCodable(OBS.Requests.SetCurrentSceneTransitionSettings.self)
         case .GetCurrentSceneTransitionCursor:
-          return try requestData.toCodable(OBSWS.Requests.GetCurrentSceneTransitionCursor.self)
+          return try requestData.toCodable(OBS.Requests.GetCurrentSceneTransitionCursor.self)
         case .TriggerStudioModeTransition:
-          return try requestData.toCodable(OBSWS.Requests.TriggerStudioModeTransition.self)
+          return try requestData.toCodable(OBS.Requests.TriggerStudioModeTransition.self)
         case .SetTBarPosition:
-          return try requestData.toCodable(OBSWS.Requests.SetTBarPosition.self)
+          return try requestData.toCodable(OBS.Requests.SetTBarPosition.self)
         case .GetStudioModeEnabled:
-          return try requestData.toCodable(OBSWS.Requests.GetStudioModeEnabled.self)
+          return try requestData.toCodable(OBS.Requests.GetStudioModeEnabled.self)
         case .SetStudioModeEnabled:
-          return try requestData.toCodable(OBSWS.Requests.SetStudioModeEnabled.self)
+          return try requestData.toCodable(OBS.Requests.SetStudioModeEnabled.self)
         case .OpenInputPropertiesDialog:
-          return try requestData.toCodable(OBSWS.Requests.OpenInputPropertiesDialog.self)
+          return try requestData.toCodable(OBS.Requests.OpenInputPropertiesDialog.self)
         case .OpenInputFiltersDialog:
-          return try requestData.toCodable(OBSWS.Requests.OpenInputFiltersDialog.self)
+          return try requestData.toCodable(OBS.Requests.OpenInputFiltersDialog.self)
         case .OpenInputInteractDialog:
-          return try requestData.toCodable(OBSWS.Requests.OpenInputInteractDialog.self)
+          return try requestData.toCodable(OBS.Requests.OpenInputInteractDialog.self)
         case .GetMonitorList:
-          return try requestData.toCodable(OBSWS.Requests.GetMonitorList.self)
+          return try requestData.toCodable(OBS.Requests.GetMonitorList.self)
         case .OpenVideoMixProjector:
-          return try requestData.toCodable(OBSWS.Requests.OpenVideoMixProjector.self)
+          return try requestData.toCodable(OBS.Requests.OpenVideoMixProjector.self)
         case .OpenSourceProjector:
-          return try requestData.toCodable(OBSWS.Requests.OpenSourceProjector.self)
+          return try requestData.toCodable(OBS.Requests.OpenSourceProjector.self)
         }
       }
     }
@@ -5679,7 +5679,7 @@ public enum OBSWS {
 
   public enum Events {
     /// A new canvas has been created.
-    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/canvases``
+    /// > Event Subscription: ``OBS/Enums/EventSubscription/canvases``
     ///
     /// > Category: `Canvases`
     ///
@@ -5689,8 +5689,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.7.0
     public struct CanvasCreated: OBSEvent {
-      public static let eventType: OBSWS.Events.AllTypes = .CanvasCreated
-      public static let eventSubscription: OBSWS.Enums.EventSubscription = .canvases
+      public static let eventType: OBS.Events.AllTypes = .CanvasCreated
+      public static let eventSubscription: OBS.Enums.EventSubscription = .canvases
 
       /// Name of the new canvas
       public let canvasName: String
@@ -5705,7 +5705,7 @@ public enum OBSWS {
     }
 
     /// A canvas has been removed.
-    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/canvases``
+    /// > Event Subscription: ``OBS/Enums/EventSubscription/canvases``
     ///
     /// > Category: `Canvases`
     ///
@@ -5715,8 +5715,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.7.0
     public struct CanvasRemoved: OBSEvent {
-      public static let eventType: OBSWS.Events.AllTypes = .CanvasRemoved
-      public static let eventSubscription: OBSWS.Enums.EventSubscription = .canvases
+      public static let eventType: OBS.Events.AllTypes = .CanvasRemoved
+      public static let eventSubscription: OBS.Enums.EventSubscription = .canvases
 
       /// Name of the removed canvas
       public let canvasName: String
@@ -5731,7 +5731,7 @@ public enum OBSWS {
     }
 
     /// The name of a canvas has changed.
-    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/canvases``
+    /// > Event Subscription: ``OBS/Enums/EventSubscription/canvases``
     ///
     /// > Category: `Canvases`
     ///
@@ -5741,8 +5741,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.7.0
     public struct CanvasNameChanged: OBSEvent {
-      public static let eventType: OBSWS.Events.AllTypes = .CanvasNameChanged
-      public static let eventSubscription: OBSWS.Enums.EventSubscription = .canvases
+      public static let eventType: OBS.Events.AllTypes = .CanvasNameChanged
+      public static let eventSubscription: OBS.Enums.EventSubscription = .canvases
 
       /// UUID of the canvas
       public let canvasUuid: UUID
@@ -5764,7 +5764,7 @@ public enum OBSWS {
     /// 
     /// > Note: We recommend using this event to trigger a pause of all polling requests, as performing any requests during a
     /// scene collection change is considered undefined behavior and can cause crashes!
-    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/config``
+    /// > Event Subscription: ``OBS/Enums/EventSubscription/config``
     ///
     /// > Category: `Config`
     ///
@@ -5774,8 +5774,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct CurrentSceneCollectionChanging: OBSEvent {
-      public static let eventType: OBSWS.Events.AllTypes = .CurrentSceneCollectionChanging
-      public static let eventSubscription: OBSWS.Enums.EventSubscription = .config
+      public static let eventType: OBS.Events.AllTypes = .CurrentSceneCollectionChanging
+      public static let eventSubscription: OBS.Enums.EventSubscription = .config
 
       /// Name of the current scene collection
       public let sceneCollectionName: String
@@ -5788,7 +5788,7 @@ public enum OBSWS {
     /// The current scene collection has changed.
     /// 
     /// > Note: If polling has been paused during `CurrentSceneCollectionChanging`, this is the que to restart polling.
-    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/config``
+    /// > Event Subscription: ``OBS/Enums/EventSubscription/config``
     ///
     /// > Category: `Config`
     ///
@@ -5798,8 +5798,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct CurrentSceneCollectionChanged: OBSEvent {
-      public static let eventType: OBSWS.Events.AllTypes = .CurrentSceneCollectionChanged
-      public static let eventSubscription: OBSWS.Enums.EventSubscription = .config
+      public static let eventType: OBS.Events.AllTypes = .CurrentSceneCollectionChanged
+      public static let eventSubscription: OBS.Enums.EventSubscription = .config
 
       /// Name of the new scene collection
       public let sceneCollectionName: String
@@ -5810,7 +5810,7 @@ public enum OBSWS {
     }
 
     /// The scene collection list has changed.
-    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/config``
+    /// > Event Subscription: ``OBS/Enums/EventSubscription/config``
     ///
     /// > Category: `Config`
     ///
@@ -5820,8 +5820,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct SceneCollectionListChanged: OBSEvent {
-      public static let eventType: OBSWS.Events.AllTypes = .SceneCollectionListChanged
-      public static let eventSubscription: OBSWS.Enums.EventSubscription = .config
+      public static let eventType: OBS.Events.AllTypes = .SceneCollectionListChanged
+      public static let eventSubscription: OBS.Enums.EventSubscription = .config
 
       /// Updated list of scene collections
       public let sceneCollections: [String]
@@ -5832,7 +5832,7 @@ public enum OBSWS {
     }
 
     /// The current profile has begun changing.
-    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/config``
+    /// > Event Subscription: ``OBS/Enums/EventSubscription/config``
     ///
     /// > Category: `Config`
     ///
@@ -5842,8 +5842,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct CurrentProfileChanging: OBSEvent {
-      public static let eventType: OBSWS.Events.AllTypes = .CurrentProfileChanging
-      public static let eventSubscription: OBSWS.Enums.EventSubscription = .config
+      public static let eventType: OBS.Events.AllTypes = .CurrentProfileChanging
+      public static let eventSubscription: OBS.Enums.EventSubscription = .config
 
       /// Name of the current profile
       public let profileName: String
@@ -5854,7 +5854,7 @@ public enum OBSWS {
     }
 
     /// The current profile has changed.
-    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/config``
+    /// > Event Subscription: ``OBS/Enums/EventSubscription/config``
     ///
     /// > Category: `Config`
     ///
@@ -5864,8 +5864,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct CurrentProfileChanged: OBSEvent {
-      public static let eventType: OBSWS.Events.AllTypes = .CurrentProfileChanged
-      public static let eventSubscription: OBSWS.Enums.EventSubscription = .config
+      public static let eventType: OBS.Events.AllTypes = .CurrentProfileChanged
+      public static let eventSubscription: OBS.Enums.EventSubscription = .config
 
       /// Name of the new profile
       public let profileName: String
@@ -5876,7 +5876,7 @@ public enum OBSWS {
     }
 
     /// The profile list has changed.
-    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/config``
+    /// > Event Subscription: ``OBS/Enums/EventSubscription/config``
     ///
     /// > Category: `Config`
     ///
@@ -5886,8 +5886,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct ProfileListChanged: OBSEvent {
-      public static let eventType: OBSWS.Events.AllTypes = .ProfileListChanged
-      public static let eventSubscription: OBSWS.Enums.EventSubscription = .config
+      public static let eventType: OBS.Events.AllTypes = .ProfileListChanged
+      public static let eventSubscription: OBS.Enums.EventSubscription = .config
 
       /// Updated list of profiles
       public let profiles: [String]
@@ -5898,7 +5898,7 @@ public enum OBSWS {
     }
 
     /// A source's filter list has been reindexed.
-    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/filters``
+    /// > Event Subscription: ``OBS/Enums/EventSubscription/filters``
     ///
     /// > Category: `Filters`
     ///
@@ -5908,8 +5908,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct SourceFilterListReindexed: OBSEvent {
-      public static let eventType: OBSWS.Events.AllTypes = .SourceFilterListReindexed
-      public static let eventSubscription: OBSWS.Enums.EventSubscription = .filters
+      public static let eventType: OBS.Events.AllTypes = .SourceFilterListReindexed
+      public static let eventSubscription: OBS.Enums.EventSubscription = .filters
 
       /// Name of the source
       public let sourceName: String
@@ -5924,7 +5924,7 @@ public enum OBSWS {
     }
 
     /// A filter has been added to a source.
-    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/filters``
+    /// > Event Subscription: ``OBS/Enums/EventSubscription/filters``
     ///
     /// > Category: `Filters`
     ///
@@ -5934,8 +5934,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct SourceFilterCreated: OBSEvent {
-      public static let eventType: OBSWS.Events.AllTypes = .SourceFilterCreated
-      public static let eventSubscription: OBSWS.Enums.EventSubscription = .filters
+      public static let eventType: OBS.Events.AllTypes = .SourceFilterCreated
+      public static let eventSubscription: OBS.Enums.EventSubscription = .filters
 
       /// Name of the source the filter was added to
       public let sourceName: String
@@ -5966,7 +5966,7 @@ public enum OBSWS {
     }
 
     /// A filter has been removed from a source.
-    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/filters``
+    /// > Event Subscription: ``OBS/Enums/EventSubscription/filters``
     ///
     /// > Category: `Filters`
     ///
@@ -5976,8 +5976,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct SourceFilterRemoved: OBSEvent {
-      public static let eventType: OBSWS.Events.AllTypes = .SourceFilterRemoved
-      public static let eventSubscription: OBSWS.Enums.EventSubscription = .filters
+      public static let eventType: OBS.Events.AllTypes = .SourceFilterRemoved
+      public static let eventSubscription: OBS.Enums.EventSubscription = .filters
 
       /// Name of the source the filter was on
       public let sourceName: String
@@ -5992,7 +5992,7 @@ public enum OBSWS {
     }
 
     /// The name of a source filter has changed.
-    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/filters``
+    /// > Event Subscription: ``OBS/Enums/EventSubscription/filters``
     ///
     /// > Category: `Filters`
     ///
@@ -6002,8 +6002,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct SourceFilterNameChanged: OBSEvent {
-      public static let eventType: OBSWS.Events.AllTypes = .SourceFilterNameChanged
-      public static let eventSubscription: OBSWS.Enums.EventSubscription = .filters
+      public static let eventType: OBS.Events.AllTypes = .SourceFilterNameChanged
+      public static let eventSubscription: OBS.Enums.EventSubscription = .filters
 
       /// The source the filter is on
       public let sourceName: String
@@ -6022,7 +6022,7 @@ public enum OBSWS {
     }
 
     /// An source filter's settings have changed (been updated).
-    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/filters``
+    /// > Event Subscription: ``OBS/Enums/EventSubscription/filters``
     ///
     /// > Category: `Filters`
     ///
@@ -6032,8 +6032,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.4.0
     public struct SourceFilterSettingsChanged: OBSEvent {
-      public static let eventType: OBSWS.Events.AllTypes = .SourceFilterSettingsChanged
-      public static let eventSubscription: OBSWS.Enums.EventSubscription = .filters
+      public static let eventType: OBS.Events.AllTypes = .SourceFilterSettingsChanged
+      public static let eventSubscription: OBS.Enums.EventSubscription = .filters
 
       /// Name of the source the filter is on
       public let sourceName: String
@@ -6052,7 +6052,7 @@ public enum OBSWS {
     }
 
     /// A source filter's enable state has changed.
-    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/filters``
+    /// > Event Subscription: ``OBS/Enums/EventSubscription/filters``
     ///
     /// > Category: `Filters`
     ///
@@ -6062,8 +6062,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct SourceFilterEnableStateChanged: OBSEvent {
-      public static let eventType: OBSWS.Events.AllTypes = .SourceFilterEnableStateChanged
-      public static let eventSubscription: OBSWS.Enums.EventSubscription = .filters
+      public static let eventType: OBS.Events.AllTypes = .SourceFilterEnableStateChanged
+      public static let eventSubscription: OBS.Enums.EventSubscription = .filters
 
       /// Name of the source the filter is on
       public let sourceName: String
@@ -6082,7 +6082,7 @@ public enum OBSWS {
     }
 
     /// OBS has begun the shutdown process.
-    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/general``
+    /// > Event Subscription: ``OBS/Enums/EventSubscription/general``
     ///
     /// > Category: `General`
     ///
@@ -6092,15 +6092,15 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct ExitStarted: OBSEvent {
-      public static let eventType: OBSWS.Events.AllTypes = .ExitStarted
-      public static let eventSubscription: OBSWS.Enums.EventSubscription = .general
+      public static let eventType: OBS.Events.AllTypes = .ExitStarted
+      public static let eventSubscription: OBS.Enums.EventSubscription = .general
 
       public init() {
       }
     }
 
     /// An input has been created.
-    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/inputs``
+    /// > Event Subscription: ``OBS/Enums/EventSubscription/inputs``
     ///
     /// > Category: `Inputs`
     ///
@@ -6110,8 +6110,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct InputCreated: OBSEvent {
-      public static let eventType: OBSWS.Events.AllTypes = .InputCreated
-      public static let eventSubscription: OBSWS.Enums.EventSubscription = .inputs
+      public static let eventType: OBS.Events.AllTypes = .InputCreated
+      public static let eventSubscription: OBS.Enums.EventSubscription = .inputs
 
       /// Name of the input
       public let inputName: String
@@ -6146,7 +6146,7 @@ public enum OBSWS {
     }
 
     /// An input has been removed.
-    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/inputs``
+    /// > Event Subscription: ``OBS/Enums/EventSubscription/inputs``
     ///
     /// > Category: `Inputs`
     ///
@@ -6156,8 +6156,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct InputRemoved: OBSEvent {
-      public static let eventType: OBSWS.Events.AllTypes = .InputRemoved
-      public static let eventSubscription: OBSWS.Enums.EventSubscription = .inputs
+      public static let eventType: OBS.Events.AllTypes = .InputRemoved
+      public static let eventSubscription: OBS.Enums.EventSubscription = .inputs
 
       /// Name of the input
       public let inputName: String
@@ -6172,7 +6172,7 @@ public enum OBSWS {
     }
 
     /// The name of an input has changed.
-    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/inputs``
+    /// > Event Subscription: ``OBS/Enums/EventSubscription/inputs``
     ///
     /// > Category: `Inputs`
     ///
@@ -6182,8 +6182,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct InputNameChanged: OBSEvent {
-      public static let eventType: OBSWS.Events.AllTypes = .InputNameChanged
-      public static let eventSubscription: OBSWS.Enums.EventSubscription = .inputs
+      public static let eventType: OBS.Events.AllTypes = .InputNameChanged
+      public static let eventSubscription: OBS.Enums.EventSubscription = .inputs
 
       /// UUID of the input
       public let inputUuid: UUID
@@ -6204,7 +6204,7 @@ public enum OBSWS {
     /// An input's settings have changed (been updated).
     /// 
     /// > Note: On some inputs, changing values in the properties dialog will cause an immediate update. Pressing the "Cancel" button will revert the settings, resulting in another event being fired.
-    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/inputs``
+    /// > Event Subscription: ``OBS/Enums/EventSubscription/inputs``
     ///
     /// > Category: `Inputs`
     ///
@@ -6214,8 +6214,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.4.0
     public struct InputSettingsChanged: OBSEvent {
-      public static let eventType: OBSWS.Events.AllTypes = .InputSettingsChanged
-      public static let eventSubscription: OBSWS.Enums.EventSubscription = .inputs
+      public static let eventType: OBS.Events.AllTypes = .InputSettingsChanged
+      public static let eventSubscription: OBS.Enums.EventSubscription = .inputs
 
       /// Name of the input
       public let inputName: String
@@ -6236,7 +6236,7 @@ public enum OBSWS {
     /// An input's active state has changed.
     /// 
     /// When an input is active, it means it's being shown by the program feed.
-    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/inputActiveStateChanged``
+    /// > Event Subscription: ``OBS/Enums/EventSubscription/inputActiveStateChanged``
     ///
     /// > Category: `Inputs`
     ///
@@ -6246,8 +6246,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct InputActiveStateChanged: OBSEvent {
-      public static let eventType: OBSWS.Events.AllTypes = .InputActiveStateChanged
-      public static let eventSubscription: OBSWS.Enums.EventSubscription = .inputActiveStateChanged
+      public static let eventType: OBS.Events.AllTypes = .InputActiveStateChanged
+      public static let eventSubscription: OBS.Enums.EventSubscription = .inputActiveStateChanged
 
       /// Name of the input
       public let inputName: String
@@ -6268,7 +6268,7 @@ public enum OBSWS {
     /// An input's show state has changed.
     /// 
     /// When an input is showing, it means it's being shown by the preview or a dialog.
-    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/inputShowStateChanged``
+    /// > Event Subscription: ``OBS/Enums/EventSubscription/inputShowStateChanged``
     ///
     /// > Category: `Inputs`
     ///
@@ -6278,8 +6278,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct InputShowStateChanged: OBSEvent {
-      public static let eventType: OBSWS.Events.AllTypes = .InputShowStateChanged
-      public static let eventSubscription: OBSWS.Enums.EventSubscription = .inputShowStateChanged
+      public static let eventType: OBS.Events.AllTypes = .InputShowStateChanged
+      public static let eventSubscription: OBS.Enums.EventSubscription = .inputShowStateChanged
 
       /// Name of the input
       public let inputName: String
@@ -6298,7 +6298,7 @@ public enum OBSWS {
     }
 
     /// An input's mute state has changed.
-    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/inputs``
+    /// > Event Subscription: ``OBS/Enums/EventSubscription/inputs``
     ///
     /// > Category: `Inputs`
     ///
@@ -6308,8 +6308,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct InputMuteStateChanged: OBSEvent {
-      public static let eventType: OBSWS.Events.AllTypes = .InputMuteStateChanged
-      public static let eventSubscription: OBSWS.Enums.EventSubscription = .inputs
+      public static let eventType: OBS.Events.AllTypes = .InputMuteStateChanged
+      public static let eventSubscription: OBS.Enums.EventSubscription = .inputs
 
       /// Name of the input
       public let inputName: String
@@ -6328,7 +6328,7 @@ public enum OBSWS {
     }
 
     /// An input's volume level has changed.
-    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/inputs``
+    /// > Event Subscription: ``OBS/Enums/EventSubscription/inputs``
     ///
     /// > Category: `Inputs`
     ///
@@ -6338,8 +6338,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct InputVolumeChanged: OBSEvent {
-      public static let eventType: OBSWS.Events.AllTypes = .InputVolumeChanged
-      public static let eventSubscription: OBSWS.Enums.EventSubscription = .inputs
+      public static let eventType: OBS.Events.AllTypes = .InputVolumeChanged
+      public static let eventSubscription: OBS.Enums.EventSubscription = .inputs
 
       /// Name of the input
       public let inputName: String
@@ -6362,7 +6362,7 @@ public enum OBSWS {
     }
 
     /// The audio balance value of an input has changed.
-    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/inputs``
+    /// > Event Subscription: ``OBS/Enums/EventSubscription/inputs``
     ///
     /// > Category: `Inputs`
     ///
@@ -6372,8 +6372,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct InputAudioBalanceChanged: OBSEvent {
-      public static let eventType: OBSWS.Events.AllTypes = .InputAudioBalanceChanged
-      public static let eventSubscription: OBSWS.Enums.EventSubscription = .inputs
+      public static let eventType: OBS.Events.AllTypes = .InputAudioBalanceChanged
+      public static let eventSubscription: OBS.Enums.EventSubscription = .inputs
 
       /// Name of the input
       public let inputName: String
@@ -6392,7 +6392,7 @@ public enum OBSWS {
     }
 
     /// The sync offset of an input has changed.
-    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/inputs``
+    /// > Event Subscription: ``OBS/Enums/EventSubscription/inputs``
     ///
     /// > Category: `Inputs`
     ///
@@ -6402,8 +6402,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct InputAudioSyncOffsetChanged: OBSEvent {
-      public static let eventType: OBSWS.Events.AllTypes = .InputAudioSyncOffsetChanged
-      public static let eventSubscription: OBSWS.Enums.EventSubscription = .inputs
+      public static let eventType: OBS.Events.AllTypes = .InputAudioSyncOffsetChanged
+      public static let eventSubscription: OBS.Enums.EventSubscription = .inputs
 
       /// Name of the input
       public let inputName: String
@@ -6422,7 +6422,7 @@ public enum OBSWS {
     }
 
     /// The audio tracks of an input have changed.
-    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/inputs``
+    /// > Event Subscription: ``OBS/Enums/EventSubscription/inputs``
     ///
     /// > Category: `Inputs`
     ///
@@ -6432,8 +6432,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct InputAudioTracksChanged: OBSEvent {
-      public static let eventType: OBSWS.Events.AllTypes = .InputAudioTracksChanged
-      public static let eventSubscription: OBSWS.Enums.EventSubscription = .inputs
+      public static let eventType: OBS.Events.AllTypes = .InputAudioTracksChanged
+      public static let eventSubscription: OBS.Enums.EventSubscription = .inputs
 
       /// Name of the input
       public let inputName: String
@@ -6458,7 +6458,7 @@ public enum OBSWS {
     /// - `OBS_MONITORING_TYPE_NONE`
     /// - `OBS_MONITORING_TYPE_MONITOR_ONLY`
     /// - `OBS_MONITORING_TYPE_MONITOR_AND_OUTPUT`
-    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/inputs``
+    /// > Event Subscription: ``OBS/Enums/EventSubscription/inputs``
     ///
     /// > Category: `Inputs`
     ///
@@ -6468,8 +6468,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct InputAudioMonitorTypeChanged: OBSEvent {
-      public static let eventType: OBSWS.Events.AllTypes = .InputAudioMonitorTypeChanged
-      public static let eventSubscription: OBSWS.Enums.EventSubscription = .inputs
+      public static let eventType: OBS.Events.AllTypes = .InputAudioMonitorTypeChanged
+      public static let eventSubscription: OBS.Enums.EventSubscription = .inputs
 
       /// Name of the input
       public let inputName: String
@@ -6488,7 +6488,7 @@ public enum OBSWS {
     }
 
     /// A high-volume event providing volume levels of all active inputs every 50 milliseconds.
-    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/inputVolumeMeters``
+    /// > Event Subscription: ``OBS/Enums/EventSubscription/inputVolumeMeters``
     ///
     /// > Category: `Inputs`
     ///
@@ -6498,8 +6498,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct InputVolumeMeters: OBSEvent {
-      public static let eventType: OBSWS.Events.AllTypes = .InputVolumeMeters
-      public static let eventSubscription: OBSWS.Enums.EventSubscription = .inputVolumeMeters
+      public static let eventType: OBS.Events.AllTypes = .InputVolumeMeters
+      public static let eventSubscription: OBS.Enums.EventSubscription = .inputVolumeMeters
 
       /// Array of active inputs with their associated volume levels
       public let inputs: [JSONValue]
@@ -6510,7 +6510,7 @@ public enum OBSWS {
     }
 
     /// A media input has started playing.
-    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/mediaInputs``
+    /// > Event Subscription: ``OBS/Enums/EventSubscription/mediaInputs``
     ///
     /// > Category: `Media Inputs`
     ///
@@ -6520,8 +6520,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct MediaInputPlaybackStarted: OBSEvent {
-      public static let eventType: OBSWS.Events.AllTypes = .MediaInputPlaybackStarted
-      public static let eventSubscription: OBSWS.Enums.EventSubscription = .mediaInputs
+      public static let eventType: OBS.Events.AllTypes = .MediaInputPlaybackStarted
+      public static let eventSubscription: OBS.Enums.EventSubscription = .mediaInputs
 
       /// Name of the input
       public let inputName: String
@@ -6536,7 +6536,7 @@ public enum OBSWS {
     }
 
     /// A media input has finished playing.
-    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/mediaInputs``
+    /// > Event Subscription: ``OBS/Enums/EventSubscription/mediaInputs``
     ///
     /// > Category: `Media Inputs`
     ///
@@ -6546,8 +6546,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct MediaInputPlaybackEnded: OBSEvent {
-      public static let eventType: OBSWS.Events.AllTypes = .MediaInputPlaybackEnded
-      public static let eventSubscription: OBSWS.Enums.EventSubscription = .mediaInputs
+      public static let eventType: OBS.Events.AllTypes = .MediaInputPlaybackEnded
+      public static let eventSubscription: OBS.Enums.EventSubscription = .mediaInputs
 
       /// Name of the input
       public let inputName: String
@@ -6562,7 +6562,7 @@ public enum OBSWS {
     }
 
     /// An action has been performed on an input.
-    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/mediaInputs``
+    /// > Event Subscription: ``OBS/Enums/EventSubscription/mediaInputs``
     ///
     /// > Category: `Media Inputs`
     ///
@@ -6572,8 +6572,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct MediaInputActionTriggered: OBSEvent {
-      public static let eventType: OBSWS.Events.AllTypes = .MediaInputActionTriggered
-      public static let eventSubscription: OBSWS.Enums.EventSubscription = .mediaInputs
+      public static let eventType: OBS.Events.AllTypes = .MediaInputActionTriggered
+      public static let eventSubscription: OBS.Enums.EventSubscription = .mediaInputs
 
       /// Name of the input
       public let inputName: String
@@ -6582,9 +6582,9 @@ public enum OBSWS {
       public let inputUuid: UUID
 
       /// Action performed on the input. See `ObsMediaInputAction` enum
-      public let mediaAction: OBSWS.Enums.MediaInputAction
+      public let mediaAction: OBS.Enums.MediaInputAction
 
-      public init(inputName: String, inputUuid: UUID, mediaAction: OBSWS.Enums.MediaInputAction) {
+      public init(inputName: String, inputUuid: UUID, mediaAction: OBS.Enums.MediaInputAction) {
         self.inputName = inputName
         self.inputUuid = inputUuid
         self.mediaAction = mediaAction
@@ -6592,7 +6592,7 @@ public enum OBSWS {
     }
 
     /// The state of the stream output has changed.
-    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/outputs``
+    /// > Event Subscription: ``OBS/Enums/EventSubscription/outputs``
     ///
     /// > Category: `Outputs`
     ///
@@ -6602,8 +6602,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct StreamStateChanged: OBSEvent {
-      public static let eventType: OBSWS.Events.AllTypes = .StreamStateChanged
-      public static let eventSubscription: OBSWS.Enums.EventSubscription = .outputs
+      public static let eventType: OBS.Events.AllTypes = .StreamStateChanged
+      public static let eventSubscription: OBS.Enums.EventSubscription = .outputs
 
       /// Whether the output is active
       public let outputActive: Bool
@@ -6618,7 +6618,7 @@ public enum OBSWS {
     }
 
     /// The state of the record output has changed.
-    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/outputs``
+    /// > Event Subscription: ``OBS/Enums/EventSubscription/outputs``
     ///
     /// > Category: `Outputs`
     ///
@@ -6628,8 +6628,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct RecordStateChanged: OBSEvent {
-      public static let eventType: OBSWS.Events.AllTypes = .RecordStateChanged
-      public static let eventSubscription: OBSWS.Enums.EventSubscription = .outputs
+      public static let eventType: OBS.Events.AllTypes = .RecordStateChanged
+      public static let eventSubscription: OBS.Enums.EventSubscription = .outputs
 
       /// Whether the output is active
       public let outputActive: Bool
@@ -6648,7 +6648,7 @@ public enum OBSWS {
     }
 
     /// The record output has started writing to a new file. For example, when a file split happens.
-    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/outputs``
+    /// > Event Subscription: ``OBS/Enums/EventSubscription/outputs``
     ///
     /// > Category: `Outputs`
     ///
@@ -6658,8 +6658,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.5.0
     public struct RecordFileChanged: OBSEvent {
-      public static let eventType: OBSWS.Events.AllTypes = .RecordFileChanged
-      public static let eventSubscription: OBSWS.Enums.EventSubscription = .outputs
+      public static let eventType: OBS.Events.AllTypes = .RecordFileChanged
+      public static let eventSubscription: OBS.Enums.EventSubscription = .outputs
 
       /// File name that the output has begun writing to
       public let newOutputPath: String
@@ -6670,7 +6670,7 @@ public enum OBSWS {
     }
 
     /// The state of the replay buffer output has changed.
-    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/outputs``
+    /// > Event Subscription: ``OBS/Enums/EventSubscription/outputs``
     ///
     /// > Category: `Outputs`
     ///
@@ -6680,8 +6680,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct ReplayBufferStateChanged: OBSEvent {
-      public static let eventType: OBSWS.Events.AllTypes = .ReplayBufferStateChanged
-      public static let eventSubscription: OBSWS.Enums.EventSubscription = .outputs
+      public static let eventType: OBS.Events.AllTypes = .ReplayBufferStateChanged
+      public static let eventSubscription: OBS.Enums.EventSubscription = .outputs
 
       /// Whether the output is active
       public let outputActive: Bool
@@ -6696,7 +6696,7 @@ public enum OBSWS {
     }
 
     /// The state of the virtualcam output has changed.
-    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/outputs``
+    /// > Event Subscription: ``OBS/Enums/EventSubscription/outputs``
     ///
     /// > Category: `Outputs`
     ///
@@ -6706,8 +6706,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct VirtualcamStateChanged: OBSEvent {
-      public static let eventType: OBSWS.Events.AllTypes = .VirtualcamStateChanged
-      public static let eventSubscription: OBSWS.Enums.EventSubscription = .outputs
+      public static let eventType: OBS.Events.AllTypes = .VirtualcamStateChanged
+      public static let eventSubscription: OBS.Enums.EventSubscription = .outputs
 
       /// Whether the output is active
       public let outputActive: Bool
@@ -6722,7 +6722,7 @@ public enum OBSWS {
     }
 
     /// The replay buffer has been saved.
-    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/outputs``
+    /// > Event Subscription: ``OBS/Enums/EventSubscription/outputs``
     ///
     /// > Category: `Outputs`
     ///
@@ -6732,8 +6732,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct ReplayBufferSaved: OBSEvent {
-      public static let eventType: OBSWS.Events.AllTypes = .ReplayBufferSaved
-      public static let eventSubscription: OBSWS.Enums.EventSubscription = .outputs
+      public static let eventType: OBS.Events.AllTypes = .ReplayBufferSaved
+      public static let eventSubscription: OBS.Enums.EventSubscription = .outputs
 
       /// Path of the saved replay file
       public let savedReplayPath: String
@@ -6744,7 +6744,7 @@ public enum OBSWS {
     }
 
     /// A scene item has been created.
-    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/sceneItems``
+    /// > Event Subscription: ``OBS/Enums/EventSubscription/sceneItems``
     ///
     /// > Category: `Scene Items`
     ///
@@ -6754,8 +6754,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct SceneItemCreated: OBSEvent {
-      public static let eventType: OBSWS.Events.AllTypes = .SceneItemCreated
-      public static let eventSubscription: OBSWS.Enums.EventSubscription = .sceneItems
+      public static let eventType: OBS.Events.AllTypes = .SceneItemCreated
+      public static let eventSubscription: OBS.Enums.EventSubscription = .sceneItems
 
       /// Name of the scene the item was added to
       public let sceneName: String
@@ -6788,7 +6788,7 @@ public enum OBSWS {
     /// A scene item has been removed.
     /// 
     /// This event is not emitted when the scene the item is in is removed.
-    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/sceneItems``
+    /// > Event Subscription: ``OBS/Enums/EventSubscription/sceneItems``
     ///
     /// > Category: `Scene Items`
     ///
@@ -6798,8 +6798,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct SceneItemRemoved: OBSEvent {
-      public static let eventType: OBSWS.Events.AllTypes = .SceneItemRemoved
-      public static let eventSubscription: OBSWS.Enums.EventSubscription = .sceneItems
+      public static let eventType: OBS.Events.AllTypes = .SceneItemRemoved
+      public static let eventSubscription: OBS.Enums.EventSubscription = .sceneItems
 
       /// Name of the scene the item was removed from
       public let sceneName: String
@@ -6826,7 +6826,7 @@ public enum OBSWS {
     }
 
     /// A scene's item list has been reindexed.
-    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/sceneItems``
+    /// > Event Subscription: ``OBS/Enums/EventSubscription/sceneItems``
     ///
     /// > Category: `Scene Items`
     ///
@@ -6836,8 +6836,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct SceneItemListReindexed: OBSEvent {
-      public static let eventType: OBSWS.Events.AllTypes = .SceneItemListReindexed
-      public static let eventSubscription: OBSWS.Enums.EventSubscription = .sceneItems
+      public static let eventType: OBS.Events.AllTypes = .SceneItemListReindexed
+      public static let eventSubscription: OBS.Enums.EventSubscription = .sceneItems
 
       /// Name of the scene
       public let sceneName: String
@@ -6856,7 +6856,7 @@ public enum OBSWS {
     }
 
     /// A scene item's enable state has changed.
-    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/sceneItems``
+    /// > Event Subscription: ``OBS/Enums/EventSubscription/sceneItems``
     ///
     /// > Category: `Scene Items`
     ///
@@ -6866,8 +6866,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct SceneItemEnableStateChanged: OBSEvent {
-      public static let eventType: OBSWS.Events.AllTypes = .SceneItemEnableStateChanged
-      public static let eventSubscription: OBSWS.Enums.EventSubscription = .sceneItems
+      public static let eventType: OBS.Events.AllTypes = .SceneItemEnableStateChanged
+      public static let eventSubscription: OBS.Enums.EventSubscription = .sceneItems
 
       /// Name of the scene the item is in
       public let sceneName: String
@@ -6890,7 +6890,7 @@ public enum OBSWS {
     }
 
     /// A scene item's lock state has changed.
-    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/sceneItems``
+    /// > Event Subscription: ``OBS/Enums/EventSubscription/sceneItems``
     ///
     /// > Category: `Scene Items`
     ///
@@ -6900,8 +6900,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct SceneItemLockStateChanged: OBSEvent {
-      public static let eventType: OBSWS.Events.AllTypes = .SceneItemLockStateChanged
-      public static let eventSubscription: OBSWS.Enums.EventSubscription = .sceneItems
+      public static let eventType: OBS.Events.AllTypes = .SceneItemLockStateChanged
+      public static let eventSubscription: OBS.Enums.EventSubscription = .sceneItems
 
       /// Name of the scene the item is in
       public let sceneName: String
@@ -6924,7 +6924,7 @@ public enum OBSWS {
     }
 
     /// A scene item has been selected in the Ui.
-    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/sceneItems``
+    /// > Event Subscription: ``OBS/Enums/EventSubscription/sceneItems``
     ///
     /// > Category: `Scene Items`
     ///
@@ -6934,8 +6934,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct SceneItemSelected: OBSEvent {
-      public static let eventType: OBSWS.Events.AllTypes = .SceneItemSelected
-      public static let eventSubscription: OBSWS.Enums.EventSubscription = .sceneItems
+      public static let eventType: OBS.Events.AllTypes = .SceneItemSelected
+      public static let eventSubscription: OBS.Enums.EventSubscription = .sceneItems
 
       /// Name of the scene the item is in
       public let sceneName: String
@@ -6954,7 +6954,7 @@ public enum OBSWS {
     }
 
     /// The transform/crop of a scene item has changed.
-    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/sceneItemTransformChanged``
+    /// > Event Subscription: ``OBS/Enums/EventSubscription/sceneItemTransformChanged``
     ///
     /// > Category: `Scene Items`
     ///
@@ -6964,8 +6964,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct SceneItemTransformChanged: OBSEvent {
-      public static let eventType: OBSWS.Events.AllTypes = .SceneItemTransformChanged
-      public static let eventSubscription: OBSWS.Enums.EventSubscription = .sceneItemTransformChanged
+      public static let eventType: OBS.Events.AllTypes = .SceneItemTransformChanged
+      public static let eventSubscription: OBS.Enums.EventSubscription = .sceneItemTransformChanged
 
       /// The name of the scene the item is in
       public let sceneName: String
@@ -6988,7 +6988,7 @@ public enum OBSWS {
     }
 
     /// A new scene has been created.
-    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/scenes``
+    /// > Event Subscription: ``OBS/Enums/EventSubscription/scenes``
     ///
     /// > Category: `Scenes`
     ///
@@ -6998,8 +6998,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct SceneCreated: OBSEvent {
-      public static let eventType: OBSWS.Events.AllTypes = .SceneCreated
-      public static let eventSubscription: OBSWS.Enums.EventSubscription = .scenes
+      public static let eventType: OBS.Events.AllTypes = .SceneCreated
+      public static let eventSubscription: OBS.Enums.EventSubscription = .scenes
 
       /// Name of the new scene
       public let sceneName: String
@@ -7018,7 +7018,7 @@ public enum OBSWS {
     }
 
     /// A scene has been removed.
-    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/scenes``
+    /// > Event Subscription: ``OBS/Enums/EventSubscription/scenes``
     ///
     /// > Category: `Scenes`
     ///
@@ -7028,8 +7028,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct SceneRemoved: OBSEvent {
-      public static let eventType: OBSWS.Events.AllTypes = .SceneRemoved
-      public static let eventSubscription: OBSWS.Enums.EventSubscription = .scenes
+      public static let eventType: OBS.Events.AllTypes = .SceneRemoved
+      public static let eventSubscription: OBS.Enums.EventSubscription = .scenes
 
       /// Name of the removed scene
       public let sceneName: String
@@ -7048,7 +7048,7 @@ public enum OBSWS {
     }
 
     /// The name of a scene has changed.
-    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/scenes``
+    /// > Event Subscription: ``OBS/Enums/EventSubscription/scenes``
     ///
     /// > Category: `Scenes`
     ///
@@ -7058,8 +7058,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct SceneNameChanged: OBSEvent {
-      public static let eventType: OBSWS.Events.AllTypes = .SceneNameChanged
-      public static let eventSubscription: OBSWS.Enums.EventSubscription = .scenes
+      public static let eventType: OBS.Events.AllTypes = .SceneNameChanged
+      public static let eventSubscription: OBS.Enums.EventSubscription = .scenes
 
       /// UUID of the scene
       public let sceneUuid: UUID
@@ -7078,7 +7078,7 @@ public enum OBSWS {
     }
 
     /// The current program scene has changed.
-    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/scenes``
+    /// > Event Subscription: ``OBS/Enums/EventSubscription/scenes``
     ///
     /// > Category: `Scenes`
     ///
@@ -7088,8 +7088,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct CurrentProgramSceneChanged: OBSEvent {
-      public static let eventType: OBSWS.Events.AllTypes = .CurrentProgramSceneChanged
-      public static let eventSubscription: OBSWS.Enums.EventSubscription = .scenes
+      public static let eventType: OBS.Events.AllTypes = .CurrentProgramSceneChanged
+      public static let eventSubscription: OBS.Enums.EventSubscription = .scenes
 
       /// Name of the scene that was switched to
       public let sceneName: String
@@ -7104,7 +7104,7 @@ public enum OBSWS {
     }
 
     /// The current preview scene has changed.
-    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/scenes``
+    /// > Event Subscription: ``OBS/Enums/EventSubscription/scenes``
     ///
     /// > Category: `Scenes`
     ///
@@ -7114,8 +7114,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct CurrentPreviewSceneChanged: OBSEvent {
-      public static let eventType: OBSWS.Events.AllTypes = .CurrentPreviewSceneChanged
-      public static let eventSubscription: OBSWS.Enums.EventSubscription = .scenes
+      public static let eventType: OBS.Events.AllTypes = .CurrentPreviewSceneChanged
+      public static let eventSubscription: OBS.Enums.EventSubscription = .scenes
 
       /// Name of the scene that was switched to
       public let sceneName: String
@@ -7132,7 +7132,7 @@ public enum OBSWS {
     /// The list of scenes has changed.
     /// 
     /// > TODO: Make OBS fire this event when scenes are reordered.
-    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/scenes``
+    /// > Event Subscription: ``OBS/Enums/EventSubscription/scenes``
     ///
     /// > Category: `Scenes`
     ///
@@ -7142,8 +7142,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct SceneListChanged: OBSEvent {
-      public static let eventType: OBSWS.Events.AllTypes = .SceneListChanged
-      public static let eventSubscription: OBSWS.Enums.EventSubscription = .scenes
+      public static let eventType: OBS.Events.AllTypes = .SceneListChanged
+      public static let eventSubscription: OBS.Enums.EventSubscription = .scenes
 
       /// Updated array of scenes
       public let scenes: [JSONValue]
@@ -7154,7 +7154,7 @@ public enum OBSWS {
     }
 
     /// The current scene transition has changed.
-    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/transitions``
+    /// > Event Subscription: ``OBS/Enums/EventSubscription/transitions``
     ///
     /// > Category: `Transitions`
     ///
@@ -7164,8 +7164,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct CurrentSceneTransitionChanged: OBSEvent {
-      public static let eventType: OBSWS.Events.AllTypes = .CurrentSceneTransitionChanged
-      public static let eventSubscription: OBSWS.Enums.EventSubscription = .transitions
+      public static let eventType: OBS.Events.AllTypes = .CurrentSceneTransitionChanged
+      public static let eventSubscription: OBS.Enums.EventSubscription = .transitions
 
       /// Name of the new transition
       public let transitionName: String
@@ -7180,7 +7180,7 @@ public enum OBSWS {
     }
 
     /// The current scene transition duration has changed.
-    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/transitions``
+    /// > Event Subscription: ``OBS/Enums/EventSubscription/transitions``
     ///
     /// > Category: `Transitions`
     ///
@@ -7190,8 +7190,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct CurrentSceneTransitionDurationChanged: OBSEvent {
-      public static let eventType: OBSWS.Events.AllTypes = .CurrentSceneTransitionDurationChanged
-      public static let eventSubscription: OBSWS.Enums.EventSubscription = .transitions
+      public static let eventType: OBS.Events.AllTypes = .CurrentSceneTransitionDurationChanged
+      public static let eventSubscription: OBS.Enums.EventSubscription = .transitions
 
       /// Transition duration in milliseconds
       public let transitionDuration: Int
@@ -7202,7 +7202,7 @@ public enum OBSWS {
     }
 
     /// A scene transition has started.
-    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/transitions``
+    /// > Event Subscription: ``OBS/Enums/EventSubscription/transitions``
     ///
     /// > Category: `Transitions`
     ///
@@ -7212,8 +7212,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct SceneTransitionStarted: OBSEvent {
-      public static let eventType: OBSWS.Events.AllTypes = .SceneTransitionStarted
-      public static let eventSubscription: OBSWS.Enums.EventSubscription = .transitions
+      public static let eventType: OBS.Events.AllTypes = .SceneTransitionStarted
+      public static let eventSubscription: OBS.Enums.EventSubscription = .transitions
 
       /// Scene transition name
       public let transitionName: String
@@ -7230,7 +7230,7 @@ public enum OBSWS {
     /// A scene transition has completed fully.
     /// 
     /// > Note: Does not appear to trigger when the transition is interrupted by the user.
-    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/transitions``
+    /// > Event Subscription: ``OBS/Enums/EventSubscription/transitions``
     ///
     /// > Category: `Transitions`
     ///
@@ -7240,8 +7240,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct SceneTransitionEnded: OBSEvent {
-      public static let eventType: OBSWS.Events.AllTypes = .SceneTransitionEnded
-      public static let eventSubscription: OBSWS.Enums.EventSubscription = .transitions
+      public static let eventType: OBS.Events.AllTypes = .SceneTransitionEnded
+      public static let eventSubscription: OBS.Enums.EventSubscription = .transitions
 
       /// Scene transition name
       public let transitionName: String
@@ -7261,7 +7261,7 @@ public enum OBSWS {
     /// `SceneTransitionEnded` only signifies the cut point, not the completion of transition playback.
     /// 
     /// > Note: Appears to be called by every transition, regardless of relevance.
-    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/transitions``
+    /// > Event Subscription: ``OBS/Enums/EventSubscription/transitions``
     ///
     /// > Category: `Transitions`
     ///
@@ -7271,8 +7271,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct SceneTransitionVideoEnded: OBSEvent {
-      public static let eventType: OBSWS.Events.AllTypes = .SceneTransitionVideoEnded
-      public static let eventSubscription: OBSWS.Enums.EventSubscription = .transitions
+      public static let eventType: OBS.Events.AllTypes = .SceneTransitionVideoEnded
+      public static let eventSubscription: OBS.Enums.EventSubscription = .transitions
 
       /// Scene transition name
       public let transitionName: String
@@ -7287,7 +7287,7 @@ public enum OBSWS {
     }
 
     /// Studio mode has been enabled or disabled.
-    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/ui``
+    /// > Event Subscription: ``OBS/Enums/EventSubscription/ui``
     ///
     /// > Category: `UI`
     ///
@@ -7297,8 +7297,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct StudioModeStateChanged: OBSEvent {
-      public static let eventType: OBSWS.Events.AllTypes = .StudioModeStateChanged
-      public static let eventSubscription: OBSWS.Enums.EventSubscription = .ui
+      public static let eventType: OBS.Events.AllTypes = .StudioModeStateChanged
+      public static let eventSubscription: OBS.Enums.EventSubscription = .ui
 
       /// True == Enabled, False == Disabled
       public let studioModeEnabled: Bool
@@ -7313,7 +7313,7 @@ public enum OBSWS {
     /// > Note: Triggered for the screenshot feature available in `Settings -> Hotkeys -> Screenshot Output` ONLY.
     /// Applications using `Get/SaveSourceScreenshot` should implement a `CustomEvent` if this kind of inter-client
     /// communication is desired.
-    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/ui``
+    /// > Event Subscription: ``OBS/Enums/EventSubscription/ui``
     ///
     /// > Category: `UI`
     ///
@@ -7323,8 +7323,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.1.0
     public struct ScreenshotSaved: OBSEvent {
-      public static let eventType: OBSWS.Events.AllTypes = .ScreenshotSaved
-      public static let eventSubscription: OBSWS.Enums.EventSubscription = .ui
+      public static let eventType: OBS.Events.AllTypes = .ScreenshotSaved
+      public static let eventSubscription: OBS.Enums.EventSubscription = .ui
 
       /// Path of the saved image file
       public let savedScreenshotPath: String
@@ -7338,7 +7338,7 @@ public enum OBSWS {
     /// 
     /// A vendor is a unique name registered by a third-party plugin or script, which allows for custom requests and events to be added to obs-websocket.
     /// If a plugin or script implements vendor requests or events, documentation is expected to be provided with them.
-    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/vendors``
+    /// > Event Subscription: ``OBS/Enums/EventSubscription/vendors``
     ///
     /// > Category: `General`
     ///
@@ -7348,8 +7348,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct VendorEvent: OBSEvent {
-      public static let eventType: OBSWS.Events.AllTypes = .VendorEvent
-      public static let eventSubscription: OBSWS.Enums.EventSubscription = .vendors
+      public static let eventType: OBS.Events.AllTypes = .VendorEvent
+      public static let eventSubscription: OBS.Enums.EventSubscription = .vendors
 
       /// Name of the vendor emitting the event
       public let vendorName: String
@@ -7368,7 +7368,7 @@ public enum OBSWS {
     }
 
     /// Custom event emitted by `BroadcastCustomEvent`.
-    /// > Event Subscription: ``OBSWS/Enums/EventSubscription/general``
+    /// > Event Subscription: ``OBS/Enums/EventSubscription/general``
     ///
     /// > Category: `General`
     ///
@@ -7378,8 +7378,8 @@ public enum OBSWS {
     ///
     /// > Since: Added in v5.0.0
     public struct CustomEvent: OBSEvent {
-      public static let eventType: OBSWS.Events.AllTypes = .CustomEvent
-      public static let eventSubscription: OBSWS.Enums.EventSubscription = .general
+      public static let eventType: OBS.Events.AllTypes = .CustomEvent
+      public static let eventSubscription: OBS.Enums.EventSubscription = .general
 
       /// Custom event data
       public let eventData: JSONValue
@@ -7454,125 +7454,125 @@ public enum OBSWS {
       static func event(ofType type: AllTypes, from eventData: JSONValue) throws -> (any OBSEvent)? {
         switch type {
         case .CanvasCreated:
-          return try eventData.toCodable(OBSWS.Events.CanvasCreated.self)
+          return try eventData.toCodable(OBS.Events.CanvasCreated.self)
         case .CanvasRemoved:
-          return try eventData.toCodable(OBSWS.Events.CanvasRemoved.self)
+          return try eventData.toCodable(OBS.Events.CanvasRemoved.self)
         case .CanvasNameChanged:
-          return try eventData.toCodable(OBSWS.Events.CanvasNameChanged.self)
+          return try eventData.toCodable(OBS.Events.CanvasNameChanged.self)
         case .CurrentSceneCollectionChanging:
-          return try eventData.toCodable(OBSWS.Events.CurrentSceneCollectionChanging.self)
+          return try eventData.toCodable(OBS.Events.CurrentSceneCollectionChanging.self)
         case .CurrentSceneCollectionChanged:
-          return try eventData.toCodable(OBSWS.Events.CurrentSceneCollectionChanged.self)
+          return try eventData.toCodable(OBS.Events.CurrentSceneCollectionChanged.self)
         case .SceneCollectionListChanged:
-          return try eventData.toCodable(OBSWS.Events.SceneCollectionListChanged.self)
+          return try eventData.toCodable(OBS.Events.SceneCollectionListChanged.self)
         case .CurrentProfileChanging:
-          return try eventData.toCodable(OBSWS.Events.CurrentProfileChanging.self)
+          return try eventData.toCodable(OBS.Events.CurrentProfileChanging.self)
         case .CurrentProfileChanged:
-          return try eventData.toCodable(OBSWS.Events.CurrentProfileChanged.self)
+          return try eventData.toCodable(OBS.Events.CurrentProfileChanged.self)
         case .ProfileListChanged:
-          return try eventData.toCodable(OBSWS.Events.ProfileListChanged.self)
+          return try eventData.toCodable(OBS.Events.ProfileListChanged.self)
         case .SourceFilterListReindexed:
-          return try eventData.toCodable(OBSWS.Events.SourceFilterListReindexed.self)
+          return try eventData.toCodable(OBS.Events.SourceFilterListReindexed.self)
         case .SourceFilterCreated:
-          return try eventData.toCodable(OBSWS.Events.SourceFilterCreated.self)
+          return try eventData.toCodable(OBS.Events.SourceFilterCreated.self)
         case .SourceFilterRemoved:
-          return try eventData.toCodable(OBSWS.Events.SourceFilterRemoved.self)
+          return try eventData.toCodable(OBS.Events.SourceFilterRemoved.self)
         case .SourceFilterNameChanged:
-          return try eventData.toCodable(OBSWS.Events.SourceFilterNameChanged.self)
+          return try eventData.toCodable(OBS.Events.SourceFilterNameChanged.self)
         case .SourceFilterSettingsChanged:
-          return try eventData.toCodable(OBSWS.Events.SourceFilterSettingsChanged.self)
+          return try eventData.toCodable(OBS.Events.SourceFilterSettingsChanged.self)
         case .SourceFilterEnableStateChanged:
-          return try eventData.toCodable(OBSWS.Events.SourceFilterEnableStateChanged.self)
+          return try eventData.toCodable(OBS.Events.SourceFilterEnableStateChanged.self)
         case .ExitStarted:
-          return try eventData.toCodable(OBSWS.Events.ExitStarted.self)
+          return try eventData.toCodable(OBS.Events.ExitStarted.self)
         case .InputCreated:
-          return try eventData.toCodable(OBSWS.Events.InputCreated.self)
+          return try eventData.toCodable(OBS.Events.InputCreated.self)
         case .InputRemoved:
-          return try eventData.toCodable(OBSWS.Events.InputRemoved.self)
+          return try eventData.toCodable(OBS.Events.InputRemoved.self)
         case .InputNameChanged:
-          return try eventData.toCodable(OBSWS.Events.InputNameChanged.self)
+          return try eventData.toCodable(OBS.Events.InputNameChanged.self)
         case .InputSettingsChanged:
-          return try eventData.toCodable(OBSWS.Events.InputSettingsChanged.self)
+          return try eventData.toCodable(OBS.Events.InputSettingsChanged.self)
         case .InputActiveStateChanged:
-          return try eventData.toCodable(OBSWS.Events.InputActiveStateChanged.self)
+          return try eventData.toCodable(OBS.Events.InputActiveStateChanged.self)
         case .InputShowStateChanged:
-          return try eventData.toCodable(OBSWS.Events.InputShowStateChanged.self)
+          return try eventData.toCodable(OBS.Events.InputShowStateChanged.self)
         case .InputMuteStateChanged:
-          return try eventData.toCodable(OBSWS.Events.InputMuteStateChanged.self)
+          return try eventData.toCodable(OBS.Events.InputMuteStateChanged.self)
         case .InputVolumeChanged:
-          return try eventData.toCodable(OBSWS.Events.InputVolumeChanged.self)
+          return try eventData.toCodable(OBS.Events.InputVolumeChanged.self)
         case .InputAudioBalanceChanged:
-          return try eventData.toCodable(OBSWS.Events.InputAudioBalanceChanged.self)
+          return try eventData.toCodable(OBS.Events.InputAudioBalanceChanged.self)
         case .InputAudioSyncOffsetChanged:
-          return try eventData.toCodable(OBSWS.Events.InputAudioSyncOffsetChanged.self)
+          return try eventData.toCodable(OBS.Events.InputAudioSyncOffsetChanged.self)
         case .InputAudioTracksChanged:
-          return try eventData.toCodable(OBSWS.Events.InputAudioTracksChanged.self)
+          return try eventData.toCodable(OBS.Events.InputAudioTracksChanged.self)
         case .InputAudioMonitorTypeChanged:
-          return try eventData.toCodable(OBSWS.Events.InputAudioMonitorTypeChanged.self)
+          return try eventData.toCodable(OBS.Events.InputAudioMonitorTypeChanged.self)
         case .InputVolumeMeters:
-          return try eventData.toCodable(OBSWS.Events.InputVolumeMeters.self)
+          return try eventData.toCodable(OBS.Events.InputVolumeMeters.self)
         case .MediaInputPlaybackStarted:
-          return try eventData.toCodable(OBSWS.Events.MediaInputPlaybackStarted.self)
+          return try eventData.toCodable(OBS.Events.MediaInputPlaybackStarted.self)
         case .MediaInputPlaybackEnded:
-          return try eventData.toCodable(OBSWS.Events.MediaInputPlaybackEnded.self)
+          return try eventData.toCodable(OBS.Events.MediaInputPlaybackEnded.self)
         case .MediaInputActionTriggered:
-          return try eventData.toCodable(OBSWS.Events.MediaInputActionTriggered.self)
+          return try eventData.toCodable(OBS.Events.MediaInputActionTriggered.self)
         case .StreamStateChanged:
-          return try eventData.toCodable(OBSWS.Events.StreamStateChanged.self)
+          return try eventData.toCodable(OBS.Events.StreamStateChanged.self)
         case .RecordStateChanged:
-          return try eventData.toCodable(OBSWS.Events.RecordStateChanged.self)
+          return try eventData.toCodable(OBS.Events.RecordStateChanged.self)
         case .RecordFileChanged:
-          return try eventData.toCodable(OBSWS.Events.RecordFileChanged.self)
+          return try eventData.toCodable(OBS.Events.RecordFileChanged.self)
         case .ReplayBufferStateChanged:
-          return try eventData.toCodable(OBSWS.Events.ReplayBufferStateChanged.self)
+          return try eventData.toCodable(OBS.Events.ReplayBufferStateChanged.self)
         case .VirtualcamStateChanged:
-          return try eventData.toCodable(OBSWS.Events.VirtualcamStateChanged.self)
+          return try eventData.toCodable(OBS.Events.VirtualcamStateChanged.self)
         case .ReplayBufferSaved:
-          return try eventData.toCodable(OBSWS.Events.ReplayBufferSaved.self)
+          return try eventData.toCodable(OBS.Events.ReplayBufferSaved.self)
         case .SceneItemCreated:
-          return try eventData.toCodable(OBSWS.Events.SceneItemCreated.self)
+          return try eventData.toCodable(OBS.Events.SceneItemCreated.self)
         case .SceneItemRemoved:
-          return try eventData.toCodable(OBSWS.Events.SceneItemRemoved.self)
+          return try eventData.toCodable(OBS.Events.SceneItemRemoved.self)
         case .SceneItemListReindexed:
-          return try eventData.toCodable(OBSWS.Events.SceneItemListReindexed.self)
+          return try eventData.toCodable(OBS.Events.SceneItemListReindexed.self)
         case .SceneItemEnableStateChanged:
-          return try eventData.toCodable(OBSWS.Events.SceneItemEnableStateChanged.self)
+          return try eventData.toCodable(OBS.Events.SceneItemEnableStateChanged.self)
         case .SceneItemLockStateChanged:
-          return try eventData.toCodable(OBSWS.Events.SceneItemLockStateChanged.self)
+          return try eventData.toCodable(OBS.Events.SceneItemLockStateChanged.self)
         case .SceneItemSelected:
-          return try eventData.toCodable(OBSWS.Events.SceneItemSelected.self)
+          return try eventData.toCodable(OBS.Events.SceneItemSelected.self)
         case .SceneItemTransformChanged:
-          return try eventData.toCodable(OBSWS.Events.SceneItemTransformChanged.self)
+          return try eventData.toCodable(OBS.Events.SceneItemTransformChanged.self)
         case .SceneCreated:
-          return try eventData.toCodable(OBSWS.Events.SceneCreated.self)
+          return try eventData.toCodable(OBS.Events.SceneCreated.self)
         case .SceneRemoved:
-          return try eventData.toCodable(OBSWS.Events.SceneRemoved.self)
+          return try eventData.toCodable(OBS.Events.SceneRemoved.self)
         case .SceneNameChanged:
-          return try eventData.toCodable(OBSWS.Events.SceneNameChanged.self)
+          return try eventData.toCodable(OBS.Events.SceneNameChanged.self)
         case .CurrentProgramSceneChanged:
-          return try eventData.toCodable(OBSWS.Events.CurrentProgramSceneChanged.self)
+          return try eventData.toCodable(OBS.Events.CurrentProgramSceneChanged.self)
         case .CurrentPreviewSceneChanged:
-          return try eventData.toCodable(OBSWS.Events.CurrentPreviewSceneChanged.self)
+          return try eventData.toCodable(OBS.Events.CurrentPreviewSceneChanged.self)
         case .SceneListChanged:
-          return try eventData.toCodable(OBSWS.Events.SceneListChanged.self)
+          return try eventData.toCodable(OBS.Events.SceneListChanged.self)
         case .CurrentSceneTransitionChanged:
-          return try eventData.toCodable(OBSWS.Events.CurrentSceneTransitionChanged.self)
+          return try eventData.toCodable(OBS.Events.CurrentSceneTransitionChanged.self)
         case .CurrentSceneTransitionDurationChanged:
-          return try eventData.toCodable(OBSWS.Events.CurrentSceneTransitionDurationChanged.self)
+          return try eventData.toCodable(OBS.Events.CurrentSceneTransitionDurationChanged.self)
         case .SceneTransitionStarted:
-          return try eventData.toCodable(OBSWS.Events.SceneTransitionStarted.self)
+          return try eventData.toCodable(OBS.Events.SceneTransitionStarted.self)
         case .SceneTransitionEnded:
-          return try eventData.toCodable(OBSWS.Events.SceneTransitionEnded.self)
+          return try eventData.toCodable(OBS.Events.SceneTransitionEnded.self)
         case .SceneTransitionVideoEnded:
-          return try eventData.toCodable(OBSWS.Events.SceneTransitionVideoEnded.self)
+          return try eventData.toCodable(OBS.Events.SceneTransitionVideoEnded.self)
         case .StudioModeStateChanged:
-          return try eventData.toCodable(OBSWS.Events.StudioModeStateChanged.self)
+          return try eventData.toCodable(OBS.Events.StudioModeStateChanged.self)
         case .ScreenshotSaved:
-          return try eventData.toCodable(OBSWS.Events.ScreenshotSaved.self)
+          return try eventData.toCodable(OBS.Events.ScreenshotSaved.self)
         case .VendorEvent:
-          return try eventData.toCodable(OBSWS.Events.VendorEvent.self)
+          return try eventData.toCodable(OBS.Events.VendorEvent.self)
         case .CustomEvent:
-          return try eventData.toCodable(OBSWS.Events.CustomEvent.self)
+          return try eventData.toCodable(OBS.Events.CustomEvent.self)
         }
       }
     }
