@@ -24,6 +24,7 @@ public final class OBSWebSocket: Sendable {
     private let _session: Mutex<WebSocketAsyncSession?>
     
     private let connectionDetails: Mutex<ConnectionDetails?>
+    private let handshakeDetails: Mutex<HandshakeDetails?>
     
     private var coders: AnyCoderPair {
         switch activeConnectionDetails?.encodingProtocol {
@@ -31,8 +32,6 @@ public final class OBSWebSocket: Sendable {
         default: .json
         }
     }
-    
-    private let handshakeDetails: Mutex<HandshakeDetails?>
     
     // MARK: - Public Computed Properties
     
