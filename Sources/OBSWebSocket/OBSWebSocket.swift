@@ -286,11 +286,12 @@ public final class OBSWebSocket: Sendable {
     @discardableResult
     public func send<R: OBSRequest>(
         _ request: R,
-        withID id: UUID = UUID()
+        withID id: UUID? = nil
     ) async throws -> R.Response {
         let session = try ensureConnectionOpen()
         
-        let requestMessage = try OBS.Messages.Request(data: .init(request, id: id.uuidString))
+        let requstID = (id ?? UUID()).uuidString
+        let requestMessage = try OBS.Messages.Request(data: .init(request, id: requstID))
         try await session
             .send(
                 requestMessage,
@@ -310,11 +311,11 @@ public final class OBSWebSocket: Sendable {
         )
         
         // Throw error if 5 seconds passes without finding a `RequestResponse` message
-        let reqResp = try await withThrowingTimeout(after: .now.advanced(by: .seconds(5))) {
+        let reqResp = try await withThrowingTimeout(after: .now.advanced(by: .seconds(5))) { [requstID] in
             try await reqRespSeq
                 .first {
                     $0.type == R.requestType
-                    && AnyHashable($0.id) == AnyHashable(id.uuidString)
+                    && AnyHashable($0.id) == AnyHashable(requstID)
                 }
         }
         
