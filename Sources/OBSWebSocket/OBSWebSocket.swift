@@ -100,7 +100,7 @@ public final class OBSWebSocket: Sendable {
             let helloUntyped = try await messages
                 .first(where: { $0.operation == .hello })
             
-            guard let hello = try? helloUntyped?.as(OBSOpData.Hello.self) else {
+            guard let hello = try? helloUntyped?.as(OBS.OpData.Hello.self) else {
                 #warning("TODO: custom error")
                 throw Errors.test
             }
@@ -127,7 +127,7 @@ public final class OBSWebSocket: Sendable {
             let identifiedUntyped = try await messages
                 .first(where: { $0.operation == .identified })
             
-            guard let identified = try? identifiedUntyped?.as(OBSOpData.Identified.self) else {
+            guard let identified = try? identifiedUntyped?.as(OBS.OpData.Identified.self) else {
                 #warning("TODO: custom error")
                 throw Errors.test
             }
@@ -194,13 +194,13 @@ public final class OBSWebSocket: Sendable {
             .withLock(\.?.messages)?.asOBSWSMessages().optional ?? .init(nil)
     }
     
-    public var events: some AsyncSendableSequence<OBSOpData.Event, any Error> {
+    public var events: some AsyncSendableSequence<OBS.OpData.Event, any Error> {
         messages.events()
     }
     
     public func events<E: OBSEvent>(
         ofType type: E.Type,
-        isIncluded: (@Sendable (OBSOpData.Event) throws -> Bool)? = nil
+        isIncluded: (@Sendable (OBS.OpData.Event) throws -> Bool)? = nil
     ) -> some AsyncSendableSequence<E, any Error> {
         messages.events(ofType: type.self, isIncluded: isIncluded)
     }
@@ -225,7 +225,7 @@ public final class OBSWebSocket: Sendable {
         let reqRespMsg = try await withThrowingTimeout(after: .now.advanced(by: .seconds(5))) {
             try await self.messages
                 .compactMap { msg in
-                    try? msg.as(OBSOpData.RequestResponse.self)
+                    try? msg.as(OBS.OpData.RequestResponse.self)
                 }
                 .first {
                     $0.data.type == R.requestType
@@ -257,7 +257,7 @@ public final class OBSWebSocket: Sendable {
         case webSocketError(WebSocketError)
         case obsWebSocketClosed(OBSWS.Enums.CloseCode, reason: String?)
         case noActiveConnection
-        case requestFailed(type: OBSWS.Requests.AllTypes, id: String, request: JSONValue?, response: JSONValue?, status: OBSOpData.RequestResponse.Status)
+        case requestFailed(type: OBSWS.Requests.AllTypes, id: String, request: JSONValue?, response: JSONValue?, status: OBS.OpData.RequestResponse.Status)
         
         fileprivate static func wsError(_ error: WebSocketError) -> Self {
             switch error {

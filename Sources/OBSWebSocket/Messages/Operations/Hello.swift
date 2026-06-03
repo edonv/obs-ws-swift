@@ -8,7 +8,7 @@
 import Foundation
 import CryptoKit
 
-extension OBSOpData {
+extension OBS.OpData {
     /// First message sent from the server immediately on client connection.
     ///
     /// Contains authentication information if auth is required. Also contains RPC version
@@ -51,15 +51,15 @@ extension OBSOpData {
 }
 
 extension OBSMessages.Hello {
-    /// Maps `Hello` instance to a new ``OBSMessages/Identify`` (``OBSMessage`` with an ``OBSOpData/Identify`` `Body`).
+    /// Maps `Hello` instance to a new ``OBSMessages/Identify`` (``OBSMessage`` with an ``OBS/OpData/Identify`` `Body`).
     /// - Parameters:
-    ///   - password: If provided, it's used with ``OBSOpData/Hello/authentication`` to create a final
+    ///   - password: If provided, it's used with ``OBS/OpData/Hello/authentication`` to create a final
     ///   authentication string.
     ///   - events: If provided, it tells `obs-websocket` that it's interested in being
     ///   alerted about specific categories of ``OBSWS/Events``.
     /// - Throws: ``OBSWS/Error/missingPasswordWhereRequired`` if
-    /// ``OBSOpData/Hello/authentication`` is present without a provided password.
-    /// - Returns: A new ``OBSMessages/Identify`` (``OBSMessage`` with an ``OBSOpData/Identify`` `Body`) with the generated authentication string.
+    /// ``OBS/OpData/Hello/authentication`` is present without a provided password.
+    /// - Returns: A new ``OBSMessages/Identify`` (``OBSMessage`` with an ``OBS/OpData/Identify`` `Body`) with the generated authentication string.
     internal func toIdentify(
         password: String?,
         subscribingTo events: OBSWS.Enums.EventSubscription?

@@ -15,7 +15,7 @@ public protocol OBSOpDataRequestResponse: Sendable, Hashable {
     
     var type: OBSWS.Requests.AllTypes { get }
     var id: ID { get }
-    var status: OBSOpData.RequestResponse.Status { get }
+    var status: OBS.OpData.RequestResponse.Status { get }
     var data: JSONValue? { get }
 }
 

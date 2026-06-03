@@ -98,39 +98,39 @@ struct OBSMessageTests {
         for msg in untypedMessages {
             switch msg.operation {
             case .hello:
-                let hello = try msg.as(OBSOpData.Hello.self)
-                #expect(hello.data == OBSOpData.Hello(
+                let hello = try msg.as(OBS.OpData.Hello.self)
+                #expect(hello.data == OBS.OpData.Hello(
                     obsWebSocketVersion: "5.7.2",
                     rpcVersion: 1,
                     authentication: nil
                 ))
                 
             case .identify:
-                let identify = try msg.as(OBSOpData.Identify.self)
-                #expect(identify.data == OBSOpData.Identify(
+                let identify = try msg.as(OBS.OpData.Identify.self)
+                #expect(identify.data == OBS.OpData.Identify(
                     rpcVersion: 1,
                     authentication: nil,
                     eventSubscriptions: .all
                 ))
                 
             case .identified:
-                let identified = try msg.as(OBSOpData.Identified.self)
-                #expect(identified.data == OBSOpData.Identified(negotiatedRpcVersion: 1))
+                let identified = try msg.as(OBS.OpData.Identified.self)
+                #expect(identified.data == OBS.OpData.Identified(negotiatedRpcVersion: 1))
                 
             case .reidentify:
-                let reidentify = try msg.as(OBSOpData.Reidentify.self)
-                #expect(reidentify.data == OBSOpData.Reidentify(eventSubscriptions: .all))
+                let reidentify = try msg.as(OBS.OpData.Reidentify.self)
+                #expect(reidentify.data == OBS.OpData.Reidentify(eventSubscriptions: .all))
                 
             case .event:
-                let event1Msg = try msg.as(OBSOpData.Event.self)
-                let event2Data = try OBSOpData.Event(
+                let event1Msg = try msg.as(OBS.OpData.Event.self)
+                let event2Data = try OBS.OpData.Event(
                     OBSWS.Events.CurrentSceneCollectionChanging(sceneCollectionName: "New Scene Collection")
                 )
                 #expect(event1Msg.data == event2Data)
                 
             case .request:
-                let req1Msg = try msg.as(OBSOpData.Request.self)
-                let req2Data = try OBSOpData.Request(OBSWS.Requests.SetProfileParameter(
+                let req1Msg = try msg.as(OBS.OpData.Request.self)
+                let req2Data = try OBS.OpData.Request(OBSWS.Requests.SetProfileParameter(
                     parameterCategory: "category",
                     parameterName: "name",
                     parameterValue: "value"
@@ -138,8 +138,8 @@ struct OBSMessageTests {
                 #expect(req1Msg.data == req2Data)
                 
             case .requestResponse:
-                let resp1Msg = try msg.as(OBSOpData.RequestResponse.self)
-                let resp2Data = try OBSOpData.RequestResponse(
+                let resp1Msg = try msg.as(OBS.OpData.RequestResponse.self)
+                let resp2Data = try OBS.OpData.RequestResponse(
                     OBSWS.Requests.GetProfileParameter.self,
                     id: resp1Msg.data.id,
                     status: .init(
@@ -155,8 +155,8 @@ struct OBSMessageTests {
                 #expect(resp1Msg.data == resp2Data)
                 
             case .requestBatch:
-                let batch1Msg = try msg.as(OBSOpData.RequestBatch.self)
-                let batch2Data = OBSOpData.RequestBatch(
+                let batch1Msg = try msg.as(OBS.OpData.RequestBatch.self)
+                let batch2Data = OBS.OpData.RequestBatch(
                     id: batch1Msg.data.id,
                     haltOnFailure: true,
                     executionType: .serialFrame,
@@ -174,8 +174,8 @@ struct OBSMessageTests {
                 #expect(batch1Msg.data == batch2Data)
                 
             case .requestBatchResponse:
-                let batchResp1Msg = try msg.as(OBSOpData.RequestBatchResponse.self)
-                let batchResp2Data = try OBSOpData.RequestBatchResponse(
+                let batchResp1Msg = try msg.as(OBS.OpData.RequestBatchResponse.self)
+                let batchResp2Data = try OBS.OpData.RequestBatchResponse(
                     id: batchResp1Msg.data.id,
                     results: [
                         .init(

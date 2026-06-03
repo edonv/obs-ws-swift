@@ -8,7 +8,7 @@
 import Foundation
 import JSONValue
 
-extension OBSOpData {
+extension OBS.OpData {
     /// `obs-websocket` is responding to a request batch coming from the client.
     ///
     /// - term Sent From: `obs-websocket`
@@ -32,7 +32,7 @@ extension OBSOpData {
             case results
         }
         
-        /// Identical to ``OBSOpData/RequestResponse``, except ``id`` is optional.
+        /// Identical to ``OBS/OpData/RequestResponse``, except ``id`` is optional.
         public struct Response: OBSOpDataRequestResponse, Sendable, Hashable, Codable {
             public typealias Status = RequestResponse.Status
             

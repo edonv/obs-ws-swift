@@ -8,7 +8,7 @@
 import Foundation
 import JSONValue
 
-extension OBSOpData {
+extension OBS.OpData {
     /// Client is making a batch of requests for `obs-websocket`.
     ///
     /// Requests are processed serially (in order) by the server
@@ -22,7 +22,7 @@ extension OBSOpData {
         
         /// When `haltOnFailure` is `true`, the processing of requests will be halted on first failure.
         ///
-        /// Returns only the processed requests in ``OBSOpData/RequestBatchResponse``.
+        /// Returns only the processed requests in ``OBS/OpData/RequestBatchResponse``.
         ///
         /// Defaults to `false`.
         public let haltOnFailure: Bool?
@@ -52,7 +52,7 @@ extension OBSOpData {
             case requests
         }
         
-        /// Identical to ``OBSOpData/Request``, except ``id`` is optional.
+        /// Identical to ``OBS/OpData/Request``, except ``id`` is optional.
         public struct Request: OBSOpDataRequest, Sendable, Hashable, Codable {
             public let type: OBSWS.Requests.AllTypes
             public let id: String?

@@ -8,7 +8,7 @@
 import Foundation
 import JSONValue
 
-extension OBSOpData {
+extension OBS.OpData {
     /// An event coming from OBS has occured. Eg scene switched, source muted.
     ///
     /// - term Sent From: `obs-websocket`
