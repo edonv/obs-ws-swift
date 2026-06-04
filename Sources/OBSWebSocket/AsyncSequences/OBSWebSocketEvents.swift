@@ -58,7 +58,10 @@ extension AsyncSequence where Self: Sendable, Element == OBS.UntypedMessage {
         ofType type: E.Type,
         isIncluded: (@Sendable (_ event: OBS.OpData.Event) throws -> Bool)? = nil
     ) -> some AsyncSendableSequence<E, any Error> {
-        OBSWebSocket.Events(self, isIncluded: isIncluded ?? { _ in true })
-            .compactMap { try? $0.asEvent(ofType: E.self) }
+        self.events { event in
+            guard event.type == E.eventType else { return false }
+            return try isIncluded?(event) ?? true
+        }
+        .compactMap { try? $0.asEvent(ofType: E.self) }
     }
 }
