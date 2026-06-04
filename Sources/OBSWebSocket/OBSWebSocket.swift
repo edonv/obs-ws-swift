@@ -16,13 +16,20 @@ import AsyncAlgorithms
 import Timeout
 
 public final class OBSWebSocket: Sendable {
+    typealias RequestResponseBacklog = [OBS.Requests.AllTypes: any OBSOpDataRequestResponse]
+    typealias EventBacklog = [OBS.Events.AllTypes: OBS.OpData.Event]
+    
     public typealias UntypedMessage = OBS.UntypedMessage
     public typealias Message = OBS.Message
     public typealias CloseCode = OBS.Enums.CloseCode
     
     // MARK: - Private Stored Properties
     
+    private let reqResponseBacklog: Mutex<RequestResponseBacklog>
+    private let eventBacklog: Mutex<EventBacklog>
+    
     private let _session: Mutex<WebSocketAsyncSession?>
+    private let _backlogTask: Mutex<Task<Void, any Error>?>
     
     private let connectionDetails: Mutex<ConnectionDetails?>
     private let handshakeDetails: Mutex<HandshakeDetails?>
@@ -52,7 +59,11 @@ public final class OBSWebSocket: Sendable {
     // MARK: - Public Initializers
     
     public init() {
+        self.reqResponseBacklog = .init([:])
+        self.eventBacklog = .init([:])
+        
         self._session = .init(nil)
+        self._backlogTask = .init(nil)
         self.connectionDetails = .init(nil)
         self.handshakeDetails = .init(nil)
     }
@@ -73,6 +84,12 @@ public final class OBSWebSocket: Sendable {
         )
         
         self._session.withLock { $0 = session }
+        let backlogTask = Task {
+            for try await msg in session.messages.asOBSWSMessages() {
+                self.logMessageToBacklog(msg)
+            }
+        }
+        self._backlogTask.withLock { $0 = backlogTask }
         self.connectionDetails.withLock { $0 = connectionData }
         self.handshakeDetails.withLock { $0 = details }
     }
@@ -178,6 +195,10 @@ public final class OBSWebSocket: Sendable {
     private func clearTaskData() {
         self.connectionDetails.withLock { $0 = nil }
         self.handshakeDetails.withLock { $0 = nil }
+        
+        self._backlogTask.withLock { $0 = nil }
+        self.reqResponseBacklog.withLock { $0 = [:] }
+        self.eventBacklog.withLock { $0 = [:] }
     }
     
     private func ensureConnectionOpen() throws(Errors) -> WebSocketAsyncSession {
@@ -197,14 +218,67 @@ public final class OBSWebSocket: Sendable {
     }
     
     public var events: some AsyncSendableSequence<OBS.OpData.Event, any Error> {
-        messages.events()
+        chain(
+            eventBacklog.withLock(\.values)
+                .async
+                .mapError { $0 as any Error },
+            messages.events()
+        )
     }
     
     public func events<E: OBSEvent>(
         ofType type: E.Type,
         isIncluded: (@Sendable (OBS.OpData.Event) throws -> Bool)? = nil
     ) -> some AsyncSendableSequence<E, any Error> {
-        messages.events(ofType: type.self, isIncluded: isIncluded)
+        let isIncluded = isIncluded ?? { _ in true }
+        
+        let latestEvent = eventBacklog.withLock { $0[E.eventType] }
+            .flatMap { e -> E? in
+                guard e.type == E.eventType,
+                      (try? isIncluded(e)) == true else { return nil }
+
+                return try? e.asEvent(ofType: E.self)
+            }
+        
+        return chain(
+            (latestEvent.map(CollectionOfOne.init).map(Array.init) ?? [])
+                .async
+                .mapError { $0 as any Error },
+            messages.events(
+                ofType: type.self,
+                isIncluded: isIncluded
+            )
+        )
+    }
+    
+    nonisolated
+    private func logMessageToBacklog(_ message: OBS.UntypedMessage) {
+        switch message.operation {
+        case .event:
+            guard let event = try? message.as(OBS.OpData.Event.self) else { return }
+            
+            self.eventBacklog
+                .withLock { $0[event.data.type] = event.data }
+            
+        case .requestResponse:
+            guard let resp = try? message.as(OBS.OpData.RequestResponse.self) else { return }
+            
+            self.reqResponseBacklog
+                .withLock { $0[resp.data.type] = resp.data }
+            
+        case .requestBatchResponse:
+            guard let batchResp = try? message.as(OBS.OpData.RequestBatchResponse.self) else { return }
+            
+            self.reqResponseBacklog
+                .withLock { backlog in
+                    batchResp.data.results.forEach { resp in
+                        backlog[resp.type] = resp
+                    }
+                }
+            
+        default:
+            break
+        }
     }
     
     // MARK: - Communication (Out)
@@ -212,44 +286,54 @@ public final class OBSWebSocket: Sendable {
     @discardableResult
     public func send<R: OBSRequest>(
         _ request: R,
-        withID id: UUID = UUID()
+        withID id: UUID? = nil
     ) async throws -> R.Response {
         let session = try ensureConnectionOpen()
         
-        let requestMessage = try OBS.Messages.Request(data: .init(request, id: id.uuidString))
+        let requstID = (id ?? UUID()).uuidString
+        let requestMessage = try OBS.Messages.Request(data: .init(request, id: requstID))
         try await session
             .send(
                 requestMessage,
                 encodingProtocol: self.connectionDetails.withLock(\.?.encodingProtocol)
             )
         
-        // Throw error if 5 seconds passes without finding a `RequestResponse` message
-        let reqRespMsg = try await withThrowingTimeout(after: .now.advanced(by: .seconds(5))) {
-            try await self.messages
+        // Get the latest response of the provided type
+        let latestResponse = reqResponseBacklog.withLock { $0[R.requestType] }
+        let reqRespSeq: some AsyncSendableSequence<any OBSOpDataRequestResponse, any Error> = chain(
+            (latestResponse.map(CollectionOfOne.init).map(Array.init) ?? [])
+                .async
+                .mapError { $0 as any Error },
+            messages
                 .compactMap { msg in
-                    try? msg.as(OBS.OpData.RequestResponse.self)
+                    (try? msg.as(OBS.OpData.RequestResponse.self))?.data
                 }
+        )
+        
+        // Throw error if 5 seconds passes without finding a `RequestResponse` message
+        let reqResp = try await withThrowingTimeout(after: .now.advanced(by: .seconds(5))) { [requstID] in
+            try await reqRespSeq
                 .first {
-                    $0.data.type == R.requestType
-                    && $0.data.id == id.uuidString
+                    $0.type == R.requestType
+                    && AnyHashable($0.id) == AnyHashable(requstID)
                 }
         }
         
-        guard let reqRespMsg else {
+        guard let reqResp else {
             throw Errors.test
         }
         
-        guard reqRespMsg.data.status.result else {
+        guard reqResp.status.result else {
             throw Errors.requestFailed(
                 type: requestMessage.data.type,
                 id: requestMessage.data.id,
                 request: requestMessage.data.data,
-                response: reqRespMsg.data.data,
-                status: reqRespMsg.data.status
+                response: reqResp.data,
+                status: reqResp.status
             )
         }
         
-        return try reqRespMsg.data.asResponse(ofType: R.self)
+        return try reqResp.asResponse(ofType: R.self)
     }
     
     // MARK: - Errors
