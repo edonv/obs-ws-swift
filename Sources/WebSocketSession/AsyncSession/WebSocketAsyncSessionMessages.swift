@@ -27,23 +27,17 @@ extension WebSocketAsyncSession {
         }
         
         internal func yield(_ element: Element) {
-            if WebSocketAsyncSession.debug {
-                print("yield(_:)", element)
-            }
+            print("yield(_:)", element)
             self.continuation.yield(element)
         }
         
         internal func yield(with result: Result<Element, Swift.Error>) {
-            if WebSocketAsyncSession.debug {
-                print("yield(with:)", result)
-            }
+            print("yield(with:)", result)
             self.continuation.yield(with: result)
         }
         
         internal func finish(throwing error: Error) {
-            if WebSocketAsyncSession.debug {
-                print("finish(throwing:)", error)
-            }
+            print("finish(throwing:)", error)
             self.continuation.finish(throwing: error)
         }
         
