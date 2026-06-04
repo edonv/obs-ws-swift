@@ -4,7 +4,9 @@ import Testing
 struct OBSWebSocketTests {
     private let obs = OBSWebSocket()
     
-    private func connect() async throws {
+    private func connect(
+        subscribingTo eventSubscription: OBS.Enums.EventSubscription? = nil
+    ) async throws {
         try await obs.connect(
             with: .init(
 //                scheme: "wss",
@@ -13,12 +15,12 @@ struct OBSWebSocketTests {
                 password: "thisisatest",
                 encodingProtocol: .json
             ),
-            subscribingTo: .all
+            subscribingTo: eventSubscription
         )
     }
     
     @Test func webSocketConnection() async throws {
-        try await connect()
+        try await connect(subscribingTo: .all)
         
         #expect(obs.activeConnectionDetails != nil)
         
