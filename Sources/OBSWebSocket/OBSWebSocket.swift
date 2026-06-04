@@ -228,16 +228,17 @@ public final class OBSWebSocket: Sendable {
     
     public func events<E: OBSEvent>(
         ofType type: E.Type,
-        isIncluded: (@Sendable (OBS.OpData.Event) throws -> Bool)? = nil
+        isIncluded: (@Sendable (_ event: E, _ intent: OBS.Enums.EventSubscription) throws -> Bool)? = nil
     ) -> some AsyncSendableSequence<E, any Error> {
-        let isIncluded = isIncluded ?? { _ in true }
+        let isIncluded = isIncluded ?? { _, _ in true }
         
         let latestEvent = eventBacklog.withLock { $0[E.eventType] }
             .flatMap { e -> E? in
-                guard e.type == E.eventType,
-                      (try? isIncluded(e)) == true else { return nil }
+                guard e.type == E.eventType else { return nil }
 
-                return try? e.asEvent(ofType: E.self)
+                guard let event = try? e.asEvent(ofType: E.self) else { return nil }
+                
+                return try? isIncluded(event, e.intent) ? event : nil
             }
         
         return chain(
