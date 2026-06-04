@@ -64,4 +64,21 @@ extension AsyncSequence where Self: Sendable, Element == OBS.UntypedMessage {
         }
         .compactMap { try? $0.asEvent(ofType: E.self) }
     }
+    
+    public func events<E: OBSEvent>(
+        ofType type: E.Type,
+        isIncluded: (@Sendable (_ event: E, _ intent: OBS.Enums.EventSubscription) throws -> Bool)? = nil
+    ) -> some AsyncSendableSequence<E, any Error> {
+        self.events { $0.type == E.eventType }
+            .compactMap { event -> E? in
+                // First map to specific event type
+                guard let e = try? event.asEvent(ofType: E.self) else { return nil }
+                
+                // If `isIncluded` was `nil`, assume to pass all through
+                guard let isIncluded else { return e }
+                
+                // Otherwise, use `isIncluded` to decide if they should be allowed through
+                return try isIncluded(e, event.intent) ? e : nil
+            }
+    }
 }
