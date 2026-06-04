@@ -43,4 +43,19 @@ struct OBSWebSocketTests {
         
         obs.disconnect(with: .invalidDataFieldType, reason: "This is a test")
     }
+    
+    @Test func typedEventsListening() async throws {
+        try await connect(subscribingTo: .inputVolumeMeters)
+        
+        #expect(obs.activeConnectionDetails != nil)
+        
+        let events = obs.events(ofType: OBS.Events.InputVolumeMeters.self)
+            .prefix(10)
+        
+        for try await event in events {
+            print("[TEST]", event)
+        }
+        
+        obs.disconnect(with: .invalidDataFieldType, reason: "This is a test")
+    }
 }
